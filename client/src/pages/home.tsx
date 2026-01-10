@@ -122,20 +122,16 @@ function Navbar() {
 
         <button 
           onClick={() => setIsOpen(!isOpen)}
-          className="relative w-14 h-14 flex flex-col items-center justify-center z-[110] group rounded-full bg-white/5 hover:bg-white/10 transition-colors backdrop-blur-md"
+          className="relative w-14 h-14 flex flex-col items-center justify-center z-[110] group rounded-full bg-[#3D1111]/5 hover:bg-[#3D1111]/10 transition-colors backdrop-blur-md"
         >
-          <div className="relative w-6 h-5 overflow-visible">
+          <div className="relative w-6 h-3 overflow-visible">
             <motion.span 
-              animate={isOpen ? { rotate: 45, y: 8, width: "100%", backgroundColor: "#E8C170" } : { rotate: 0, y: 0, width: "100%", backgroundColor: "#fff" }}
-              className="absolute top-0 left-0 h-0.5 rounded-full"
+              animate={isOpen ? { rotate: 45, y: 6, width: "100%", backgroundColor: "#3D1111" } : { rotate: 0, y: 0, width: "100%", backgroundColor: scrolled ? "#fff" : "#fff" }}
+              className="absolute top-0 left-0 h-0.5 rounded-full bg-white"
             />
             <motion.span 
-              animate={isOpen ? { scaleX: 0, opacity: 0 } : { scaleX: 1, opacity: 1, backgroundColor: "#fff" }}
-              className="absolute top-1/2 -translate-y-1/2 left-0 w-3/4 h-0.5 rounded-full"
-            />
-            <motion.span 
-              animate={isOpen ? { rotate: -45, y: -8, width: "100%", backgroundColor: "#E8C170" } : { rotate: 0, y: 16, width: "50%", backgroundColor: "#fff" }}
-              className="absolute top-0 left-0 h-0.5 rounded-full"
+              animate={isOpen ? { rotate: -45, y: 6, width: "100%", backgroundColor: "#3D1111" } : { rotate: 0, y: 12, width: "100%", backgroundColor: scrolled ? "#fff" : "#fff" }}
+              className="absolute top-0 left-0 h-0.5 rounded-full bg-white"
             />
           </div>
         </button>
@@ -148,31 +144,31 @@ function Navbar() {
                 animate="opened"
                 exit="closed"
                 variants={menuVariants}
-                className="fixed inset-0 bg-[#1A0505] z-[105] flex flex-col items-center justify-center min-h-screen origin-top-right shadow-2xl"
+                className="fixed inset-0 bg-[#FDFBF7] z-[105] flex flex-col items-center justify-center min-h-screen origin-top-right shadow-2xl"
               >
                 {/* Abstract background elements for "dopamine" */}
-                <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
+                <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
                   <motion.div 
                     animate={{ 
                       scale: [1, 1.2, 1],
-                      rotate: [0, 180, 360],
-                      x: [0, 50, 0]
+                      rotate: [0, 90, 180],
+                      x: [0, 100, 0]
                     }}
-                    transition={{ duration: 20, repeat: Infinity }}
-                    className="absolute -top-1/4 -left-1/4 w-[600px] h-[600px] bg-[#E8C170] rounded-full blur-[120px]"
+                    transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                    className="absolute -top-1/4 -left-1/4 w-[800px] h-[800px] bg-[#E8C170]/20 rounded-full blur-[120px]"
                   />
                   <motion.div 
                     animate={{ 
                       scale: [1.2, 1, 1.2],
-                      rotate: [360, 180, 0],
-                      x: [0, -50, 0]
+                      rotate: [180, 90, 0],
+                      x: [0, -100, 0]
                     }}
-                    transition={{ duration: 25, repeat: Infinity }}
-                    className="absolute -bottom-1/4 -right-1/4 w-[600px] h-[600px] bg-[#3D1111] rounded-full blur-[120px]"
+                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                    className="absolute -bottom-1/4 -right-1/4 w-[800px] h-[800px] bg-[#3D1111]/10 rounded-full blur-[120px]"
                   />
                 </div>
 
-                <div className="flex flex-col items-center gap-6 perspective-[1000px]">
+                <div className="flex flex-col items-center gap-8 perspective-[1000px]">
                   {["Home", "Programs", "Faculty", "Admissions", "Contact"].map((item, i) => (
                     <motion.a
                       key={item}
@@ -180,12 +176,12 @@ function Navbar() {
                       variants={itemVariants}
                       href={`#${item.toLowerCase()}`}
                       onClick={() => setIsOpen(false)}
-                      className="font-display text-5xl md:text-8xl text-white hover:text-[#E8C170] transition-all duration-500 relative group flex items-center"
+                      className="font-display text-5xl md:text-8xl text-[#3D1111] hover:text-[#E8C170] transition-all duration-500 relative group flex items-center"
                     >
-                      <span className="relative z-10 block group-hover:italic group-hover:translate-x-4 transition-transform">{item}</span>
-                      <span className="absolute -left-12 opacity-0 group-hover:opacity-100 group-hover:-left-8 transition-all text-[#E8C170] text-3xl font-serif">0{i+1}</span>
+                      <span className="relative z-10 block group-hover:italic group-hover:translate-x-6 transition-transform">{item}</span>
+                      <span className="absolute -left-16 opacity-0 group-hover:opacity-100 group-hover:-left-12 transition-all text-[#E8C170] text-3xl font-serif">0{i+1}</span>
                       <motion.span 
-                        className="absolute bottom-4 left-0 w-0 h-1 bg-[#E8C170] group-hover:w-full transition-all duration-500 -z-10 shadow-[0_0_20px_rgba(232,193,112,0.5)]"
+                        className="absolute bottom-4 left-0 w-0 h-1 bg-[#E8C170] group-hover:w-full transition-all duration-500 -z-10 shadow-[0_0_20px_rgba(232,193,112,0.3)]"
                       />
                     </motion.a>
                   ))}
@@ -195,11 +191,11 @@ function Navbar() {
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1, duration: 0.8 }}
-                  className="mt-20 flex gap-8 text-white/40 font-sans font-black text-xs tracking-[0.5em] uppercase"
+                  className="mt-20 flex gap-10 text-[#3D1111]/30 font-sans font-black text-xs tracking-[0.5em] uppercase"
                 >
-                  <a href="#" className="hover:text-white transition-colors">Instagram</a>
-                  <a href="#" className="hover:text-white transition-colors">LinkedIn</a>
-                  <a href="#" className="hover:text-white transition-colors">Youtube</a>
+                  <a href="#" className="hover:text-[#3D1111] transition-colors">Instagram</a>
+                  <a href="#" className="hover:text-[#3D1111] transition-colors">LinkedIn</a>
+                  <a href="#" className="hover:text-[#3D1111] transition-colors">Youtube</a>
                 </motion.div>
               </motion.div>
             </>
