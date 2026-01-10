@@ -792,61 +792,73 @@ function Scholarships() {
 
 function Testimonials() {
   const testimonials = [
-    { name: "Rahul Sharma", text: "IDC helped me secure 95% in my boards. The teachers are incredible!", role: "Class XII Student", grade: "XII", image: studentBoy },
-    { name: "Priya Gupta", text: "The personalized attention at IDC made a huge difference in my performance.", role: "Class X Student", grade: "X", image: studentGirl },
-    { name: "Amit Kumar", text: "Best coaching in Delhi for conceptual clarity and consistent results.", role: "Class XII Student", grade: "XII", image: studentsGroup },
-    { name: "Sneha Reddy", text: "The mentors here are extremely supportive and the environment is very motivating.", role: "Class X Student", grade: "X", image: professorImage },
-    { name: "Vikram Singh", text: "I found the practical approach to science subjects very helpful for my prep.", role: "Class XII Student", grade: "XII", image: professorImage },
+    { name: "Rahul Sharma", text: "IDC helped me secure 95% in my boards. The teachers are incredible!", role: "Class XII Student", grade: "XII", image: studentBoy, school: "Woodstock School", location: "Delhi" },
+    { name: "Priya Gupta", text: "The personalized attention at IDC made a difference in my performance.", role: "Class X Student", grade: "X", image: studentGirl, school: "Delhi Public School", location: "Raipur" },
+    { name: "Amit Kumar", text: "Best coaching in Delhi for conceptual clarity and consistent results.", role: "Class XII Student", grade: "XII", image: studentsGroup, school: "Fountainhead School", location: "Surat" },
+    { name: "Sneha Reddy", text: "The mentors here are extremely supportive and the environment is very motivating.", role: "Class X Student", grade: "X", image: professorImage, school: "Bodhi International", location: "Jodhpur" },
+    { name: "Vikram Singh", text: "I found the practical approach to science subjects very helpful for my prep.", role: "Class XII Student", grade: "XII", image: professorImage, school: "Emerald International", location: "Bengaluru" },
   ];
 
   return (
-    <section id="testimonials" className="bg-[#F5F0E6] py-32 px-6 overflow-hidden">
-      <div className="max-w-7xl mx-auto mb-20 text-center">
-        <motion.p 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          className="text-[#E8C170] text-xs md:text-sm mb-4 uppercase tracking-[0.4em] font-black"
-        >
-          Voices of Success
-        </motion.p>
-        <h2 className="text-4xl md:text-7xl font-display text-[#3D1111] mb-6 leading-tight">
-          What Our <span className="italic font-black">Students Say</span>
-        </h2>
+    <section id="testimonials" className="bg-[#3D1111] py-32 px-6 overflow-hidden relative">
+      <div className="absolute top-0 right-0 w-full h-full pointer-events-none opacity-5">
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#E8C170] rounded-full blur-[150px]" />
       </div>
 
-      <div className="testimonials-track flex gap-6 md:gap-10 overflow-x-auto lg:overflow-visible pb-12 no-scrollbar snap-x snap-mandatory">
+      <div className="max-w-7xl mx-auto mb-20 relative z-10">
+        <motion.h2 
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          className="text-white text-4xl md:text-6xl font-display mb-4"
+        >
+          Meet the <span className="font-black italic text-[#E8C170]">IDC Batch</span>
+        </motion.h2>
+        <motion.p 
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+          className="text-white/60 text-lg max-w-2xl"
+        >
+          A peek into the students who have redefined excellence at Ideology Classes.
+        </motion.p>
+      </div>
+
+      <div className="testimonials-track flex gap-6 md:gap-8 overflow-x-auto lg:overflow-visible pb-12 no-scrollbar snap-x snap-mandatory">
         {[...testimonials, ...testimonials].map((t, i) => (
           <motion.div
             key={i}
-            className="flex-shrink-0 w-[300px] md:w-[450px] snap-center group relative bg-white rounded-[2.5rem] shadow-2xl overflow-hidden border border-[#3D1111]/5 flex flex-col"
+            className="flex-shrink-0 w-[300px] md:w-[500px] snap-center group relative bg-white/5 backdrop-blur-md rounded-[2.5rem] p-8 md:p-10 border border-white/10 flex items-center justify-between overflow-hidden"
           >
-            {/* Student Image Section */}
-            <div className="h-48 md:h-64 relative overflow-hidden">
-              <img 
-                src={t.image} 
-                alt={t.name} 
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-white to-transparent opacity-60" />
-              <div className="absolute top-6 right-6 bg-[#3D1111] text-[#E8C170] px-4 py-2 rounded-full font-black text-[10px] tracking-widest">
-                {t.grade}
+            <div className="absolute -right-20 -bottom-20 w-64 h-64 bg-[#E8C170]/10 rounded-full blur-3xl group-hover:bg-[#E8C170]/20 transition-colors" />
+
+            <div className="flex-1 pr-4 relative z-10">
+              <h3 className="text-xl md:text-3xl font-display text-white font-bold mb-4 leading-tight">
+                {t.name}
+              </h3>
+              <div className="w-12 h-[1px] bg-white/20 mb-6" />
+              <div className="space-y-1">
+                <p className="text-[#E8C170] font-serif italic text-base md:text-lg">
+                  {t.school}
+                </p>
+                <p className="text-white/40 text-[10px] md:text-xs uppercase tracking-widest font-black">
+                  {t.location}
+                </p>
+              </div>
+              <div className="mt-8">
+                <span className="bg-white/5 text-white/60 px-3 py-1.5 rounded-full text-[9px] font-black tracking-widest uppercase">
+                  Grade {t.grade}
+                </span>
               </div>
             </div>
 
-            {/* Content Section */}
-            <div className="p-8 md:p-10 pt-0 -mt-8 relative z-10 flex-1 flex flex-col">
-              <div className="bg-[#3D1111]/5 p-6 md:p-8 rounded-[2rem] mb-6 flex-1 italic text-[#3D1111]/80 text-sm md:text-lg leading-relaxed">
-                "{t.text}"
-              </div>
-              <div className="flex items-center gap-4 border-t border-[#3D1111]/10 pt-6">
-                <div className="w-12 h-12 rounded-full overflow-hidden bg-[#3D1111]/10 flex-shrink-0">
-                  <img src={t.image} className="w-full h-full object-cover" />
-                </div>
-                <div>
-                  <p className="font-black text-[#3D1111] text-base">{t.name}</p>
-                  <p className="text-[10px] text-[#E8C170] font-black uppercase tracking-widest">{t.role}</p>
-                </div>
-              </div>
+            <div className="w-28 h-40 md:w-44 md:h-64 relative flex-shrink-0">
+              <div className="absolute inset-0 bg-gradient-to-t from-[#3D1111]/40 to-transparent z-10 rounded-2xl" />
+              <img 
+                src={t.image} 
+                className="w-full h-full object-cover rounded-2xl grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" 
+              />
             </div>
           </motion.div>
         ))}
