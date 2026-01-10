@@ -797,48 +797,64 @@ function Testimonials() {
       school: "Woodstock School",
       location: "Mussoorie",
       image: studentGirl,
+      marks: "98% in Economics",
+      course: "CBSE Class XII"
     },
     {
       name: "Priyanshi M",
       school: "Delhi Public School",
       location: "Raipur",
       image: studentGirl,
+      marks: "96% in Accounts",
+      course: "CBSE Class XII"
     },
     {
       name: "Yagya Amit Bisani",
       school: "Fountainhead School",
       location: "Surat",
       image: studentBoy,
+      marks: "100/100 in Maths",
+      course: "CBSE Class X"
     },
     {
       name: "Garvit Tatia",
       school: "Bodhi International School",
       location: "Jodhpur",
       image: studentBoy,
+      marks: "97% in Business Studies",
+      course: "CBSE Class XII"
     },
     {
       name: "A R Aayush Jishnu",
       school: "Emerald International School",
       location: "Bengaluru",
       image: studentGirl,
+      marks: "99% in Statistics",
+      course: "UG - B.Com"
     },
     {
       name: "Mahi Jain",
       school: "Jayshree Periwal International School",
       location: "Jaipur",
       image: studentGirl,
+      marks: "95% in Economics",
+      course: "CBSE Class XII"
     },
     {
       name: "Rahul Setia",
       school: "GD Goenka Public School",
       location: "Delhi",
       image: studentBoy,
+      marks: "98/100 in Accounts",
+      course: "CBSE Class XII"
     },
     {
       name: "Jatin Jain",
       school: "Delhi Public School",
       location: "Hyderabad",
       image: studentBoy,
+      marks: "96% in Applied Maths",
+      course: "CBSE Class XII"
     }
   ];
 
@@ -851,7 +867,7 @@ function Testimonials() {
           viewport={{ once: true }}
           className="text-white text-4xl md:text-7xl font-display mb-6"
         >
-          Meet the <span className="font-black italic text-[#E8C170]">Founding Cohort</span>
+          Wall of <span className="font-black italic text-[#E8C170]">Fame</span>
         </motion.h2>
         <motion.p 
           initial={{ opacity: 0, x: -20 }}
@@ -860,11 +876,11 @@ function Testimonials() {
           transition={{ delay: 0.1 }}
           className="text-white/60 text-lg max-w-2xl leading-relaxed"
         >
-          A peek into the 100 builders, creators, and innovators who make up Mesa's Founder's Batch
+          Celebrating the academic excellence and outstanding achievements of our top performers.
         </motion.p>
       </div>
 
-      <div className="testimonials-track flex gap-6 md:gap-10 overflow-x-auto lg:overflow-visible pb-8 no-scrollbar snap-x snap-mandatory relative z-10">
+      <div className="testimonials-track flex gap-6 md:gap-10 overflow-x-auto lg:overflow-visible pb-12 no-scrollbar snap-x snap-mandatory relative z-10">
         {testimonials.map((student, i) => (
           <motion.div
             key={i}
@@ -872,72 +888,41 @@ function Testimonials() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1 }}
-            className="flex-shrink-0 w-[280px] md:w-[450px] snap-center group relative flex flex-col bg-[#FDFBF7] rounded-[2rem] md:rounded-[2.5rem] shadow-2xl overflow-hidden border border-[#3D1111]/5"
+            className="flex-shrink-0 w-[300px] md:w-[500px] snap-center bg-[#260B0B] rounded-[2.5rem] p-8 md:p-10 flex items-center justify-between border border-white/5 relative overflow-hidden group hover:border-[#E8C170]/20 transition-all duration-500"
           >
-            {/* Top decorative element matching teacher cards */}
-            <div className="absolute top-0 left-0 w-full h-1.5 md:h-2 bg-gradient-to-r from-[#E8C170] to-[#3D1111]/20" />
-
-            {/* Header Info */}
-            <div className="p-6 md:p-10 flex justify-between items-start">
-              <div className="space-y-1">
-                <span className="block text-[#3D1111]/30 text-[8px] md:text-xs font-black uppercase tracking-[0.2em]">
-                  Student Record
-                </span>
-                <div className="h-0.5 w-8 md:w-10 bg-[#E8C170]/30 rounded-full" />
+            {/* Dark wash gradient */}
+            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
+            
+            <div className="flex-1 pr-4 relative z-10">
+              <h3 className="text-xl md:text-3xl font-display text-white font-bold mb-4 leading-tight">
+                {student.name}
+              </h3>
+              <div className="h-[1px] w-12 bg-white/20 mb-6" />
+              <div className="space-y-2">
+                <p className="text-[#E8C170] font-serif italic text-lg md:text-xl">
+                  {student.school}
+                </p>
+                <p className="text-white/40 text-[10px] md:text-xs uppercase tracking-widest font-black">
+                  {student.location}
+                </p>
               </div>
-              <div className="w-8 h-8 md:w-16 md:h-16 rounded-full bg-[#3D1111]/5 flex items-center justify-center">
-                <GraduationCap className="w-4 h-4 md:h-8 md:w-8 text-[#3D1111]/20" />
+              <div className="mt-8 space-y-2">
+                <div className="inline-block bg-[#E8C170] text-[#3D1111] px-3 py-1.5 rounded-full text-[10px] font-black tracking-widest uppercase">
+                  {student.marks}
+                </div>
+                <p className="text-white/60 text-[10px] font-bold uppercase tracking-widest block ml-1">
+                  {student.course}
+                </p>
               </div>
             </div>
 
-            <div className="px-6 md:px-10 flex gap-4 md:gap-8 items-center mb-6 md:mb-8">
-              {/* Image Section - Refined Shape matching teacher cards */}
-              <div className="relative w-20 h-20 md:w-40 md:h-40 flex-shrink-0 rounded-2xl md:rounded-3xl overflow-hidden shadow-xl md:shadow-2xl border border-[#3D1111]/5 group-hover:scale-105 transition-transform duration-700">
-                <div className="absolute inset-0 bg-gradient-to-t from-[#3D1111]/20 to-transparent z-10" />
-                <img
-                  src={student.image}
-                  alt={student.name}
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                />
-              </div>
-
-              {/* Identity Section */}
-              <div className="flex-1 min-w-0">
-                <h3 className="text-base md:text-3xl font-display text-[#3D1111] font-black leading-tight mb-1 md:mb-2 truncate">
-                  {student.name}
-                </h3>
-                <p className="text-[#E8C170] text-[8px] md:text-sm font-black uppercase tracking-widest mb-2 md:mb-4 truncate">
-                  Cohort Topper
-                </p>
-                <div className="inline-flex items-center gap-2 md:gap-3 bg-[#3D1111]/5 px-2 md:px-4 py-1 md:py-2 rounded-full">
-                  <div className="w-1 md:w-2 h-1 md:h-2 rounded-full bg-[#E8C170]" />
-                  <span className="text-[7px] md:text-xs font-bold text-[#3D1111]/60 uppercase tracking-widest">
-                    {student.location}
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Content Section */}
-            <div className="px-6 md:px-10 flex-1 flex flex-col pb-8 md:pb-12">
-              <div className="bg-[#3D1111]/5 p-4 md:p-8 rounded-2xl md:rounded-3xl relative mb-6 md:mb-8">
-                <div className="absolute -top-3 md:-top-4 left-6 md:left-8 text-2xl md:text-4xl text-[#E8C170] font-serif opacity-50">"</div>
-                <p className="text-[#3D1111]/80 text-[10px] md:text-lg font-sans leading-relaxed italic">
-                  Proud student of {student.school}. Reaching new heights with the right guidance.
-                </p>
-              </div>
-
-              <div className="mt-auto flex items-center justify-between pt-4 md:pt-6 border-t border-[#3D1111]/10">
-                <div className="flex flex-col">
-                  <span className="text-[7px] md:text-[10px] font-black text-[#3D1111]/30 uppercase tracking-[0.2em] mb-0.5 md:mb-1">School</span>
-                  <span className="text-[9px] md:text-sm font-bold text-[#3D1111]/70 truncate max-w-[150px] md:max-w-none">{student.school}</span>
-                </div>
-                <div className="h-8 md:h-10 w-[1px] bg-[#3D1111]/10" />
-                <div className="flex flex-col text-right">
-                  <span className="text-[7px] md:text-[10px] font-black text-[#3D1111]/30 uppercase tracking-[0.2em] mb-0.5 md:mb-1">Verification</span>
-                  <span className="text-[9px] md:text-sm font-bold text-[#E8C170]">MESA VERIFIED</span>
-                </div>
-              </div>
+            <div className="w-28 h-40 md:w-44 md:h-64 relative flex-shrink-0 z-10">
+              <div className="absolute inset-0 bg-gradient-to-t from-[#260B0B] via-transparent to-transparent z-10 rounded-2xl" />
+              <img 
+                src={student.image} 
+                className="w-full h-full object-cover rounded-2xl grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" 
+                alt={student.name}
+              />
             </div>
           </motion.div>
         ))}
