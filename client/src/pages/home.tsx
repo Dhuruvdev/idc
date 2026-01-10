@@ -69,72 +69,140 @@ function Navbar() {
     }
   }, [isOpen]);
 
+  const menuVariants = {
+    closed: {
+      clipPath: "circle(0% at calc(100% - 40px) 40px)",
+      transition: {
+        type: "spring",
+        stiffness: 400,
+        damping: 40,
+        delay: 0.2
+      }
+    },
+    opened: {
+      clipPath: "circle(150% at calc(100% - 40px) 40px)",
+      transition: {
+        type: "spring",
+        stiffness: 20,
+        restDelta: 2
+      }
+    }
+  };
+
+  const itemVariants = {
+    closed: { opacity: 0, x: 50, rotateX: 45 },
+    opened: (i: number) => ({
+      opacity: 1,
+      x: 0,
+      rotateX: 0,
+      transition: {
+        delay: 0.4 + (i * 0.1),
+        duration: 0.8,
+        ease: [0.215, 0.61, 0.355, 1]
+      }
+    })
+  };
+
   return (
     <nav 
-      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 px-6 py-4 ${
-        scrolled ? "bg-[#3D1111]/90 backdrop-blur-md shadow-2xl py-3" : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 px-6 py-4 ${
+        scrolled ? "bg-black/20 backdrop-blur-xl py-3" : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <div className="flex items-center gap-3 group cursor-pointer">
-          <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/20 group-hover:border-[#E8C170] transition-colors shadow-lg">
+        <div className="flex items-center gap-3 group cursor-pointer relative z-[110]">
+          <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/20 group-hover:border-[#E8C170] transition-all duration-500 shadow-lg group-hover:scale-110">
             <img src={idcLogo} alt="IDC Logo" className="w-full h-full object-cover" />
           </div>
           <div className="text-white">
-            <h1 className="font-sans text-2xl font-black tracking-tighter leading-none">IDC</h1>
-            <p className="text-[10px] block -mt-1 text-white/40 font-sans font-black tracking-[0.3em] uppercase">COACHING INSTITUTE</p>
+            <h1 className="font-sans text-2xl font-black tracking-tighter leading-none group-hover:text-[#E8C170] transition-colors">IDC</h1>
+            <p className="text-[10px] block -mt-1 text-white/40 font-sans font-black tracking-[0.3em] uppercase group-hover:text-white/60 transition-colors">COACHING INSTITUTE</p>
           </div>
         </div>
 
         <button 
           onClick={() => setIsOpen(!isOpen)}
-          className="relative w-12 h-12 flex flex-col items-center justify-center z-[110] group overflow-visible"
+          className="relative w-14 h-14 flex flex-col items-center justify-center z-[110] group rounded-full bg-white/5 hover:bg-white/10 transition-colors backdrop-blur-md"
         >
-          <div className="relative w-8 h-6 flex flex-col justify-between">
+          <div className="relative w-6 h-5 overflow-visible">
             <motion.span 
-              animate={isOpen ? { rotate: 45, y: 10, width: "100%" } : { rotate: 0, y: 0, width: "100%" }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="absolute top-0 w-full h-1 bg-white rounded-full group-hover:bg-[#E8C170]"
+              animate={isOpen ? { rotate: 45, y: 8, width: "100%", backgroundColor: "#E8C170" } : { rotate: 0, y: 0, width: "100%", backgroundColor: "#fff" }}
+              className="absolute top-0 left-0 h-0.5 rounded-full"
             />
             <motion.span 
-              animate={isOpen ? { opacity: 0, scale: 0 } : { opacity: 1, scale: 1 }}
-              transition={{ duration: 0.2 }}
-              className="absolute top-[10px] w-full h-1 bg-white rounded-full group-hover:bg-[#E8C170]"
+              animate={isOpen ? { scaleX: 0, opacity: 0 } : { scaleX: 1, opacity: 1, backgroundColor: "#fff" }}
+              className="absolute top-1/2 -translate-y-1/2 left-0 w-3/4 h-0.5 rounded-full"
             />
             <motion.span 
-              animate={isOpen ? { rotate: -45, y: 10, width: "100%" } : { rotate: 0, y: 20, width: "100%" }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="absolute top-0 w-full h-1 bg-white rounded-full group-hover:bg-[#E8C170]"
+              animate={isOpen ? { rotate: -45, y: -8, width: "100%", backgroundColor: "#E8C170" } : { rotate: 0, y: 16, width: "50%", backgroundColor: "#fff" }}
+              className="absolute top-0 left-0 h-0.5 rounded-full"
             />
           </div>
         </button>
 
         <AnimatePresence>
           {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: "-100%" }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: "-100%" }}
-              transition={{ type: "spring", damping: 30, stiffness: 200 }}
-              className="fixed inset-0 bg-[#3D1111] z-[105] flex flex-col items-center justify-center gap-8 min-h-screen"
-            >
-              {["Home", "Programs", "Faculty", "Admissions", "Contact"].map((item, i) => (
-                <motion.a
-                  key={item}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                  href={`#${item.toLowerCase()}`}
-                  onClick={() => setIsOpen(false)}
-                  className="font-display text-4xl md:text-6xl text-white hover:text-[#E8C170] transition-colors relative group"
-                >
-                  <span className="relative z-10">{item}</span>
-                  <motion.span 
-                    className="absolute bottom-0 left-0 w-0 h-2 bg-[#E8C170] group-hover:w-full transition-all duration-300 -z-10"
+            <>
+              <motion.div
+                initial="closed"
+                animate="opened"
+                exit="closed"
+                variants={menuVariants}
+                className="fixed inset-0 bg-[#1A0505] z-[105] flex flex-col items-center justify-center min-h-screen origin-top-right shadow-2xl"
+              >
+                {/* Abstract background elements for "dopamine" */}
+                <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
+                  <motion.div 
+                    animate={{ 
+                      scale: [1, 1.2, 1],
+                      rotate: [0, 180, 360],
+                      x: [0, 50, 0]
+                    }}
+                    transition={{ duration: 20, repeat: Infinity }}
+                    className="absolute -top-1/4 -left-1/4 w-[600px] h-[600px] bg-[#E8C170] rounded-full blur-[120px]"
                   />
-                </motion.a>
-              ))}
-            </motion.div>
+                  <motion.div 
+                    animate={{ 
+                      scale: [1.2, 1, 1.2],
+                      rotate: [360, 180, 0],
+                      x: [0, -50, 0]
+                    }}
+                    transition={{ duration: 25, repeat: Infinity }}
+                    className="absolute -bottom-1/4 -right-1/4 w-[600px] h-[600px] bg-[#3D1111] rounded-full blur-[120px]"
+                  />
+                </div>
+
+                <div className="flex flex-col items-center gap-6 perspective-[1000px]">
+                  {["Home", "Programs", "Faculty", "Admissions", "Contact"].map((item, i) => (
+                    <motion.a
+                      key={item}
+                      custom={i}
+                      variants={itemVariants}
+                      href={`#${item.toLowerCase()}`}
+                      onClick={() => setIsOpen(false)}
+                      className="font-display text-5xl md:text-8xl text-white hover:text-[#E8C170] transition-all duration-500 relative group flex items-center"
+                    >
+                      <span className="relative z-10 block group-hover:italic group-hover:translate-x-4 transition-transform">{item}</span>
+                      <span className="absolute -left-12 opacity-0 group-hover:opacity-100 group-hover:-left-8 transition-all text-[#E8C170] text-3xl font-serif">0{i+1}</span>
+                      <motion.span 
+                        className="absolute bottom-4 left-0 w-0 h-1 bg-[#E8C170] group-hover:w-full transition-all duration-500 -z-10 shadow-[0_0_20px_rgba(232,193,112,0.5)]"
+                      />
+                    </motion.a>
+                  ))}
+                </div>
+
+                <motion.div 
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1, duration: 0.8 }}
+                  className="mt-20 flex gap-8 text-white/40 font-sans font-black text-xs tracking-[0.5em] uppercase"
+                >
+                  <a href="#" className="hover:text-white transition-colors">Instagram</a>
+                  <a href="#" className="hover:text-white transition-colors">LinkedIn</a>
+                  <a href="#" className="hover:text-white transition-colors">Youtube</a>
+                </motion.div>
+              </motion.div>
+            </>
           )}
         </AnimatePresence>
       </div>
