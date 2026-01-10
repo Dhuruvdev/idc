@@ -1,7 +1,15 @@
 import { useState, useEffect } from "react";
-import { ArrowRight, GraduationCap, BookOpen, Briefcase, Award, Instagram, Youtube, Linkedin, Settings } from "lucide-react";
+import { ArrowRight, GraduationCap, BookOpen, Briefcase, Award, Instagram, Youtube, Linkedin, Settings, Send } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
 
@@ -243,12 +251,124 @@ function Institute() {
 }
 
 function FindUs() {
+  const { toast } = useToast();
+  const contactFormSchema = z.object({
+    name: z.string().min(2, "Name must be at least 2 characters"),
+    email: z.string().email("Invalid email address"),
+    phone: z.string().min(10, "Phone number must be at least 10 digits"),
+    subject: z.string().min(2, "Subject is required"),
+    message: z.string().min(10, "Message must be at least 10 characters"),
+  });
+
+  const form = useForm<z.infer<typeof contactFormSchema>>({
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      subject: "",
+      message: "",
+    },
+  });
+
+  const onSubmit = (data: z.infer<typeof contactFormSchema>) => {
+    const whatsappNumber = "919999999999";
+    const text = `*New Contact Request from IDC Website*\n\n*Name:* ${data.name}\n*Email:* ${data.email}\n*Phone:* ${data.phone}\n*Subject:* ${data.subject}\n*Message:* ${data.message}`;
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+    window.open(whatsappUrl, "_blank");
+    toast({
+      title: "Opening WhatsApp",
+      description: "Redirecting you to send the message securely.",
+    });
+    form.reset();
+  };
+
   return (
     <section id="find-us" className="bg-[#FDFBF7] py-24 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-            <h2 className="text-4xl md:text-6xl font-display text-[#3D1111] mb-8">Find <span className="italic text-[#E8C170]">Us</span></h2>
+            <h2 className="text-4xl md:text-6xl font-display text-[#3D1111] mb-8">Get in <span className="italic text-[#E8C170]">Touch</span></h2>
+            <div className="bg-white p-8 rounded-[2.5rem] shadow-xl border border-[#3D1111]/5 mb-12">
+              <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <FormField
+                      control={form.control}
+                      name="name"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-[#3D1111]/60 uppercase tracking-widest text-[10px] font-black">Full Name</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Your Name" className="rounded-xl border-[#3D1111]/10 focus:border-[#E8C170] focus:ring-[#E8C170]" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-[#3D1111]/60 uppercase tracking-widest text-[10px] font-black">Email Address</FormLabel>
+                          <FormControl>
+                            <Input placeholder="your@email.com" className="rounded-xl border-[#3D1111]/10 focus:border-[#E8C170] focus:ring-[#E8C170]" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <FormField
+                      control={form.control}
+                      name="phone"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-[#3D1111]/60 uppercase tracking-widest text-[10px] font-black">Phone Number</FormLabel>
+                          <FormControl>
+                            <Input placeholder="+91 XXXX XXX XXX" className="rounded-xl border-[#3D1111]/10 focus:border-[#E8C170] focus:ring-[#E8C170]" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="subject"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-[#3D1111]/60 uppercase tracking-widest text-[10px] font-black">Subject</FormLabel>
+                          <FormControl>
+                            <Input placeholder="How can we help?" className="rounded-xl border-[#3D1111]/10 focus:border-[#E8C170] focus:ring-[#E8C170]" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+                  <FormField
+                    control={form.control}
+                    name="message"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-[#3D1111]/60 uppercase tracking-widest text-[10px] font-black">Your Message</FormLabel>
+                        <FormControl>
+                          <Textarea placeholder="Tell us about your requirements..." className="min-h-[120px] rounded-2xl border-[#3D1111]/10 focus:border-[#E8C170] focus:ring-[#E8C170] resize-none" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <Button type="submit" className="w-full bg-[#3D1111] hover:bg-[#4D1a1a] text-[#E8C170] py-6 rounded-2xl font-bold flex items-center gap-3 transition-all active:scale-[0.98]">
+                    <Send className="w-4 h-4" />
+                    <span className="tracking-[0.2em] text-xs uppercase">Send via WhatsApp</span>
+                  </Button>
+                </form>
+              </Form>
+            </div>
+            
             <div className="space-y-8">
               <div className="flex gap-6 items-start">
                 <div className="w-12 h-12 rounded-2xl bg-[#3D1111] text-[#E8C170] flex items-center justify-center flex-shrink-0">
@@ -259,26 +379,28 @@ function FindUs() {
                   <p className="text-[#3D1111]/60 leading-relaxed">N-35/1, Near Kali Mandir,<br />Block N, Middle Circle, Connaught Place,<br />New Delhi, Delhi 110001</p>
                 </div>
               </div>
-              <div className="flex gap-6 items-start">
-                <div className="w-12 h-12 rounded-2xl bg-[#3D1111] text-[#E8C170] flex items-center justify-center flex-shrink-0">
-                  <BookOpen className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-[#3D1111] mb-2">Connect</h3>
-                  <p className="text-[#3D1111]/60 leading-relaxed">Phone: +91 99999 99999<br />Email: info@idcclasses.com</p>
-                </div>
-              </div>
             </div>
           </motion.div>
-          <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="h-[400px] rounded-[2.5rem] overflow-hidden shadow-2xl border border-[#3D1111]/5 grayscale hover:grayscale-0 transition-all duration-700">
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.956799052029!2d77.216656315083!3d28.63045698242036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd3639999999%3A0x2f1b111111111111!2sConnaught%20Place%2C%20New%20Delhi%2C%20Delhi!5e0!3m2!1sen!2sin!4v1625654321000!5m2!1sen!2sin" 
-              width="100%" 
-              height="100%" 
-              style={{ border: 0 }} 
-              allowFullScreen={true} 
-              loading="lazy"
-            />
+          <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="flex flex-col gap-8">
+            <div className="h-[400px] rounded-[2.5rem] overflow-hidden shadow-2xl border border-[#3D1111]/5 grayscale hover:grayscale-0 transition-all duration-700">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.956799052029!2d77.216656315083!3d28.63045698242036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd3639999999%3A0x2f1b111111111111!2sConnaught%20Place%2C%20New%20Delhi%2C%20Delhi!5e0!3m2!1sen!2sin!4v1625654321000!5m2!1sen!2sin" 
+                width="100%" 
+                height="100%" 
+                style={{ border: 0 }} 
+                allowFullScreen={true} 
+                loading="lazy"
+              />
+            </div>
+            <div className="flex gap-6 items-start bg-white p-8 rounded-[2rem] border border-[#3D1111]/5 shadow-lg">
+              <div className="w-12 h-12 rounded-2xl bg-[#3D1111] text-[#E8C170] flex items-center justify-center flex-shrink-0">
+                <BookOpen className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-[#3D1111] mb-2">Connect</h3>
+                <p className="text-[#3D1111]/60 leading-relaxed">Phone: +91 99999 99999<br />Email: info@idcclasses.com</p>
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>
