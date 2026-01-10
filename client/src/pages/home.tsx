@@ -482,41 +482,48 @@ function Teachers() {
               key={i}
               custom={i}
               variants={cardVariants}
-              className="flex flex-col bg-white/5 p-4 md:p-6 rounded-[2rem] md:rounded-[2.5rem] border border-white/10"
+              className="flex flex-col bg-[#FDFBF7] p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] shadow-xl relative"
               data-testid={`teacher-card-${i}`}
             >
-              <div className="bg-[#FDFBF7] rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden relative aspect-square flex flex-col mb-4 md:mb-8">
-                <div className="absolute inset-0 m-3 md:m-6 border-2 border-dashed border-[#3D1111]/10 rounded-full pointer-events-none" />
-                <img
-                  src={teacher.image}
-                  alt={teacher.name}
-                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
-                />
+              <div className="text-[#3D1111]/40 text-xs font-bold uppercase tracking-widest mb-6 font-sans">
+                Day {i + 1}
               </div>
 
-              <div className="text-left">
-                <h3 className="text-lg md:text-2xl font-display text-white font-bold mb-2 md:mb-3 truncate">
-                  {teacher.name}
-                </h3>
-                <div className="space-y-1">
-                  <p className="text-white/60 text-[10px] md:text-sm font-medium truncate">
-                    {teacher.subject}
-                  </p>
-                  <p className="text-white/60 text-[10px] md:text-sm truncate">
-                    {teacher.experience}
-                  </p>
-                  <p className="text-white/60 text-[10px] md:text-sm truncate">
-                    {teacher.graduation}
-                  </p>
-                  <p className="text-white/60 text-[10px] md:text-sm truncate">
-                    {teacher.details}
-                  </p>
+              <div className="flex-1 flex flex-col">
+                <div className="w-full aspect-square rounded-2xl overflow-hidden mb-6 grayscale hover:grayscale-0 transition-all duration-500">
+                  <img
+                    src={teacher.image}
+                    alt={teacher.name}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 
-                <div className="mt-6 md:mt-10 pt-4 md:pt-6 border-t border-white/10">
-                  <p className="text-white font-black text-xs md:text-xl tracking-tight flex items-center gap-2 truncate">
-                    {teacher.logo === "CRED" && <span className="w-3 h-3 md:w-5 md:h-5 bg-white/10 rounded flex items-center justify-center text-[6px] md:text-[8px]">C</span>}
-                    {teacher.logo.toUpperCase()}
+                <div className="flex-1">
+                  <p className="text-[#3D1111] text-lg font-sans font-medium leading-relaxed mb-6">
+                    "{teacher.details}"
+                  </p>
+                </div>
+
+                <div className="mt-auto pt-6 border-t border-[#3D1111]/10 flex items-center justify-between">
+                  <span className="text-[#3D1111]/30 text-[10px] font-black uppercase tracking-widest font-sans">
+                    - {teacher.name}'S PERSONAL LOG
+                  </span>
+                </div>
+              </div>
+
+              <div className="mt-8 text-left">
+                <h3 className="text-xl font-display text-[#3D1111] font-bold mb-1">
+                  {teacher.name}
+                </h3>
+                <p className="text-[#E8C170] text-xs font-bold uppercase tracking-wider mb-2">
+                  {teacher.subject}
+                </p>
+                <div className="space-y-1">
+                  <p className="text-[#3D1111]/60 text-xs">
+                    {teacher.experience}
+                  </p>
+                  <p className="text-[#3D1111]/60 text-xs">
+                    {teacher.graduation}
                   </p>
                 </div>
               </div>
