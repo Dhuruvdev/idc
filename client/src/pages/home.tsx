@@ -430,53 +430,61 @@ function Teachers() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8"
         >
           {teachers.map((teacher, i) => (
             <motion.div
               key={i}
               custom={i}
               variants={cardVariants}
-              className="flex flex-col bg-[#FDFBF7] p-4 md:p-8 rounded-[1.5rem] md:rounded-[2rem] shadow-xl relative aspect-square group"
+              className="group relative flex flex-col bg-[#FDFBF7] rounded-[2.5rem] shadow-2xl overflow-hidden aspect-square border border-[#3D1111]/5"
               data-testid={`teacher-card-${i}`}
             >
-              <div className="flex justify-between items-start mb-2 md:mb-4">
-                <div className="text-[#3D1111]/40 text-[8px] md:text-xs font-bold uppercase tracking-widest font-sans">
-                  Faculty Profile
+              {/* Header Info */}
+              <div className="p-4 md:p-6 flex justify-between items-start">
+                <div className="space-y-1">
+                  <span className="block text-[#3D1111]/30 text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em]">
+                    Faculty Profile
+                  </span>
                 </div>
-                <div className="w-6 h-6 md:w-10 md:h-10 rounded-full bg-[#3D1111]/5 flex items-center justify-center">
-                   <GraduationCap className="w-3 h-3 md:w-5 md:h-5 text-[#3D1111]/20" />
+                <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#3D1111]/5 flex items-center justify-center">
+                  <GraduationCap className="w-4 h-4 md:h-5 md:w-5 text-[#3D1111]/20" />
                 </div>
               </div>
-              
-              <div className="flex-1 flex flex-col min-h-0">
-                <div className="w-full aspect-square rounded-xl md:rounded-2xl overflow-hidden mb-3 md:mb-4 grayscale group-hover:grayscale-0 transition-all duration-500 max-h-[35%] md:max-h-[40%] shadow-inner border border-[#3D1111]/5">
+
+              {/* Image Section - Pill Shape within Square */}
+              <div className="px-4 md:px-6 mb-4">
+                <div className="relative w-full h-16 md:h-24 rounded-full overflow-hidden shadow-inner border border-[#3D1111]/5 group-hover:scale-[1.02] transition-transform duration-500">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity" />
                   <img
                     src={teacher.image}
                     alt={teacher.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-110 group-hover:scale-100"
                   />
                 </div>
-                
-                <div className="flex-1 overflow-hidden">
-                  <p className="text-[#3D1111] text-[9px] md:text-sm font-sans font-medium leading-relaxed line-clamp-2 md:line-clamp-3 italic">
-                    "{teacher.details}"
-                  </p>
-                </div>
-                
-                <div className="mt-auto pt-2 md:pt-4 border-t border-[#3D1111]/10">
-                  <h3 className="text-xs md:text-lg font-display text-[#3D1111] font-bold truncate">
+              </div>
+
+              {/* Content Section */}
+              <div className="px-4 md:px-6 flex-1 flex flex-col">
+                <div className="space-y-0.5 md:space-y-1">
+                  <h3 className="text-sm md:text-xl font-display text-[#3D1111] font-black leading-tight">
                     {teacher.name}
                   </h3>
-                  <p className="text-[#E8C170] text-[8px] md:text-xs font-bold uppercase tracking-wider truncate mb-0.5">
+                  <p className="text-[#E8C170] text-[8px] md:text-[11px] font-black uppercase tracking-wider">
                     {teacher.subject}
                   </p>
-                  <div className="flex items-center gap-1">
-                    <div className="w-1 h-1 rounded-full bg-[#3D1111]/20" />
-                    <p className="text-[#3D1111]/60 text-[7px] md:text-[10px] truncate uppercase tracking-tighter">
+                </div>
+
+                <div className="mt-auto pb-4 md:pb-6">
+                  <div className="flex items-center gap-2 text-[#3D1111]/40 mb-2 md:mb-4">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#E8C170]" />
+                    <span className="text-[7px] md:text-[10px] font-bold uppercase tracking-widest">
                       {teacher.experience} Exp
-                    </p>
+                    </span>
                   </div>
+                  
+                  {/* Subtle decorative line */}
+                  <div className="h-[1px] w-full bg-gradient-to-r from-[#3D1111]/10 via-transparent to-transparent" />
                 </div>
               </div>
             </motion.div>
