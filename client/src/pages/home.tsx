@@ -153,7 +153,7 @@ function Hero() {
         alt="IDC Students"
         className="absolute inset-0 w-full h-full object-cover"
       />
-      <div className="relative z-20 min-h-screen flex flex-col justify-end pb-32 px-6 md:px-12">
+      <div className="relative z-20 min-h-screen flex flex-col justify-end pb-40 px-6 md:px-12">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
