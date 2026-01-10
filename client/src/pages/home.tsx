@@ -426,34 +426,34 @@ function Teachers() {
           </p>
         </motion.div>
         
-        <div className="teachers-track flex gap-6 md:gap-10">
+        <div className="teachers-track flex gap-4 md:gap-10 overflow-x-auto lg:overflow-visible pb-8 no-scrollbar snap-x snap-mandatory">
           {teachers.map((teacher, i) => (
             <motion.div
               key={i}
               custom={i}
               variants={cardVariants}
-              className="flex-shrink-0 w-[320px] md:w-[450px] group relative flex flex-col bg-[#FDFBF7] rounded-[2.5rem] shadow-2xl overflow-hidden border border-[#3D1111]/5"
+              className="flex-shrink-0 w-[280px] md:w-[450px] snap-center group relative flex flex-col bg-[#FDFBF7] rounded-[2rem] md:rounded-[2.5rem] shadow-2xl overflow-hidden border border-[#3D1111]/5"
               data-testid={`teacher-card-${i}`}
             >
               {/* Top decorative element */}
-              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-[#E8C170] to-[#3D1111]/20" />
+              <div className="absolute top-0 left-0 w-full h-1.5 md:h-2 bg-gradient-to-r from-[#E8C170] to-[#3D1111]/20" />
 
               {/* Header Info */}
-              <div className="p-8 md:p-10 flex justify-between items-start">
+              <div className="p-6 md:p-10 flex justify-between items-start">
                 <div className="space-y-1">
-                  <span className="block text-[#3D1111]/30 text-[10px] md:text-xs font-black uppercase tracking-[0.2em]">
+                  <span className="block text-[#3D1111]/30 text-[8px] md:text-xs font-black uppercase tracking-[0.2em]">
                     Faculty Record
                   </span>
-                  <div className="h-0.5 w-10 bg-[#E8C170]/30 rounded-full" />
+                  <div className="h-0.5 w-8 md:w-10 bg-[#E8C170]/30 rounded-full" />
                 </div>
-                <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#3D1111]/5 flex items-center justify-center">
-                  <GraduationCap className="w-6 h-6 md:h-8 md:w-8 text-[#3D1111]/20" />
+                <div className="w-8 h-8 md:w-16 md:h-16 rounded-full bg-[#3D1111]/5 flex items-center justify-center">
+                  <GraduationCap className="w-4 h-4 md:h-8 md:w-8 text-[#3D1111]/20" />
                 </div>
               </div>
 
-              <div className="px-8 md:px-10 flex gap-8 items-center mb-8">
+              <div className="px-6 md:px-10 flex gap-4 md:gap-8 items-center mb-6 md:mb-8">
                 {/* Image Section - Refined Shape */}
-                <div className="relative w-32 h-32 md:w-40 md:h-40 flex-shrink-0 rounded-3xl overflow-hidden shadow-2xl border border-[#3D1111]/5 group-hover:scale-105 transition-transform duration-700">
+                <div className="relative w-20 h-20 md:w-40 md:h-40 flex-shrink-0 rounded-2xl md:rounded-3xl overflow-hidden shadow-xl md:shadow-2xl border border-[#3D1111]/5 group-hover:scale-105 transition-transform duration-700">
                   <div className="absolute inset-0 bg-gradient-to-t from-[#3D1111]/20 to-transparent z-10" />
                   <img
                     src={teacher.image}
@@ -464,15 +464,15 @@ function Teachers() {
 
                 {/* Identity Section */}
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-xl md:text-3xl font-display text-[#3D1111] font-black leading-tight mb-2">
+                  <h3 className="text-base md:text-3xl font-display text-[#3D1111] font-black leading-tight mb-1 md:mb-2 truncate">
                     {teacher.name}
                   </h3>
-                  <p className="text-[#E8C170] text-xs md:text-sm font-black uppercase tracking-widest mb-4">
+                  <p className="text-[#E8C170] text-[8px] md:text-sm font-black uppercase tracking-widest mb-2 md:mb-4 truncate">
                     {teacher.subject}
                   </p>
-                  <div className="inline-flex items-center gap-3 bg-[#3D1111]/5 px-4 py-2 rounded-full">
-                    <div className="w-2 h-2 rounded-full bg-[#E8C170]" />
-                    <span className="text-[10px] md:text-xs font-bold text-[#3D1111]/60 uppercase tracking-widest">
+                  <div className="inline-flex items-center gap-2 md:gap-3 bg-[#3D1111]/5 px-2 md:px-4 py-1 md:py-2 rounded-full">
+                    <div className="w-1 md:w-2 h-1 md:h-2 rounded-full bg-[#E8C170]" />
+                    <span className="text-[7px] md:text-xs font-bold text-[#3D1111]/60 uppercase tracking-widest">
                       {teacher.experience} Exp
                     </span>
                   </div>
@@ -480,23 +480,23 @@ function Teachers() {
               </div>
 
               {/* Content Section */}
-              <div className="px-8 md:px-10 flex-1 flex flex-col pb-10 md:pb-12">
-                <div className="bg-[#3D1111]/5 p-6 md:p-8 rounded-3xl relative mb-8">
-                  <div className="absolute -top-4 left-8 text-4xl text-[#E8C170] font-serif opacity-50">"</div>
-                  <p className="text-[#3D1111]/80 text-sm md:text-lg font-sans leading-relaxed line-clamp-4 italic">
+              <div className="px-6 md:px-10 flex-1 flex flex-col pb-8 md:pb-12">
+                <div className="bg-[#3D1111]/5 p-4 md:p-8 rounded-2xl md:rounded-3xl relative mb-6 md:mb-8">
+                  <div className="absolute -top-3 md:-top-4 left-6 md:left-8 text-2xl md:text-4xl text-[#E8C170] font-serif opacity-50">"</div>
+                  <p className="text-[#3D1111]/80 text-[10px] md:text-lg font-sans leading-relaxed line-clamp-3 md:line-clamp-4 italic">
                     {teacher.details}
                   </p>
                 </div>
 
-                <div className="mt-auto flex items-center justify-between pt-6 border-t border-[#3D1111]/10">
+                <div className="mt-auto flex items-center justify-between pt-4 md:pt-6 border-t border-[#3D1111]/10">
                   <div className="flex flex-col">
-                    <span className="text-[9px] md:text-[10px] font-black text-[#3D1111]/30 uppercase tracking-[0.2em] mb-1">Academic Base</span>
-                    <span className="text-xs md:text-sm font-bold text-[#3D1111]/70">{teacher.graduation}</span>
+                    <span className="text-[7px] md:text-[10px] font-black text-[#3D1111]/30 uppercase tracking-[0.2em] mb-0.5 md:mb-1">Academic Base</span>
+                    <span className="text-[9px] md:text-sm font-bold text-[#3D1111]/70 truncate max-w-[100px] md:max-w-none">{teacher.graduation}</span>
                   </div>
-                  <div className="h-10 w-[1px] bg-[#3D1111]/10" />
+                  <div className="h-8 md:h-10 w-[1px] bg-[#3D1111]/10" />
                   <div className="flex flex-col text-right">
-                    <span className="text-[9px] md:text-[10px] font-black text-[#3D1111]/30 uppercase tracking-[0.2em] mb-1">Verification</span>
-                    <span className="text-xs md:text-sm font-bold text-[#E8C170]">IDC VERIFIED</span>
+                    <span className="text-[7px] md:text-[10px] font-black text-[#3D1111]/30 uppercase tracking-[0.2em] mb-0.5 md:mb-1">Verification</span>
+                    <span className="text-[9px] md:text-sm font-bold text-[#E8C170]">IDC VERIFIED</span>
                   </div>
                 </div>
               </div>
@@ -841,9 +841,9 @@ export default function Home() {
       );
     });
 
-    // Horizontal scroll for teachers section
+    // Horizontal scroll for teachers section - only on desktop
     const teachersTrack = document.querySelector(".teachers-track");
-    if (teachersTrack) {
+    if (teachersTrack && window.innerWidth > 1024) {
       gsap.to(teachersTrack, {
         x: () => -(teachersTrack.scrollWidth - window.innerWidth + 48),
         ease: "none",
