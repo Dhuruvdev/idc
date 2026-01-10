@@ -388,20 +388,20 @@ function Testimonials() {
 
 function Footer() {
   return (
-    <footer className="bg-[#FDFBF7] py-20 px-6 border-t border-[#3D1111]/5">
+    <footer className="bg-[#3D1111] py-20 px-6 border-t border-white/5">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
         <div className="space-y-6">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full overflow-hidden border border-[#3D1111]/10">
+            <div className="w-10 h-10 rounded-full overflow-hidden border border-white/10">
               <img src={idcLogo} alt="IDC Logo" className="w-full h-full object-cover" />
             </div>
-            <h2 className="font-display font-black text-2xl text-[#3D1111]">IDC</h2>
+            <h2 className="font-display font-black text-2xl text-white">IDC</h2>
           </div>
-          <p className="text-[#3D1111]/60 text-sm leading-relaxed">Delhi's premier coaching institute dedicated to academic excellence and student success across all levels.</p>
+          <p className="text-white/60 text-sm leading-relaxed">Delhi's premier coaching institute dedicated to academic excellence and student success across all levels.</p>
         </div>
         <div>
-          <h3 className="font-bold text-[#3D1111] mb-6 uppercase tracking-widest text-xs">Programs</h3>
-          <ul className="space-y-4 text-[#3D1111]/60 text-sm">
+          <h3 className="font-bold text-white mb-6 uppercase tracking-widest text-xs">Programs</h3>
+          <ul className="space-y-4 text-white/60 text-sm">
             <li><a href="#" className="hover:text-[#E8C170] transition-colors">Foundation (6th-10th)</a></li>
             <li><a href="#" className="hover:text-[#E8C170] transition-colors">Senior Secondary (11th-12th)</a></li>
             <li><a href="#" className="hover:text-[#E8C170] transition-colors">Undergraduate (UG)</a></li>
@@ -409,29 +409,29 @@ function Footer() {
           </ul>
         </div>
         <div>
-          <h3 className="font-bold text-[#3D1111] mb-6 uppercase tracking-widest text-xs">Contact</h3>
-          <ul className="space-y-4 text-[#3D1111]/60 text-sm">
+          <h3 className="font-bold text-white mb-6 uppercase tracking-widest text-xs">Contact</h3>
+          <ul className="space-y-4 text-white/60 text-sm">
             <li>N-35/1, Near Kali Mandir, New Delhi</li>
             <li>+91 99999 99999</li>
             <li>info@idcclasses.com</li>
           </ul>
         </div>
         <div className="space-y-6">
-          <h3 className="font-bold text-[#3D1111] mb-6 uppercase tracking-widest text-xs">Follow Us</h3>
+          <h3 className="font-bold text-white mb-6 uppercase tracking-widest text-xs">Follow Us</h3>
           <div className="flex gap-4">
             {[Instagram, Youtube, Linkedin].map((Icon, i) => (
-              <a key={i} href="#" className="w-10 h-10 rounded-full border border-[#3D1111]/10 flex items-center justify-center text-[#3D1111]/40 hover:text-[#E8C170] hover:border-[#E8C170] transition-all">
+              <a key={i} href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-[#E8C170] hover:border-[#E8C170] transition-all">
                 <Icon size={18} />
               </a>
             ))}
           </div>
         </div>
       </div>
-      <div className="max-w-7xl mx-auto pt-20 mt-20 border-t border-[#3D1111]/5 flex flex-col md:flex-row justify-between items-center gap-6">
-        <p className="text-[#3D1111]/30 text-xs font-bold tracking-widest uppercase">© 2024 IDEOLOGY CLASSES. ALL RIGHTS RESERVED.</p>
-        <div className="flex gap-8 text-[#3D1111]/30 text-[10px] font-bold tracking-widest uppercase">
-          <a href="#" className="hover:text-[#3D1111] transition-colors">Privacy Policy</a>
-          <a href="#" className="hover:text-[#3D1111] transition-colors">Terms of Service</a>
+      <div className="max-w-7xl mx-auto pt-20 mt-20 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+        <p className="text-white/30 text-xs font-bold tracking-widest uppercase">© 2024 IDEOLOGY CLASSES. ALL RIGHTS RESERVED.</p>
+        <div className="flex gap-8 text-white/30 text-[10px] font-bold tracking-widest uppercase">
+          <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+          <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
         </div>
       </div>
     </footer>
