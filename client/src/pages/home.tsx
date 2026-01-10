@@ -252,6 +252,9 @@ function Supporters() {
     { name: "Kunal Shah", company: "CRED", role: "Cred Founder", details: "Advisor - Sequoia Capital\nAdvisor - AngelList\nAvid Angel Investor", image: founder1, logo: "⊙ CRED" },
     { name: "Vidit Aatrey", company: "meesho", role: "Meesho Founder", details: "IIT Delhi\nEx - InMobi", image: founder2, logo: "meesho" },
     { name: "Vijay Shekhar", company: "Paytm", role: "Paytm Founder", details: "Delhi College of Engineering\nAvid Angel Investor", image: founder3, logo: "Paytm" },
+    { name: "Mekin Maheshwari", company: "Udhyam", role: "Udhyam Founder", details: "Ex - Flipkart\nAvid Angel Investorz", image: founder1, logo: "Udhyam" },
+    { name: "Abhiraj Bhal", company: "Urban Company", role: "Urban Company Founder", details: "IIM Ahmedabad\nIIT Kanpur", image: founder2, logo: "UC Urban Company" },
+    { name: "Varun Khaitan", company: "Urban Company", role: "Urban Company Founder", details: "IIT Kanpur\nEx - BCG", image: founder3, logo: "UC Urban Company" },
   ];
 
   return (
@@ -261,62 +264,54 @@ function Supporters() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-12"
+          className="mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-display text-white mb-4">
-            Supporters and <span className="italic text-[#C5A047]">Investors</span>
+            Supporters and <span className="italic">Investors</span>
           </h2>
         </motion.div>
+        
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-16 gap-x-8"
         >
           {supporters.map((supporter, i) => (
             <motion.div
               key={i}
               custom={i}
               variants={cardVariants}
-              whileHover={{ rotate: i % 2 === 0 ? 1 : -1, y: -5 }}
-              className="bg-[#FDFBF7] p-8 rounded-sm shadow-xl relative overflow-hidden group border border-[#EAE2D5]"
-              style={{
-                boxShadow: "2px 4px 20px rgba(0,0,0,0.1), inset 0 0 40px rgba(245,240,230,0.5)"
-              }}
+              className="group flex flex-col"
               data-testid={`supporter-card-${i}`}
             >
-              {/* Paper texture/handwriting effect */}
-              <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-[#EAE2D5] to-transparent opacity-40 pointer-events-none" />
+              <div className="relative mb-6">
+                <div className="aspect-square rounded-[2rem] overflow-hidden bg-[#F5F0E6] relative z-10">
+                  {/* Decorative dashed circle */}
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4/5 h-4/5 border-2 border-dashed border-[#3D1111]/10 rounded-full" />
+                  <img
+                    src={supporter.image}
+                    alt={supporter.name}
+                    className="w-full h-full object-cover relative z-20 grayscale group-hover:grayscale-0 transition-all duration-500"
+                  />
+                </div>
+              </div>
               
-              <div className="relative z-10">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-white shadow-md">
-                    <img
-                      src={supporter.image}
-                      alt={supporter.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div>
-                    <h3 className="font-handwriting text-2xl text-[#3D1111] leading-none mb-1">
-                      {supporter.name}
-                    </h3>
-                    <p className="text-xs font-bold uppercase tracking-widest text-[#C5A047]">
-                      {supporter.company}
-                    </p>
+              <div className="space-y-2">
+                <h3 className="text-xl font-display text-white font-bold">
+                  {supporter.name}
+                </h3>
+                <div className="text-white/60 text-sm leading-relaxed">
+                  <p className="font-bold text-white/80">{supporter.role}</p>
+                  <div className="whitespace-pre-line opacity-70">
+                    {supporter.details}
                   </div>
                 </div>
-                
-                <div className="space-y-4">
-                  <p className="font-handwriting text-xl text-[#3D1111]/80 leading-relaxed">
-                    "{supporter.details.split('\n')[0]}"
-                  </p>
-                  <div className="pt-4 border-t border-[#3D1111]/5">
-                    <p className="text-[10px] text-[#3D1111]/40 font-bold uppercase tracking-tighter">
-                      STRENGTHS: {supporter.role}
-                    </p>
-                  </div>
+                <div className="pt-4 mt-4 border-t border-white/10 flex items-center justify-between">
+                  <span className="text-white font-black text-lg uppercase tracking-tighter opacity-40 group-hover:opacity-100 transition-opacity">
+                    {supporter.logo}
+                  </span>
                 </div>
               </div>
             </motion.div>
