@@ -401,72 +401,72 @@ function PartnerLogos() {
 function Teachers() {
   const teachers = [
     { 
-      name: "Kunal Shah", 
-      subject: "Cred Founder", 
-      experience: "Advisor - Sequoia Capital", 
-      graduation: "Advisor - AngelList", 
-      details: "Avid Angel Investor", 
+      name: "Prof. Kunal Shah", 
+      subject: "Economics & Strategy", 
+      experience: "15+ Years", 
+      graduation: "IIM Ahmedabad", 
+      details: "Expert in market dynamics and strategic planning for competitive advantage.", 
       image: founder1, 
-      logo: "CRED" 
+      id: "Faculty Log 01" 
     },
     { 
-      name: "Vidit Aatrey", 
-      subject: "Meesho Founder", 
-      experience: "IIT Delhi", 
-      graduation: "Ex - InMobi", 
-      details: "Serial Entrepreneur", 
+      name: "Prof. Vidit Aatrey", 
+      subject: "Maths & Analytics", 
+      experience: "12+ Years", 
+      graduation: "IIT Delhi", 
+      details: "Specializes in advanced calculus and data-driven decision modeling.", 
       image: founder2, 
-      logo: "meesho" 
+      id: "Faculty Log 02" 
     },
     { 
-      name: "Vijay Shekhar", 
-      subject: "Paytm Founder", 
-      experience: "Delhi College of Engineering", 
-      graduation: "Avid Angel Investor", 
-      details: "Veteran Educator", 
+      name: "Prof. Vijay Shekhar", 
+      subject: "Business Studies", 
+      experience: "20+ Years", 
+      graduation: "Delhi College of Engineering", 
+      details: "Veteran educator focused on entrepreneurship and business fundamentals.", 
       image: founder3, 
-      logo: "Paytm" 
+      id: "Faculty Log 03" 
     },
     { 
-      name: "Mekin Maheshwari", 
-      subject: "Udhyam Founder", 
-      experience: "Ex - Flipkart", 
-      graduation: "Avid Angel Investor", 
-      details: "Expert in HR", 
+      name: "Prof. Mekin Maheshwari", 
+      subject: "Human Resources", 
+      experience: "14+ Years", 
+      graduation: "BITS Pilani", 
+      details: "Expert in organizational behavior and talent management strategies.", 
       image: founder1, 
-      logo: "Udhyam" 
+      id: "Faculty Log 04" 
     },
     { 
-      name: "Abhiraj Bhal", 
-      subject: "Urban Company Founder", 
-      experience: "IIM Ahmedabad", 
+      name: "Prof. Abhiraj Bhal", 
+      subject: "Accounting & Finance", 
+      experience: "16+ Years", 
+      graduation: "IIM Ahmedabad", 
+      details: "Focused on financial reporting, auditing, and corporate finance.", 
+      image: founder2, 
+      id: "Faculty Log 05" 
+    },
+    { 
+      name: "Prof. Varun Khaitan", 
+      subject: "Science & Technology", 
+      experience: "11+ Years", 
       graduation: "IIT Kanpur", 
-      details: "Finance Expert", 
-      image: founder2, 
-      logo: "Urban Company" 
-    },
-    { 
-      name: "Varun Khaitan", 
-      subject: "Urban Company Founder", 
-      experience: "IIT Kanpur", 
-      graduation: "Ex - BCG", 
-      details: "Technology Expert", 
+      details: "Passionate about simplifying complex scientific concepts for students.", 
       image: founder3, 
-      logo: "Urban Company" 
+      id: "Faculty Log 06" 
     },
   ];
 
   return (
-    <section id="faculty" className="bg-[#3D1111] py-20 px-6" data-testid="teachers-section">
+    <section id="faculty" className="bg-[#0A0A0A] py-20 px-6" data-testid="teachers-section">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-16"
+          className="mb-16 text-center"
         >
           <h2 className="text-3xl md:text-5xl font-display text-white mb-4">
-            Supporters and <span className="italic text-[#E8C170]">Investors</span>
+            Our <span className="italic text-[#E8C170]">Teachers</span>
           </h2>
         </motion.div>
         
@@ -475,50 +475,43 @@ function Teachers() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-12 md:gap-x-12 md:gap-y-20"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {teachers.map((teacher, i) => (
             <motion.div
               key={i}
               custom={i}
               variants={cardVariants}
-              className="flex flex-col bg-white/5 p-4 md:p-6 rounded-[2rem] md:rounded-[2.5rem] border border-white/10"
+              className="flex flex-col h-full"
               data-testid={`teacher-card-${i}`}
             >
-              <div className="bg-[#FDFBF7] rounded-[1.5rem] md:rounded-[2.5rem] overflow-hidden relative aspect-square flex flex-col mb-4 md:mb-8">
-                <div className="absolute inset-0 m-3 md:m-6 border-2 border-dashed border-[#3D1111]/10 rounded-full pointer-events-none" />
-                <img
-                  src={teacher.image}
-                  alt={teacher.name}
-                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
-                />
-              </div>
-
-              <div className="text-left">
-                <h3 className="text-lg md:text-2xl font-display text-white font-bold mb-2 md:mb-3 truncate">
-                  {teacher.name}
-                </h3>
-                <div className="space-y-1">
-                  <p className="text-white/60 text-[10px] md:text-sm font-medium truncate">
-                    {teacher.subject}
-                  </p>
-                  <p className="text-white/60 text-[10px] md:text-sm truncate">
-                    {teacher.experience}
-                  </p>
-                  <p className="text-white/60 text-[10px] md:text-sm truncate">
-                    {teacher.graduation}
-                  </p>
-                  <p className="text-white/60 text-[10px] md:text-sm truncate">
-                    {teacher.details}
-                  </p>
+              <div className="bg-[#FDFBF7] rounded-3xl p-8 shadow-xl relative flex flex-col h-full min-h-[400px]">
+                <div className="text-[#3D1111]/40 text-sm font-medium mb-6 font-sans">
+                  {teacher.experience}
                 </div>
                 
-                <div className="mt-6 md:mt-10 pt-4 md:pt-6 border-t border-white/10">
-                  <p className="text-white font-black text-xs md:text-xl tracking-tight flex items-center gap-2 truncate">
-                    {teacher.logo === "CRED" && <span className="w-3 h-3 md:w-5 md:h-5 bg-white/10 rounded flex items-center justify-center text-[6px] md:text-[8px]">C</span>}
-                    {teacher.logo.toUpperCase()}
+                <div className="flex-1 flex flex-col">
+                  <p className="text-[#3D1111] text-xl md:text-2xl font-sans font-medium leading-relaxed italic mb-8">
+                    "{teacher.details}"
                   </p>
+                  
+                  <div className="mt-auto">
+                    <div className="pt-6 border-t border-[#3D1111]/10 flex flex-col gap-1">
+                      <span className="text-[#3D1111]/40 text-[10px] font-black uppercase tracking-widest font-sans">
+                        - {teacher.name.toUpperCase()}'S {teacher.id.toUpperCase()}
+                      </span>
+                    </div>
+                  </div>
                 </div>
+              </div>
+
+              <div className="mt-6 text-center lg:text-left px-2">
+                <h3 className="text-xl font-display text-white font-bold mb-1">
+                  {teacher.name}
+                </h3>
+                <p className="text-[#E8C170] text-sm font-bold uppercase tracking-wider">
+                  {teacher.subject}
+                </p>
               </div>
             </motion.div>
           ))}
