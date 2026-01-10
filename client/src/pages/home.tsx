@@ -59,6 +59,15 @@ function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Prevent scroll when menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [isOpen]);
+
   return (
     <nav 
       className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 px-6 py-4 ${
@@ -84,31 +93,17 @@ function Navbar() {
             <motion.span 
               animate={isOpen ? { rotate: 45, y: 10, width: "100%" } : { rotate: 0, y: 0, width: "100%" }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="absolute top-0 w-full h-1 bg-white rounded-full group-hover:bg-[#E8C170] shadow-[0_0_15px_rgba(232,193,112,0)] group-hover:shadow-[0_0_15px_rgba(232,193,112,0.5)] transition-all"
+              className="absolute top-0 w-full h-1 bg-white rounded-full group-hover:bg-[#E8C170]"
             />
             <motion.span 
-              animate={isOpen ? { opacity: 0, scale: 0, x: -20 } : { opacity: 1, scale: 1, x: 0 }}
+              animate={isOpen ? { opacity: 0, scale: 0 } : { opacity: 1, scale: 1 }}
               transition={{ duration: 0.2 }}
-              className="absolute top-[10px] w-full h-1 bg-white rounded-full group-hover:bg-[#E8C170] shadow-[0_0_15px_rgba(232,193,112,0)] group-hover:shadow-[0_0_15px_rgba(232,193,112,0.5)] transition-all"
+              className="absolute top-[10px] w-full h-1 bg-white rounded-full group-hover:bg-[#E8C170]"
             />
             <motion.span 
               animate={isOpen ? { rotate: -45, y: 10, width: "100%" } : { rotate: 0, y: 20, width: "100%" }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="absolute top-0 w-full h-1 bg-white rounded-full group-hover:bg-[#E8C170] shadow-[0_0_15px_rgba(232,193,112,0)] group-hover:shadow-[0_0_15px_rgba(232,193,112,0.5)] transition-all"
-            />
-          </div>
-          {/* Optical Illusion Rings on Hover */}
-          <div className="absolute inset-0 pointer-events-none">
-            <motion.div 
-              animate={isOpen ? { scale: 1.5, opacity: 0 } : { scale: 1, opacity: 0 }}
-              whileHover={{ scale: 1.8, opacity: 0.2 }}
-              className="absolute inset-0 border-2 border-[#E8C170] rounded-full blur-sm"
-            />
-            <motion.div 
-              animate={isOpen ? { scale: 2, opacity: 0 } : { scale: 1, opacity: 0 }}
-              whileHover={{ scale: 2.2, opacity: 0.1 }}
-              transition={{ delay: 0.1 }}
-              className="absolute inset-0 border border-white rounded-full blur-md"
+              className="absolute top-0 w-full h-1 bg-white rounded-full group-hover:bg-[#E8C170]"
             />
           </div>
         </button>
@@ -116,18 +111,12 @@ function Navbar() {
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              initial={{ opacity: 0, x: "100%" }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: "100%" }}
-              transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed inset-0 bg-[#3D1111] z-[105] flex flex-col items-center justify-center gap-8"
+              initial={{ opacity: 0, y: "-100%" }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: "-100%" }}
+              transition={{ type: "spring", damping: 30, stiffness: 200 }}
+              className="fixed inset-0 bg-[#3D1111] z-[105] flex flex-col items-center justify-center gap-8 min-h-screen"
             >
-              {/* Illusion Animation Background */}
-              <div className="absolute inset-0 opacity-10 pointer-events-none">
-                <div className="absolute inset-0 animate-[spin_60s_linear_infinite] border-[100px] border-[#E8C170]/20 rounded-full scale-150 blur-3xl" />
-                <div className="absolute inset-0 animate-[spin_40s_linear_infinite_reverse] border-[50px] border-white/10 rounded-full scale-110 blur-2xl" />
-              </div>
-
               {["Home", "Programs", "Faculty", "Admissions", "Contact"].map((item, i) => (
                 <motion.a
                   key={item}
@@ -171,13 +160,6 @@ function Hero() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="max-w-4xl"
         >
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-[#E8C170] font-bold tracking-[0.3em] mb-4 text-sm"
-          >
-            WELCOME TO IDC DELHI
-          </motion.p>
           <h1 className="text-5xl md:text-8xl font-display text-white leading-tight mb-8">
             Empowering <span className="font-bold text-[#E8C170]">Academic Excellence</span>
           </h1>
