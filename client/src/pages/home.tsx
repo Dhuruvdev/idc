@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X, ArrowRight, GraduationCap, BookOpen, Briefcase, Award, Instagram, Youtube, Linkedin, Settings, Cpu, Rocket } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -42,6 +42,92 @@ const staggerContainer = {
   }
 };
 
+import idcLogo from "@assets/319537515_877306970380833_8458113406465131312_n_1768036988839.jpg";
+
+function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <nav 
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 px-6 py-4 ${
+        scrolled ? "bg-[#3D1111]/90 backdrop-blur-md shadow-2xl py-3" : "bg-transparent"
+      }`}
+    >
+      <div className="max-w-7xl mx-auto flex items-center justify-between">
+        <div className="flex items-center gap-3 group cursor-pointer">
+          <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/20 group-hover:border-[#C5A047] transition-colors shadow-lg">
+            <img src={idcLogo} alt="IDC Logo" className="w-full h-full object-cover" />
+          </div>
+          <div className="text-white">
+            <h1 className="font-display text-2xl font-bold tracking-tighter leading-none">IDC</h1>
+            <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-[#C5A047]">Coaching Institute</p>
+          </div>
+        </div>
+
+        <button 
+          onClick={() => setIsOpen(!isOpen)}
+          className="relative w-10 h-10 flex flex-col items-center justify-center gap-1.5 z-[110] group"
+        >
+          <motion.span 
+            animate={isOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
+            className="w-8 h-1 bg-white rounded-full group-hover:bg-[#C5A047] transition-colors"
+          />
+          <motion.span 
+            animate={isOpen ? { opacity: 0, x: -20 } : { opacity: 1, x: 0 }}
+            className="w-8 h-1 bg-white rounded-full group-hover:bg-[#C5A047] transition-colors"
+          />
+          <motion.span 
+            animate={isOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
+            className="w-8 h-1 bg-white rounded-full group-hover:bg-[#C5A047] transition-colors"
+          />
+        </button>
+
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, x: "100%" }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="fixed inset-0 bg-[#3D1111] z-[105] flex flex-col items-center justify-center gap-8"
+            >
+              {/* Illusion Animation Background */}
+              <div className="absolute inset-0 opacity-10 pointer-events-none">
+                <div className="absolute inset-0 animate-[spin_60s_linear_infinite] border-[100px] border-[#C5A047]/20 rounded-full scale-150 blur-3xl" />
+                <div className="absolute inset-0 animate-[spin_40s_linear_infinite_reverse] border-[50px] border-white/10 rounded-full scale-110 blur-2xl" />
+              </div>
+
+              {["Home", "Programs", "Faculty", "Admissions", "Contact"].map((item, i) => (
+                <motion.a
+                  key={item}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                  href={`#${item.toLowerCase()}`}
+                  onClick={() => setIsOpen(false)}
+                  className="font-display text-4xl md:text-6xl text-white hover:text-[#C5A047] transition-colors relative group"
+                >
+                  <span className="relative z-10">{item}</span>
+                  <motion.span 
+                    className="absolute bottom-0 left-0 w-0 h-2 bg-[#C5A047] group-hover:w-full transition-all duration-300 -z-10"
+                  />
+                </motion.a>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </nav>
+  );
+}
+
 function Hero() {
   return (
     <section className="relative min-h-screen overflow-hidden" data-testid="hero-section">
@@ -54,7 +140,7 @@ function Hero() {
         alt="Mesa students"
         className="absolute inset-0 w-full h-full object-cover"
       />
-      <div className="absolute top-4 right-4 z-20">
+      <div className="absolute top-4 right-4 z-20 opacity-0 pointer-events-none">
         <motion.div 
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -717,6 +803,7 @@ function Footer() {
 export default function Home() {
   return (
     <div className="min-h-screen bg-[#3D1111] overflow-x-hidden selection:bg-[#C5A047] selection:text-[#3D1111]">
+      <Navbar />
       <Hero />
       <PartnerLogos />
       <Supporters />
