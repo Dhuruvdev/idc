@@ -1,6 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Menu, X, ArrowRight, GraduationCap, BookOpen, Briefcase, Award, Instagram, Youtube, Linkedin, Settings, Cpu, Rocket } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 import heroImage from "@assets/generated_images/students-casual-gathering-selfie.png";
 import founder1 from "@assets/generated_images/indian-businessman-founder-portrait.png";
@@ -73,20 +77,39 @@ function Navbar() {
 
         <button 
           onClick={() => setIsOpen(!isOpen)}
-          className="relative w-10 h-10 flex flex-col items-center justify-center gap-1.5 z-[110] group"
+          className="relative w-12 h-12 flex flex-col items-center justify-center z-[110] group overflow-visible"
         >
-          <motion.span 
-            animate={isOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
-            className="w-8 h-1 bg-white rounded-full group-hover:bg-[#E8C170] transition-colors"
-          />
-          <motion.span 
-            animate={isOpen ? { opacity: 0, x: -20 } : { opacity: 1, x: 0 }}
-            className="w-8 h-1 bg-white rounded-full group-hover:bg-[#E8C170] transition-colors"
-          />
-          <motion.span 
-            animate={isOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
-            className="w-8 h-1 bg-white rounded-full group-hover:bg-[#E8C170] transition-colors"
-          />
+          <div className="relative w-8 h-6 flex flex-col justify-between">
+            <motion.span 
+              animate={isOpen ? { rotate: 45, y: 10, width: "100%" } : { rotate: 0, y: 0, width: "100%" }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              className="absolute top-0 w-full h-1 bg-white rounded-full group-hover:bg-[#E8C170] shadow-[0_0_15px_rgba(232,193,112,0)] group-hover:shadow-[0_0_15px_rgba(232,193,112,0.5)] transition-all"
+            />
+            <motion.span 
+              animate={isOpen ? { opacity: 0, scale: 0, x: -20 } : { opacity: 1, scale: 1, x: 0 }}
+              transition={{ duration: 0.2 }}
+              className="absolute top-[10px] w-full h-1 bg-white rounded-full group-hover:bg-[#E8C170] shadow-[0_0_15px_rgba(232,193,112,0)] group-hover:shadow-[0_0_15px_rgba(232,193,112,0.5)] transition-all"
+            />
+            <motion.span 
+              animate={isOpen ? { rotate: -45, y: 10, width: "100%" } : { rotate: 0, y: 20, width: "100%" }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              className="absolute top-0 w-full h-1 bg-white rounded-full group-hover:bg-[#E8C170] shadow-[0_0_15px_rgba(232,193,112,0)] group-hover:shadow-[0_0_15px_rgba(232,193,112,0.5)] transition-all"
+            />
+          </div>
+          {/* Optical Illusion Rings on Hover */}
+          <div className="absolute inset-0 pointer-events-none">
+            <motion.div 
+              animate={isOpen ? { scale: 1.5, opacity: 0 } : { scale: 1, opacity: 0 }}
+              whileHover={{ scale: 1.8, opacity: 0.2 }}
+              className="absolute inset-0 border-2 border-[#E8C170] rounded-full blur-sm"
+            />
+            <motion.div 
+              animate={isOpen ? { scale: 2, opacity: 0 } : { scale: 1, opacity: 0 }}
+              whileHover={{ scale: 2.2, opacity: 0.1 }}
+              transition={{ delay: 0.1 }}
+              className="absolute inset-0 border border-white rounded-full blur-md"
+            />
+          </div>
         </button>
 
         <AnimatePresence>
