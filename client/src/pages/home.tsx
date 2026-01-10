@@ -107,64 +107,53 @@ function PartnerLogos() {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
-      className="bg-[#F5F0E6] py-6 px-4" 
+      className="bg-[#F5F0E6] py-12 px-6" 
       data-testid="partner-logos"
     >
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <p className="text-xs text-[#3D1111]/60 mb-2 font-medium">Built by alumni from:</p>
-            <div className="flex items-center gap-3">
+            <p className="text-sm text-[#3D1111]/50 mb-6 font-bold uppercase tracking-[0.2em]">Built by alumni from:</p>
+            <div className="flex items-center gap-6">
               <motion.div 
-                whileHover={{ scale: 1.03, y: -2 }}
-                className="flex items-center gap-2 bg-white rounded-lg px-4 py-2.5 shadow-md border border-gray-100/50"
+                whileHover={{ y: -2 }}
+                className="bg-white px-6 py-4 rounded-xl shadow-lg border border-[#EAE2D5] flex items-center gap-3"
               >
-                <div className="w-8 h-8 bg-[#A41034] rounded flex items-center justify-center">
-                  <span className="text-white text-sm font-bold">H</span>
-                </div>
-                <div className="text-[11px] leading-tight">
-                  <span className="font-bold text-[#A41034]">Harvard</span>
-                  <span className="block text-[#A41034]/80">Business</span>
-                  <span className="block text-[#A41034]/80">School</span>
+                <div className="w-10 h-10 bg-[#A41034] rounded flex items-center justify-center font-bold text-white">H</div>
+                <div className="text-[10px] leading-tight font-bold uppercase tracking-wider text-[#A41034]">
+                  Harvard<br/>Business School
                 </div>
               </motion.div>
               <motion.div 
-                whileHover={{ scale: 1.03, y: -2 }}
-                className="flex items-center gap-2 bg-white rounded-lg px-4 py-2.5 shadow-md border border-gray-100/50"
+                whileHover={{ y: -2 }}
+                className="bg-white px-6 py-4 rounded-xl shadow-lg border border-[#EAE2D5] flex items-center gap-3"
               >
-                <span className="text-sm leading-tight">
-                  <span className="font-normal text-gray-500">Northwestern</span>
-                  <span className="block font-bold text-[#4E2A84]">Kellogg</span>
-                </span>
+                <div className="text-[10px] leading-tight font-bold uppercase tracking-wider text-[#4E2A84]">
+                  Northwestern<br/>Kellogg
+                </div>
               </motion.div>
             </div>
           </motion.div>
+          
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <p className="text-xs text-[#3D1111]/60 mb-2 font-medium">Supported by Founders from:</p>
-            <motion.div 
-              whileHover={{ scale: 1.01 }}
-              className="flex flex-wrap items-center gap-3 bg-white rounded-lg px-4 py-3 shadow-md border border-gray-100/50"
-            >
-              <span className="text-sm font-bold"><span className="text-[#00BAF2]">Pay</span><span className="text-[#00265C]">tm</span></span>
-              <span className="text-gray-300">|</span>
-              <span className="text-sm font-bold text-gray-700">⊙ CRED</span>
-              <span className="text-gray-300">|</span>
-              <span className="text-sm font-semibold text-gray-600">UC <span className="text-gray-500">Urban Company</span></span>
-              <span className="text-gray-300">|</span>
-              <span className="text-sm font-bold text-[#570F54]">meesho</span>
-              <span className="text-gray-300">|</span>
-              <span className="text-sm font-bold text-orange-500">🧡 SWIGGY</span>
-            </motion.div>
+            <p className="text-sm text-[#3D1111]/50 mb-6 font-bold uppercase tracking-[0.2em]">Supported by Founders from:</p>
+            <div className="bg-white px-8 py-6 rounded-xl shadow-lg border border-[#EAE2D5] flex flex-wrap items-center gap-8 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all">
+              <span className="text-lg font-black text-[#00BAF2]">Paytm</span>
+              <span className="text-lg font-black text-black">CRED</span>
+              <span className="text-lg font-black text-gray-800">UC</span>
+              <span className="text-lg font-black text-[#570F54]">meesho</span>
+              <span className="text-lg font-black text-orange-500">SWIGGY</span>
+            </div>
           </motion.div>
         </div>
       </div>
@@ -177,72 +166,71 @@ function Supporters() {
     { name: "Kunal Shah", company: "CRED", role: "Cred Founder", details: "Advisor - Sequoia Capital\nAdvisor - AngelList\nAvid Angel Investor", image: founder1, logo: "⊙ CRED" },
     { name: "Vidit Aatrey", company: "meesho", role: "Meesho Founder", details: "IIT Delhi\nEx - InMobi", image: founder2, logo: "meesho" },
     { name: "Vijay Shekhar", company: "Paytm", role: "Paytm Founder", details: "Delhi College of Engineering\nAvid Angel Investor", image: founder3, logo: "Paytm" },
-    { name: "Mekin Maheshwari", company: "Udhyam", role: "Udhyam Founder", details: "Ex - Flipkart\nAvid Angel Investorz", image: founder1, logo: "Udhyam" },
-    { name: "Abhiraj Bhal", company: "Urban Company", role: "Urban Company Founder", details: "IIM Ahmedabad\nIIT Kanpur", image: founder2, logo: "UC Urban Company" },
-    { name: "Varun Khaitan", company: "Urban Company", role: "Urban Company Founder", details: "IIT Kanpur\nEx - BCG", image: founder3, logo: "UC Urban Company" },
   ];
 
   return (
-    <section className="bg-[#3D1111] py-12 px-4" data-testid="supporters-section">
+    <section className="bg-[#3D1111] py-20 px-6" data-testid="supporters-section">
       <div className="max-w-7xl mx-auto">
-        <motion.h2
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-2xl font-display text-white mb-8"
+          className="mb-12"
         >
-          Supporters and <span className="underline decoration-[#C5A047] underline-offset-4 decoration-2">Investors</span>
-        </motion.h2>
+          <h2 className="text-3xl md:text-4xl font-display text-white mb-4">
+            Supporters and <span className="italic text-[#C5A047]">Investors</span>
+          </h2>
+        </motion.div>
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-4"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
         >
           {supporters.map((supporter, i) => (
             <motion.div
               key={i}
               custom={i}
               variants={cardVariants}
-              whileHover="hover"
-              className="bg-[#F5F0E6] rounded-2xl overflow-hidden shadow-lg cursor-pointer"
+              whileHover={{ rotate: i % 2 === 0 ? 1 : -1, y: -5 }}
+              className="bg-[#FDFBF7] p-8 rounded-sm shadow-xl relative overflow-hidden group border border-[#EAE2D5]"
+              style={{
+                boxShadow: "2px 4px 20px rgba(0,0,0,0.1), inset 0 0 40px rgba(245,240,230,0.5)"
+              }}
               data-testid={`supporter-card-${i}`}
             >
-              <div className="p-5 flex gap-4">
-                <div className="flex-shrink-0 relative">
-                  <div className="w-[88px] h-[88px] rounded-full p-[3px] relative">
-                    <svg className="absolute inset-0 w-full h-full" viewBox="0 0 88 88">
-                      <circle
-                        cx="44"
-                        cy="44"
-                        r="42"
-                        fill="none"
-                        stroke="#C5A047"
-                        strokeWidth="2"
-                        strokeDasharray="6 4"
-                        className="animate-[spin_20s_linear_infinite]"
-                      />
-                    </svg>
+              {/* Paper texture/handwriting effect */}
+              <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-[#EAE2D5] to-transparent opacity-40 pointer-events-none" />
+              
+              <div className="relative z-10">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-white shadow-md">
                     <img
                       src={supporter.image}
                       alt={supporter.name}
-                      className="w-full h-full rounded-full object-cover border-2 border-white shadow-md"
+                      className="w-full h-full object-cover"
                     />
                   </div>
+                  <div>
+                    <h3 className="font-handwriting text-2xl text-[#3D1111] leading-none mb-1">
+                      {supporter.name}
+                    </h3>
+                    <p className="text-xs font-bold uppercase tracking-widest text-[#C5A047]">
+                      {supporter.company}
+                    </p>
+                  </div>
                 </div>
-                <div className="flex-1 min-w-0 pt-1">
-                  <h3 className="font-display text-[#3D1111] text-lg leading-tight">
-                    <span className="font-bold">{supporter.name.split(" ")[0]}</span>{" "}
-                    <span className="font-normal opacity-80">{supporter.name.split(" ").slice(1).join(" ")}</span>
-                  </h3>
-                  <p className="text-sm text-[#3D1111]/60 mt-1">{supporter.role}</p>
-                  <p className="text-xs text-[#3D1111]/50 mt-2 whitespace-pre-line leading-relaxed">{supporter.details}</p>
-                </div>
-              </div>
-              <div className="px-5 pb-4">
-                <div className="pt-3 border-t border-[#3D1111]/10">
-                  <span className="text-sm font-bold text-[#3D1111]/70">{supporter.logo}</span>
+                
+                <div className="space-y-4">
+                  <p className="font-handwriting text-xl text-[#3D1111]/80 leading-relaxed">
+                    "{supporter.details.split('\n')[0]}"
+                  </p>
+                  <div className="pt-4 border-t border-[#3D1111]/5">
+                    <p className="text-[10px] text-[#3D1111]/40 font-bold uppercase tracking-tighter">
+                      STRENGTHS: {supporter.role}
+                    </p>
+                  </div>
                 </div>
               </div>
             </motion.div>
