@@ -792,72 +792,94 @@ function Scholarships() {
 
 function Testimonials() {
   const testimonials = [
-    { name: "Rahul Sharma", text: "IDC helped me secure 95% in my boards. The teachers are incredible!", role: "Class XII Student", grade: "XII", image: studentBoy, school: "Woodstock School", location: "Delhi" },
-    { name: "Priya Gupta", text: "The personalized attention at IDC made a difference in my performance.", role: "Class X Student", grade: "X", image: studentGirl, school: "Delhi Public School", location: "Raipur" },
-    { name: "Amit Kumar", text: "Best coaching in Delhi for conceptual clarity and consistent results.", role: "Class XII Student", grade: "XII", image: studentsGroup, school: "Fountainhead School", location: "Surat" },
-    { name: "Sneha Reddy", text: "The mentors here are extremely supportive and the environment is very motivating.", role: "Class X Student", grade: "X", image: professorImage, school: "Bodhi International", location: "Jodhpur" },
-    { name: "Vikram Singh", text: "I found the practical approach to science subjects very helpful for my prep.", role: "Class XII Student", grade: "XII", image: professorImage, school: "Emerald International", location: "Bengaluru" },
+    {
+      name: "Dyumna Madan",
+      school: "Woodstock School",
+      location: "Mussoorie",
+      image: studentGirl,
+    },
+    {
+      name: "Yagya Amit Bisani",
+      school: "Fountainhead School",
+      location: "Surat",
+      image: studentBoy,
+    },
+    {
+      name: "A R Aayush Jishnu",
+      school: "Emerald International School",
+      location: "Bengaluru",
+      image: studentGirl,
+    },
+    {
+      name: "Rahul Setia",
+      school: "GD Goenka Public School",
+      location: "Delhi",
+      image: studentBoy,
+    }
   ];
 
   return (
-    <section id="testimonials" className="bg-[#3D1111] py-32 px-6 overflow-hidden relative">
+    <section id="testimonials" className="bg-[#3D1111] py-24 px-6 overflow-hidden relative">
       <div className="absolute top-0 right-0 w-full h-full pointer-events-none opacity-5">
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#E8C170] rounded-full blur-[150px]" />
       </div>
 
-      <div className="max-w-7xl mx-auto mb-20 relative z-10">
+      <div className="max-w-7xl mx-auto mb-16 relative z-10">
         <motion.h2 
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="text-white text-4xl md:text-6xl font-display mb-4"
+          className="text-white text-4xl md:text-7xl font-display mb-6"
         >
-          Meet the <span className="font-black italic text-[#E8C170]">IDC Batch</span>
+          Meet the <span className="font-black italic text-[#E8C170]">Founding Cohort</span>
         </motion.h2>
         <motion.p 
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="text-white/60 text-lg max-w-2xl"
+          className="text-white/60 text-lg max-w-2xl leading-relaxed"
         >
-          A peek into the students who have redefined excellence at Ideology Classes.
+          A peek into the 100 builders, creators, and innovators who make up Mesa's Founder's Batch
         </motion.p>
       </div>
 
-      <div className="testimonials-track flex gap-6 md:gap-8 overflow-x-auto lg:overflow-visible pb-12 no-scrollbar snap-x snap-mandatory">
-        {[...testimonials, ...testimonials].map((t, i) => (
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 relative z-10">
+        {testimonials.map((student, i) => (
           <motion.div
             key={i}
-            className="flex-shrink-0 w-[300px] md:w-[500px] snap-center group relative bg-white/5 backdrop-blur-md rounded-[2.5rem] p-8 md:p-10 border border-white/10 flex items-center justify-between overflow-hidden"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.1 }}
+            className="bg-[#1A0505] rounded-[3rem] p-8 md:p-10 flex flex-col md:flex-row items-center gap-8 border border-white/5 relative overflow-hidden group hover:border-[#E8C170]/20 transition-all duration-500"
           >
-            <div className="absolute -right-20 -bottom-20 w-64 h-64 bg-[#E8C170]/10 rounded-full blur-3xl group-hover:bg-[#E8C170]/20 transition-colors" />
-
-            <div className="flex-1 pr-4 relative z-10">
-              <h3 className="text-xl md:text-3xl font-display text-white font-bold mb-4 leading-tight">
-                {t.name}
-              </h3>
-              <div className="w-12 h-[1px] bg-white/20 mb-6" />
-              <div className="space-y-1">
-                <p className="text-[#E8C170] font-serif italic text-base md:text-lg">
-                  {t.school}
-                </p>
-                <p className="text-white/40 text-[10px] md:text-xs uppercase tracking-widest font-black">
-                  {t.location}
-                </p>
+            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
+            
+            <div className="flex-1 space-y-6 relative z-10">
+              <div>
+                <h3 className="text-3xl md:text-5xl font-display text-white font-black mb-4 leading-tight">
+                  {student.name}
+                </h3>
+                <div className="h-1 w-12 bg-[#E8C170]/30 rounded-full" />
               </div>
-              <div className="mt-8">
-                <span className="bg-white/5 text-white/60 px-3 py-1.5 rounded-full text-[9px] font-black tracking-widest uppercase">
-                  Grade {t.grade}
-                </span>
+
+              <div className="space-y-2">
+                <p className="text-[#E8C170] font-serif italic text-2xl">
+                  {student.school}
+                </p>
+                <p className="text-white/30 text-xs font-black uppercase tracking-[0.3em]">
+                  {student.location}
+                </p>
               </div>
             </div>
 
-            <div className="w-28 h-40 md:w-44 md:h-64 relative flex-shrink-0">
-              <div className="absolute inset-0 bg-gradient-to-t from-[#3D1111]/40 to-transparent z-10 rounded-2xl" />
-              <img 
-                src={t.image} 
-                className="w-full h-full object-cover rounded-2xl grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" 
+            <div className="relative w-48 h-48 md:w-64 md:h-64 flex-shrink-0 z-10">
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1A0505] via-transparent to-transparent z-10 rounded-3xl" />
+              <img
+                src={student.image}
+                alt={student.name}
+                className="w-full h-full object-cover rounded-3xl grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000"
               />
             </div>
           </motion.div>
