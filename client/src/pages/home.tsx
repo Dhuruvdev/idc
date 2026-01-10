@@ -262,7 +262,7 @@ function Courses() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="flex flex-wrap justify-center gap-8">
           {courses.map((course, i) => (
             <motion.div
               key={i}
@@ -271,7 +271,7 @@ function Courses() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
               whileHover={{ y: -8 }}
-              className="bg-white p-8 rounded-3xl shadow-xl border border-[#3D1111]/5 group transition-all"
+              className="bg-white p-8 rounded-3xl shadow-xl border border-[#3D1111]/5 group transition-all w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-1.5rem)] max-w-sm"
             >
               <div className="w-14 h-14 rounded-2xl bg-[#3D1111] text-[#E8C170] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 {course.icon}
@@ -281,7 +281,7 @@ function Courses() {
               <p className="text-[#3D1111]/70 mb-6 leading-relaxed">
                 {course.description}
               </p>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 mt-auto">
                 {course.tags.map(tag => (
                   <span key={tag} className="text-[10px] font-bold uppercase tracking-widest bg-[#F5F0E6] text-[#3D1111]/60 px-3 py-1 rounded-full">
                     {tag}
