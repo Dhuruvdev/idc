@@ -153,7 +153,7 @@ function Hero() {
         alt="IDC Students"
         className="absolute inset-0 w-full h-full object-cover"
       />
-      <div className="relative z-20 min-h-screen flex flex-col justify-center pb-24 px-6 md:px-12">
+      <div className="relative z-20 min-h-screen flex flex-col justify-end pb-32 px-6 md:px-12">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
@@ -179,6 +179,18 @@ function Hero() {
           >
             <span className="text-sm tracking-[0.2em]">EXPLORE COURSES</span>
             <ArrowRight size={20} />
+          </motion.a>
+          <motion.a
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            href="#faculty"
+            className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-10 py-5 rounded-full flex items-center gap-4 font-bold hover:bg-white/20 transition-all shadow-2xl"
+          >
+            <span className="text-sm tracking-[0.2em]">OUR FACULTY</span>
+            <GraduationCap size={20} />
           </motion.a>
         </div>
       </div>
