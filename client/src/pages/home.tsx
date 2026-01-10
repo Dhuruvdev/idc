@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { ArrowRight, GraduationCap, BookOpen, Briefcase, Award, Instagram, Youtube, Linkedin, Settings, Send } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
@@ -252,13 +252,14 @@ function Institute() {
 
 function FindUs() {
   const { toast } = useToast();
-  const contactFormSchema = z.object({
+  
+  const contactFormSchema = useMemo(() => z.object({
     name: z.string().min(2, "Name must be at least 2 characters"),
     email: z.string().email("Invalid email address"),
     phone: z.string().min(10, "Phone number must be at least 10 digits"),
     subject: z.string().min(2, "Subject is required"),
     message: z.string().min(10, "Message must be at least 10 characters"),
-  });
+  }), []);
 
   const form = useForm<z.infer<typeof contactFormSchema>>({
     resolver: zodResolver(contactFormSchema),
