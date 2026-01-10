@@ -792,35 +792,64 @@ function Scholarships() {
 
 function Testimonials() {
   const testimonials = [
-    { name: "Rahul Sharma", text: "IDC helped me secure 95% in my boards. The teachers are incredible!", role: "Class 12th Student" },
-    { name: "Priya Gupta", text: "The personalized attention at IDC made a huge difference in my performance.", role: "B.Com Student" },
-    { name: "Amit Kumar", text: "Best coaching in Delhi for conceptual clarity and consistent results.", role: "Class 10th Student" }
+    { name: "Rahul Sharma", text: "IDC helped me secure 95% in my boards. The teachers are incredible!", role: "Class XII Student", grade: "XII", image: studentBoy },
+    { name: "Priya Gupta", text: "The personalized attention at IDC made a huge difference in my performance.", role: "Class X Student", grade: "X", image: studentGirl },
+    { name: "Amit Kumar", text: "Best coaching in Delhi for conceptual clarity and consistent results.", role: "Class XII Student", grade: "XII", image: studentsGroup },
+    { name: "Sneha Reddy", text: "The mentors here are extremely supportive and the environment is very motivating.", role: "Class X Student", grade: "X", image: professorImage },
+    { name: "Vikram Singh", text: "I found the practical approach to science subjects very helpful for my prep.", role: "Class XII Student", grade: "XII", image: professorImage },
   ];
 
   return (
-    <section id="testimonials" className="bg-[#F5F0E6] py-20 px-6">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl md:text-5xl font-display text-[#3D1111] mb-12 text-center">
-          What Our <span className="italic">Students Say</span>
+    <section id="testimonials" className="bg-[#F5F0E6] py-32 px-6 overflow-hidden">
+      <div className="max-w-7xl mx-auto mb-20 text-center">
+        <motion.p 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          className="text-[#E8C170] text-xs md:text-sm mb-4 uppercase tracking-[0.4em] font-black"
+        >
+          Voices of Success
+        </motion.p>
+        <h2 className="text-4xl md:text-7xl font-display text-[#3D1111] mb-6 leading-tight">
+          What Our <span className="italic font-black">Students Say</span>
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((t, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="bg-white p-8 rounded-2xl shadow-lg border border-[#3D1111]/5"
-            >
-              <p className="text-[#3D1111]/70 italic mb-6">"{t.text}"</p>
-              <div className="border-t border-[#3D1111]/10 pt-4">
-                <p className="font-bold text-[#3D1111]">{t.name}</p>
-                <p className="text-xs text-[#E8C170] font-bold uppercase tracking-widest">{t.role}</p>
+      </div>
+
+      <div className="testimonials-track flex gap-6 md:gap-10 overflow-x-auto lg:overflow-visible pb-12 no-scrollbar snap-x snap-mandatory">
+        {[...testimonials, ...testimonials].map((t, i) => (
+          <motion.div
+            key={i}
+            className="flex-shrink-0 w-[300px] md:w-[450px] snap-center group relative bg-white rounded-[2.5rem] shadow-2xl overflow-hidden border border-[#3D1111]/5 flex flex-col"
+          >
+            {/* Student Image Section */}
+            <div className="h-48 md:h-64 relative overflow-hidden">
+              <img 
+                src={t.image} 
+                alt={t.name} 
+                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-white to-transparent opacity-60" />
+              <div className="absolute top-6 right-6 bg-[#3D1111] text-[#E8C170] px-4 py-2 rounded-full font-black text-[10px] tracking-widest">
+                {t.grade}
               </div>
-            </motion.div>
-          ))}
-        </div>
+            </div>
+
+            {/* Content Section */}
+            <div className="p-8 md:p-10 pt-0 -mt-8 relative z-10 flex-1 flex flex-col">
+              <div className="bg-[#3D1111]/5 p-6 md:p-8 rounded-[2rem] mb-6 flex-1 italic text-[#3D1111]/80 text-sm md:text-lg leading-relaxed">
+                "{t.text}"
+              </div>
+              <div className="flex items-center gap-4 border-t border-[#3D1111]/10 pt-6">
+                <div className="w-12 h-12 rounded-full overflow-hidden bg-[#3D1111]/10 flex-shrink-0">
+                  <img src={t.image} className="w-full h-full object-cover" />
+                </div>
+                <div>
+                  <p className="font-black text-[#3D1111] text-base">{t.name}</p>
+                  <p className="text-[10px] text-[#E8C170] font-black uppercase tracking-widest">{t.role}</p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        ))}
       </div>
     </section>
   );
@@ -979,21 +1008,27 @@ export default function Home() {
       });
     }
 
-    // Horizontal scroll for initiatives section - only on desktop
-    const projectsTrack = document.querySelector(".projects-track");
-    if (projectsTrack && window.innerWidth > 1024) {
-      gsap.to(projectsTrack, {
-        x: () => -(projectsTrack.scrollWidth - window.innerWidth + 48),
+    // Horizontal scroll for testimonials
+    const testimonialsTrack = document.querySelector(".testimonials-track");
+    if (testimonialsTrack) {
+      const scrollWidth = testimonialsTrack.scrollWidth;
+      const duration = 20; // Faster auto-scroll
+
+      const scrollTween = gsap.to(testimonialsTrack, {
+        x: -scrollWidth / 2,
+        duration: duration,
         ease: "none",
-        scrollTrigger: {
-          trigger: "#institute",
-          start: "top top",
-          end: () => `+=${projectsTrack.scrollWidth}`,
-          scrub: 1,
-          pin: true,
-          anticipatePin: 1,
-        }
+        repeat: -1,
       });
+
+      // Pause on interaction
+      const pauseScroll = () => scrollTween.pause();
+      const playScroll = () => scrollTween.play();
+
+      testimonialsTrack.addEventListener("mouseenter", pauseScroll);
+      testimonialsTrack.addEventListener("mouseleave", playScroll);
+      testimonialsTrack.addEventListener("touchstart", pauseScroll);
+      testimonialsTrack.addEventListener("touchend", playScroll);
     }
 
     return () => {
