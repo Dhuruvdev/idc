@@ -67,7 +67,7 @@ function Navbar() {
           </div>
           <div className="text-white">
             <h1 className="font-sans text-2xl font-black tracking-tighter leading-none">IDC</h1>
-            <p className="text-[10px] font-sans uppercase tracking-[0.3em] font-black text-[#C5A047]">Coaching Institute</p>
+            <p className="text-[10px] block -mt-1 text-white/40 font-sans font-black tracking-[0.3em] uppercase">COACHING INSTITUTE</p>
           </div>
         </div>
 
