@@ -241,68 +241,86 @@ function Supporters() {
   );
 }
 
+function CTAButton() {
+  return (
+    <div className="flex justify-center mt-12 mb-8">
+      <motion.a
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        href="#apply"
+        className="bg-[#C5A047] text-[#3D1111] px-10 py-4 rounded-full font-bold text-sm tracking-[0.2em] shadow-xl hover:bg-[#D4B15B] transition-colors"
+      >
+        APPLY NOW
+      </motion.a>
+    </div>
+  );
+}
+
 function InOfficeProjects() {
   const projects = [
     {
       company: "epigamia",
       description: "As competition heated up in the high-protein yogurt space, Epigamia needed to decide whether to double down or pivot its strategy. Mesa students led market research, 100+ consumer interviews, and taste tests to uncover insights, then built a 24-month roadmap across brand, product, and growth.",
       image: teamPhoto,
-      color: "from-[#D4A84B] to-[#B8933F]"
+      color: "from-[#FDFBF7] to-[#F5F0E6]"
     },
     {
       company: "Blue Tokai",
       description: "Blue Tokai wanted to expand their footprint smartly by selecting new café locations backed by data. Mesa students built a site selection model using blended demographics, foot traffic, competition, and customer decision-making insights.",
       image: teamPhoto,
-      color: "from-[#2C5F8A] to-[#1E4A6F]"
+      color: "from-[#FDFBF7] to-[#F5F0E6]"
     }
   ];
 
   return (
-    <section className="bg-[#EDE5D8] py-12 px-4" data-testid="projects-section">
+    <section className="bg-[#EDE5D8] py-20 px-6" data-testid="projects-section">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          className="text-center mb-16"
         >
-          <h2 className="text-2xl font-display text-[#3D1111] mb-3">
-            In Office <span className="font-bold">Projects</span>
+          <h2 className="text-3xl md:text-5xl font-display text-[#3D1111] mb-6">
+            In Office <span className="italic">Projects</span>
           </h2>
-          <p className="text-[#3D1111]/60 text-sm mb-6 max-w-md leading-relaxed">
+          <p className="text-[#3D1111]/60 text-lg max-w-2xl mx-auto leading-relaxed">
             Students work on projects that move real business metrics, work in teams, and are a part of important meetings with the leadership team.
           </p>
         </motion.div>
-        <div className="flex gap-4 overflow-x-auto pb-4 -mx-4 px-4 snap-x scrollbar-hide">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {projects.map((project, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.15, duration: 0.5 }}
-              whileHover={{ scale: 1.02, y: -4 }}
-              className="min-w-[300px] md:min-w-[340px] rounded-2xl overflow-hidden snap-start flex-shrink-0 shadow-xl cursor-pointer"
+              transition={{ delay: i * 0.15, duration: 0.6 }}
+              whileHover={{ y: -10 }}
+              className="rounded-sm overflow-hidden shadow-2xl cursor-pointer bg-white group"
               data-testid={`project-card-${i}`}
             >
-              <div className="h-48 relative overflow-hidden">
+              <div className="h-64 relative overflow-hidden">
                 <motion.img
                   whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.4 }}
+                  transition={{ duration: 0.8 }}
                   src={project.image}
                   alt={project.company}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                <div className="absolute inset-0 bg-[#3D1111]/20 group-hover:bg-transparent transition-colors" />
               </div>
-              <div className={`p-5 bg-gradient-to-br ${project.color}`}>
-                <h3 className="font-display text-xl text-white font-medium mb-3 drop-shadow">{project.company}</h3>
-                <p className="text-sm text-white/90 leading-relaxed">{project.description}</p>
+              <div className="p-10 border-t-8 border-[#C5A047]">
+                <h3 className="font-display text-3xl text-[#3D1111] mb-6 uppercase tracking-tight">{project.company}</h3>
+                <p className="font-handwriting text-2xl text-[#3D1111]/80 leading-relaxed italic">
+                  {project.description}
+                </p>
               </div>
             </motion.div>
           ))}
         </div>
+        <CTAButton />
       </div>
-      <CTAButton />
     </section>
   );
 }
@@ -552,8 +570,8 @@ function FoundingCohort() {
 
 function Scholarships() {
   const tuitionFees = [
-    { year: "Year 1", amount: "₹ 12,00,000" },
-    { year: "Year 2", amount: "₹ 12,00,000" },
+    { year: "Year 1", amount: "₹ 16,00,000" },
+    { year: "Year 2", amount: "₹ 16,00,000" },
     { year: "Year 3", amount: "₹ 12,00,000" },
     { year: "Year 4", amount: "₹ 4,00,000" },
   ];
@@ -563,108 +581,75 @@ function Scholarships() {
       name: "Bob the Builder", 
       subtitle: "Scholarship", 
       description: "for builders who have built businesses or products in the past & want to continue doing so", 
-      gradient: "from-[#7CB342] to-[#558B2F]",
+      gradient: "from-[#FDFBF7] to-[#F5F0E6]",
       icon: Rocket
     },
     { 
       name: "Merit-Based", 
       subtitle: "Scholarship", 
       description: "for applicants with exceptional academic performance and extracurricular hustle", 
-      gradient: "from-[#C5A047] to-[#A68A3A]",
+      gradient: "from-[#FDFBF7] to-[#F5F0E6]",
       icon: Award
     },
   ];
 
   return (
-    <section className="bg-[#3D1111] py-12 px-4" data-testid="scholarships-section">
+    <section className="bg-[#3D1111] py-20 px-6" data-testid="scholarships-section">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-6"
+          className="mb-16"
         >
-          <div className="space-y-2">
-            {tuitionFees.map((fee, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                className="flex justify-between items-center py-3 border-b border-white/10"
-              >
-                <span className="text-white/50 text-sm">{fee.year}</span>
-                <span className="text-white text-sm font-medium">{fee.amount}</span>
-              </motion.div>
-            ))}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.98 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="flex justify-between items-center py-3 bg-white/5 rounded-lg px-3 -mx-3"
-            >
-              <span className="text-white font-bold text-sm">Total</span>
-              <span className="text-white font-bold text-sm">₹ 48,00,000</span>
-            </motion.div>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="bg-gradient-to-r from-[#C5A047]/20 to-[#C5A047]/10 border border-[#C5A047]/30 rounded-2xl p-5 mb-8"
-        >
-          <p className="text-white text-sm leading-relaxed">
-            We provide scholarships of up to <span className="font-bold text-[#C5A047]">75%</span> on tuition fee for high-performing candidates
-          </p>
-          <p className="text-white/40 text-xs mt-2">
-            Fee is exclusive of accommodation charges of ₹3,50,000 per year and global immersion fee
-          </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-2xl font-display text-white mb-3">
-            Scholarships <span className="font-bold">Available</span>
+          <h2 className="text-3xl md:text-5xl font-display text-white mb-8">
+            Fees and <span className="italic text-[#C5A047]">Scholarships</span>
           </h2>
-          <p className="text-white/50 text-sm mb-6 leading-relaxed">
-            The Mesa cohort comprises exceptional & diverse candidates. We are committed to eliminating all financial barriers for these outstanding candidates, guaranteeing an unparalleled peer learning experience.
-          </p>
-        </motion.div>
-
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-2 gap-3"
-        >
-          {scholarships.map((scholarship, i) => (
-            <motion.div
-              key={i}
-              custom={i}
-              variants={cardVariants}
-              whileHover="hover"
-              className={`bg-gradient-to-br ${scholarship.gradient} rounded-2xl p-5 min-h-[200px] relative overflow-hidden shadow-lg cursor-pointer`}
-              data-testid={`scholarship-card-${i}`}
-            >
-              <div className="relative z-10">
-                <h3 className="font-display text-[#3D1111] text-base leading-tight">
-                  <span className="font-bold">{scholarship.name}</span>{" "}
-                  <span className="font-normal opacity-70">{scholarship.subtitle}</span>
-                </h3>
-                <p className="text-[#3D1111]/60 text-xs mt-3 leading-relaxed">{scholarship.description}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+            <div className="bg-white/5 p-8 rounded-xl border border-white/10">
+              <div className="space-y-4">
+                {tuitionFees.map((fee, i) => (
+                  <div key={i} className="flex justify-between items-center py-4 border-b border-white/5">
+                    <span className="text-white/40 font-bold uppercase tracking-widest text-xs">{fee.year}</span>
+                    <span className="text-white text-xl font-display">{fee.amount}</span>
+                  </div>
+                ))}
+                <div className="flex justify-between items-center pt-6">
+                  <span className="text-white font-bold uppercase tracking-widest text-sm">Total Tuition Fee</span>
+                  <span className="text-[#C5A047] text-3xl font-display font-bold">₹ 48,00,000</span>
+                </div>
               </div>
-              <div className="absolute bottom-3 right-3 opacity-20">
-                <scholarship.icon size={48} className="text-[#3D1111]" />
+            </div>
+            
+            <div className="space-y-6">
+              <div className="bg-gradient-to-br from-[#C5A047] to-[#A68A3A] p-8 rounded-xl shadow-2xl">
+                <p className="text-[#3D1111] text-xl font-bold leading-tight mb-4">
+                  Scholarships of up to 75% on tuition fee for high-performing candidates.
+                </p>
+                <p className="text-[#3D1111]/60 text-sm">
+                  Fee is exclusive of accommodation charges of ₹3,50,000 per year and global immersion fee.
+                </p>
               </div>
-            </motion.div>
-          ))}
+              
+              <div className="grid grid-cols-1 gap-4">
+                {scholarships.map((scholarship, i) => (
+                  <motion.div
+                    key={i}
+                    whileHover={{ x: 10 }}
+                    className="bg-white p-6 rounded-sm shadow-xl flex items-center gap-6"
+                  >
+                    <div className="w-12 h-12 rounded-full bg-[#C5A047]/10 flex items-center justify-center flex-shrink-0">
+                      <scholarship.icon size={24} className="text-[#C5A047]" />
+                    </div>
+                    <div>
+                      <h3 className="font-handwriting text-2xl text-[#3D1111] mb-1">{scholarship.name}</h3>
+                      <p className="text-xs text-[#3D1111]/50 leading-relaxed uppercase tracking-tighter font-bold">{scholarship.description}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
         </motion.div>
       </div>
       <CTAButton />
@@ -672,99 +657,58 @@ function Scholarships() {
   );
 }
 
-function CTAButton() {
-  return (
-    <div className="max-w-7xl mx-auto px-4 mt-6">
-      <motion.a
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        whileHover={{ scale: 1.02, y: -2 }}
-        whileTap={{ scale: 0.98 }}
-        href="#apply"
-        className="bg-[#F5F0E6] text-[#3D1111] px-6 py-4 rounded-xl flex items-center justify-between font-semibold hover:bg-white transition-all w-full shadow-xl"
-        data-testid="cta-apply"
-      >
-        <span className="text-sm tracking-wide">APPLY NOW</span>
-        <ArrowRight size={20} />
-      </motion.a>
-    </div>
-  );
-}
-
 function Footer() {
   return (
-    <footer className="bg-[#2A0E0E] py-10 px-4" data-testid="footer">
+    <footer className="bg-[#2A0E0E] py-20 px-6 border-t border-white/5" data-testid="footer">
       <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <div className="flex items-center gap-2 mb-6">
-            <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-lg">
-              <span className="text-[#3D1111] font-bold text-xl">m</span>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+          <div className="md:col-span-2">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-xl">
+                <span className="text-[#3D1111] font-bold text-2xl tracking-tighter">m</span>
+              </div>
+              <div className="text-white">
+                <span className="font-bold text-2xl tracking-tight">Mesa</span>
+                <span className="text-[10px] block -mt-1 text-white/40 font-bold tracking-[0.3em]">SCHOOL OF BUSINESS</span>
+              </div>
             </div>
-            <div className="text-white">
-              <span className="font-bold text-lg">Mesa</span>
-              <span className="text-[10px] block -mt-0.5 text-white/60 tracking-wider">SCHOOL OF BUSINESS</span>
-            </div>
-          </div>
-
-          <div className="text-white/50 text-sm mb-4 leading-relaxed">
-            <p>Wework, Salarpuria Symbiosis Road,</p>
-            <p>Bannerghatta Road, Begur Hobli,</p>
-            <p>Bengaluru Urban,</p>
-            <p>Karnataka, 560076.</p>
-          </div>
-
-          <div className="flex gap-4 text-[#C5A047] text-sm mb-6">
-            <a href="#" className="hover:underline transition-colors" data-testid="link-terms">Terms of use</a>
-            <a href="#" className="hover:underline transition-colors" data-testid="link-privacy">Privacy policy</a>
-          </div>
-
-          <div className="mb-6">
-            <h4 className="text-[#C5A047] font-display italic mb-2">Contact Us</h4>
-            <a href="mailto:info@mesaschool.co" className="text-white/50 text-sm hover:text-white transition-colors" data-testid="link-email">
-              info@mesaschool.co
-            </a>
-            <div className="flex gap-3 mt-3">
+            <p className="text-white/40 text-sm max-w-sm leading-relaxed mb-8">
+              Wework, Salarpuria Symbiosis Road, Bannerghatta Road, Begur Hobli, Bengaluru Urban, Karnataka, 560076.
+            </p>
+            <div className="flex gap-4">
               {[Instagram, Youtube, Linkedin].map((Icon, i) => (
                 <motion.a 
                   key={i}
                   href="#" 
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center text-white/70 hover:bg-white/10 hover:text-white hover:border-white/40 transition-all" 
-                  data-testid={`social-${i}`}
+                  whileHover={{ scale: 1.1, backgroundColor: "rgba(255,255,255,0.1)" }}
+                  className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/60 transition-all"
                 >
                   <Icon size={18} />
                 </motion.a>
               ))}
             </div>
           </div>
-
-          <div className="mb-6">
-            <h4 className="text-[#C5A047] font-display italic mb-2">Quick Links</h4>
-            <div className="flex flex-col gap-1.5">
-              {["Home", "Learning", "UG Program", "Outcomes"].map((link, i) => (
-                <motion.a 
-                  key={i}
-                  href="#" 
-                  whileHover={{ x: 4 }}
-                  className="text-white/50 text-sm hover:text-white transition-colors w-fit" 
-                  data-testid={`quick-${link.toLowerCase().replace(" ", "-")}`}
-                >
-                  {link}
-                </motion.a>
+          
+          <div>
+            <h4 className="text-white font-bold mb-6 uppercase tracking-widest text-xs">Quick Links</h4>
+            <ul className="space-y-4">
+              {["Home", "Learning", "UG Program", "Outcomes"].map((link) => (
+                <li key={link}>
+                  <a href="#" className="text-white/40 hover:text-[#C5A047] transition-colors text-sm font-medium">{link}</a>
+                </li>
               ))}
+            </ul>
+          </div>
+          
+          <div>
+            <h4 className="text-white font-bold mb-6 uppercase tracking-widest text-xs">Contact</h4>
+            <a href="mailto:info@mesaschool.co" className="text-[#C5A047] font-bold text-sm block mb-4">info@mesaschool.co</a>
+            <div className="space-y-4 mt-8 pt-8 border-t border-white/5">
+              <a href="#" className="text-white/20 hover:text-white transition-colors text-xs block uppercase tracking-widest font-bold">Terms of Use</a>
+              <a href="#" className="text-white/20 hover:text-white transition-colors text-xs block uppercase tracking-widest font-bold">Privacy Policy</a>
             </div>
           </div>
-
-          <div className="pt-4 border-t border-white/10">
-            <p className="text-white/30 text-sm">© 2025 Mesa School of Business</p>
-          </div>
-        </motion.div>
+        </div>
       </div>
     </footer>
   );
@@ -772,7 +716,7 @@ function Footer() {
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#3D1111] overflow-x-hidden">
+    <div className="min-h-screen bg-[#3D1111] overflow-x-hidden selection:bg-[#C5A047] selection:text-[#3D1111]">
       <Hero />
       <PartnerLogos />
       <Supporters />
