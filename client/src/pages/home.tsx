@@ -886,11 +886,10 @@ function Testimonials() {
             key={i}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1 }}
-            className="flex-shrink-0 w-[300px] md:w-[500px] snap-center bg-[#260B0B] rounded-[2.5rem] p-8 md:p-10 flex items-center justify-between border border-white/5 relative overflow-hidden group hover:border-[#E8C170]/20 transition-all duration-500"
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ delay: i * 0.05, duration: 0.4, ease: "easeOut" }}
+            className="flex-shrink-0 w-[300px] md:w-[500px] snap-center bg-[#260B0B] rounded-[2.5rem] p-8 md:p-10 flex items-center justify-between border border-white/5 relative overflow-hidden group hover:border-[#E8C170]/20 transition-all duration-300 will-change-transform"
           >
-            {/* Dark wash gradient */}
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
             
             <div className="flex-1 pr-4 relative z-10">
