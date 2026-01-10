@@ -945,10 +945,69 @@ function Footer() {
   );
 }
 
+function Preloader({ onComplete }: { onComplete: () => void }) {
+  useEffect(() => {
+    const timer = setTimeout(onComplete, 2500);
+    return () => clearTimeout(timer);
+  }, [onComplete]);
+
+  return (
+    <motion.div
+      initial={{ opacity: 1 }}
+      exit={{ 
+        y: "-100%",
+        transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] }
+      }}
+      className="fixed inset-0 z-[100] bg-[#3D1111] flex flex-col items-center justify-center"
+    >
+      <div className="relative">
+        <motion.div
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-[#E8C170]/20 shadow-2xl bg-[#3D1111] mb-8"
+        >
+          <img src={idcLogo} alt="IDC Logo" className="w-full h-full object-cover" />
+        </motion.div>
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+          className="absolute -inset-4 border-t-2 border-[#E8C170] rounded-full"
+        />
+      </div>
+
+      <div className="text-center overflow-hidden">
+        <motion.div
+          initial={{ y: 50 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <span className="font-sans font-black text-4xl md:text-6xl text-white tracking-tighter">IDC</span>
+          <span className="text-[10px] md:text-xs block mt-1 text-[#E8C170] font-sans font-black tracking-[0.4em] uppercase">
+            Ideology Classes
+          </span>
+        </motion.div>
+      </div>
+
+      <div className="mt-12 w-48 h-[2px] bg-white/10 rounded-full overflow-hidden relative">
+        <motion.div
+          initial={{ left: "-100%" }}
+          animate={{ left: "100%" }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute inset-0 bg-gradient-to-r from-transparent via-[#E8C170] to-transparent w-full h-full"
+        />
+      </div>
+    </motion.div>
+  );
+}
+
 export default function Home() {
+  const [loading, setLoading] = useState(true);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (loading) return;
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -1008,6 +1067,23 @@ export default function Home() {
       });
     }
 
+    // Horizontal scroll for initiatives section - only on desktop
+    const projectsTrack = document.querySelector(".projects-track");
+    if (projectsTrack && window.innerWidth > 1024) {
+      gsap.to(projectsTrack, {
+        x: () => -(projectsTrack.scrollWidth - window.innerWidth + 48),
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#institute",
+          start: "top top",
+          end: () => `+=${projectsTrack.scrollWidth}`,
+          scrub: 1,
+          pin: true,
+          anticipatePin: 1,
+        }
+      });
+    }
+
     // Horizontal scroll for testimonials
     const testimonialsTrack = document.querySelector(".testimonials-track");
     if (testimonialsTrack) {
@@ -1035,22 +1111,34 @@ export default function Home() {
       lenis.destroy();
       ScrollTrigger.getAll().forEach(t => t.kill());
     };
-  }, []);
+  }, [loading]);
 
   return (
     <div ref={containerRef} className="min-h-screen bg-[#3D1111] overflow-x-hidden selection:bg-[#E8C170] selection:text-[#3D1111] scroll-smooth">
-      <Navbar />
-      <Hero />
-      <Courses />
-      <WhyChooseIDC />
-      <Teachers />
-      <InOfficeProjects />
-      <NewAgeAcademics />
-      <EligibilityCriteria />
-      <Scholarships />
-      <Testimonials />
-      <Contact />
-      <Footer />
+      <AnimatePresence>
+        {loading && <Preloader onComplete={() => setLoading(false)} />}
+      </AnimatePresence>
+      
+      {!loading && (
+        <motion.div
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
+        >
+          <Navbar />
+          <Hero />
+          <Courses />
+          <WhyChooseIDC />
+          <Teachers />
+          <InOfficeProjects />
+          <NewAgeAcademics />
+          <EligibilityCriteria />
+          <Scholarships />
+          <Testimonials />
+          <Contact />
+          <Footer />
+        </motion.div>
+      )}
     </div>
   );
 }
