@@ -66,8 +66,8 @@ function Navbar() {
             <img src={idcLogo} alt="IDC Logo" className="w-full h-full object-cover" />
           </div>
           <div className="text-white">
-            <h1 className="font-display text-2xl font-bold tracking-tighter leading-none">IDC</h1>
-            <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-[#C5A047]">Coaching Institute</p>
+            <h1 className="font-sans text-2xl font-black tracking-tighter leading-none">IDC</h1>
+            <p className="text-[10px] font-sans uppercase tracking-[0.3em] font-black text-[#C5A047]">Coaching Institute</p>
           </div>
         </div>
 
@@ -748,9 +748,9 @@ function Footer() {
               <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-xl">
                 <span className="text-[#3D1111] font-bold text-2xl tracking-tighter">m</span>
               </div>
-              <div className="text-white">
-                <span className="font-bold text-2xl tracking-tight">Mesa</span>
-                <span className="text-[10px] block -mt-1 text-white/40 font-bold tracking-[0.3em]">SCHOOL OF BUSINESS</span>
+            <div className="text-white">
+                <span className="font-sans font-black text-2xl tracking-tighter">IDC</span>
+                <span className="text-[10px] block -mt-1 text-white/40 font-sans font-black tracking-[0.3em]">COACHING INSTITUTE</span>
               </div>
             </div>
             <p className="text-white/40 text-sm max-w-sm leading-relaxed mb-8">
