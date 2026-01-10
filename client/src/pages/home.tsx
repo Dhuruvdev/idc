@@ -62,12 +62,12 @@ function Navbar() {
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center gap-3 group cursor-pointer">
-          <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/20 group-hover:border-[#C5A047] transition-colors shadow-lg">
+          <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/20 group-hover:border-[#E8C170] transition-colors shadow-lg">
             <img src={idcLogo} alt="IDC Logo" className="w-full h-full object-cover" />
           </div>
           <div className="text-white">
             <h1 className="font-sans text-2xl font-black tracking-tighter leading-none">IDC</h1>
-            <p className="text-[10px] font-sans uppercase tracking-[0.3em] font-black text-[#C5A047]">Coaching Institute</p>
+            <p className="text-[10px] font-sans uppercase tracking-[0.3em] font-black text-[#E8C170]">Coaching Institute</p>
           </div>
         </div>
 
@@ -77,15 +77,15 @@ function Navbar() {
         >
           <motion.span 
             animate={isOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
-            className="w-8 h-1 bg-white rounded-full group-hover:bg-[#C5A047] transition-colors"
+            className="w-8 h-1 bg-white rounded-full group-hover:bg-[#E8C170] transition-colors"
           />
           <motion.span 
             animate={isOpen ? { opacity: 0, x: -20 } : { opacity: 1, x: 0 }}
-            className="w-8 h-1 bg-white rounded-full group-hover:bg-[#C5A047] transition-colors"
+            className="w-8 h-1 bg-white rounded-full group-hover:bg-[#E8C170] transition-colors"
           />
           <motion.span 
             animate={isOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
-            className="w-8 h-1 bg-white rounded-full group-hover:bg-[#C5A047] transition-colors"
+            className="w-8 h-1 bg-white rounded-full group-hover:bg-[#E8C170] transition-colors"
           />
         </button>
 
@@ -100,7 +100,7 @@ function Navbar() {
             >
               {/* Illusion Animation Background */}
               <div className="absolute inset-0 opacity-10 pointer-events-none">
-                <div className="absolute inset-0 animate-[spin_60s_linear_infinite] border-[100px] border-[#C5A047]/20 rounded-full scale-150 blur-3xl" />
+                <div className="absolute inset-0 animate-[spin_60s_linear_infinite] border-[100px] border-[#E8C170]/20 rounded-full scale-150 blur-3xl" />
                 <div className="absolute inset-0 animate-[spin_40s_linear_infinite_reverse] border-[50px] border-white/10 rounded-full scale-110 blur-2xl" />
               </div>
 
@@ -112,11 +112,11 @@ function Navbar() {
                   transition={{ delay: i * 0.1 }}
                   href={`#${item.toLowerCase()}`}
                   onClick={() => setIsOpen(false)}
-                  className="font-display text-4xl md:text-6xl text-white hover:text-[#C5A047] transition-colors relative group"
+                  className="font-display text-4xl md:text-6xl text-white hover:text-[#E8C170] transition-colors relative group"
                 >
                   <span className="relative z-10">{item}</span>
                   <motion.span 
-                    className="absolute bottom-0 left-0 w-0 h-2 bg-[#C5A047] group-hover:w-full transition-all duration-300 -z-10"
+                    className="absolute bottom-0 left-0 w-0 h-2 bg-[#E8C170] group-hover:w-full transition-all duration-300 -z-10"
                   />
                 </motion.a>
               ))}
@@ -329,7 +329,7 @@ function CTAButton() {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         href="#apply"
-        className="bg-[#C5A047] text-[#3D1111] px-10 py-4 rounded-full font-bold text-sm tracking-[0.2em] shadow-xl hover:bg-[#D4B15B] transition-colors"
+        className="bg-[#E8C170] text-[#3D1111] px-10 py-4 rounded-full font-bold text-sm tracking-[0.2em] shadow-xl hover:bg-[#D4B15B] transition-colors"
       >
         APPLY NOW
       </motion.a>
@@ -391,7 +391,7 @@ function InOfficeProjects() {
                 />
                 <div className="absolute inset-0 bg-[#3D1111]/20 group-hover:bg-transparent transition-colors" />
               </div>
-              <div className="p-10 border-t-8 border-[#C5A047]">
+              <div className="p-10 border-t-8 border-[#E8C170]">
                 <h3 className="font-display text-3xl text-[#3D1111] mb-6 uppercase tracking-tight">{project.company}</h3>
                 <p className="font-handwriting text-2xl text-[#3D1111]/80 leading-relaxed italic">
                   {project.description}
@@ -439,7 +439,7 @@ function NewAgeAcademics() {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
                   whileHover={{ y: -2 }}
-                  className="flex items-center gap-2 text-white pb-2 border-b-2 border-[#C5A047] cursor-pointer"
+                  className="flex items-center gap-2 text-white pb-2 border-b-2 border-[#E8C170] cursor-pointer"
                 >
                   <div className="w-7 h-7 rounded-md bg-white/10 flex items-center justify-center">
                     <tech.icon size={14} className="text-white/80" />
@@ -474,7 +474,7 @@ function NewAgeAcademics() {
           transition={{ duration: 0.6 }}
           className="absolute inset-0 z-20 flex flex-col justify-center p-5"
         >
-          <p className="text-[#C5A047] text-xs mb-2 uppercase tracking-widest font-semibold">New-age Academics</p>
+          <p className="text-[#E8C170] text-xs mb-2 uppercase tracking-widest font-semibold">New-age Academics</p>
           <h2 className="text-2xl md:text-3xl font-display text-white leading-tight max-w-xs drop-shadow-lg">
             Learn business <span className="font-bold">fundamentals</span> from world-renowned experts
           </h2>
@@ -499,8 +499,8 @@ function NewAgeAcademics() {
                 className="min-w-[150px] bg-gradient-to-br from-[#5C1919] to-[#4A1515] rounded-2xl p-5 flex-shrink-0 border border-[#6B2222]/30 shadow-lg cursor-pointer"
                 data-testid={`feature-card-${i}`}
               >
-                <div className="w-10 h-10 rounded-xl bg-[#C5A047]/20 flex items-center justify-center mb-3">
-                  <feature.icon size={20} className="text-[#C5A047]" />
+                <div className="w-10 h-10 rounded-xl bg-[#E8C170]/20 flex items-center justify-center mb-3">
+                  <feature.icon size={20} className="text-[#E8C170]" />
                 </div>
                 <h3 className="font-display text-white text-base mb-1.5 leading-tight font-semibold">{feature.title}</h3>
                 <p className="text-white/50 text-xs leading-relaxed">{feature.description}</p>
@@ -563,7 +563,7 @@ function EligibilityCriteria() {
                 <item.icon size={22} className="text-[#3D1111]" />
               </div>
               <div>
-                <h3 className="font-display text-lg text-[#C5A047] font-bold">{item.title}</h3>
+                <h3 className="font-display text-lg text-[#E8C170] font-bold">{item.title}</h3>
                 <p className="text-[#3D1111]/60 text-sm mt-0.5 leading-relaxed">{item.description}</p>
               </div>
             </motion.div>
@@ -626,7 +626,7 @@ function FoundingCohort() {
                     <span className="font-bold">{student.firstName}</span>{" "}
                     <span className="font-normal opacity-60">{student.lastName}</span>
                   </h3>
-                  <p className="text-[#C5A047] text-xs italic mt-1.5 font-medium">{student.school}</p>
+                  <p className="text-[#E8C170] text-xs italic mt-1.5 font-medium">{student.school}</p>
                   <p className="text-white/40 text-[11px] mt-0.5">{student.city}</p>
                 </div>
               </div>
@@ -684,7 +684,7 @@ function Scholarships() {
           className="mb-16"
         >
           <h2 className="text-3xl md:text-5xl font-display text-white mb-8">
-            Fees and <span className="italic text-[#C5A047]">Scholarships</span>
+            Fees and <span className="italic text-[#E8C170]">Scholarships</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
             <div className="bg-white/5 p-8 rounded-xl border border-white/10">
@@ -697,13 +697,13 @@ function Scholarships() {
                 ))}
                 <div className="flex justify-between items-center pt-6">
                   <span className="text-white font-bold uppercase tracking-widest text-sm">Total Tuition Fee</span>
-                  <span className="text-[#C5A047] text-3xl font-display font-bold">₹ 48,00,000</span>
+                  <span className="text-[#E8C170] text-3xl font-display font-bold">₹ 48,00,000</span>
                 </div>
               </div>
             </div>
             
             <div className="space-y-6">
-              <div className="bg-gradient-to-br from-[#C5A047] to-[#A68A3A] p-8 rounded-xl shadow-2xl">
+              <div className="bg-gradient-to-br from-[#E8C170] to-[#A68A3A] p-8 rounded-xl shadow-2xl">
                 <p className="text-[#3D1111] text-xl font-bold leading-tight mb-4">
                   Scholarships of up to 75% on tuition fee for high-performing candidates.
                 </p>
@@ -719,8 +719,8 @@ function Scholarships() {
                     whileHover={{ x: 10 }}
                     className="bg-white p-6 rounded-sm shadow-xl flex items-center gap-6"
                   >
-                    <div className="w-12 h-12 rounded-full bg-[#C5A047]/10 flex items-center justify-center flex-shrink-0">
-                      <scholarship.icon size={24} className="text-[#C5A047]" />
+                    <div className="w-12 h-12 rounded-full bg-[#E8C170]/10 flex items-center justify-center flex-shrink-0">
+                      <scholarship.icon size={24} className="text-[#E8C170]" />
                     </div>
                     <div>
                       <h3 className="font-handwriting text-2xl text-[#3D1111] mb-1">{scholarship.name}</h3>
@@ -775,7 +775,7 @@ function Footer() {
             <ul className="space-y-4">
               {["Home", "Learning", "UG Program", "Outcomes"].map((link) => (
                 <li key={link}>
-                  <a href="#" className="text-white/40 hover:text-[#C5A047] transition-colors text-sm font-medium">{link}</a>
+                  <a href="#" className="text-white/40 hover:text-[#E8C170] transition-colors text-sm font-medium">{link}</a>
                 </li>
               ))}
             </ul>
@@ -783,7 +783,7 @@ function Footer() {
           
           <div>
             <h4 className="text-white font-bold mb-6 uppercase tracking-widest text-xs">Contact</h4>
-            <a href="mailto:info@mesaschool.co" className="text-[#C5A047] font-bold text-sm block mb-4">info@mesaschool.co</a>
+            <a href="mailto:info@mesaschool.co" className="text-[#E8C170] font-bold text-sm block mb-4">info@mesaschool.co</a>
             <div className="space-y-4 mt-8 pt-8 border-t border-white/5">
               <a href="#" className="text-white/20 hover:text-white transition-colors text-xs block uppercase tracking-widest font-bold">Terms of Use</a>
               <a href="#" className="text-white/20 hover:text-white transition-colors text-xs block uppercase tracking-widest font-bold">Privacy Policy</a>
@@ -797,7 +797,7 @@ function Footer() {
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#3D1111] overflow-x-hidden selection:bg-[#C5A047] selection:text-[#3D1111]">
+    <div className="min-h-screen bg-[#3D1111] overflow-x-hidden selection:bg-[#E8C170] selection:text-[#3D1111]">
       <Navbar />
       <Hero />
       <PartnerLogos />
