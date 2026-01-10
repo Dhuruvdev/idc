@@ -415,18 +415,18 @@ function PartnerLogos() {
   );
 }
 
-function Supporters() {
-  const supporters = [
-    { name: "Kunal Shah", company: "CRED", role: "Cred Founder", details: "Advisor - Sequoia Capital\nAdvisor - AngelList\nAvid Angel Investor", image: founder1, logo: "⊙ CRED" },
-    { name: "Vidit Aatrey", company: "meesho", role: "Meesho Founder", details: "IIT Delhi\nEx - InMobi", image: founder2, logo: "meesho" },
-    { name: "Vijay Shekhar", company: "Paytm", role: "Paytm Founder", details: "Delhi College of Engineering\nAvid Angel Investor", image: founder3, logo: "Paytm" },
-    { name: "Mekin Maheshwari", company: "Udhyam", role: "Udhyam Founder", details: "Ex - Flipkart\nAvid Angel Investorz", image: founder1, logo: "Udhyam" },
-    { name: "Abhiraj Bhal", company: "Urban Company", role: "Urban Company Founder", details: "IIM Ahmedabad\nIIT Kanpur", image: founder2, logo: "UC Urban Company" },
-    { name: "Varun Khaitan", company: "Urban Company", role: "Urban Company Founder", details: "IIT Kanpur\nEx - BCG", image: founder3, logo: "UC Urban Company" },
+function Teachers() {
+  const teachers = [
+    { name: "Prof. Kunal Shah", subject: "Economics & Strategy", experience: "15+ Years", graduation: "IIM Ahmedabad", details: "Expert in market dynamics and strategic planning for competitive advantage.", image: founder1, logo: "⊙ ECONOMICS" },
+    { name: "Prof. Vidit Aatrey", subject: "Maths & Analytics", experience: "12+ Years", graduation: "IIT Delhi", details: "Specializes in advanced calculus and data-driven decision modeling.", image: founder2, logo: "MATHS" },
+    { name: "Prof. Vijay Shekhar", subject: "Business Studies", experience: "20+ Years", graduation: "Delhi College of Engineering", details: "Veteran educator focused on entrepreneurship and business fundamentals.", image: founder3, logo: "BUSINESS" },
+    { name: "Prof. Mekin Maheshwari", subject: "Human Resources", experience: "14+ Years", graduation: "BITS Pilani", details: "Expert in organizational behavior and talent management strategies.", image: founder1, logo: "HR" },
+    { name: "Prof. Abhiraj Bhal", subject: "Accounting & Finance", experience: "16+ Years", graduation: "IIM Ahmedabad", details: "Focused on financial reporting, auditing, and corporate finance.", image: founder2, logo: "FINANCE" },
+    { name: "Prof. Varun Khaitan", subject: "Science & Technology", experience: "11+ Years", graduation: "IIT Kanpur", details: "Passionate about simplifying complex scientific concepts for students.", image: founder3, logo: "SCIENCE" },
   ];
 
   return (
-    <section className="bg-[#3D1111] py-20 px-6" data-testid="supporters-section">
+    <section id="faculty" className="bg-[#3D1111] py-20 px-6" data-testid="teachers-section">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -435,8 +435,11 @@ function Supporters() {
           className="mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-display text-white mb-4">
-            Supporters and <span className="italic">Investors</span>
+            Our <span className="italic">Teachers</span>
           </h2>
+          <p className="text-white/60 text-lg max-w-2xl leading-relaxed">
+            Learn from Delhi's most experienced educators with proven academic excellence and a passion for teaching.
+          </p>
         </motion.div>
         
         <motion.div
@@ -446,21 +449,20 @@ function Supporters() {
           viewport={{ once: true }}
           className="grid grid-cols-2 md:grid-cols-3 gap-y-8 md:gap-y-16 gap-x-4 md:gap-x-8"
         >
-          {supporters.map((supporter, i) => (
+          {teachers.map((teacher, i) => (
             <motion.div
               key={i}
               custom={i}
               variants={cardVariants}
               className="group flex flex-col"
-              data-testid={`supporter-card-${i}`}
+              data-testid={`teacher-card-${i}`}
             >
               <div className="relative mb-4 md:mb-6">
                 <div className="aspect-square rounded-[1.5rem] md:rounded-[2rem] overflow-hidden bg-[#F5F0E6] relative z-10">
-                  {/* Decorative dashed circle */}
                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4/5 h-4/5 border-2 border-dashed border-[#3D1111]/10 rounded-full" />
                   <img
-                    src={supporter.image}
-                    alt={supporter.name}
+                    src={teacher.image}
+                    alt={teacher.name}
                     className="w-full h-full object-cover relative z-20 grayscale group-hover:grayscale-0 transition-all duration-500"
                   />
                 </div>
@@ -468,17 +470,18 @@ function Supporters() {
               
               <div className="space-y-1 md:space-y-2">
                 <h3 className="text-base md:text-xl font-display text-white font-bold">
-                  {supporter.name}
+                  {teacher.name}
                 </h3>
                 <div className="text-white/60 text-[10px] md:text-sm leading-relaxed">
-                  <p className="font-bold text-white/80">{supporter.role}</p>
-                  <div className="whitespace-pre-line opacity-70 hidden md:block">
-                    {supporter.details}
+                  <p className="font-bold text-[#E8C170] uppercase tracking-wider">{teacher.subject}</p>
+                  <p className="text-white/80">{teacher.experience} Exp | {teacher.graduation}</p>
+                  <div className="opacity-70 hidden md:block mt-2">
+                    {teacher.details}
                   </div>
                 </div>
                 <div className="pt-4 mt-4 border-t border-white/10 flex items-center justify-between">
                   <span className="text-white font-black text-lg uppercase tracking-tighter opacity-40 group-hover:opacity-100 transition-opacity">
-                    {supporter.logo}
+                    {teacher.logo}
                   </span>
                 </div>
               </div>
@@ -508,27 +511,21 @@ function CTAButton() {
 function InOfficeProjects() {
   const projects = [
     {
-      company: "Coaching Institute",
-      description: "Redesigning the learning environment for a premium coaching institute. Our students conceptualized and implemented a modern, high-tech interior that fosters creativity and focused learning, featuring beautiful minimalist aesthetics and functional design.",
+      company: "Modern Learning Center",
+      description: "A complete redesign of classroom interiors to create a high-tech, minimalist environment that maximizes focus and student engagement.",
       image: coachingInstituteImg,
       color: "from-[#FDFBF7] to-[#F5F0E6]"
     },
     {
-      company: "epigamia",
-      description: "As competition heated up in the high-protein yogurt space, Epigamia needed to decide whether to double down or pivot its strategy. Mesa students led market research, 100+ consumer interviews, and taste tests to uncover insights, then built a 24-month roadmap across brand, product, and growth.",
-      image: teamPhoto,
-      color: "from-[#FDFBF7] to-[#F5F0E6]"
-    },
-    {
-      company: "Blue Tokai",
-      description: "Blue Tokai wanted to expand their footprint smartly by selecting new café locations backed by data. Mesa students built a site selection model using blended demographics, foot traffic, competition, and customer decision-making insights.",
+      company: "Academic Roadmap",
+      description: "Developing a 24-month personalized growth plan for students to excel in competitive exams and board preparations.",
       image: teamPhoto,
       color: "from-[#FDFBF7] to-[#F5F0E6]"
     }
   ];
 
   return (
-    <section className="bg-[#EDE5D8] py-20 px-6" data-testid="projects-section">
+    <section id="projects" className="bg-[#EDE5D8] py-20 px-6" data-testid="projects-section">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -537,10 +534,10 @@ function InOfficeProjects() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-5xl font-display text-[#3D1111] mb-6">
-            In Office <span className="italic">Projects</span>
+            Our <span className="italic">Initiatives</span>
           </h2>
-          <p className="text-[#3D1111]/60 text-lg max-w-2xl mx-auto leading-relaxed">
-            Students work on projects that move real business metrics, work in teams, and are a part of important meetings with the leadership team.
+          <p className="text-[#3D1111]/60 text-lg max-w-2xl mx-auto">
+            Practical projects and real-world learning modules designed to build confidence and academic excellence.
           </p>
         </motion.div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -550,31 +547,20 @@ function InOfficeProjects() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.15, duration: 0.6 }}
-              whileHover={{ y: -10 }}
-              className="rounded-sm overflow-hidden shadow-2xl cursor-pointer bg-white group"
-              data-testid={`project-card-${i}`}
+              transition={{ delay: i * 0.15 }}
+              whileHover={{ y: -5 }}
+              className="rounded-2xl overflow-hidden shadow-xl bg-white group"
             >
               <div className="h-64 relative overflow-hidden">
-                <motion.img
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.8 }}
-                  src={project.image}
-                  alt={project.company}
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                />
-                <div className="absolute inset-0 bg-[#3D1111]/20 group-hover:bg-transparent transition-colors" />
+                <img src={project.image} alt={project.company} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
               </div>
-              <div className="p-10 border-t-8 border-[#E8C170]">
-                <h3 className="font-display text-3xl text-[#3D1111] mb-6 uppercase tracking-tight">{project.company}</h3>
-                <p className="font-handwriting text-2xl text-[#3D1111]/80 leading-relaxed italic">
-                  {project.description}
-                </p>
+              <div className="p-8 border-t-4 border-[#E8C170]">
+                <h3 className="font-display text-2xl text-[#3D1111] mb-4 uppercase tracking-tight">{project.company}</h3>
+                <p className="text-[#3D1111]/70 leading-relaxed italic">{project.description}</p>
               </div>
             </motion.div>
           ))}
         </div>
-        <CTAButton />
       </div>
     </section>
   );
@@ -582,107 +568,36 @@ function InOfficeProjects() {
 
 function NewAgeAcademics() {
   const features = [
-    { icon: GraduationCap, title: "Top B-School Profs", description: "Faculty from IIM, ISB, and Kellogg." },
-    { icon: BookOpen, title: "Diverse Learning", description: "600+ hours of practical, applied learning." },
-    { icon: Award, title: "Real Cases", description: "75+ case studies across industries." }
-  ];
-
-  const techniques = [
-    { icon: Settings, label: "Prompt Engineering 101" },
-    { icon: BookOpen, label: "Reading API Docs" },
-    { icon: Cpu, label: "Voice transcript synthesis" }
+    { icon: GraduationCap, title: "Expert Mentorship", description: "Guidance from Delhi's top educators." },
+    { icon: BookOpen, title: "Practical Learning", description: "Applied concepts for deep clarity." },
+    { icon: Award, title: "Proven Results", description: "Legacy of top academic performance." }
   ];
 
   return (
-    <section className="relative" data-testid="academics-section">
-      <div className="bg-[#3D1111] py-6 px-4">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="bg-gradient-to-br from-[#2A0E0E] to-[#1F0A0A] rounded-2xl p-5 mb-4 border border-[#4A1F1F]/30"
-          >
-            <p className="text-white/50 text-xs font-semibold mb-4 uppercase tracking-widest">TECHNIQUES</p>
-            <div className="flex flex-wrap gap-4">
-              {techniques.map((tech, i) => (
-                <motion.div 
-                  key={i} 
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  whileHover={{ y: -2 }}
-                  className="flex items-center gap-2 text-white pb-2 border-b-2 border-[#E8C170] cursor-pointer"
-                >
-                  <div className="w-7 h-7 rounded-md bg-white/10 flex items-center justify-center">
-                    <tech.icon size={14} className="text-white/80" />
-                  </div>
-                  <span className="text-sm font-medium">{tech.label}</span>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </div>
-
-      <div className="relative h-72 overflow-hidden">
-        <motion.div 
-          initial={{ scale: 1.1 }}
-          whileInView={{ scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1 }}
-          className="absolute inset-0"
-        >
-          <img
-            src={professorImage}
-            alt="Professor teaching"
-            className="w-full h-full object-cover"
-          />
-        </motion.div>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#3D1111]/95 via-[#3D1111]/70 to-transparent z-10" />
-        <motion.div 
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="absolute inset-0 z-20 flex flex-col justify-center p-5"
-        >
-          <p className="text-[#E8C170] text-xs mb-2 uppercase tracking-widest font-semibold">New-age Academics</p>
-          <h2 className="text-2xl md:text-3xl font-display text-white leading-tight max-w-xs drop-shadow-lg">
-            Learn business <span className="font-bold">fundamentals</span> from world-renowned experts
+    <section id="academic-excellence" className="bg-[#3D1111] py-20 px-6" data-testid="academics-section">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
+        <div className="flex-1">
+          <p className="text-[#E8C170] text-xs mb-4 uppercase tracking-widest font-semibold">Academic Excellence</p>
+          <h2 className="text-3xl md:text-5xl font-display text-white mb-8 leading-tight">
+            Learn Fundamentals from <span className="font-bold">Subject Matter Experts</span>
           </h2>
-        </motion.div>
-      </div>
-
-      <div className="bg-[#3D1111] py-6 px-4">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="flex gap-3 overflow-x-auto pb-2 -mx-4 px-4 scrollbar-hide"
-          >
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {features.map((feature, i) => (
               <motion.div
                 key={i}
-                custom={i}
-                variants={cardVariants}
-                whileHover="hover"
-                className="min-w-[150px] bg-gradient-to-br from-[#5C1919] to-[#4A1515] rounded-2xl p-5 flex-shrink-0 border border-[#6B2222]/30 shadow-lg cursor-pointer"
-                data-testid={`feature-card-${i}`}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="bg-white/5 p-6 rounded-2xl border border-white/10"
               >
-                <div className="w-10 h-10 rounded-xl bg-[#E8C170]/20 flex items-center justify-center mb-3">
-                  <feature.icon size={20} className="text-[#E8C170]" />
-                </div>
-                <h3 className="font-display text-white text-base mb-1.5 leading-tight font-semibold">{feature.title}</h3>
-                <p className="text-white/50 text-xs leading-relaxed">{feature.description}</p>
+                <feature.icon className="text-[#E8C170] w-8 h-8 mb-4" />
+                <h3 className="text-white font-bold mb-2">{feature.title}</h3>
+                <p className="text-white/50 text-xs">{feature.description}</p>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         </div>
-        <CTAButton />
       </div>
     </section>
   );
@@ -690,224 +605,118 @@ function NewAgeAcademics() {
 
 function EligibilityCriteria() {
   const criteria = [
-    { icon: GraduationCap, title: "Education", description: "Students currently enrolled in Class XIIth & Pass-outs (2024 onwards)" },
-    { icon: Settings, title: "Stream", description: "Students from any stream can apply for the program" }
+    { icon: GraduationCap, title: "Classes 6th - 12th", description: "Foundation to Advanced Board preparation." },
+    { icon: Settings, title: "UG & PG Students", description: "University level exam support and professional guidance." }
   ];
 
   return (
-    <section className="bg-[#F5F0E6] py-12 px-4" data-testid="eligibility-section">
-      <div className="max-w-7xl mx-auto">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-2xl font-display text-[#3D1111] mb-6"
-        >
-          Eligibility Criteria
-        </motion.h2>
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.98 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          className="rounded-2xl overflow-hidden mb-6 shadow-xl"
-        >
-          <img
-            src={studentsGroup}
-            alt="Mesa students celebration"
-            className="w-full h-56 object-cover"
-          />
-        </motion.div>
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="space-y-4"
-        >
+    <section id="eligibility" className="bg-[#F5F0E6] py-20 px-6" data-testid="eligibility-section">
+      <div className="max-w-4xl mx-auto text-center">
+        <h2 className="text-3xl font-display text-[#3D1111] mb-12">Who Can <span className="italic text-[#E8C170]">Join Us?</span></h2>
+        <div className="grid md:grid-cols-2 gap-8">
           {criteria.map((item, i) => (
             <motion.div
               key={i}
-              custom={i}
-              variants={cardVariants}
-              whileHover={{ x: 4, scale: 1.01 }}
-              className="flex items-start gap-4 cursor-pointer"
-              data-testid={`criteria-${i}`}
+              whileHover={{ scale: 1.02 }}
+              className="bg-white p-8 rounded-2xl shadow-lg flex flex-col items-center"
             >
-              <div className="w-12 h-12 bg-[#3D1111]/10 rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm">
-                <item.icon size={22} className="text-[#3D1111]" />
-              </div>
-              <div>
-                <h3 className="font-display text-lg text-[#E8C170] font-bold">{item.title}</h3>
-                <p className="text-[#3D1111]/60 text-sm mt-0.5 leading-relaxed">{item.description}</p>
-              </div>
+              <item.icon size={32} className="text-[#3D1111] mb-4" />
+              <h3 className="font-display text-xl text-[#3D1111] font-bold mb-2">{item.title}</h3>
+              <p className="text-[#3D1111]/60 text-sm">{item.description}</p>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
 }
 
 function FoundingCohort() {
-  const students = [
-    { firstName: "Dyumna", lastName: "Madan", school: "Woodstock School", city: "Mussoorie", image: studentGirl },
-    { firstName: "Priyanshi", lastName: "M", school: "Delhi Public School", city: "Raipur", image: studentGirl },
-    { firstName: "Yagya Amit", lastName: "Bisani", school: "Fountainhead School", city: "Surat", image: studentBoy },
-    { firstName: "Garvit", lastName: "Tatiya", school: "Bodhi International School", city: "Jodhpur", image: studentBoy },
-    { firstName: "A R Aayush", lastName: "Jishnu", school: "Emerald International School", city: "Bengaluru", image: studentBoy },
-    { firstName: "Mahi", lastName: "Jain", school: "Jayshree Periwal International School", city: "Jaipur", image: studentGirl },
-    { firstName: "Rahul", lastName: "Setia", school: "GD Goenka Public School", city: "Delhi", image: studentBoy },
-    { firstName: "Jatin", lastName: "Jain", school: "Delhi Public School", city: "Hyderabad", image: studentBoy },
-  ];
+  return null;
+}
 
+function Scholarships() {
   return (
-    <section className="bg-[#3D1111] py-12 px-4" data-testid="cohort-section">
-      <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-2xl font-display text-white mb-2">
-            Meet the <span className="font-bold">Founding Cohort</span>
-          </h2>
-          <p className="text-white/50 text-sm mb-6 leading-relaxed">
-            A peek into the 100 builders, creators, and innovators who make up Mesa's Founder's Batch
-          </p>
-        </motion.div>
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-2 gap-3"
-        >
-          {students.map((student, i) => (
-            <motion.div
-              key={i}
-              custom={i}
-              variants={cardVariants}
-              whileHover="hover"
-              className="relative rounded-2xl overflow-hidden shadow-lg cursor-pointer group"
-              style={{
-                background: `linear-gradient(135deg, hsl(${10 + i * 5}, 45%, ${28 + i * 2}%) 0%, hsl(${8 + i * 3}, 50%, ${20 + i}%) 100%)`
-              }}
-              data-testid={`student-card-${i}`}
-            >
-              <div className="p-4 pr-20 min-h-[120px] flex flex-col justify-between relative z-10">
-                <div>
-                  <h3 className="font-display text-white text-base leading-tight">
-                    <span className="font-bold">{student.firstName}</span>{" "}
-                    <span className="font-normal opacity-60">{student.lastName}</span>
-                  </h3>
-                  <p className="text-[#E8C170] text-xs italic mt-1.5 font-medium">{student.school}</p>
-                  <p className="text-white/40 text-[11px] mt-0.5">{student.city}</p>
-                </div>
-              </div>
-              <div className="absolute right-0 bottom-0 w-[85px] h-full">
-                <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-[#3D1111]/80 z-10" />
-                <motion.img
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.3 }}
-                  src={student.image}
-                  alt={student.firstName}
-                  className="w-full h-full object-cover object-top"
-                />
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+    <section id="fees" className="bg-[#3D1111] py-20 px-6" data-testid="scholarships-section">
+      <div className="max-w-4xl mx-auto text-center">
+        <h2 className="text-3xl md:text-5xl font-display text-white mb-8">
+          Quality Education, <span className="italic text-[#E8C170]">Affordable Fees</span>
+        </h2>
+        <p className="text-white/60 mb-12 text-lg">
+          We offer competitive fee structures and merit-based scholarships for high-performing students.
+        </p>
+        <div className="bg-gradient-to-br from-[#E8C170] to-[#A68A3A] p-10 rounded-2xl shadow-2xl inline-block">
+          <p className="text-[#3D1111] text-2xl font-bold mb-2">Scholarships Available</p>
+          <p className="text-[#3D1111]/80">Up to 75% waiver on tuition fees for exceptional candidates.</p>
+        </div>
       </div>
-      <CTAButton />
     </section>
   );
 }
 
-function Scholarships() {
-  const tuitionFees = [
-    { year: "Year 1", amount: "₹ 16,00,000" },
-    { year: "Year 2", amount: "₹ 16,00,000" },
-    { year: "Year 3", amount: "₹ 12,00,000" },
-    { year: "Year 4", amount: "₹ 4,00,000" },
-  ];
-
-  const scholarships = [
-    { 
-      name: "Bob the Builder", 
-      subtitle: "Scholarship", 
-      description: "for builders who have built businesses or products in the past & want to continue doing so", 
-      gradient: "from-[#FDFBF7] to-[#F5F0E6]",
-      icon: Rocket
-    },
-    { 
-      name: "Merit-Based", 
-      subtitle: "Scholarship", 
-      description: "for applicants with exceptional academic performance and extracurricular hustle", 
-      gradient: "from-[#FDFBF7] to-[#F5F0E6]",
-      icon: Award
-    },
+function Testimonials() {
+  const testimonials = [
+    { name: "Rahul Sharma", text: "IDC helped me secure 95% in my boards. The teachers are incredible!", role: "Class 12th Student" },
+    { name: "Priya Gupta", text: "The personalized attention at IDC made a huge difference in my performance.", role: "B.Com Student" },
+    { name: "Amit Kumar", text: "Best coaching in Delhi for conceptual clarity and consistent results.", role: "Class 10th Student" }
   ];
 
   return (
-    <section className="bg-[#3D1111] py-20 px-6" data-testid="scholarships-section">
+    <section id="testimonials" className="bg-[#F5F0E6] py-20 px-6">
       <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-16"
-        >
-          <h2 className="text-3xl md:text-5xl font-display text-white mb-8">
-            Fees and <span className="italic text-[#E8C170]">Scholarships</span>
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-            <div className="bg-white/5 p-8 rounded-xl border border-white/10">
-              <div className="space-y-4">
-                {tuitionFees.map((fee, i) => (
-                  <div key={i} className="flex justify-between items-center py-4 border-b border-white/5">
-                    <span className="text-white/40 font-bold uppercase tracking-widest text-xs">{fee.year}</span>
-                    <span className="text-white text-xl font-display">{fee.amount}</span>
-                  </div>
-                ))}
-                <div className="flex justify-between items-center pt-6">
-                  <span className="text-white font-bold uppercase tracking-widest text-sm">Total Tuition Fee</span>
-                  <span className="text-[#E8C170] text-3xl font-display font-bold">₹ 48,00,000</span>
-                </div>
+        <h2 className="text-3xl md:text-5xl font-display text-[#3D1111] mb-12 text-center">
+          What Our <span className="italic">Students Say</span>
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {testimonials.map((t, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="bg-white p-8 rounded-2xl shadow-lg border border-[#3D1111]/5"
+            >
+              <p className="text-[#3D1111]/70 italic mb-6">"{t.text}"</p>
+              <div className="border-t border-[#3D1111]/10 pt-4">
+                <p className="font-bold text-[#3D1111]">{t.name}</p>
+                <p className="text-xs text-[#E8C170] font-bold uppercase tracking-widest">{t.role}</p>
               </div>
-            </div>
-            
-            <div className="space-y-6">
-              <div className="bg-gradient-to-br from-[#E8C170] to-[#A68A3A] p-8 rounded-xl shadow-2xl">
-                <p className="text-[#3D1111] text-xl font-bold leading-tight mb-4">
-                  Scholarships of up to 75% on tuition fee for high-performing candidates.
-                </p>
-                <p className="text-[#3D1111]/60 text-sm">
-                  Fee is exclusive of accommodation charges of ₹3,50,000 per year and global immersion fee.
-                </p>
-              </div>
-              
-              <div className="grid grid-cols-1 gap-4">
-                {scholarships.map((scholarship, i) => (
-                  <motion.div
-                    key={i}
-                    whileHover={{ x: 10 }}
-                    className="bg-white p-6 rounded-sm shadow-xl flex items-center gap-6"
-                  >
-                    <div className="w-12 h-12 rounded-full bg-[#E8C170]/10 flex items-center justify-center flex-shrink-0">
-                      <scholarship.icon size={24} className="text-[#E8C170]" />
-                    </div>
-                    <div>
-                      <h3 className="font-handwriting text-2xl text-[#3D1111] mb-1">{scholarship.name}</h3>
-                      <p className="text-xs text-[#3D1111]/50 leading-relaxed uppercase tracking-tighter font-bold">{scholarship.description}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </motion.div>
+            </motion.div>
+          ))}
+        </div>
       </div>
-      <CTAButton />
+    </section>
+  );
+}
+
+function Contact() {
+  return (
+    <section id="contact" className="bg-[#3D1111] py-20 px-6">
+      <div className="max-w-7xl mx-auto text-center">
+        <h2 className="text-3xl md:text-5xl font-display text-white mb-8">
+          Start Your <span className="italic text-[#E8C170]">Success Journey</span>
+        </h2>
+        <p className="text-white/60 mb-12 max-w-2xl mx-auto">
+          Join Ideology Classes Delhi today and experience the difference in your academic growth.
+        </p>
+        <div className="flex flex-wrap justify-center gap-6">
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+            href="tel:+919876543210"
+            className="bg-[#E8C170] text-[#3D1111] px-10 py-4 rounded-full font-bold tracking-[0.1em]"
+          >
+            CALL US NOW
+          </motion.a>
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+            href="mailto:info@ideologyclasses.com"
+            className="bg-white/10 text-white border border-white/20 px-10 py-4 rounded-full font-bold tracking-[0.1em]"
+          >
+            EMAIL US
+          </motion.a>
+        </div>
+      </div>
     </section>
   );
 }
@@ -928,7 +737,7 @@ function Footer() {
               </div>
             </div>
             <p className="text-white/40 text-sm max-w-sm leading-relaxed mb-8">
-              Wework, Salarpuria Symbiosis Road, Bannerghatta Road, Begur Hobli, Bengaluru Urban, Karnataka, 560076.
+              Empowering students to achieve academic excellence through personalized and result-driven education in Delhi.
             </p>
             <div className="flex gap-4">
               {[Instagram, Youtube, Linkedin].map((Icon, i) => (
@@ -947,9 +756,9 @@ function Footer() {
           <div>
             <h4 className="text-white font-bold mb-6 uppercase tracking-widest text-xs">Quick Links</h4>
             <ul className="space-y-4">
-              {["Home", "Learning", "UG Program", "Outcomes"].map((link) => (
+              {["Home", "Courses", "Faculty", "Success Stories"].map((link) => (
                 <li key={link}>
-                  <a href="#" className="text-white/40 hover:text-[#E8C170] transition-colors text-sm font-medium">{link}</a>
+                  <a href={`#${link.toLowerCase().replace(" ", "-")}`} className="text-white/40 hover:text-[#E8C170] transition-colors text-sm font-medium">{link}</a>
                 </li>
               ))}
             </ul>
@@ -957,7 +766,9 @@ function Footer() {
           
           <div>
             <h4 className="text-white font-bold mb-6 uppercase tracking-widest text-xs">Contact</h4>
-            <a href="mailto:info@mesaschool.co" className="text-[#E8C170] font-bold text-sm block mb-4">info@mesaschool.co</a>
+            <a href="mailto:info@ideologyclasses.com" className="text-[#E8C170] font-bold text-sm block mb-4">info@ideologyclasses.com</a>
+            <p className="text-white/40 text-sm">Location: Delhi</p>
+            <p className="text-white/40 text-sm">+91 98765 43210</p>
             <div className="space-y-4 mt-8 pt-8 border-t border-white/5">
               <a href="#" className="text-white/20 hover:text-white transition-colors text-xs block uppercase tracking-widest font-bold">Terms of Use</a>
               <a href="#" className="text-white/20 hover:text-white transition-colors text-xs block uppercase tracking-widest font-bold">Privacy Policy</a>
@@ -1006,13 +817,15 @@ export default function Home() {
     <div ref={containerRef} className="min-h-screen bg-[#3D1111] overflow-x-hidden selection:bg-[#E8C170] selection:text-[#3D1111] scroll-smooth">
       <Navbar />
       <Hero />
-      <PartnerLogos />
-      <Supporters />
+      <Courses />
+      <WhyChooseIDC />
+      <Teachers />
       <InOfficeProjects />
       <NewAgeAcademics />
       <EligibilityCriteria />
-      <FoundingCohort />
       <Scholarships />
+      <Testimonials />
+      <Contact />
       <Footer />
     </div>
   );
