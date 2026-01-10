@@ -831,7 +831,7 @@ function Testimonials() {
           viewport={{ once: true }}
           className="text-white text-4xl md:text-7xl font-display mb-6"
         >
-          Meet the <span className="font-black italic text-[#E8C170]">Founding Cohort</span>
+          Our <span className="font-black italic text-[#E8C170]">Wall of Fame</span>
         </motion.h2>
         <motion.p 
           initial={{ opacity: 0, x: -20 }}
@@ -840,7 +840,7 @@ function Testimonials() {
           transition={{ delay: 0.1 }}
           className="text-white/60 text-lg max-w-2xl leading-relaxed"
         >
-          A peek into the 100 builders, creators, and innovators who make up Mesa's Founder's Batch
+          Celebrating the exceptional achievements of our students who have consistently redefined excellence.
         </motion.p>
       </div>
 
@@ -981,7 +981,7 @@ function Footer() {
 
 function Preloader({ onComplete }: { onComplete: () => void }) {
   useEffect(() => {
-    const timer = setTimeout(onComplete, 2500);
+    const timer = setTimeout(onComplete, 2000);
     return () => clearTimeout(timer);
   }, [onComplete]);
 
@@ -989,47 +989,38 @@ function Preloader({ onComplete }: { onComplete: () => void }) {
     <motion.div
       initial={{ opacity: 1 }}
       exit={{ 
-        y: "-100%",
-        transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] }
+        opacity: 0,
+        transition: { duration: 0.5, ease: "easeInOut" }
       }}
       className="fixed inset-0 z-[100] bg-[#3D1111] flex flex-col items-center justify-center"
     >
-      <div className="relative">
+      <div className="relative flex flex-col items-center">
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-[#E8C170]/20 shadow-2xl bg-[#3D1111] mb-8"
         >
           <img src={idcLogo} alt="IDC Logo" className="w-full h-full object-cover" />
         </motion.div>
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-          className="absolute -inset-4 border-t-2 border-[#E8C170] rounded-full"
-        />
-      </div>
-
-      <div className="text-center overflow-hidden">
-        <motion.div
-          initial={{ y: 50 }}
-          animate={{ y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+        
+        <div className="w-48 h-1 bg-white/10 rounded-full overflow-hidden relative">
+          <motion.div
+            initial={{ width: "0%" }}
+            animate={{ width: "100%" }}
+            transition={{ duration: 1.8, ease: "easeInOut" }}
+            className="absolute inset-y-0 left-0 bg-[#E8C170] shadow-[0_0_15px_rgba(232,193,112,0.5)]"
+          />
+        </div>
+        
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.5 }}
+          className="mt-4 text-[#E8C170] font-sans font-black text-[10px] tracking-[0.4em] uppercase"
         >
-          <span className="font-sans font-black text-4xl md:text-6xl text-white tracking-tighter">IDC</span>
-          <span className="text-[10px] md:text-xs block mt-1 text-[#E8C170] font-sans font-black tracking-[0.4em] uppercase">
-            Ideology Classes
-          </span>
-        </motion.div>
-      </div>
-
-      <div className="mt-12 w-48 h-[2px] bg-white/10 rounded-full overflow-hidden relative">
-        <motion.div
-          initial={{ left: "-100%" }}
-          animate={{ left: "100%" }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute inset-0 bg-gradient-to-r from-transparent via-[#E8C170] to-transparent w-full h-full"
-        />
+          Loading Excellence
+        </motion.p>
       </div>
     </motion.div>
   );
