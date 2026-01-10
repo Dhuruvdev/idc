@@ -16,6 +16,11 @@ import studentGirl from "@assets/generated_images/indian-teen-girl-student.png";
 import studentBoy from "@assets/generated_images/indian-teen-boy-glasses.png";
 import idcLogo from "@assets/319537515_877306970380833_8458113406465131312_n_1768036988839.jpg";
 
+// Placeholder imports for generated institute images
+import inst1 from "@assets/generated_images/modern_coaching_institute_classroom_interior.png";
+import inst2 from "@assets/generated_images/institute_reception_and_lounge_area.png";
+import inst3 from "@assets/generated_images/institute_computer_lab_facility.png";
+
 const cardVariants = {
   hidden: { opacity: 0, y: 30, scale: 0.95 },
   visible: (i: number) => ({
@@ -175,8 +180,8 @@ function Hero() {
 
 function Courses() {
   const courses = [
-    { title: "Classes 6th–10th", description: "Strengthen your core concepts in Maths, Science, English, and more with expert-led sessions.", tags: ["Foundation", "Maths", "Science"], icon: <BookOpen className="w-6 h-6" /> },
-    { title: "Classes 11th–12th", subtitle: "(Arts | Commerce | Maths)", description: "Subject-specific preparation tailored to CBSE and State Boards with deep conceptual clarity.", tags: ["CBSE", "State Boards", "Conceptual"], icon: <GraduationCap className="w-6 h-6" /> },
+    { title: "Classes 6th–10th", description: "Strengthen your core concepts in Maths, Science, English, and Social Studies with expert-led sessions.", tags: ["Foundation", "Maths", "Science"], icon: <BookOpen className="w-6 h-6" /> },
+    { title: "Classes 11th–12th (Commerce)", description: "Specialized coaching for core commerce subjects to build a strong professional base.", tags: ["Accounts", "Economics", "Business Studies", "Applied Maths"], icon: <GraduationCap className="w-6 h-6" /> },
     { title: "Undergraduate (UG)", description: "Special guidance for B.Com, B.A., B.Sc., and other university-level exams.", tags: ["B.Com", "B.A", "B.Sc"], icon: <Briefcase className="w-6 h-6" /> },
     { title: "Postgraduate (PG)", description: "Expert mentors to help you excel in M.Com, M.A., and advanced academic goals.", tags: ["M.Com", "M.A", "Advanced"], icon: <Award className="w-6 h-6" /> },
     { title: "English & Personality", description: "Improve communication, fluency, and confidence through structured English-speaking programs.", tags: ["Fluency", "Confidence", "Soft Skills"], icon: <Settings className="w-6 h-6" /> }
@@ -193,7 +198,6 @@ function Courses() {
             <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} whileHover={{ y: -8 }} className="bg-white p-8 rounded-3xl shadow-xl border border-[#3D1111]/5 group transition-all w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-1.5rem)] max-w-sm">
               <div className="w-14 h-14 rounded-2xl bg-[#3D1111] text-[#E8C170] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">{course.icon}</div>
               <h3 className="text-2xl font-display font-bold text-[#3D1111] mb-2">{course.title}</h3>
-              {course.subtitle && <p className="text-[#E8C170] font-bold text-sm mb-2">{course.subtitle}</p>}
               <p className="text-[#3D1111]/70 mb-6 leading-relaxed">{course.description}</p>
               <div className="flex flex-wrap gap-2 mt-auto">
                 {course.tags.map(tag => (
@@ -202,6 +206,78 @@ function Courses() {
               </div>
             </motion.div>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Institute() {
+  const images = [
+    { title: "Modern Classrooms", image: inst1 },
+    { title: "Reception Area", image: inst2 },
+    { title: "Computer Lab", image: inst3 },
+    { title: "Study Hall", image: inst1 },
+    { title: "Library", image: inst2 }
+  ];
+  return (
+    <section id="institute" className="bg-[#3D1111] py-24 px-6 overflow-hidden">
+      <div className="max-w-7xl mx-auto mb-16">
+        <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-white text-4xl md:text-7xl font-display mb-6">Our <span className="italic text-[#E8C170]">Institute</span></motion.h2>
+        <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-white/60 text-lg max-w-2xl leading-relaxed">Experience our world-class facilities designed to provide the perfect environment for focused learning.</motion.p>
+      </div>
+      <div className="flex gap-4 md:gap-10 overflow-x-auto lg:overflow-visible pb-8 no-scrollbar snap-x snap-mandatory">
+        {images.map((item, i) => (
+          <motion.div key={i} custom={i} variants={cardVariants} className="flex-shrink-0 w-[280px] md:w-[450px] snap-center group relative aspect-video rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-2xl">
+            <img src={item.image} alt={item.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8">
+              <span className="text-white font-display text-2xl font-bold italic">{item.title}</span>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function FindUs() {
+  return (
+    <section id="find-us" className="bg-[#FDFBF7] py-24 px-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+            <h2 className="text-4xl md:text-6xl font-display text-[#3D1111] mb-8">Find <span className="italic text-[#E8C170]">Us</span></h2>
+            <div className="space-y-8">
+              <div className="flex gap-6 items-start">
+                <div className="w-12 h-12 rounded-2xl bg-[#3D1111] text-[#E8C170] flex items-center justify-center flex-shrink-0">
+                  <Settings className="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-[#3D1111] mb-2">Main Branch</h3>
+                  <p className="text-[#3D1111]/60 leading-relaxed">N-35/1, Near Kali Mandir,<br />Block N, Middle Circle, Connaught Place,<br />New Delhi, Delhi 110001</p>
+                </div>
+              </div>
+              <div className="flex gap-6 items-start">
+                <div className="w-12 h-12 rounded-2xl bg-[#3D1111] text-[#E8C170] flex items-center justify-center flex-shrink-0">
+                  <BookOpen className="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-[#3D1111] mb-2">Connect</h3>
+                  <p className="text-[#3D1111]/60 leading-relaxed">Phone: +91 99999 99999<br />Email: info@idcclasses.com</p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+          <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="h-[400px] rounded-[2.5rem] overflow-hidden shadow-2xl border border-[#3D1111]/5 grayscale hover:grayscale-0 transition-all duration-700">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.956799052029!2d77.216656315083!3d28.63045698242036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd3639999999%3A0x2f1b111111111111!2sConnaught%20Place%2C%20New%20Delhi%2C%20Delhi!5e0!3m2!1sen!2sin!4v1625654321000!5m2!1sen!2sin" 
+              width="100%" 
+              height="100%" 
+              style={{ border: 0 }} 
+              allowFullScreen={true} 
+              loading="lazy"
+            />
+          </motion.div>
         </div>
       </div>
     </section>
@@ -453,9 +529,11 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Courses />
+      <Institute />
       <WhyChooseIDC />
       <Teachers />
       <Testimonials />
+      <FindUs />
       <Footer />
     </div>
   );
