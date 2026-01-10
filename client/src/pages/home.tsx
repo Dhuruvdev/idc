@@ -79,7 +79,7 @@ function Navbar() {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 px-6 py-4 ${scrolled ? "bg-black/20 backdrop-blur-xl py-3" : "bg-transparent"}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 px-6 py-4 \${scrolled ? "bg-black/20 backdrop-blur-xl py-3" : "bg-transparent"}`}>
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center gap-3 group cursor-pointer relative z-[110]">
           <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/20 group-hover:border-[#E8C170] transition-all duration-500 shadow-lg group-hover:scale-110">
@@ -309,64 +309,78 @@ function Teachers() {
   );
 }
 
+function WallOfFameCard({ student, i }: { student: any, i: number }) {
+  return (
+    <motion.div 
+      key={i} 
+      custom={i} 
+      variants={cardVariants} 
+      className="flex-shrink-0 w-[280px] md:w-[450px] snap-center group relative flex flex-row bg-[#3D1111] rounded-3xl md:rounded-[2.5rem] shadow-2xl overflow-hidden border border-white/5 p-6 md:p-8 gap-4 md:gap-6 items-center"
+      data-testid={`testimonial-card-\${i}`}
+    >
+      <div className="flex-1 flex flex-col justify-center min-w-0">
+        <h3 className="text-xl md:text-4xl font-display text-white font-black leading-tight mb-2 truncate">
+          {student.name}
+        </h3>
+        <div className="h-[1px] w-full bg-white/20 mb-4 md:mb-6" />
+        <p className="text-[#E8C170] italic font-serif text-sm md:text-2xl mb-1 md:mb-2 truncate">
+          {student.school}
+        </p>
+        <p className="text-white/40 text-[10px] md:text-lg font-sans uppercase tracking-widest truncate">
+          {student.location}
+        </p>
+        <div className="mt-4 inline-flex items-center gap-2 bg-white/5 self-start px-3 py-1 rounded-full border border-white/10">
+          <span className="text-[8px] md:text-xs font-black text-[#E8C170] uppercase tracking-widest">{student.marks}</span>
+        </div>
+      </div>
+      <div className="relative w-24 h-24 md:w-48 md:h-48 flex-shrink-0 rounded-2xl md:rounded-[2rem] overflow-hidden shadow-2xl border border-white/10 group-hover:scale-105 transition-transform duration-700">
+        <div className="absolute inset-0 bg-gradient-to-t from-[#3D1111]/40 to-transparent z-10" />
+        <img src={student.image} alt={student.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
+      </div>
+    </motion.div>
+  );
+}
+
 function Testimonials() {
-  const testimonials = [
-    { name: "Priyanshi M", school: "Bal Bharti Public School", location: "RAIPUR", marks: "98% IN ACCOUNTS", image: studentGirl, course: "CBSE Class XII" },
-    { name: "Aryan Singh", school: "Modern School Vasant Vihar", location: "NEW DELHI", marks: "96% IN MATHS", image: studentBoy, course: "CBSE Class XII" },
-    { name: "Sneha Kapur", school: "Delhi Public School", location: "ROHINI", marks: "97% IN ECONOMICS", image: studentGirl, course: "CBSE Class XII" }
+  const classX = [
+    { name: "Dyumna Madan", school: "Woodstock School", location: "Mussoorie", marks: "98% IN ACCOUNTS", image: studentGirl },
+    { name: "Priyanshi M", school: "Bal Bharti Public School", location: "RAIPUR", marks: "98% IN ACCOUNTS", image: studentGirl },
   ];
+  
+  const classXII = [
+    { name: "Aryan Singh", school: "Modern School Vasant Vihar", location: "NEW DELHI", marks: "96% IN MATHS", image: studentBoy },
+    { name: "Sneha Kapur", school: "Delhi Public School", location: "ROHINI", marks: "97% IN ECONOMICS", image: studentGirl }
+  ];
+
   return (
     <section id="testimonials" className="bg-[#3D1111] py-24 px-6 overflow-hidden relative">
       <div className="max-w-7xl mx-auto mb-16 relative z-10">
         <motion.h2 initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="text-white text-4xl md:text-7xl font-display mb-6">Wall of <span className="font-black italic text-[#E8C170]">Fame</span></motion.h2>
         <motion.p initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-white/60 text-lg max-w-2xl leading-relaxed">Celebrating the academic excellence and outstanding achievements of our top performers.</motion.p>
       </div>
-      <div className="testimonials-track flex gap-4 md:gap-10 overflow-x-auto lg:overflow-visible pb-8 no-scrollbar snap-x snap-mandatory relative z-10">
-        {testimonials.map((student, i) => (
-          <motion.div key={i} custom={i} variants={cardVariants} className="flex-shrink-0 w-[280px] md:w-[450px] snap-center group relative flex flex-col bg-[#FDFBF7] rounded-[2rem] md:rounded-[2.5rem] shadow-2xl overflow-hidden border border-[#3D1111]/5" data-testid={`testimonial-card-\${i}`}>
-            <div className="absolute top-0 left-0 w-full h-1.5 md:h-2 bg-gradient-to-r from-[#E8C170] to-[#3D1111]/20" />
-            <div className="p-6 md:p-10 flex justify-between items-start">
-              <div className="space-y-1">
-                <span className="block text-[#3D1111]/30 text-[8px] md:text-xs font-black uppercase tracking-[0.2em]">Student Record</span>
-                <div className="h-0.5 w-8 md:w-10 bg-[#E8C170]/30 rounded-full" />
-              </div>
-              <div className="w-8 h-8 md:w-16 md:h-16 rounded-full bg-[#3D1111]/5 flex items-center justify-center">
-                <GraduationCap className="w-4 h-4 md:h-8 md:w-8 text-[#3D1111]/20" />
-              </div>
-            </div>
-            <div className="px-6 md:px-10 flex gap-4 md:gap-8 items-center mb-6 md:mb-8">
-              <div className="relative w-20 h-20 md:w-40 md:h-40 flex-shrink-0 rounded-2xl md:rounded-3xl overflow-hidden shadow-xl md:shadow-2xl border border-[#3D1111]/5 group-hover:scale-105 transition-transform duration-700">
-                <div className="absolute inset-0 bg-gradient-to-t from-[#3D1111]/20 to-transparent z-10" />
-                <img src={student.image} alt={student.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
-              </div>
-              <div className="flex-1 min-w-0">
-                <h3 className="text-base md:text-3xl font-display text-[#3D1111] font-black leading-tight mb-1 md:mb-2 truncate">{student.name}</h3>
-                <p className="text-[#E8C170] text-[8px] md:text-sm font-black uppercase tracking-widest mb-2 md:mb-4 truncate">{student.marks}</p>
-                <div className="inline-flex items-center gap-2 md:gap-3 bg-[#3D1111]/5 px-2 md:px-4 py-1 md:py-2 rounded-full">
-                  <div className="w-1 md:w-2 h-1 md:h-2 rounded-full bg-[#E8C170]" />
-                  <span className="text-[7px] md:text-xs font-bold text-[#3D1111]/60 uppercase tracking-widest">{student.location}</span>
-                </div>
-              </div>
-            </div>
-            <div className="px-6 md:px-10 flex-1 flex flex-col pb-8 md:pb-12">
-              <div className="bg-[#3D1111]/5 p-4 md:p-8 rounded-2xl md:rounded-3xl relative mb-6 md:mb-8">
-                <div className="absolute -top-3 md:-top-4 left-6 md:left-8 text-2xl md:text-4xl text-[#E8C170] font-serif opacity-50">"</div>
-                <p className="text-[#3D1111]/80 text-[10px] md:text-lg font-sans leading-relaxed italic">Proudly achieving excellence in {student.course}. A testament to hard work and quality guidance.</p>
-              </div>
-              <div className="mt-auto flex items-center justify-between pt-4 md:pt-6 border-t border-[#3D1111]/10">
-                <div className="flex flex-col">
-                  <span className="text-[7px] md:text-[10px] font-black text-[#3D1111]/30 uppercase tracking-[0.2em] mb-0.5 md:mb-1">School</span>
-                  <span className="text-[9px] md:text-sm font-bold text-[#3D1111]/70 truncate max-w-[150px] md:max-w-none">{student.school}</span>
-                </div>
-                <div className="h-8 md:h-10 w-[1px] bg-[#3D1111]/10" />
-                <div className="flex flex-col text-right">
-                  <span className="text-[7px] md:text-[10px] font-black text-[#3D1111]/30 uppercase tracking-[0.2em] mb-0.5 md:mb-1">Verification</span>
-                  <span className="text-[9px] md:text-sm font-bold text-[#E8C170]">IDC VERIFIED</span>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        ))}
+
+      <div className="max-w-7xl mx-auto relative z-10 mb-12">
+        <h3 className="text-white/40 text-xs md:text-sm font-black uppercase tracking-[0.3em] mb-8 flex items-center gap-4">
+          <span className="flex-shrink-0">Class X Boards</span>
+          <div className="h-[1px] w-full bg-white/10" />
+        </h3>
+        <div className="flex gap-4 md:gap-10 overflow-x-auto lg:overflow-visible pb-8 no-scrollbar snap-x snap-mandatory">
+          {classX.map((student, i) => (
+            <WallOfFameCard key={i} student={student} i={i} />
+          ))}
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        <h3 className="text-white/40 text-xs md:text-sm font-black uppercase tracking-[0.3em] mb-8 flex items-center gap-4">
+          <span className="flex-shrink-0">Class XII Boards</span>
+          <div className="h-[1px] w-full bg-white/10" />
+        </h3>
+        <div className="flex gap-4 md:gap-10 overflow-x-auto lg:overflow-visible pb-8 no-scrollbar snap-x snap-mandatory">
+          {classXII.map((student, i) => (
+            <WallOfFameCard key={i} student={student} i={i} />
+          ))}
+        </div>
       </div>
     </section>
   );
