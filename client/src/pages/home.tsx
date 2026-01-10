@@ -526,52 +526,120 @@ function CTAButton() {
 function InOfficeProjects() {
   const projects = [
     {
-      company: "Modern Learning Center",
-      description: "A complete redesign of classroom interiors to create a high-tech, minimalist environment that maximizes focus and student engagement.",
+      company: "Digital Classrooms",
+      description: "Smart classrooms equipped with interactive displays and digital learning tools to provide an immersive educational experience.",
       image: coachingInstituteImg,
-      color: "from-[#FDFBF7] to-[#F5F0E6]"
+      location: "Main Campus, Delhi",
+      category: "Infrastructure"
     },
     {
-      company: "Academic Roadmap",
-      description: "Developing a 24-month personalized growth plan for students to excel in competitive exams and board preparations.",
+      company: "Modern Science Lab",
+      description: "State-of-the-art laboratory facilities for practical experiments and hands-on learning in Physics, Chemistry, and Biology.",
+      image: professorImage,
+      location: "Academic Block",
+      category: "Lab Facility"
+    },
+    {
+      company: "Student Hub",
+      description: "A collaborative space designed for group discussions, peer learning, and academic brainstorming sessions.",
       image: teamPhoto,
-      color: "from-[#FDFBF7] to-[#F5F0E6]"
+      location: "Library Wing",
+      category: "Collaborative"
+    },
+    {
+      company: "Academic Planning",
+      description: "Dedicated counseling and planning zones where expert mentors help students chart their career roadmaps.",
+      image: studentBoy,
+      location: "Counseling Center",
+      category: "Mentorship"
     }
   ];
 
   return (
-    <section id="projects" className="bg-[#EDE5D8] py-20 px-6" data-testid="projects-section">
-      <div className="max-w-7xl mx-auto">
+    <section id="projects" className="bg-[#EDE5D8] py-24 px-6 min-h-screen flex items-center overflow-hidden" data-testid="projects-section">
+      <div className="max-w-7xl mx-auto w-full">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="mb-16"
         >
-          <h2 className="text-3xl md:text-5xl font-display text-[#3D1111] mb-6">
+          <h2 className="text-4xl md:text-7xl font-display text-[#3D1111] mb-6">
             Our <span className="italic">Initiatives</span>
           </h2>
-          <p className="text-[#3D1111]/60 text-lg max-w-2xl mx-auto">
-            Practical projects and real-world learning modules designed to build confidence and academic excellence.
+          <p className="text-[#3D1111]/60 text-lg max-w-2xl leading-relaxed">
+            Take a look at our modern campus facilities and student-centric academic initiatives.
           </p>
         </motion.div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        
+        <div className="projects-track flex gap-4 md:gap-10 overflow-x-auto lg:overflow-visible pb-8 no-scrollbar snap-x snap-mandatory">
           {projects.map((project, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.15 }}
-              whileHover={{ y: -5 }}
-              className="rounded-2xl overflow-hidden shadow-xl bg-white group"
+              custom={i}
+              variants={cardVariants}
+              className="flex-shrink-0 w-[300px] md:w-[450px] snap-center group relative flex flex-col bg-[#FDFBF7] rounded-[2rem] md:rounded-[2.5rem] shadow-2xl overflow-hidden border border-[#3D1111]/5"
+              data-testid={`project-card-${i}`}
             >
-              <div className="h-64 relative overflow-hidden">
-                <img src={project.image} alt={project.company} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
+              <div className="absolute top-0 left-0 w-full h-1.5 md:h-2 bg-gradient-to-r from-[#E8C170] to-[#3D1111]/10" />
+
+              <div className="p-6 md:p-10 flex justify-between items-start">
+                <div className="space-y-1">
+                  <span className="block text-[#3D1111]/30 text-[8px] md:text-xs font-black uppercase tracking-[0.2em]">
+                    Project Log
+                  </span>
+                  <div className="h-0.5 w-8 md:w-10 bg-[#E8C170]/30 rounded-full" />
+                </div>
+                <div className="w-8 h-8 md:w-16 md:h-16 rounded-full bg-[#3D1111]/5 flex items-center justify-center">
+                  <Cpu className="w-4 h-4 md:h-8 md:w-8 text-[#3D1111]/20" />
+                </div>
               </div>
-              <div className="p-8 border-t-4 border-[#E8C170]">
-                <h3 className="font-display text-2xl text-[#3D1111] mb-4 uppercase tracking-tight">{project.company}</h3>
-                <p className="text-[#3D1111]/70 leading-relaxed italic">{project.description}</p>
+
+              <div className="px-6 md:px-10 flex gap-4 md:gap-8 items-center mb-6 md:mb-8">
+                <div className="relative w-24 h-24 md:w-44 md:h-44 flex-shrink-0 rounded-2xl md:rounded-3xl overflow-hidden shadow-xl md:shadow-2xl border border-[#3D1111]/5 group-hover:scale-105 transition-transform duration-700">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#3D1111]/20 to-transparent z-10" />
+                  <img
+                    src={project.image}
+                    alt={project.company}
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                  />
+                </div>
+
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-base md:text-3xl font-display text-[#3D1111] font-black leading-tight mb-1 md:mb-2 truncate">
+                    {project.company}
+                  </h3>
+                  <p className="text-[#E8C170] text-[8px] md:text-sm font-black uppercase tracking-widest mb-2 md:mb-4 truncate">
+                    {project.category}
+                  </p>
+                  <div className="inline-flex items-center gap-2 md:gap-3 bg-[#3D1111]/5 px-2 md:px-4 py-1 md:py-2 rounded-full">
+                    <Rocket className="w-2.5 h-2.5 md:w-3 md:h-3 text-[#E8C170]" />
+                    <span className="text-[7px] md:text-xs font-bold text-[#3D1111]/60 uppercase tracking-widest">
+                      {project.location}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="px-6 md:px-10 flex-1 flex flex-col pb-8 md:pb-12">
+                <div className="bg-[#3D1111]/5 p-4 md:p-8 rounded-2xl md:rounded-3xl relative mb-6 md:mb-8">
+                  <div className="absolute -top-3 md:-top-4 left-6 md:left-8 text-2xl md:text-4xl text-[#E8C170] font-serif opacity-50">"</div>
+                  <p className="text-[#3D1111]/80 text-[10px] md:text-lg font-sans leading-relaxed line-clamp-3 md:line-clamp-4 italic">
+                    {project.description}
+                  </p>
+                </div>
+
+                <div className="mt-auto flex items-center justify-between pt-4 md:pt-6 border-t border-[#3D1111]/10">
+                  <div className="flex flex-col">
+                    <span className="text-[7px] md:text-[10px] font-black text-[#3D1111]/30 uppercase tracking-[0.2em] mb-0.5 md:mb-1">Facility Status</span>
+                    <span className="text-[9px] md:text-sm font-bold text-[#3D1111]/70">OPERATIONAL</span>
+                  </div>
+                  <div className="h-8 md:h-10 w-[1px] bg-[#3D1111]/10" />
+                  <div className="flex flex-col text-right">
+                    <span className="text-[7px] md:text-[10px] font-black text-[#3D1111]/30 uppercase tracking-[0.2em] mb-0.5 md:mb-1">Reference</span>
+                    <span className="text-[9px] md:text-sm font-bold text-[#E8C170]">IDC CAMPUS</span>
+                  </div>
+                </div>
               </div>
             </motion.div>
           ))}
@@ -851,6 +919,23 @@ export default function Home() {
           trigger: "#faculty",
           start: "top top",
           end: () => `+=${teachersTrack.scrollWidth}`,
+          scrub: 1,
+          pin: true,
+          anticipatePin: 1,
+        }
+      });
+    }
+
+    // Horizontal scroll for initiatives section - only on desktop
+    const projectsTrack = document.querySelector(".projects-track");
+    if (projectsTrack && window.innerWidth > 1024) {
+      gsap.to(projectsTrack, {
+        x: () => -(projectsTrack.scrollWidth - window.innerWidth + 48),
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#projects",
+          start: "top top",
+          end: () => `+=${projectsTrack.scrollWidth}`,
           scrub: 1,
           pin: true,
           anticipatePin: 1,
