@@ -948,15 +948,20 @@ function Testimonials() {
         </motion.p>
       </div>
 
-      <div className="testimonials-track flex gap-6 md:gap-10 overflow-x-auto lg:overflow-visible pb-12 no-scrollbar snap-x snap-mandatory relative z-10">
+      <div className="testimonials-track flex gap-6 md:gap-10 overflow-x-auto lg:overflow-visible pb-12 no-scrollbar relative z-10 pl-6 md:pl-12">
         {testimonials.map((student, i) => (
           <motion.div
             key={i}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ delay: i * 0.05, duration: 0.4, ease: "easeOut" }}
-            className="flex-shrink-0 w-[280px] md:w-[450px] snap-center group relative flex flex-col bg-[#FDFBF7] rounded-[2rem] md:rounded-[2.5rem] shadow-2xl overflow-hidden border border-[#3D1111]/5 will-change-transform"
+            initial={{ opacity: 0, x: 100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "0px 100px 0px 0px" }}
+            transition={{ 
+              type: "spring",
+              stiffness: 50,
+              damping: 20,
+              delay: i * 0.1 
+            }}
+            className="flex-shrink-0 w-[280px] md:w-[450px] group relative flex flex-col bg-[#FDFBF7] rounded-[2rem] md:rounded-[2.5rem] shadow-2xl overflow-hidden border border-[#3D1111]/5 will-change-transform"
           >
             {/* Top decorative element matching teacher cards */}
             <div className="absolute top-0 left-0 w-full h-1.5 md:h-2 bg-gradient-to-r from-[#E8C170] to-[#3D1111]/20" />
