@@ -15,6 +15,7 @@ import studentsGroup from "@assets/generated_images/college-students-celebration
 import studentGirl from "@assets/generated_images/indian-teen-girl-student.png";
 import studentBoy from "@assets/generated_images/indian-teen-boy-glasses.png";
 import professorImage from "@assets/generated_images/professor-lecture-classroom.png";
+import coachingInstituteImg from "@assets/generated_images/modern_coaching_institute_interior_redesign.png";
 
 const cardVariants = {
   hidden: { opacity: 0, y: 30, scale: 0.95 },
@@ -362,6 +363,12 @@ function CTAButton() {
 
 function InOfficeProjects() {
   const projects = [
+    {
+      company: "Coaching Institute",
+      description: "Redesigning the learning environment for a premium coaching institute. Our students conceptualized and implemented a modern, high-tech interior that fosters creativity and focused learning, featuring beautiful minimalist aesthetics and functional design.",
+      image: coachingInstituteImg,
+      color: "from-[#FDFBF7] to-[#F5F0E6]"
+    },
     {
       company: "epigamia",
       description: "As competition heated up in the high-protein yogurt space, Epigamia needed to decide whether to double down or pivot its strategy. Mesa students led market research, 100+ consumer interviews, and taste tests to uncover insights, then built a 24-month roadmap across brand, product, and growth.",
