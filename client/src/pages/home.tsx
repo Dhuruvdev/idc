@@ -425,71 +425,91 @@ function Teachers() {
           </p>
         </motion.div>
         
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8"
-        >
-          {teachers.map((teacher, i) => (
-            <motion.div
-              key={i}
-              custom={i}
-              variants={cardVariants}
-              className="group relative flex flex-col bg-[#FDFBF7] rounded-[2.5rem] shadow-2xl overflow-hidden aspect-square border border-[#3D1111]/5"
-              data-testid={`teacher-card-${i}`}
-            >
-              {/* Header Info */}
-              <div className="p-4 md:p-6 flex justify-between items-start">
-                <div className="space-y-1">
-                  <span className="block text-[#3D1111]/30 text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em]">
-                    Faculty Profile
-                  </span>
-                </div>
-                <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-[#3D1111]/5 flex items-center justify-center">
-                  <GraduationCap className="w-4 h-4 md:h-5 md:w-5 text-[#3D1111]/20" />
-                </div>
-              </div>
+        <div className="relative -mx-6 px-6">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="flex gap-6 overflow-x-auto pb-8 no-scrollbar snap-x snap-mandatory"
+          >
+            {teachers.map((teacher, i) => (
+              <motion.div
+                key={i}
+                custom={i}
+                variants={cardVariants}
+                className="flex-shrink-0 w-[300px] md:w-[400px] group relative flex flex-col bg-[#FDFBF7] rounded-[2.5rem] shadow-2xl overflow-hidden snap-center border border-[#3D1111]/5"
+                data-testid={`teacher-card-${i}`}
+              >
+                {/* Top decorative element */}
+                <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-[#E8C170] to-[#3D1111]/20" />
 
-              {/* Image Section - Pill Shape within Square */}
-              <div className="px-4 md:px-6 mb-4">
-                <div className="relative w-full h-16 md:h-24 rounded-full overflow-hidden shadow-inner border border-[#3D1111]/5 group-hover:scale-[1.02] transition-transform duration-500">
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <img
-                    src={teacher.image}
-                    alt={teacher.name}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-110 group-hover:scale-100"
-                  />
-                </div>
-              </div>
-
-              {/* Content Section */}
-              <div className="px-4 md:px-6 flex-1 flex flex-col">
-                <div className="space-y-0.5 md:space-y-1">
-                  <h3 className="text-sm md:text-xl font-display text-[#3D1111] font-black leading-tight">
-                    {teacher.name}
-                  </h3>
-                  <p className="text-[#E8C170] text-[8px] md:text-[11px] font-black uppercase tracking-wider">
-                    {teacher.subject}
-                  </p>
-                </div>
-
-                <div className="mt-auto pb-4 md:pb-6">
-                  <div className="flex items-center gap-2 text-[#3D1111]/40 mb-2 md:mb-4">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#E8C170]" />
-                    <span className="text-[7px] md:text-[10px] font-bold uppercase tracking-widest">
-                      {teacher.experience} Exp
+                {/* Header Info */}
+                <div className="p-6 md:p-8 flex justify-between items-start">
+                  <div className="space-y-1">
+                    <span className="block text-[#3D1111]/30 text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em]">
+                      Faculty Record
                     </span>
+                    <div className="h-0.5 w-8 bg-[#E8C170]/30 rounded-full" />
                   </div>
-                  
-                  {/* Subtle decorative line */}
-                  <div className="h-[1px] w-full bg-gradient-to-r from-[#3D1111]/10 via-transparent to-transparent" />
+                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#3D1111]/5 flex items-center justify-center">
+                    <GraduationCap className="w-5 h-5 md:h-6 md:w-6 text-[#3D1111]/20" />
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+
+                <div className="px-6 md:px-8 flex gap-6 items-center mb-6">
+                  {/* Image Section - Refined Shape */}
+                  <div className="relative w-24 h-24 md:w-32 md:h-32 flex-shrink-0 rounded-2xl overflow-hidden shadow-xl border border-[#3D1111]/5 group-hover:scale-105 transition-transform duration-500">
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#3D1111]/20 to-transparent z-10" />
+                    <img
+                      src={teacher.image}
+                      alt={teacher.name}
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                    />
+                  </div>
+
+                  {/* Identity Section */}
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-lg md:text-2xl font-display text-[#3D1111] font-black leading-tight mb-1 truncate">
+                      {teacher.name}
+                    </h3>
+                    <p className="text-[#E8C170] text-[10px] md:text-xs font-black uppercase tracking-widest mb-2 truncate">
+                      {teacher.subject}
+                    </p>
+                    <div className="inline-flex items-center gap-2 bg-[#3D1111]/5 px-3 py-1 rounded-full">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#E8C170]" />
+                      <span className="text-[9px] md:text-[10px] font-bold text-[#3D1111]/60 uppercase tracking-widest">
+                        {teacher.experience} Experience
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Content Section */}
+                <div className="px-6 md:px-8 flex-1 flex flex-col pb-8 md:pb-10">
+                  <div className="bg-[#3D1111]/5 p-4 md:p-6 rounded-2xl relative mb-6">
+                    <div className="absolute -top-3 left-6 text-2xl text-[#E8C170] font-serif opacity-50">"</div>
+                    <p className="text-[#3D1111]/80 text-xs md:text-base font-sans leading-relaxed line-clamp-4 md:line-clamp-3">
+                      {teacher.details}
+                    </p>
+                  </div>
+
+                  <div className="mt-auto flex items-center justify-between">
+                    <div className="flex flex-col">
+                      <span className="text-[8px] md:text-[9px] font-black text-[#3D1111]/30 uppercase tracking-[0.2em] mb-0.5">Academic Base</span>
+                      <span className="text-[10px] md:text-xs font-bold text-[#3D1111]/70">{teacher.graduation}</span>
+                    </div>
+                    <div className="h-8 w-[1px] bg-[#3D1111]/10" />
+                    <div className="flex flex-col text-right">
+                      <span className="text-[8px] md:text-[9px] font-black text-[#3D1111]/30 uppercase tracking-[0.2em] mb-0.5">Verification</span>
+                      <span className="text-[10px] md:text-xs font-bold text-[#E8C170]">IDC VERIFIED</span>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
       </div>
     </section>
   );
