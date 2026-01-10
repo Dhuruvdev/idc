@@ -153,21 +153,21 @@ function Hero() {
         alt="IDC Students"
         className="absolute inset-0 w-full h-full object-cover"
       />
-      <div className="relative z-20 min-h-screen flex flex-col justify-end pb-40 px-6 md:px-12">
+      <div className="relative z-20 min-h-screen flex flex-col justify-end pb-20 px-6 md:px-12">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="max-w-4xl"
+          className="max-w-4xl mx-auto text-center"
         >
           <h1 className="text-5xl md:text-8xl font-display text-white leading-tight mb-8">
             Empowering <span className="font-bold text-[#E8C170]">Academic Excellence</span>
           </h1>
-          <p className="text-white/80 text-lg md:text-xl max-w-2xl mb-12 leading-relaxed">
+          <p className="text-white/80 text-lg md:text-xl max-w-2xl mb-12 leading-relaxed mx-auto">
             Delhi's premier coaching for Classes 6th–12th, UG, and PG levels. Personalized and result-driven.
           </p>
         </motion.div>
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-wrap gap-4 justify-center">
           <motion.a
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
