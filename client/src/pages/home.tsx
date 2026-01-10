@@ -26,7 +26,7 @@ const cardVariants = {
     transition: {
       delay: i * 0.08,
       duration: 0.5,
-      ease: [0.25, 0.46, 0.45, 0.94]
+      ease: [0.25, 0.46, 0.45, 0.94] as any
     }
   }),
   hover: {
@@ -161,51 +161,195 @@ function Hero() {
         animate={{ scale: 1 }}
         transition={{ duration: 1.5, ease: "easeOut" }}
         src={heroImage}
-        alt="Mesa students"
+        alt="IDC Students"
         className="absolute inset-0 w-full h-full object-cover"
       />
-      <div className="absolute top-4 right-4 z-20 opacity-0 pointer-events-none">
-        <motion.div 
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.3, duration: 0.5 }}
-          className="flex items-center gap-2"
-        >
-          <div className="w-8 h-8 bg-white rounded flex items-center justify-center shadow-lg">
-            <span className="text-[#3D1111] font-bold text-lg">m</span>
-          </div>
-          <div className="text-white drop-shadow-lg">
-            <span className="font-bold text-lg">Mesa</span>
-            <span className="text-[10px] block -mt-1 text-white/90 tracking-wider">SCHOOL OF BUSINESS</span>
-          </div>
-        </motion.div>
-      </div>
-      <div className="relative z-20 min-h-screen flex flex-col justify-end pb-24 px-6 md:px-12">
+      <div className="relative z-20 min-h-screen flex flex-col justify-center pb-24 px-6 md:px-12">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="max-w-2xl"
+          className="max-w-4xl"
         >
-          <h1 className="text-4xl md:text-6xl font-display text-white leading-tight mb-8">
-            A UG Program where you{" "}
-            <span className="font-bold">build businesses</span> and{" "}
-            <span className="italic">learn outside the classroom</span>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-[#E8C170] font-bold tracking-[0.3em] mb-4 text-sm"
+          >
+            WELCOME TO IDEOLOGY CLASSES DELHI (IDC)
+          </motion.p>
+          <h1 className="text-5xl md:text-8xl font-display text-white leading-tight mb-8">
+            Empowering Students to <span className="font-bold text-[#E8C170]">Achieve Academic Excellence</span>
           </h1>
+          <p className="text-white/80 text-lg md:text-xl max-w-2xl mb-12 leading-relaxed">
+            Delhi's premier coaching institute offering personalized, result-driven education for students from Classes 6th–12th, Undergraduate (UG) and Postgraduate (PG) levels.
+          </p>
         </motion.div>
-        <motion.a
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          whileHover={{ scale: 1.01 }}
-          whileTap={{ scale: 0.99 }}
-          href="#learn-more"
-          className="mt-4 bg-[#F5F0E6] text-[#3D1111] px-8 py-5 rounded-full flex items-center justify-between font-bold hover:bg-white transition-all shadow-2xl max-w-sm"
-          data-testid="cta-learn-more"
-        >
-          <span className="text-sm tracking-[0.2em] font-bold">LEARN MORE</span>
-          <ArrowRight size={24} />
-        </motion.a>
+        <div className="flex flex-wrap gap-4">
+          <motion.a
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            href="#courses"
+            className="bg-[#E8C170] text-[#3D1111] px-10 py-5 rounded-full flex items-center gap-4 font-bold hover:bg-white transition-all shadow-2xl"
+          >
+            <span className="text-sm tracking-[0.2em]">EXPLORE COURSES</span>
+            <ArrowRight size={20} />
+          </motion.a>
+          <motion.a
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            href="#contact"
+            className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-10 py-5 rounded-full font-bold hover:bg-white/20 transition-all shadow-2xl"
+          >
+            <span className="text-sm tracking-[0.2em]">JOIN IDC FAMILY</span>
+          </motion.a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Courses() {
+  const courses = [
+    {
+      title: "Classes 6th–10th",
+      description: "Strengthen your core concepts in Maths, Science, English, and more with expert-led sessions.",
+      tags: ["Foundation", "Maths", "Science"],
+      icon: <BookOpen className="w-6 h-6" />
+    },
+    {
+      title: "Classes 11th–12th",
+      subtitle: "(Arts | Commerce | Maths)",
+      description: "Subject-specific preparation tailored to CBSE and State Boards with deep conceptual clarity.",
+      tags: ["CBSE", "State Boards", "Conceptual"],
+      icon: <GraduationCap className="w-6 h-6" />
+    },
+    {
+      title: "Undergraduate (UG)",
+      description: "Special guidance for B.Com, B.A., B.Sc., and other university-level exams.",
+      tags: ["B.Com", "B.A", "B.Sc"],
+      icon: <Briefcase className="w-6 h-6" />
+    },
+    {
+      title: "Postgraduate (PG)",
+      description: "Expert mentors to help you excel in M.Com, M.A., and advanced academic goals.",
+      tags: ["M.Com", "M.A", "Advanced"],
+      icon: <Award className="w-6 h-6" />
+    },
+    {
+      title: "English & Personality",
+      description: "Improve communication, fluency, and confidence through structured English-speaking programs.",
+      tags: ["Fluency", "Confidence", "Soft Skills"],
+      icon: <Settings className="w-6 h-6" />
+    }
+  ];
+
+  return (
+    <section id="courses" className="bg-[#F5F0E6] py-24 px-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-6xl font-display text-[#3D1111] mb-6">
+            Our <span className="italic text-[#E8C170]">Courses</span>
+          </h2>
+          <p className="text-[#3D1111]/60 text-xl max-w-3xl mx-auto">
+            Comprehensive Coaching for Every Stage of Learning. We build strong foundations for success.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {courses.map((course, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              whileHover={{ y: -8 }}
+              className="bg-white p-8 rounded-3xl shadow-xl border border-[#3D1111]/5 group transition-all"
+            >
+              <div className="w-14 h-14 rounded-2xl bg-[#3D1111] text-[#E8C170] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                {course.icon}
+              </div>
+              <h3 className="text-2xl font-display font-bold text-[#3D1111] mb-2">{course.title}</h3>
+              {course.subtitle && <p className="text-[#E8C170] font-bold text-sm mb-2">{course.subtitle}</p>}
+              <p className="text-[#3D1111]/70 mb-6 leading-relaxed">
+                {course.description}
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {course.tags.map(tag => (
+                  <span key={tag} className="text-[10px] font-bold uppercase tracking-widest bg-[#F5F0E6] text-[#3D1111]/60 px-3 py-1 rounded-full">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function WhyChooseIDC() {
+  const points = [
+    { title: "Experienced Faculty", desc: "Learn from highly qualified teachers who are passionate about your success." },
+    { title: "Comprehensive Material", desc: "Updated notes and resources designed to simplify complex topics." },
+    { title: "Personalized Attention", desc: "Small batches ensure every student receives focused guidance." },
+    { title: "Modern Techniques", desc: "Smart classrooms, digital aids, and test analytics for better outcomes." },
+    { title: "Affordable Fees", desc: "Quality education at pocket-friendly prices." },
+    { title: "Proven Results", desc: "A legacy of academic excellence and top-performing students across Delhi." }
+  ];
+
+  return (
+    <section className="bg-[#3D1111] py-24 px-6 overflow-hidden relative">
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-[#E8C170]/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2" />
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-4xl md:text-6xl font-display text-white mb-8">
+              Why Choose <br /><span className="text-[#E8C170] italic">Ideology Classes?</span>
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {points.map((point, i) => (
+                <motion.div 
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="space-y-2"
+                >
+                  <div className="w-8 h-1 bg-[#E8C170] rounded-full mb-4" />
+                  <h3 className="text-white font-bold text-lg">{point.title}</h3>
+                  <p className="text-white/60 text-sm leading-relaxed">{point.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="relative"
+          >
+            <div className="aspect-square rounded-full border-2 border-dashed border-[#E8C170]/30 animate-[spin_30s_linear_infinite] absolute inset-0 -m-8" />
+            <img 
+              src={studentsGroup} 
+              alt="IDC Students Success" 
+              className="rounded-3xl shadow-2xl relative z-10 w-full aspect-square object-cover"
+            />
+          </motion.div>
+        </div>
       </div>
     </section>
   );
