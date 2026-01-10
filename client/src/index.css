@@ -108,6 +108,7 @@
 
   --font-sans: 'DM Sans', sans-serif;
   --font-serif: 'Libre Baskerville', Georgia, serif;
+  --font-handwriting: 'Caveat', cursive;
   --font-mono: Menlo, monospace;
   --radius: .5rem;
   --shadow-2xs: 0px 2px 4px rgba(0,0,0,0.05);
@@ -145,6 +146,10 @@
 @layer utilities {
   .font-display {
     font-family: 'Libre Baskerville', Georgia, serif;
+  }
+
+  .font-handwriting {
+    font-family: 'Caveat', cursive;
   }
   
   .text-gradient-gold {

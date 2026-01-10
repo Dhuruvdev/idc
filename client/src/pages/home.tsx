@@ -45,7 +45,7 @@ const staggerContainer = {
 function Hero() {
   return (
     <section className="relative min-h-screen overflow-hidden" data-testid="hero-section">
-      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-[#3D1111]/70 to-[#3D1111] z-10" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/40 to-[#3D1111] z-10" />
       <motion.img
         initial={{ scale: 1.1 }}
         animate={{ scale: 1 }}
@@ -70,30 +70,31 @@ function Hero() {
           </div>
         </motion.div>
       </div>
-      <div className="relative z-20 min-h-screen flex flex-col justify-end pb-8 px-4">
+      <div className="relative z-20 min-h-screen flex flex-col justify-end pb-24 px-6 md:px-12">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="max-w-lg"
+          className="max-w-2xl"
         >
-          <h1 className="text-[32px] md:text-5xl font-display text-white leading-[1.15] mb-6 drop-shadow-lg">
+          <h1 className="text-4xl md:text-6xl font-display text-white leading-tight mb-8">
             A UG Program where you{" "}
-            <span className="text-[#C5A047]">build businesses and learn outside the classroom</span>
+            <span className="font-bold">build businesses</span> and{" "}
+            <span className="italic">learn outside the classroom</span>
           </h1>
         </motion.div>
         <motion.a
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
+          whileHover={{ scale: 1.01 }}
+          whileTap={{ scale: 0.99 }}
           href="#learn-more"
-          className="mt-4 bg-[#F5F0E6] text-[#3D1111] px-6 py-4 rounded-lg flex items-center justify-between font-medium hover:bg-white transition-all shadow-xl"
+          className="mt-4 bg-[#F5F0E6] text-[#3D1111] px-8 py-5 rounded-full flex items-center justify-between font-bold hover:bg-white transition-all shadow-2xl max-w-sm"
           data-testid="cta-learn-more"
         >
-          <span className="text-sm tracking-wide font-semibold">LEARN MORE</span>
-          <ArrowRight size={20} />
+          <span className="text-sm tracking-[0.2em] font-bold">LEARN MORE</span>
+          <ArrowRight size={24} />
         </motion.a>
       </div>
     </section>
