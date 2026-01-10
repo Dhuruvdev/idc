@@ -214,11 +214,11 @@ function Courses() {
 
 function Institute() {
   const images = [
-    { title: "Modern Classrooms", image: inst1, description: "Spacious and well-equipped for learning." },
-    { title: "Reception Area", image: inst2, description: "Welcoming space for students and parents." },
-    { title: "Computer Lab", image: inst3, description: "High-speed systems for technical training." },
-    { title: "Study Hall", image: inst1, description: "Quiet zone for focused individual study." },
-    { title: "Library", image: inst2, description: "Extensive collection of academic resources." }
+    { title: "Modern Classrooms", image: inst1 },
+    { title: "Reception Area", image: inst2 },
+    { title: "Computer Lab", image: inst3 },
+    { title: "Study Hall", image: inst1 },
+    { title: "Library", image: inst2 }
   ];
   return (
     <section id="institute" className="bg-[#3D1111] py-24 px-6 overflow-hidden relative">
@@ -230,32 +230,9 @@ function Institute() {
         {images.map((item, i) => (
           <motion.div key={i} custom={i} variants={cardVariants} className="flex-shrink-0 w-[280px] md:w-[450px] snap-center group relative flex flex-col bg-[#FDFBF7] rounded-[2rem] md:rounded-[2.5rem] shadow-2xl overflow-hidden border border-[#3D1111]/5" data-testid={`institute-card-${i}`}>
             <div className="absolute top-0 left-0 w-full h-1.5 md:h-2 bg-gradient-to-r from-[#E8C170] to-[#3D1111]/20" />
-            <div className="p-6 md:p-10 flex justify-between items-start">
-              <div className="space-y-1">
-                <span className="block text-[#3D1111]/30 text-[8px] md:text-xs font-black uppercase tracking-[0.2em]">Facility Record</span>
-                <div className="h-0.5 w-8 md:w-10 bg-[#E8C170]/30 rounded-full" />
-              </div>
-              <div className="w-8 h-8 md:w-16 md:h-16 rounded-full bg-[#3D1111]/5 flex items-center justify-center">
-                <Settings className="w-4 h-4 md:h-8 md:w-8 text-[#3D1111]/20" />
-              </div>
-            </div>
-            <div className="px-6 md:px-10 mb-6 md:mb-8">
-              <div className="relative aspect-video rounded-2xl md:rounded-3xl overflow-hidden shadow-xl md:shadow-2xl border border-[#3D1111]/5 group-hover:scale-[1.02] transition-transform duration-700">
+            <div className="p-4 md:p-6 h-full">
+              <div className="relative h-full rounded-2xl md:rounded-3xl overflow-hidden shadow-xl md:shadow-2xl border border-[#3D1111]/5 group-hover:scale-[1.02] transition-transform duration-700">
                 <img src={item.image} alt={item.title} className="w-full h-full object-cover transition-all duration-700" />
-              </div>
-            </div>
-            <div className="px-6 md:px-10 flex-1 flex flex-col pb-8 md:pb-12">
-              <h3 className="text-xl md:text-3xl font-display text-[#3D1111] font-black leading-tight mb-2 md:mb-4">{item.title}</h3>
-              <p className="text-[#3D1111]/70 text-sm md:text-lg leading-relaxed italic">{item.description}</p>
-              <div className="mt-auto flex items-center justify-between pt-4 md:pt-6 border-t border-[#3D1111]/10">
-                <div className="flex flex-col">
-                  <span className="text-[7px] md:text-[10px] font-black text-[#3D1111]/30 uppercase tracking-[0.2em] mb-0.5 md:mb-1">Campus</span>
-                  <span className="text-[9px] md:text-sm font-bold text-[#3D1111]/70">New Delhi</span>
-                </div>
-                <div className="flex flex-col text-right">
-                  <span className="text-[7px] md:text-[10px] font-black text-[#3D1111]/30 uppercase tracking-[0.2em] mb-0.5 md:mb-1">Status</span>
-                  <span className="text-[9px] md:text-sm font-bold text-[#E8C170]">LIVE TOUR READY</span>
-                </div>
               </div>
             </div>
           </motion.div>
