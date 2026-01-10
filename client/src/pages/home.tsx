@@ -67,7 +67,7 @@ function Navbar() {
           </div>
           <div className="text-white">
             <h1 className="font-sans text-2xl font-black tracking-tighter leading-none">IDC</h1>
-            <p className="text-[10px] font-sans uppercase tracking-[0.3em] font-black text-[#E8C170]">Coaching Institute</p>
+            <p className="text-[10px] font-sans uppercase tracking-[0.3em] font-black text-[#C5A047]">Coaching Institute</p>
           </div>
         </div>
 
@@ -276,7 +276,7 @@ function Supporters() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-16 gap-x-8"
+          className="grid grid-cols-2 md:grid-cols-3 gap-y-8 md:gap-y-16 gap-x-4 md:gap-x-8"
         >
           {supporters.map((supporter, i) => (
             <motion.div
@@ -286,8 +286,8 @@ function Supporters() {
               className="group flex flex-col"
               data-testid={`supporter-card-${i}`}
             >
-              <div className="relative mb-6">
-                <div className="aspect-square rounded-[2rem] overflow-hidden bg-[#F5F0E6] relative z-10">
+              <div className="relative mb-4 md:mb-6">
+                <div className="aspect-square rounded-[1.5rem] md:rounded-[2rem] overflow-hidden bg-[#F5F0E6] relative z-10">
                   {/* Decorative dashed circle */}
                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4/5 h-4/5 border-2 border-dashed border-[#3D1111]/10 rounded-full" />
                   <img
@@ -298,13 +298,13 @@ function Supporters() {
                 </div>
               </div>
               
-              <div className="space-y-2">
-                <h3 className="text-xl font-display text-white font-bold">
+              <div className="space-y-1 md:space-y-2">
+                <h3 className="text-base md:text-xl font-display text-white font-bold">
                   {supporter.name}
                 </h3>
-                <div className="text-white/60 text-sm leading-relaxed">
+                <div className="text-white/60 text-[10px] md:text-sm leading-relaxed">
                   <p className="font-bold text-white/80">{supporter.role}</p>
-                  <div className="whitespace-pre-line opacity-70">
+                  <div className="whitespace-pre-line opacity-70 hidden md:block">
                     {supporter.details}
                   </div>
                 </div>
