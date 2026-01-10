@@ -526,120 +526,79 @@ function CTAButton() {
 function InOfficeProjects() {
   const projects = [
     {
-      company: "Digital Classrooms",
-      description: "Smart classrooms equipped with interactive displays and digital learning tools to provide an immersive educational experience.",
+      company: "Modern Classroom",
+      description: "Smart digital learning environment",
       image: coachingInstituteImg,
-      location: "Main Campus, Delhi",
-      category: "Infrastructure"
     },
     {
-      company: "Modern Science Lab",
-      description: "State-of-the-art laboratory facilities for practical experiments and hands-on learning in Physics, Chemistry, and Biology.",
+      company: "Science Center",
+      description: "Advanced laboratory setup",
       image: professorImage,
-      location: "Academic Block",
-      category: "Lab Facility"
     },
     {
-      company: "Student Hub",
-      description: "A collaborative space designed for group discussions, peer learning, and academic brainstorming sessions.",
+      company: "Collaboration Zone",
+      description: "Interactive student lounge",
       image: teamPhoto,
-      location: "Library Wing",
-      category: "Collaborative"
     },
     {
-      company: "Academic Planning",
-      description: "Dedicated counseling and planning zones where expert mentors help students chart their career roadmaps.",
-      image: studentBoy,
-      location: "Counseling Center",
-      category: "Mentorship"
+      company: "Resource Center",
+      description: "Comprehensive library and archives",
+      image: studentsGroup,
     }
   ];
 
   return (
-    <section id="projects" className="bg-[#EDE5D8] py-24 px-6 min-h-screen flex items-center overflow-hidden" data-testid="projects-section">
+    <section id="institute" className="bg-[#EDE5D8] py-32 px-6 min-h-screen flex items-center overflow-hidden" data-testid="projects-section">
       <div className="max-w-7xl mx-auto w-full">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-16"
+          className="mb-20 text-center"
         >
-          <h2 className="text-4xl md:text-7xl font-display text-[#3D1111] mb-6">
-            Our <span className="italic">Initiatives</span>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="text-[#E8C170] text-xs md:text-sm mb-4 uppercase tracking-[0.4em] font-black"
+          >
+            Physical Presence
+          </motion.p>
+          <h2 className="text-4xl md:text-8xl font-display text-[#3D1111] mb-6 leading-tight">
+            Our <span className="italic font-black">Institute</span>
           </h2>
-          <p className="text-[#3D1111]/60 text-lg max-w-2xl leading-relaxed">
-            Take a look at our modern campus facilities and student-centric academic initiatives.
-          </p>
         </motion.div>
         
-        <div className="projects-track flex gap-4 md:gap-10 overflow-x-auto lg:overflow-visible pb-8 no-scrollbar snap-x snap-mandatory">
+        <div className="projects-track flex gap-6 md:gap-12 overflow-x-auto lg:overflow-visible pb-12 no-scrollbar snap-x snap-mandatory">
           {projects.map((project, i) => (
             <motion.div
               key={i}
               custom={i}
               variants={cardVariants}
-              className="flex-shrink-0 w-[300px] md:w-[450px] snap-center group relative flex flex-col bg-[#FDFBF7] rounded-[2rem] md:rounded-[2.5rem] shadow-2xl overflow-hidden border border-[#3D1111]/5"
-              data-testid={`project-card-${i}`}
+              className="flex-shrink-0 w-[320px] md:w-[500px] snap-center group relative aspect-[4/5] bg-[#FDFBF7] rounded-[3rem] shadow-2xl overflow-hidden border border-[#3D1111]/5"
             >
-              <div className="absolute top-0 left-0 w-full h-1.5 md:h-2 bg-gradient-to-r from-[#E8C170] to-[#3D1111]/10" />
-
-              <div className="p-6 md:p-10 flex justify-between items-start">
-                <div className="space-y-1">
-                  <span className="block text-[#3D1111]/30 text-[8px] md:text-xs font-black uppercase tracking-[0.2em]">
-                    Project Log
-                  </span>
-                  <div className="h-0.5 w-8 md:w-10 bg-[#E8C170]/30 rounded-full" />
-                </div>
-                <div className="w-8 h-8 md:w-16 md:h-16 rounded-full bg-[#3D1111]/5 flex items-center justify-center">
-                  <Cpu className="w-4 h-4 md:h-8 md:w-8 text-[#3D1111]/20" />
-                </div>
-              </div>
-
-              <div className="px-6 md:px-10 flex gap-4 md:gap-8 items-center mb-6 md:mb-8">
-                <div className="relative w-24 h-24 md:w-44 md:h-44 flex-shrink-0 rounded-2xl md:rounded-3xl overflow-hidden shadow-xl md:shadow-2xl border border-[#3D1111]/5 group-hover:scale-105 transition-transform duration-700">
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#3D1111]/20 to-transparent z-10" />
-                  <img
-                    src={project.image}
-                    alt={project.company}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                  />
-                </div>
-
-                <div className="flex-1 min-w-0">
-                  <h3 className="text-base md:text-3xl font-display text-[#3D1111] font-black leading-tight mb-1 md:mb-2 truncate">
+              <img
+                src={project.image}
+                alt={project.company}
+                className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000 ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#3D1111] via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
+              
+              <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-end transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                <div className="overflow-hidden">
+                  <motion.h3 className="text-2xl md:text-4xl font-display text-white font-black mb-2 opacity-0 group-hover:opacity-100 transition-opacity delay-100">
                     {project.company}
-                  </h3>
-                  <p className="text-[#E8C170] text-[8px] md:text-sm font-black uppercase tracking-widest mb-2 md:mb-4 truncate">
-                    {project.category}
-                  </p>
-                  <div className="inline-flex items-center gap-2 md:gap-3 bg-[#3D1111]/5 px-2 md:px-4 py-1 md:py-2 rounded-full">
-                    <Rocket className="w-2.5 h-2.5 md:w-3 md:h-3 text-[#E8C170]" />
-                    <span className="text-[7px] md:text-xs font-bold text-[#3D1111]/60 uppercase tracking-widest">
-                      {project.location}
-                    </span>
-                  </div>
+                  </motion.h3>
                 </div>
-              </div>
-
-              <div className="px-6 md:px-10 flex-1 flex flex-col pb-8 md:pb-12">
-                <div className="bg-[#3D1111]/5 p-4 md:p-8 rounded-2xl md:rounded-3xl relative mb-6 md:mb-8">
-                  <div className="absolute -top-3 md:-top-4 left-6 md:left-8 text-2xl md:text-4xl text-[#E8C170] font-serif opacity-50">"</div>
-                  <p className="text-[#3D1111]/80 text-[10px] md:text-lg font-sans leading-relaxed line-clamp-3 md:line-clamp-4 italic">
+                <div className="overflow-hidden">
+                  <p className="text-[#E8C170] text-xs md:text-sm font-black uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-opacity delay-200">
                     {project.description}
                   </p>
                 </div>
-
-                <div className="mt-auto flex items-center justify-between pt-4 md:pt-6 border-t border-[#3D1111]/10">
-                  <div className="flex flex-col">
-                    <span className="text-[7px] md:text-[10px] font-black text-[#3D1111]/30 uppercase tracking-[0.2em] mb-0.5 md:mb-1">Facility Status</span>
-                    <span className="text-[9px] md:text-sm font-bold text-[#3D1111]/70">OPERATIONAL</span>
-                  </div>
-                  <div className="h-8 md:h-10 w-[1px] bg-[#3D1111]/10" />
-                  <div className="flex flex-col text-right">
-                    <span className="text-[7px] md:text-[10px] font-black text-[#3D1111]/30 uppercase tracking-[0.2em] mb-0.5 md:mb-1">Reference</span>
-                    <span className="text-[9px] md:text-sm font-bold text-[#E8C170]">IDC CAMPUS</span>
-                  </div>
-                </div>
+              </div>
+              
+              {/* Corner accent */}
+              <div className="absolute top-8 right-8 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 opacity-0 group-hover:opacity-100 transition-opacity">
+                <Rocket className="text-white w-5 h-5" />
               </div>
             </motion.div>
           ))}
@@ -673,82 +632,103 @@ function NewAgeAcademics() {
 
   return (
     <section id="academic-excellence" className="bg-[#3D1111] py-32 px-6 relative overflow-hidden" data-testid="academics-section">
-      {/* Background decorative elements */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-10">
-        <div className="absolute top-1/4 -left-20 w-96 h-96 bg-[#E8C170] rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-white rounded-full blur-[150px]" />
+      {/* Dynamic animated background */}
+      <div className="absolute inset-0 opacity-20">
+        <motion.div 
+          animate={{ 
+            scale: [1, 1.2, 1],
+            rotate: [0, 90, 0],
+            x: [0, 100, 0]
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          className="absolute -top-40 -left-40 w-[600px] h-[600px] bg-[#E8C170] rounded-full blur-[160px]" 
+        />
+        <motion.div 
+          animate={{ 
+            scale: [1.2, 1, 1.2],
+            rotate: [0, -90, 0],
+            x: [0, -100, 0]
+          }}
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+          className="absolute -bottom-40 -right-40 w-[600px] h-[600px] bg-white rounded-full blur-[160px]" 
+        />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-20">
-          <motion.p 
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
+        <div className="flex flex-col lg:flex-row items-end justify-between mb-24 gap-8">
+          <div className="max-w-3xl">
+            <motion.p 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="text-[#E8C170] text-xs md:text-sm mb-6 uppercase tracking-[0.5em] font-black"
+            >
+              The IDC Methodology
+            </motion.p>
+            <motion.h2 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-5xl md:text-8xl font-display text-white mb-0 leading-[0.9] tracking-tighter"
+            >
+              Learn from <br />
+              <span className="italic font-black text-[#E8C170]">True Experts.</span>
+            </motion.h2>
+          </div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-[#E8C170] text-xs md:text-sm mb-4 uppercase tracking-[0.4em] font-black"
+            className="hidden lg:block pb-4"
           >
-            Academic Foundation
-          </motion.p>
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl md:text-7xl font-display text-white mb-8 leading-tight tracking-tight"
-          >
-            Learn Fundamentals from <br />
-            <span className="relative inline-block">
-              <span className="relative z-10 font-black italic text-[#E8C170]">Subject Matter Experts</span>
-              <motion.span 
-                initial={{ width: 0 }}
-                whileInView={{ width: "100%" }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5, duration: 0.8 }}
-                className="absolute bottom-2 left-0 h-3 bg-white/5 -z-10"
-              />
-            </span>
-          </motion.h2>
+            <div className="flex gap-4 items-center text-white/30 font-black text-[10px] uppercase tracking-[0.3em]">
+              <span>Excellence</span>
+              <div className="w-12 h-[1px] bg-white/20" />
+              <span>Innovation</span>
+              <div className="w-12 h-[1px] bg-white/20" />
+              <span>Success</span>
+            </div>
+          </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-10">
           {features.map((feature, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.2, duration: 0.8, ease: "easeOut" }}
-              whileHover={{ y: -10 }}
-              className="group relative"
+              transition={{ delay: i * 0.15, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              className="group relative h-full"
             >
-              {/* Card Glow Effect */}
-              <div className={`absolute -inset-0.5 bg-gradient-to-br ${feature.accent} rounded-[2.5rem] opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500`} />
-              
-              <div className="relative bg-white/5 backdrop-blur-sm p-8 md:p-12 rounded-[2.5rem] border border-white/10 flex flex-col h-full hover:bg-white/[0.08] transition-colors duration-500">
-                {/* Icon Container */}
-                <div className="mb-8 relative">
-                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${feature.accent} flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-500`}>
-                    <feature.icon className="text-[#3D1111] w-8 h-8" />
-                  </div>
-                  <div className="absolute -top-4 -right-4 text-white/5 font-display text-6xl font-black select-none">
-                    0{i + 1}
+              <div className="relative bg-[#FDFBF7]/[0.03] backdrop-blur-xl p-10 md:p-14 rounded-[3.5rem] border border-white/10 flex flex-col h-full group-hover:bg-[#FDFBF7]/[0.07] transition-all duration-700 overflow-hidden">
+                {/* Number Background */}
+                <div className="absolute -bottom-10 -right-10 text-white/[0.02] font-display text-[12rem] font-black italic group-hover:text-[#E8C170]/[0.05] transition-colors duration-700">
+                  0{i + 1}
+                </div>
+
+                <div className="mb-12 relative inline-block">
+                  <div className={`w-20 h-20 rounded-3xl bg-gradient-to-br ${feature.accent} flex items-center justify-center shadow-[0_20px_50px_rgba(232,193,112,0.3)] group-hover:rotate-[10deg] transition-transform duration-700`}>
+                    <feature.icon className="text-[#3D1111] w-10 h-10" />
                   </div>
                 </div>
 
-                <h3 className="text-2xl md:text-3xl font-display text-white font-black mb-4 group-hover:text-[#E8C170] transition-colors">
+                <h3 className="text-3xl md:text-4xl font-display text-white font-black mb-6 leading-tight">
                   {feature.title}
                 </h3>
                 
-                <p className="text-white/50 text-sm md:text-base leading-relaxed mb-8 flex-1">
+                <p className="text-white/40 text-base md:text-lg leading-relaxed mb-12 flex-1 font-medium group-hover:text-white/60 transition-colors">
                   {feature.description}
                 </p>
 
                 <div className="mt-auto">
-                  <div className="h-[1px] w-full bg-gradient-to-r from-white/20 to-transparent mb-6" />
-                  <div className="flex items-center justify-between text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">
-                    <span>IDC Standard</span>
-                    <span className="w-2 h-2 rounded-full bg-[#E8C170] animate-pulse" />
-                  </div>
+                  <motion.div 
+                    whileHover={{ x: 10 }}
+                    className="flex items-center gap-4 text-[#E8C170] text-xs font-black uppercase tracking-[0.2em] cursor-pointer"
+                  >
+                    <span>Read More</span>
+                    <ArrowRight size={16} />
+                  </motion.div>
                 </div>
               </div>
             </motion.div>
@@ -1006,7 +986,7 @@ export default function Home() {
         x: () => -(projectsTrack.scrollWidth - window.innerWidth + 48),
         ease: "none",
         scrollTrigger: {
-          trigger: "#projects",
+          trigger: "#institute",
           start: "top top",
           end: () => `+=${projectsTrack.scrollWidth}`,
           scrub: 1,
