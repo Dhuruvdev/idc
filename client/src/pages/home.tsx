@@ -107,7 +107,7 @@ function Navbar() {
               </div>
               <div className="flex flex-col items-center gap-8 perspective-[1000px]">
                 {["Home", "Programs", "Faculty", "Admissions", "Contact"].map((item, i) => (
-                  <motion.a key={item} custom={i} variants={itemVariants} href={`#${item.toLowerCase()}`} onClick={() => setIsOpen(false)} className="font-display text-5xl md:text-8xl text-white hover:text-[#E8C170] transition-all duration-500 relative group flex items-center">
+                  <motion.a key={item} custom={i} variants={itemVariants} href={`#\${item.toLowerCase()}`} onClick={() => setIsOpen(false)} className="font-display text-5xl md:text-8xl text-white hover:text-[#E8C170] transition-all duration-500 relative group flex items-center">
                     <span className="relative z-10 block group-hover:italic group-hover:translate-x-6 transition-transform">{item}</span>
                     <span className="absolute -left-16 opacity-0 group-hover:opacity-100 group-hover:-left-12 transition-all text-[#E8C170] text-3xl font-serif">0{i+1}</span>
                     <motion.span className="absolute bottom-4 left-0 w-0 h-1 bg-[#E8C170] group-hover:w-full transition-all duration-500 -z-10 shadow-[0_0_20px_rgba(232,193,112,0.3)]" />
@@ -128,6 +128,8 @@ function Navbar() {
 }
 
 function Hero() {
+  const whatsappUrl = "https://wa.me/919999999999?text=" + encodeURIComponent("Hello IDC, I would like to book a call for academic guidance.");
+  
   return (
     <section className="relative min-h-screen overflow-hidden" data-testid="hero-section">
       <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/40 to-[#3D1111] z-10" />
@@ -144,15 +146,24 @@ function Hero() {
             transition={{ duration: 0.6, delay: 0.3 }} 
             whileHover={{ scale: 1.05 }} 
             whileTap={{ scale: 0.95 }} 
-            href="https://wa.me/919999999999?text=I'm%20interested%20in%20booking%20a%20call"
+            href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="bg-[#FFF8E7] text-[#3D1111] px-10 py-5 rounded-full flex items-center gap-4 font-bold hover:bg-white transition-all shadow-2xl"
+            data-testid="button-get-in-touch"
           >
             <span className="text-sm tracking-[0.2em]">GET IN TOUCH</span>
             <ArrowRight size={20} />
           </motion.a>
-          <motion.a initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4 }} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} href="#faculty" className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-10 py-5 rounded-full flex items-center gap-4 font-bold hover:bg-white/20 transition-all shadow-2xl">
+          <motion.a 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ duration: 0.6, delay: 0.4 }} 
+            whileHover={{ scale: 1.05 }} 
+            whileTap={{ scale: 0.95 }} 
+            href="#faculty" 
+            className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-10 py-5 rounded-full flex items-center gap-4 font-bold hover:bg-white/20 transition-all shadow-2xl"
+          >
             <span className="text-sm tracking-[0.2em]">OUR FACULTY</span>
             <GraduationCap size={20} />
           </motion.a>
@@ -248,7 +259,7 @@ function Teachers() {
         </motion.div>
         <div className="teachers-track flex gap-4 md:gap-10 overflow-x-auto lg:overflow-visible pb-8 no-scrollbar snap-x snap-mandatory">
           {teachers.map((teacher, i) => (
-            <motion.div key={i} custom={i} variants={cardVariants} className="flex-shrink-0 w-[280px] md:w-[450px] snap-center group relative flex flex-col bg-[#FDFBF7] rounded-[2rem] md:rounded-[2.5rem] shadow-2xl overflow-hidden border border-[#3D1111]/5" data-testid={`teacher-card-${i}`}>
+            <motion.div key={i} custom={i} variants={cardVariants} className="flex-shrink-0 w-[280px] md:w-[450px] snap-center group relative flex flex-col bg-[#FDFBF7] rounded-[2rem] md:rounded-[2.5rem] shadow-2xl overflow-hidden border border-[#3D1111]/5" data-testid={`teacher-card-\${i}`}>
               <div className="absolute top-0 left-0 w-full h-1.5 md:h-2 bg-gradient-to-r from-[#E8C170] to-[#3D1111]/20" />
               <div className="p-6 md:p-10 flex justify-between items-start">
                 <div className="space-y-1">
@@ -312,7 +323,7 @@ function Testimonials() {
       </div>
       <div className="testimonials-track flex gap-4 md:gap-10 overflow-x-auto lg:overflow-visible pb-8 no-scrollbar snap-x snap-mandatory relative z-10">
         {testimonials.map((student, i) => (
-          <motion.div key={i} custom={i} variants={cardVariants} className="flex-shrink-0 w-[280px] md:w-[450px] snap-center group relative flex flex-col bg-[#FDFBF7] rounded-[2rem] md:rounded-[2.5rem] shadow-2xl overflow-hidden border border-[#3D1111]/5" data-testid={`testimonial-card-${i}`}>
+          <motion.div key={i} custom={i} variants={cardVariants} className="flex-shrink-0 w-[280px] md:w-[450px] snap-center group relative flex flex-col bg-[#FDFBF7] rounded-[2rem] md:rounded-[2.5rem] shadow-2xl overflow-hidden border border-[#3D1111]/5" data-testid={`testimonial-card-\${i}`}>
             <div className="absolute top-0 left-0 w-full h-1.5 md:h-2 bg-gradient-to-r from-[#E8C170] to-[#3D1111]/20" />
             <div className="p-6 md:p-10 flex justify-between items-start">
               <div className="space-y-1">
@@ -360,95 +371,53 @@ function Testimonials() {
     </section>
   );
 }
-                  <span className="text-[9px] md:text-sm font-bold text-[#3D1111]/70 truncate max-w-[150px] md:max-w-none">{student.school}</span>
-                </div>
-                <div className="h-8 md:h-10 w-[1px] bg-[#3D1111]/10" />
-                <div className="flex flex-col text-right">
-                  <span className="text-[7px] md:text-[10px] font-black text-[#3D1111]/30 uppercase tracking-[0.2em] mb-0.5 md:mb-1">Verification</span>
-                  <span className="text-[9px] md:text-sm font-bold text-[#E8C170]">IDC VERIFIED</span>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-    </section>
-  );
-}
-                  <span className="text-[9px] md:text-sm font-bold text-[#3D1111]/70 truncate max-w-[150px] md:max-w-none">{student.school}</span>
-                </div>
-                <div className="h-8 md:h-10 w-[1px] bg-[#3D1111]/10" />
-                <div className="flex flex-col text-right">
-                  <span className="text-[7px] md:text-[10px] font-black text-[#3D1111]/30 uppercase tracking-[0.2em] mb-0.5 md:mb-1">Verification</span>
-                  <span className="text-[9px] md:text-sm font-bold text-[#E8C170]">IDC VERIFIED</span>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function Contact() {
-  return (
-    <section id="contact" className="bg-[#3D1111] py-20 px-6">
-      <div className="max-w-7xl mx-auto text-center">
-        <h2 className="text-3xl md:text-5xl font-display text-white mb-8">Start Your <span className="italic text-[#E8C170]">Success Journey</span></h2>
-        <p className="text-white/60 mb-12 max-w-2xl mx-auto">Join Ideology Classes Delhi today and experience the difference in your academic growth.</p>
-        <div className="flex flex-wrap justify-center gap-6">
-          <motion.a whileHover={{ scale: 1.05 }} href="tel:+919876543210" className="bg-[#E8C170] text-[#3D1111] px-10 py-4 rounded-full font-bold tracking-[0.1em]">CALL US NOW</motion.a>
-          <motion.a whileHover={{ scale: 1.05 }} href="mailto:info@ideologyclasses.com" className="bg-white/10 text-white border border-white/20 px-10 py-4 rounded-full font-bold tracking-[0.1em]">EMAIL US</motion.a>
-        </div>
-      </div>
-    </section>
-  );
-}
 
 function Footer() {
   return (
-    <footer className="bg-[#2A0E0E] py-20 px-6 border-t border-white/5" data-testid="footer">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-          <div className="md:col-span-2">
-            <div className="flex items-center gap-3 mb-8">
-              <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/20 shadow-xl bg-[#3D1111]">
-                <img src={idcLogo} alt="IDC Logo" className="w-full h-full object-cover" />
-              </div>
-              <div className="text-white">
-                <span className="font-sans font-black text-2xl tracking-tighter">IDC</span>
-                <span className="text-[10px] block -mt-1 text-white/40 font-sans font-black tracking-[0.3em]">COACHING INSTITUTE</span>
-              </div>
+    <footer className="bg-[#FDFBF7] py-20 px-6 border-t border-[#3D1111]/5">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div className="space-y-6">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full overflow-hidden border border-[#3D1111]/10">
+              <img src={idcLogo} alt="IDC Logo" className="w-full h-full object-cover" />
             </div>
-            <p className="text-white/40 text-sm max-w-sm leading-relaxed mb-8">Empowering students to achieve academic excellence through personalized and result-driven education in Delhi.</p>
-            <div className="flex gap-4">
-              {[Instagram, Youtube, Linkedin].map((Icon, i) => (
-                <motion.a key={i} href="#" whileHover={{ scale: 1.1, backgroundColor: "rgba(255,255,255,0.1)" }} className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/60 transition-all">
-                  <Icon size={18} />
-                </motion.a>
-              ))}
-            </div>
+            <h2 className="font-display font-black text-2xl text-[#3D1111]">IDC</h2>
           </div>
-          <div>
-            <h4 className="text-white font-bold mb-6 uppercase tracking-widest text-xs">Quick Links</h4>
-            <ul className="space-y-4">
-              {["Home", "Courses", "Faculty", "Success Stories"].map((link) => (
-                <li key={link}>
-                  <a href={`#${link.toLowerCase().replace(" ", "-")}`} className="text-white/40 hover:text-[#E8C170] transition-colors text-sm font-medium">{link}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-white font-bold mb-6 uppercase tracking-widest text-xs">Contact Us</h4>
-            <p className="text-white/40 text-sm leading-relaxed mb-4">Plot No. 12, Sector 5, Rohini<br />Delhi - 110085</p>
-            <p className="text-white/40 text-sm leading-relaxed">info@ideologyclasses.com<br />+91 98765 43210</p>
+          <p className="text-[#3D1111]/60 text-sm leading-relaxed">Delhi's premier coaching institute dedicated to academic excellence and student success across all levels.</p>
+        </div>
+        <div>
+          <h3 className="font-bold text-[#3D1111] mb-6 uppercase tracking-widest text-xs">Programs</h3>
+          <ul className="space-y-4 text-[#3D1111]/60 text-sm">
+            <li><a href="#" className="hover:text-[#E8C170] transition-colors">Foundation (6th-10th)</a></li>
+            <li><a href="#" className="hover:text-[#E8C170] transition-colors">Senior Secondary (11th-12th)</a></li>
+            <li><a href="#" className="hover:text-[#E8C170] transition-colors">Undergraduate (UG)</a></li>
+            <li><a href="#" className="hover:text-[#E8C170] transition-colors">Postgraduate (PG)</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 className="font-bold text-[#3D1111] mb-6 uppercase tracking-widest text-xs">Contact</h3>
+          <ul className="space-y-4 text-[#3D1111]/60 text-sm">
+            <li>N-35/1, Near Kali Mandir, New Delhi</li>
+            <li>+91 99999 99999</li>
+            <li>info@idcclasses.com</li>
+          </ul>
+        </div>
+        <div className="space-y-6">
+          <h3 className="font-bold text-[#3D1111] mb-6 uppercase tracking-widest text-xs">Follow Us</h3>
+          <div className="flex gap-4">
+            {[Instagram, Youtube, Linkedin].map((Icon, i) => (
+              <a key={i} href="#" className="w-10 h-10 rounded-full border border-[#3D1111]/10 flex items-center justify-center text-[#3D1111]/40 hover:text-[#E8C170] hover:border-[#E8C170] transition-all">
+                <Icon size={18} />
+              </a>
+            ))}
           </div>
         </div>
-        <div className="mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-white/20 text-[10px] font-bold uppercase tracking-[0.2em]">
-          <p>© 2026 IDEOLOGY CLASSES. ALL RIGHTS RESERVED.</p>
-          <p>DESIGNED FOR ACADEMIC EXCELLENCE</p>
+      </div>
+      <div className="max-w-7xl mx-auto pt-20 mt-20 border-t border-[#3D1111]/5 flex flex-col md:flex-row justify-between items-center gap-6">
+        <p className="text-[#3D1111]/30 text-xs font-bold tracking-widest uppercase">© 2024 IDEOLOGY CLASSES. ALL RIGHTS RESERVED.</p>
+        <div className="flex gap-8 text-[#3D1111]/30 text-[10px] font-bold tracking-widest uppercase">
+          <a href="#" className="hover:text-[#3D1111] transition-colors">Privacy Policy</a>
+          <a href="#" className="hover:text-[#3D1111] transition-colors">Terms of Service</a>
         </div>
       </div>
     </footer>
@@ -463,57 +432,16 @@ export default function Home() {
       requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
-
-    const teachersTrack = document.querySelector(".teachers-track");
-    if (teachersTrack) {
-      const scrollWidth = teachersTrack.scrollWidth;
-      gsap.to(teachersTrack, {
-        x: -scrollWidth / 2,
-        duration: 30,
-        ease: "none",
-        repeat: -1,
-        scrollTrigger: {
-          trigger: "#faculty",
-          start: "top center",
-          toggleActions: "play pause resume reset"
-        }
-      });
-    }
-
-    const testimonialsTrack = document.querySelector(".testimonials-track");
-    if (testimonialsTrack) {
-      const scrollWidth = testimonialsTrack.scrollWidth;
-      const scrollTween = gsap.to(testimonialsTrack, {
-        x: -scrollWidth / 2,
-        duration: 30,
-        ease: "none",
-        repeat: -1
-      });
-      const pauseScroll = () => scrollTween.pause();
-      const playScroll = () => scrollTween.play();
-      testimonialsTrack.addEventListener("mouseenter", pauseScroll);
-      testimonialsTrack.addEventListener("mouseleave", playScroll);
-      testimonialsTrack.addEventListener("touchstart", pauseScroll, { passive: true });
-      testimonialsTrack.addEventListener("touchend", playScroll, { passive: true });
-      testimonialsTrack.addEventListener("mousedown", pauseScroll);
-      testimonialsTrack.addEventListener("mouseup", playScroll);
-    }
-
-    return () => {
-      lenis.destroy();
-      ScrollTrigger.getAll().forEach(t => t.kill());
-    };
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#3D1111] selection:bg-[#E8C170] selection:text-[#3D1111]">
+    <div className="bg-[#FDFBF7] min-h-screen font-sans selection:bg-[#E8C170] selection:text-[#3D1111]">
       <Navbar />
       <Hero />
       <Courses />
       <WhyChooseIDC />
       <Teachers />
       <Testimonials />
-      <Contact />
       <Footer />
     </div>
   );
