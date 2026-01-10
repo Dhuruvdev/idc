@@ -310,9 +310,9 @@ function Testimonials() {
         <motion.h2 initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="text-white text-4xl md:text-7xl font-display mb-6">Wall of <span className="font-black italic text-[#E8C170]">Fame</span></motion.h2>
         <motion.p initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-white/60 text-lg max-w-2xl leading-relaxed">Celebrating the academic excellence and outstanding achievements of our top performers.</motion.p>
       </div>
-      <div className="testimonials-track flex gap-6 md:gap-10 overflow-x-auto lg:overflow-visible pb-12 no-scrollbar relative z-10 pl-6 md:pl-12">
+      <div className="testimonials-track flex gap-4 md:gap-10 overflow-x-auto lg:overflow-visible pb-8 no-scrollbar snap-x snap-mandatory relative z-10">
         {testimonials.map((student, i) => (
-          <motion.div key={i} initial={{ opacity: 0, x: 200 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "0px 0px 0px 0px" }} transition={{ type: "spring", stiffness: 40, damping: 25, delay: i * 0.15 }} className="flex-shrink-0 w-[280px] md:w-[450px] group relative flex flex-col bg-[#FDFBF7] rounded-[2rem] md:rounded-[2.5rem] shadow-2xl overflow-hidden border border-[#3D1111]/5 will-change-transform">
+          <motion.div key={i} custom={i} variants={cardVariants} className="flex-shrink-0 w-[280px] md:w-[450px] snap-center group relative flex flex-col bg-[#FDFBF7] rounded-[2rem] md:rounded-[2.5rem] shadow-2xl overflow-hidden border border-[#3D1111]/5" data-testid={`testimonial-card-${i}`}>
             <div className="absolute top-0 left-0 w-full h-1.5 md:h-2 bg-gradient-to-r from-[#E8C170] to-[#3D1111]/20" />
             <div className="p-6 md:p-10 flex justify-between items-start">
               <div className="space-y-1">
@@ -345,6 +345,36 @@ function Testimonials() {
               <div className="mt-auto flex items-center justify-between pt-4 md:pt-6 border-t border-[#3D1111]/10">
                 <div className="flex flex-col">
                   <span className="text-[7px] md:text-[10px] font-black text-[#3D1111]/30 uppercase tracking-[0.2em] mb-0.5 md:mb-1">School</span>
+                  <span className="text-[9px] md:text-sm font-bold text-[#3D1111]/70 truncate max-w-[150px] md:max-w-none">{student.school}</span>
+                </div>
+                <div className="h-8 md:h-10 w-[1px] bg-[#3D1111]/10" />
+                <div className="flex flex-col text-right">
+                  <span className="text-[7px] md:text-[10px] font-black text-[#3D1111]/30 uppercase tracking-[0.2em] mb-0.5 md:mb-1">Verification</span>
+                  <span className="text-[9px] md:text-sm font-bold text-[#E8C170]">IDC VERIFIED</span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </section>
+  );
+}
+                  <span className="text-[9px] md:text-sm font-bold text-[#3D1111]/70 truncate max-w-[150px] md:max-w-none">{student.school}</span>
+                </div>
+                <div className="h-8 md:h-10 w-[1px] bg-[#3D1111]/10" />
+                <div className="flex flex-col text-right">
+                  <span className="text-[7px] md:text-[10px] font-black text-[#3D1111]/30 uppercase tracking-[0.2em] mb-0.5 md:mb-1">Verification</span>
+                  <span className="text-[9px] md:text-sm font-bold text-[#E8C170]">IDC VERIFIED</span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </section>
+  );
+}
                   <span className="text-[9px] md:text-sm font-bold text-[#3D1111]/70 truncate max-w-[150px] md:max-w-none">{student.school}</span>
                 </div>
                 <div className="h-8 md:h-10 w-[1px] bg-[#3D1111]/10" />
