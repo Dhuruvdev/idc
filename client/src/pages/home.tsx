@@ -3,6 +3,7 @@ import { Menu, X, ArrowRight, GraduationCap, BookOpen, Briefcase, Award, Instagr
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Lenis from "lenis";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -409,106 +410,98 @@ function Teachers() {
   ];
 
   return (
-    <section id="faculty" className="bg-[#3D1111] py-20 px-6" data-testid="teachers-section">
-      <div className="max-w-7xl mx-auto">
+    <section id="faculty" className="bg-[#3D1111] py-24 px-6 min-h-screen flex items-center overflow-hidden" data-testid="teachers-section">
+      <div className="max-w-7xl mx-auto w-full">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-16 text-center"
+          className="mb-16"
         >
-          <h2 className="text-3xl md:text-5xl font-display text-white mb-4">
-            Supporters and <span className="italic text-[#E8C170]">Investors</span>
+          <h2 className="text-4xl md:text-7xl font-display text-white mb-6">
+            Our <span className="italic text-[#E8C170]">Teachers</span>
           </h2>
-          <p className="text-white/60 text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-white/60 text-lg max-w-2xl leading-relaxed">
             Learn from Delhi's most experienced educators with proven academic excellence.
           </p>
         </motion.div>
         
-        <div className="relative -mx-6 px-6">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="flex gap-6 overflow-x-auto pb-8 no-scrollbar snap-x snap-mandatory"
-          >
-            {teachers.map((teacher, i) => (
-              <motion.div
-                key={i}
-                custom={i}
-                variants={cardVariants}
-                className="flex-shrink-0 w-[300px] md:w-[400px] group relative flex flex-col bg-[#FDFBF7] rounded-[2.5rem] shadow-2xl overflow-hidden snap-center border border-[#3D1111]/5"
-                data-testid={`teacher-card-${i}`}
-              >
-                {/* Top decorative element */}
-                <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-[#E8C170] to-[#3D1111]/20" />
+        <div className="teachers-track flex gap-6 md:gap-10">
+          {teachers.map((teacher, i) => (
+            <motion.div
+              key={i}
+              custom={i}
+              variants={cardVariants}
+              className="flex-shrink-0 w-[320px] md:w-[450px] group relative flex flex-col bg-[#FDFBF7] rounded-[2.5rem] shadow-2xl overflow-hidden border border-[#3D1111]/5"
+              data-testid={`teacher-card-${i}`}
+            >
+              {/* Top decorative element */}
+              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-[#E8C170] to-[#3D1111]/20" />
 
-                {/* Header Info */}
-                <div className="p-6 md:p-8 flex justify-between items-start">
-                  <div className="space-y-1">
-                    <span className="block text-[#3D1111]/30 text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em]">
-                      Faculty Record
+              {/* Header Info */}
+              <div className="p-8 md:p-10 flex justify-between items-start">
+                <div className="space-y-1">
+                  <span className="block text-[#3D1111]/30 text-[10px] md:text-xs font-black uppercase tracking-[0.2em]">
+                    Faculty Record
+                  </span>
+                  <div className="h-0.5 w-10 bg-[#E8C170]/30 rounded-full" />
+                </div>
+                <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#3D1111]/5 flex items-center justify-center">
+                  <GraduationCap className="w-6 h-6 md:h-8 md:w-8 text-[#3D1111]/20" />
+                </div>
+              </div>
+
+              <div className="px-8 md:px-10 flex gap-8 items-center mb-8">
+                {/* Image Section - Refined Shape */}
+                <div className="relative w-32 h-32 md:w-40 md:h-40 flex-shrink-0 rounded-3xl overflow-hidden shadow-2xl border border-[#3D1111]/5 group-hover:scale-105 transition-transform duration-700">
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#3D1111]/20 to-transparent z-10" />
+                  <img
+                    src={teacher.image}
+                    alt={teacher.name}
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                  />
+                </div>
+
+                {/* Identity Section */}
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-xl md:text-3xl font-display text-[#3D1111] font-black leading-tight mb-2">
+                    {teacher.name}
+                  </h3>
+                  <p className="text-[#E8C170] text-xs md:text-sm font-black uppercase tracking-widest mb-4">
+                    {teacher.subject}
+                  </p>
+                  <div className="inline-flex items-center gap-3 bg-[#3D1111]/5 px-4 py-2 rounded-full">
+                    <div className="w-2 h-2 rounded-full bg-[#E8C170]" />
+                    <span className="text-[10px] md:text-xs font-bold text-[#3D1111]/60 uppercase tracking-widest">
+                      {teacher.experience} Exp
                     </span>
-                    <div className="h-0.5 w-8 bg-[#E8C170]/30 rounded-full" />
-                  </div>
-                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#3D1111]/5 flex items-center justify-center">
-                    <GraduationCap className="w-5 h-5 md:h-6 md:w-6 text-[#3D1111]/20" />
                   </div>
                 </div>
+              </div>
 
-                <div className="px-6 md:px-8 flex gap-6 items-center mb-6">
-                  {/* Image Section - Refined Shape */}
-                  <div className="relative w-24 h-24 md:w-32 md:h-32 flex-shrink-0 rounded-2xl overflow-hidden shadow-xl border border-[#3D1111]/5 group-hover:scale-105 transition-transform duration-500">
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#3D1111]/20 to-transparent z-10" />
-                    <img
-                      src={teacher.image}
-                      alt={teacher.name}
-                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                    />
-                  </div>
-
-                  {/* Identity Section */}
-                  <div className="flex-1 min-w-0">
-                    <h3 className="text-lg md:text-2xl font-display text-[#3D1111] font-black leading-tight mb-1 truncate">
-                      {teacher.name}
-                    </h3>
-                    <p className="text-[#E8C170] text-[10px] md:text-xs font-black uppercase tracking-widest mb-2 truncate">
-                      {teacher.subject}
-                    </p>
-                    <div className="inline-flex items-center gap-2 bg-[#3D1111]/5 px-3 py-1 rounded-full">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#E8C170]" />
-                      <span className="text-[9px] md:text-[10px] font-bold text-[#3D1111]/60 uppercase tracking-widest">
-                        {teacher.experience} Experience
-                      </span>
-                    </div>
-                  </div>
+              {/* Content Section */}
+              <div className="px-8 md:px-10 flex-1 flex flex-col pb-10 md:pb-12">
+                <div className="bg-[#3D1111]/5 p-6 md:p-8 rounded-3xl relative mb-8">
+                  <div className="absolute -top-4 left-8 text-4xl text-[#E8C170] font-serif opacity-50">"</div>
+                  <p className="text-[#3D1111]/80 text-sm md:text-lg font-sans leading-relaxed line-clamp-4 italic">
+                    {teacher.details}
+                  </p>
                 </div>
 
-                {/* Content Section */}
-                <div className="px-6 md:px-8 flex-1 flex flex-col pb-8 md:pb-10">
-                  <div className="bg-[#3D1111]/5 p-4 md:p-6 rounded-2xl relative mb-6">
-                    <div className="absolute -top-3 left-6 text-2xl text-[#E8C170] font-serif opacity-50">"</div>
-                    <p className="text-[#3D1111]/80 text-xs md:text-base font-sans leading-relaxed line-clamp-4 md:line-clamp-3">
-                      {teacher.details}
-                    </p>
+                <div className="mt-auto flex items-center justify-between pt-6 border-t border-[#3D1111]/10">
+                  <div className="flex flex-col">
+                    <span className="text-[9px] md:text-[10px] font-black text-[#3D1111]/30 uppercase tracking-[0.2em] mb-1">Academic Base</span>
+                    <span className="text-xs md:text-sm font-bold text-[#3D1111]/70">{teacher.graduation}</span>
                   </div>
-
-                  <div className="mt-auto flex items-center justify-between">
-                    <div className="flex flex-col">
-                      <span className="text-[8px] md:text-[9px] font-black text-[#3D1111]/30 uppercase tracking-[0.2em] mb-0.5">Academic Base</span>
-                      <span className="text-[10px] md:text-xs font-bold text-[#3D1111]/70">{teacher.graduation}</span>
-                    </div>
-                    <div className="h-8 w-[1px] bg-[#3D1111]/10" />
-                    <div className="flex flex-col text-right">
-                      <span className="text-[8px] md:text-[9px] font-black text-[#3D1111]/30 uppercase tracking-[0.2em] mb-0.5">Verification</span>
-                      <span className="text-[10px] md:text-xs font-bold text-[#E8C170]">IDC VERIFIED</span>
-                    </div>
+                  <div className="h-10 w-[1px] bg-[#3D1111]/10" />
+                  <div className="flex flex-col text-right">
+                    <span className="text-[9px] md:text-[10px] font-black text-[#3D1111]/30 uppercase tracking-[0.2em] mb-1">Verification</span>
+                    <span className="text-xs md:text-sm font-bold text-[#E8C170]">IDC VERIFIED</span>
                   </div>
                 </div>
-              </motion.div>
-            ))}
-          </motion.div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
@@ -806,6 +799,24 @@ export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: "vertical",
+      gestureOrientation: "vertical",
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      touchMultiplier: 2,
+      infinite: false,
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
     // GSAP Scroll Animations for all sections
     const sections = document.querySelectorAll("section");
     sections.forEach((section) => {
@@ -830,7 +841,25 @@ export default function Home() {
       );
     });
 
+    // Horizontal scroll for teachers section
+    const teachersTrack = document.querySelector(".teachers-track");
+    if (teachersTrack) {
+      gsap.to(teachersTrack, {
+        x: () => -(teachersTrack.scrollWidth - window.innerWidth + 48),
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#faculty",
+          start: "top top",
+          end: () => `+=${teachersTrack.scrollWidth}`,
+          scrub: 1,
+          pin: true,
+          anticipatePin: 1,
+        }
+      });
+    }
+
     return () => {
+      lenis.destroy();
       ScrollTrigger.getAll().forEach(t => t.kill());
     };
   }, []);
