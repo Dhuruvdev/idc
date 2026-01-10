@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef } from "react";
-import { Menu, X, ArrowRight, GraduationCap, BookOpen, Briefcase, Award, Instagram, Youtube, Linkedin, Settings, Cpu, Rocket } from "lucide-react";
-import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
+import { useState, useEffect } from "react";
+import { ArrowRight, GraduationCap, BookOpen, Briefcase, Award, Instagram, Youtube, Linkedin, Settings } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
@@ -11,12 +11,10 @@ import heroImage from "@assets/generated_images/students-casual-gathering-selfie
 import founder1 from "@assets/generated_images/indian-businessman-founder-portrait.png";
 import founder2 from "@assets/generated_images/young-indian-founder-portrait.png";
 import founder3 from "@assets/generated_images/indian-fintech-founder-portrait.png";
-import teamPhoto from "@assets/generated_images/business-team-office-photo.png";
 import studentsGroup from "@assets/generated_images/college-students-celebration.png";
 import studentGirl from "@assets/generated_images/indian-teen-girl-student.png";
 import studentBoy from "@assets/generated_images/indian-teen-boy-glasses.png";
-import professorImage from "@assets/generated_images/professor-lecture-classroom.png";
-import coachingInstituteImg from "@assets/generated_images/modern_coaching_institute_interior_redesign.png";
+import idcLogo from "@assets/319537515_877306970380833_8458113406465131312_n_1768036988839.jpg";
 
 const cardVariants = {
   hidden: { opacity: 0, y: 30, scale: 0.95 },
@@ -37,19 +35,6 @@ const cardVariants = {
   }
 };
 
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.1
-    }
-  }
-};
-
-import idcLogo from "@assets/319537515_877306970380833_8458113406465131312_n_1768036988839.jpg";
-
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -60,7 +45,6 @@ function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Prevent scroll when menu is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -72,20 +56,11 @@ function Navbar() {
   const menuVariants = {
     closed: {
       clipPath: "circle(0% at calc(100% - 40px) 40px)",
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 40,
-        delay: 0.2
-      }
+      transition: { type: "spring", stiffness: 400, damping: 40, delay: 0.2 }
     },
     opened: {
       clipPath: "circle(150% at calc(100% - 40px) 40px)",
-      transition: {
-        type: "spring",
-        stiffness: 20,
-        restDelta: 2
-      }
+      transition: { type: "spring", stiffness: 20, restDelta: 2 }
     }
   };
 
@@ -104,11 +79,7 @@ function Navbar() {
   };
 
   return (
-    <nav 
-      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 px-6 py-4 ${
-        scrolled ? "bg-black/20 backdrop-blur-xl py-3" : "bg-transparent"
-      }`}
-    >
+    <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 px-6 py-4 ${scrolled ? "bg-black/20 backdrop-blur-xl py-3" : "bg-transparent"}`}>
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center gap-3 group cursor-pointer relative z-[110]">
           <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/20 group-hover:border-[#E8C170] transition-all duration-500 shadow-lg group-hover:scale-110">
@@ -120,85 +91,35 @@ function Navbar() {
           </div>
         </div>
 
-        <button 
-          onClick={() => setIsOpen(!isOpen)}
-          className="relative w-14 h-14 flex flex-col items-center justify-center z-[110] group rounded-full bg-[#3D1111]/5 hover:bg-[#3D1111]/10 transition-colors backdrop-blur-md"
-        >
+        <button onClick={() => setIsOpen(!isOpen)} className="relative w-14 h-14 flex flex-col items-center justify-center z-[110] group rounded-full bg-[#3D1111]/5 hover:bg-[#3D1111]/10 transition-colors backdrop-blur-md">
           <div className="relative w-6 h-3 overflow-visible">
-            <motion.span 
-              animate={isOpen ? { rotate: 45, y: 6, width: "100%", backgroundColor: "#3D1111" } : { rotate: 0, y: 0, width: "100%", backgroundColor: scrolled ? "#fff" : "#fff" }}
-              className="absolute top-0 left-0 h-0.5 rounded-full bg-white"
-            />
-            <motion.span 
-              animate={isOpen ? { rotate: -45, y: 6, width: "100%", backgroundColor: "#3D1111" } : { rotate: 0, y: 12, width: "100%", backgroundColor: scrolled ? "#fff" : "#fff" }}
-              className="absolute top-0 left-0 h-0.5 rounded-full bg-white"
-            />
+            <motion.span animate={isOpen ? { rotate: 45, y: 6, width: "100%", backgroundColor: "#E8C170" } : { rotate: 0, y: 0, width: "100%", backgroundColor: "#fff" }} className="absolute top-0 left-0 h-0.5 rounded-full" />
+            <motion.span animate={isOpen ? { rotate: -45, y: 6, width: "100%", backgroundColor: "#E8C170" } : { rotate: 0, y: 12, width: "100%", backgroundColor: "#fff" }} className="absolute top-0 left-0 h-0.5 rounded-full" />
           </div>
         </button>
 
         <AnimatePresence>
           {isOpen && (
-            <>
-              <motion.div
-                initial="closed"
-                animate="opened"
-                exit="closed"
-                variants={menuVariants}
-                className="fixed inset-0 bg-[#FDFBF7] z-[105] flex flex-col items-center justify-center min-h-screen origin-top-right shadow-2xl"
-              >
-                {/* Abstract background elements for "dopamine" */}
-                <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
-                  <motion.div 
-                    animate={{ 
-                      scale: [1, 1.2, 1],
-                      rotate: [0, 90, 180],
-                      x: [0, 100, 0]
-                    }}
-                    transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                    className="absolute -top-1/4 -left-1/4 w-[800px] h-[800px] bg-[#E8C170]/20 rounded-full blur-[120px]"
-                  />
-                  <motion.div 
-                    animate={{ 
-                      scale: [1.2, 1, 1.2],
-                      rotate: [180, 90, 0],
-                      x: [0, -100, 0]
-                    }}
-                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                    className="absolute -bottom-1/4 -right-1/4 w-[800px] h-[800px] bg-[#3D1111]/10 rounded-full blur-[120px]"
-                  />
-                </div>
-
-                <div className="flex flex-col items-center gap-8 perspective-[1000px]">
-                  {["Home", "Programs", "Faculty", "Admissions", "Contact"].map((item, i) => (
-                    <motion.a
-                      key={item}
-                      custom={i}
-                      variants={itemVariants}
-                      href={`#${item.toLowerCase()}`}
-                      onClick={() => setIsOpen(false)}
-                      className="font-display text-5xl md:text-8xl text-[#3D1111] hover:text-[#E8C170] transition-all duration-500 relative group flex items-center"
-                    >
-                      <span className="relative z-10 block group-hover:italic group-hover:translate-x-6 transition-transform">{item}</span>
-                      <span className="absolute -left-16 opacity-0 group-hover:opacity-100 group-hover:-left-12 transition-all text-[#E8C170] text-3xl font-serif">0{i+1}</span>
-                      <motion.span 
-                        className="absolute bottom-4 left-0 w-0 h-1 bg-[#E8C170] group-hover:w-full transition-all duration-500 -z-10 shadow-[0_0_20px_rgba(232,193,112,0.3)]"
-                      />
-                    </motion.a>
-                  ))}
-                </div>
-
-                <motion.div 
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1, duration: 0.8 }}
-                  className="mt-20 flex gap-10 text-[#3D1111]/30 font-sans font-black text-xs tracking-[0.5em] uppercase"
-                >
-                  <a href="#" className="hover:text-[#3D1111] transition-colors">Instagram</a>
-                  <a href="#" className="hover:text-[#3D1111] transition-colors">LinkedIn</a>
-                  <a href="#" className="hover:text-[#3D1111] transition-colors">Youtube</a>
-                </motion.div>
+            <motion.div initial="closed" animate="opened" exit="closed" variants={menuVariants} className="fixed inset-0 bg-[#3D1111] z-[105] flex flex-col items-center justify-center min-h-screen origin-top-right shadow-2xl">
+              <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20">
+                <motion.div animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 180], x: [0, 100, 0] }} transition={{ duration: 15, repeat: Infinity, ease: "linear" }} className="absolute -top-1/4 -left-1/4 w-[800px] h-[800px] bg-[#E8C170]/20 rounded-full blur-[120px]" />
+                <motion.div animate={{ scale: [1.2, 1, 1.2], rotate: [180, 90, 0], x: [0, -100, 0] }} transition={{ duration: 20, repeat: Infinity, ease: "linear" }} className="absolute -bottom-1/4 -right-1/4 w-[800px] h-[800px] bg-white/10 rounded-full blur-[120px]" />
+              </div>
+              <div className="flex flex-col items-center gap-8 perspective-[1000px]">
+                {["Home", "Programs", "Faculty", "Admissions", "Contact"].map((item, i) => (
+                  <motion.a key={item} custom={i} variants={itemVariants} href={`#${item.toLowerCase()}`} onClick={() => setIsOpen(false)} className="font-display text-5xl md:text-8xl text-white hover:text-[#E8C170] transition-all duration-500 relative group flex items-center">
+                    <span className="relative z-10 block group-hover:italic group-hover:translate-x-6 transition-transform">{item}</span>
+                    <span className="absolute -left-16 opacity-0 group-hover:opacity-100 group-hover:-left-12 transition-all text-[#E8C170] text-3xl font-serif">0{i+1}</span>
+                    <motion.span className="absolute bottom-4 left-0 w-0 h-1 bg-[#E8C170] group-hover:w-full transition-all duration-500 -z-10 shadow-[0_0_20px_rgba(232,193,112,0.3)]" />
+                  </motion.a>
+                ))}
+              </div>
+              <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1, duration: 0.8 }} className="mt-20 flex gap-10 text-white/30 font-sans font-black text-xs tracking-[0.5em] uppercase">
+                <a href="#" className="hover:text-white transition-colors">Instagram</a>
+                <a href="#" className="hover:text-white transition-colors">LinkedIn</a>
+                <a href="#" className="hover:text-white transition-colors">Youtube</a>
               </motion.div>
-            </>
+            </motion.div>
           )}
         </AnimatePresence>
       </div>
@@ -210,50 +131,18 @@ function Hero() {
   return (
     <section className="relative min-h-screen overflow-hidden" data-testid="hero-section">
       <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/40 to-[#3D1111] z-10" />
-      <motion.img
-        initial={{ scale: 1.1 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
-        src={heroImage}
-        alt="IDC Students"
-        className="absolute inset-0 w-full h-full object-cover"
-      />
+      <motion.img initial={{ scale: 1.1 }} animate={{ scale: 1 }} transition={{ duration: 1.5, ease: "easeOut" }} src={heroImage} alt="IDC Students" className="absolute inset-0 w-full h-full object-cover" />
       <div className="relative z-20 min-h-screen flex flex-col justify-end pb-20 px-6 md:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="max-w-4xl mx-auto text-center"
-        >
-          <h1 className="text-5xl md:text-8xl font-display text-white leading-tight mb-8">
-            Empowering <span className="font-bold text-[#E8C170]">Academic Excellence</span>
-          </h1>
-          <p className="text-white/80 text-lg md:text-xl max-w-2xl mb-12 leading-relaxed mx-auto">
-            Delhi's premier coaching for Classes 6th–12th, UG, and PG levels. Personalized and result-driven.
-          </p>
+        <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }} className="max-w-4xl mx-auto text-center">
+          <h1 className="text-5xl md:text-8xl font-display text-white leading-tight mb-8">Empowering <span className="font-bold text-[#E8C170]">Academic Excellence</span></h1>
+          <p className="text-white/80 text-lg md:text-xl max-w-2xl mb-12 leading-relaxed mx-auto">Delhi's premier coaching for Classes 6th–12th, UG, and PG levels. Personalized and result-driven.</p>
         </motion.div>
         <div className="flex flex-wrap gap-4 justify-center">
-          <motion.a
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            href="#courses"
-            className="bg-[#E8C170] text-[#3D1111] px-10 py-5 rounded-full flex items-center gap-4 font-bold hover:bg-white transition-all shadow-2xl"
-          >
+          <motion.a initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} href="#courses" className="bg-[#E8C170] text-[#3D1111] px-10 py-5 rounded-full flex items-center gap-4 font-bold hover:bg-white transition-all shadow-2xl">
             <span className="text-sm tracking-[0.2em]">EXPLORE COURSES</span>
             <ArrowRight size={20} />
           </motion.a>
-          <motion.a
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            href="#faculty"
-            className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-10 py-5 rounded-full flex items-center gap-4 font-bold hover:bg-white/20 transition-all shadow-2xl"
-          >
+          <motion.a initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4 }} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} href="#faculty" className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-10 py-5 rounded-full flex items-center gap-4 font-bold hover:bg-white/20 transition-all shadow-2xl">
             <span className="text-sm tracking-[0.2em]">OUR FACULTY</span>
             <GraduationCap size={20} />
           </motion.a>
@@ -265,75 +154,29 @@ function Hero() {
 
 function Courses() {
   const courses = [
-    {
-      title: "Classes 6th–10th",
-      description: "Strengthen your core concepts in Maths, Science, English, and more with expert-led sessions.",
-      tags: ["Foundation", "Maths", "Science"],
-      icon: <BookOpen className="w-6 h-6" />
-    },
-    {
-      title: "Classes 11th–12th",
-      subtitle: "(Arts | Commerce | Maths)",
-      description: "Subject-specific preparation tailored to CBSE and State Boards with deep conceptual clarity.",
-      tags: ["CBSE", "State Boards", "Conceptual"],
-      icon: <GraduationCap className="w-6 h-6" />
-    },
-    {
-      title: "Undergraduate (UG)",
-      description: "Special guidance for B.Com, B.A., B.Sc., and other university-level exams.",
-      tags: ["B.Com", "B.A", "B.Sc"],
-      icon: <Briefcase className="w-6 h-6" />
-    },
-    {
-      title: "Postgraduate (PG)",
-      description: "Expert mentors to help you excel in M.Com, M.A., and advanced academic goals.",
-      tags: ["M.Com", "M.A", "Advanced"],
-      icon: <Award className="w-6 h-6" />
-    },
-    {
-      title: "English & Personality",
-      description: "Improve communication, fluency, and confidence through structured English-speaking programs.",
-      tags: ["Fluency", "Confidence", "Soft Skills"],
-      icon: <Settings className="w-6 h-6" />
-    }
+    { title: "Classes 6th–10th", description: "Strengthen your core concepts in Maths, Science, English, and more with expert-led sessions.", tags: ["Foundation", "Maths", "Science"], icon: <BookOpen className="w-6 h-6" /> },
+    { title: "Classes 11th–12th", subtitle: "(Arts | Commerce | Maths)", description: "Subject-specific preparation tailored to CBSE and State Boards with deep conceptual clarity.", tags: ["CBSE", "State Boards", "Conceptual"], icon: <GraduationCap className="w-6 h-6" /> },
+    { title: "Undergraduate (UG)", description: "Special guidance for B.Com, B.A., B.Sc., and other university-level exams.", tags: ["B.Com", "B.A", "B.Sc"], icon: <Briefcase className="w-6 h-6" /> },
+    { title: "Postgraduate (PG)", description: "Expert mentors to help you excel in M.Com, M.A., and advanced academic goals.", tags: ["M.Com", "M.A", "Advanced"], icon: <Award className="w-6 h-6" /> },
+    { title: "English & Personality", description: "Improve communication, fluency, and confidence through structured English-speaking programs.", tags: ["Fluency", "Confidence", "Soft Skills"], icon: <Settings className="w-6 h-6" /> }
   ];
-
   return (
     <section id="courses" className="bg-[#F5F0E6] py-24 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-6xl font-display text-[#3D1111] mb-6">
-            Our <span className="italic text-[#E8C170]">Courses</span>
-          </h2>
-          <p className="text-[#3D1111]/60 text-xl max-w-3xl mx-auto">
-            Comprehensive Coaching for Every Stage of Learning. We build strong foundations for success.
-          </p>
+          <h2 className="text-4xl md:text-6xl font-display text-[#3D1111] mb-6">Our <span className="italic text-[#E8C170]">Courses</span></h2>
+          <p className="text-[#3D1111]/60 text-xl max-w-3xl mx-auto">Comprehensive Coaching for Every Stage of Learning. We build strong foundations for success.</p>
         </div>
-
         <div className="flex flex-wrap justify-center gap-8">
           {courses.map((course, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              whileHover={{ y: -8 }}
-              className="bg-white p-8 rounded-3xl shadow-xl border border-[#3D1111]/5 group transition-all w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-1.5rem)] max-w-sm"
-            >
-              <div className="w-14 h-14 rounded-2xl bg-[#3D1111] text-[#E8C170] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                {course.icon}
-              </div>
+            <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} whileHover={{ y: -8 }} className="bg-white p-8 rounded-3xl shadow-xl border border-[#3D1111]/5 group transition-all w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-1.5rem)] max-w-sm">
+              <div className="w-14 h-14 rounded-2xl bg-[#3D1111] text-[#E8C170] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">{course.icon}</div>
               <h3 className="text-2xl font-display font-bold text-[#3D1111] mb-2">{course.title}</h3>
               {course.subtitle && <p className="text-[#E8C170] font-bold text-sm mb-2">{course.subtitle}</p>}
-              <p className="text-[#3D1111]/70 mb-6 leading-relaxed">
-                {course.description}
-              </p>
+              <p className="text-[#3D1111]/70 mb-6 leading-relaxed">{course.description}</p>
               <div className="flex flex-wrap gap-2 mt-auto">
                 {course.tags.map(tag => (
-                  <span key={tag} className="text-[10px] font-bold uppercase tracking-widest bg-[#F5F0E6] text-[#3D1111]/60 px-3 py-1 rounded-full">
-                    {tag}
-                  </span>
+                  <span key={tag} className="text-[10px] font-bold uppercase tracking-widest bg-[#F5F0E6] text-[#3D1111]/60 px-3 py-1 rounded-full">{tag}</span>
                 ))}
               </div>
             </motion.div>
@@ -353,30 +196,16 @@ function WhyChooseIDC() {
     { title: "Affordable Fees", desc: "Quality education at pocket-friendly prices." },
     { title: "Proven Results", desc: "A legacy of academic excellence and top-performing students across Delhi." }
   ];
-
   return (
     <section className="bg-[#3D1111] py-24 px-6 overflow-hidden relative">
       <div className="absolute top-0 right-0 w-1/2 h-full bg-[#E8C170]/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2" />
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl md:text-6xl font-display text-white mb-8">
-              Why Choose <br /><span className="text-[#E8C170] italic">Ideology Classes?</span>
-            </h2>
+          <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+            <h2 className="text-4xl md:text-6xl font-display text-white mb-8">Why Choose <br /><span className="text-[#E8C170] italic">Ideology Classes?</span></h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {points.map((point, i) => (
-                <motion.div 
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="space-y-2"
-                >
+                <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="space-y-2">
                   <div className="w-8 h-1 bg-[#E8C170] rounded-full mb-4" />
                   <h3 className="text-white font-bold text-lg">{point.title}</h3>
                   <p className="text-white/60 text-sm leading-relaxed">{point.desc}</p>
@@ -384,18 +213,9 @@ function WhyChooseIDC() {
               ))}
             </div>
           </motion.div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="relative"
-          >
+          <motion.div initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="relative">
             <div className="aspect-square rounded-full border-2 border-dashed border-[#E8C170]/30 animate-[spin_30s_linear_infinite] absolute inset-0 -m-8" />
-            <img 
-              src={studentsGroup} 
-              alt="IDC Students Success" 
-              className="rounded-3xl shadow-2xl relative z-10 w-full aspect-square object-cover"
-            />
+            <img src={studentsGroup} alt="IDC Students Success" className="rounded-3xl shadow-2xl relative z-10 w-full aspect-square object-cover" />
           </motion.div>
         </div>
       </div>
@@ -403,155 +223,51 @@ function WhyChooseIDC() {
   );
 }
 
-function PartnerLogos() {
-  return (
-    <motion.section 
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      className="bg-[#F5F0E6] py-12 px-6" 
-      data-testid="partner-logos"
-    >
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <p className="text-sm text-[#3D1111]/50 mb-6 font-bold uppercase tracking-[0.2em]">Built by alumni from:</p>
-            <div className="flex items-center gap-6">
-              <motion.div 
-                whileHover={{ y: -2 }}
-                className="bg-white px-6 py-4 rounded-xl shadow-lg border border-[#EAE2D5] flex items-center gap-3"
-              >
-                <div className="w-10 h-10 bg-[#A41034] rounded flex items-center justify-center font-bold text-white">H</div>
-                <div className="text-[10px] leading-tight font-bold uppercase tracking-wider text-[#A41034]">
-                  Harvard<br/>Business School
-                </div>
-              </motion.div>
-              <motion.div 
-                whileHover={{ y: -2 }}
-                className="bg-white px-6 py-4 rounded-xl shadow-lg border border-[#EAE2D5] flex items-center gap-3"
-              >
-                <div className="text-[10px] leading-tight font-bold uppercase tracking-wider text-[#4E2A84]">
-                  Northwestern<br/>Kellogg
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
-          
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
-            <p className="text-sm text-[#3D1111]/50 mb-6 font-bold uppercase tracking-[0.2em]">Supported by Founders from:</p>
-            <div className="bg-white px-8 py-6 rounded-xl shadow-lg border border-[#EAE2D5] flex flex-wrap items-center gap-8 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all">
-              <span className="text-lg font-black text-[#00BAF2]">Paytm</span>
-              <span className="text-lg font-black text-black">CRED</span>
-              <span className="text-lg font-black text-gray-800">UC</span>
-              <span className="text-lg font-black text-[#570F54]">meesho</span>
-              <span className="text-lg font-black text-orange-500">SWIGGY</span>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-    </motion.section>
-  );
-}
-
 function Teachers() {
   const teachers = [
-    { name: "Prof. Kunal Shah", subject: "Economics & Strategy", experience: "15+ Years", graduation: "IIM Ahmedabad", details: "Expert in market dynamics and strategic planning for competitive advantage.", image: founder1, logo: "⊙ ECONOMICS" },
-    { name: "Prof. Vidit Aatrey", subject: "Maths & Analytics", experience: "12+ Years", graduation: "IIT Delhi", details: "Specializes in advanced calculus and data-driven decision modeling.", image: founder2, logo: "MATHS" },
-    { name: "Prof. Vijay Shekhar", subject: "Business Studies", experience: "20+ Years", graduation: "Delhi College of Engineering", details: "Veteran educator focused on entrepreneurship and business fundamentals.", image: founder3, logo: "BUSINESS" },
-    { name: "Prof. Mekin Maheshwari", subject: "Human Resources", experience: "14+ Years", graduation: "BITS Pilani", details: "Expert in organizational behavior and talent management strategies.", image: founder1, logo: "HR" },
-    { name: "Prof. Abhiraj Bhal", subject: "Accounting & Finance", experience: "16+ Years", graduation: "IIM Ahmedabad", details: "Focused on financial reporting, auditing, and corporate finance.", image: founder2, logo: "FINANCE" },
-    { name: "Prof. Varun Khaitan", subject: "Science & Technology", experience: "11+ Years", graduation: "IIT Kanpur", details: "Passionate about simplifying complex scientific concepts for students.", image: founder3, logo: "SCIENCE" },
+    { name: "Prof. Kunal Shah", subject: "Economics & Strategy", experience: "15+ Years", graduation: "IIM Ahmedabad", details: "Expert in market dynamics and strategic planning for competitive advantage.", image: founder1 },
+    { name: "Prof. Vidit Aatrey", subject: "Maths & Analytics", experience: "12+ Years", graduation: "IIT Delhi", details: "Specializes in advanced calculus and data-driven decision modeling.", image: founder2 },
+    { name: "Prof. Vijay Shekhar", subject: "Business Studies", experience: "20+ Years", graduation: "Delhi College of Engineering", details: "Veteran educator focused on entrepreneurship and business fundamentals.", image: founder3 }
   ];
-
   return (
     <section id="faculty" className="bg-[#3D1111] py-24 px-6 min-h-screen flex items-center overflow-hidden" data-testid="teachers-section">
       <div className="max-w-7xl mx-auto w-full">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-16"
-        >
-          <h2 className="text-4xl md:text-7xl font-display text-white mb-6">
-            Our <span className="italic text-[#E8C170]">Teachers</span>
-          </h2>
-          <p className="text-white/60 text-lg max-w-2xl leading-relaxed">
-            Learn from Delhi's most experienced educators with proven academic excellence.
-          </p>
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16">
+          <h2 className="text-4xl md:text-7xl font-display text-white mb-6">Our <span className="italic text-[#E8C170]">Teachers</span></h2>
+          <p className="text-white/60 text-lg max-w-2xl leading-relaxed">Learn from Delhi's most experienced educators with proven academic excellence.</p>
         </motion.div>
-        
         <div className="teachers-track flex gap-4 md:gap-10 overflow-x-auto lg:overflow-visible pb-8 no-scrollbar snap-x snap-mandatory">
           {teachers.map((teacher, i) => (
-            <motion.div
-              key={i}
-              custom={i}
-              variants={cardVariants}
-              className="flex-shrink-0 w-[280px] md:w-[450px] snap-center group relative flex flex-col bg-[#FDFBF7] rounded-[2rem] md:rounded-[2.5rem] shadow-2xl overflow-hidden border border-[#3D1111]/5"
-              data-testid={`teacher-card-${i}`}
-            >
-              {/* Top decorative element */}
+            <motion.div key={i} custom={i} variants={cardVariants} className="flex-shrink-0 w-[280px] md:w-[450px] snap-center group relative flex flex-col bg-[#FDFBF7] rounded-[2rem] md:rounded-[2.5rem] shadow-2xl overflow-hidden border border-[#3D1111]/5" data-testid={`teacher-card-${i}`}>
               <div className="absolute top-0 left-0 w-full h-1.5 md:h-2 bg-gradient-to-r from-[#E8C170] to-[#3D1111]/20" />
-
-              {/* Header Info */}
               <div className="p-6 md:p-10 flex justify-between items-start">
                 <div className="space-y-1">
-                  <span className="block text-[#3D1111]/30 text-[8px] md:text-xs font-black uppercase tracking-[0.2em]">
-                    Faculty Record
-                  </span>
+                  <span className="block text-[#3D1111]/30 text-[8px] md:text-xs font-black uppercase tracking-[0.2em]">Faculty Record</span>
                   <div className="h-0.5 w-8 md:w-10 bg-[#E8C170]/30 rounded-full" />
                 </div>
                 <div className="w-8 h-8 md:w-16 md:h-16 rounded-full bg-[#3D1111]/5 flex items-center justify-center">
                   <GraduationCap className="w-4 h-4 md:h-8 md:w-8 text-[#3D1111]/20" />
                 </div>
               </div>
-
               <div className="px-6 md:px-10 flex gap-4 md:gap-8 items-center mb-6 md:mb-8">
-                {/* Image Section - Refined Shape */}
                 <div className="relative w-20 h-20 md:w-40 md:h-40 flex-shrink-0 rounded-2xl md:rounded-3xl overflow-hidden shadow-xl md:shadow-2xl border border-[#3D1111]/5 group-hover:scale-105 transition-transform duration-700">
                   <div className="absolute inset-0 bg-gradient-to-t from-[#3D1111]/20 to-transparent z-10" />
-                  <img
-                    src={teacher.image}
-                    alt={teacher.name}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                  />
+                  <img src={teacher.image} alt={teacher.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
                 </div>
-
-                {/* Identity Section */}
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-base md:text-3xl font-display text-[#3D1111] font-black leading-tight mb-1 md:mb-2 truncate">
-                    {teacher.name}
-                  </h3>
-                  <p className="text-[#E8C170] text-[8px] md:text-sm font-black uppercase tracking-widest mb-2 md:mb-4 truncate">
-                    {teacher.subject}
-                  </p>
+                  <h3 className="text-base md:text-3xl font-display text-[#3D1111] font-black leading-tight mb-1 md:mb-2 truncate">{teacher.name}</h3>
+                  <p className="text-[#E8C170] text-[8px] md:text-sm font-black uppercase tracking-widest mb-2 md:mb-4 truncate">{teacher.subject}</p>
                   <div className="inline-flex items-center gap-2 md:gap-3 bg-[#3D1111]/5 px-2 md:px-4 py-1 md:py-2 rounded-full">
                     <div className="w-1 md:w-2 h-1 md:h-2 rounded-full bg-[#E8C170]" />
-                    <span className="text-[7px] md:text-xs font-bold text-[#3D1111]/60 uppercase tracking-widest">
-                      {teacher.experience} Exp
-                    </span>
+                    <span className="text-[7px] md:text-xs font-bold text-[#3D1111]/60 uppercase tracking-widest">{teacher.experience} Exp</span>
                   </div>
                 </div>
               </div>
-
-              {/* Content Section */}
               <div className="px-6 md:px-10 flex-1 flex flex-col pb-8 md:pb-12">
                 <div className="bg-[#3D1111]/5 p-4 md:p-8 rounded-2xl md:rounded-3xl relative mb-6 md:mb-8">
                   <div className="absolute -top-3 md:-top-4 left-6 md:left-8 text-2xl md:text-4xl text-[#E8C170] font-serif opacity-50">"</div>
-                  <p className="text-[#3D1111]/80 text-[10px] md:text-lg font-sans leading-relaxed line-clamp-3 md:line-clamp-4 italic">
-                    {teacher.details}
-                  </p>
+                  <p className="text-[#3D1111]/80 text-[10px] md:text-lg font-sans leading-relaxed line-clamp-3 md:line-clamp-4 italic">{teacher.details}</p>
                 </div>
-
                 <div className="mt-auto flex items-center justify-between pt-4 md:pt-6 border-t border-[#3D1111]/10">
                   <div className="flex flex-col">
                     <span className="text-[7px] md:text-[10px] font-black text-[#3D1111]/30 uppercase tracking-[0.2em] mb-0.5 md:mb-1">Academic Base</span>
@@ -572,446 +288,50 @@ function Teachers() {
   );
 }
 
-function CTAButton() {
-  return (
-    <div className="flex justify-center mt-12 mb-8">
-      <motion.a
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        href="#apply"
-        className="bg-[#E8C170] text-[#3D1111] px-10 py-4 rounded-full font-bold text-sm tracking-[0.2em] shadow-xl hover:bg-[#D4B15B] transition-colors"
-      >
-        APPLY NOW
-      </motion.a>
-    </div>
-  );
-}
-
-function InOfficeProjects() {
-  const projects = [
-    {
-      company: "Modern Classroom",
-      description: "Smart digital learning environment",
-      image: coachingInstituteImg,
-    },
-    {
-      company: "Science Center",
-      description: "Advanced laboratory setup",
-      image: professorImage,
-    },
-    {
-      company: "Collaboration Zone",
-      description: "Interactive student lounge",
-      image: teamPhoto,
-    },
-    {
-      company: "Resource Center",
-      description: "Comprehensive library and archives",
-      image: studentsGroup,
-    }
-  ];
-
-  return (
-    <section id="institute" className="bg-[#EDE5D8] py-32 px-6 min-h-screen flex items-center overflow-hidden" data-testid="projects-section">
-      <div className="max-w-7xl mx-auto w-full">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-20 text-center"
-        >
-          <motion.p 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="text-[#E8C170] text-xs md:text-sm mb-4 uppercase tracking-[0.4em] font-black"
-          >
-            Physical Presence
-          </motion.p>
-          <h2 className="text-4xl md:text-8xl font-display text-[#3D1111] mb-6 leading-tight">
-            Our <span className="italic font-black">Institute</span>
-          </h2>
-        </motion.div>
-        
-        <div className="projects-track flex gap-6 md:gap-12 overflow-x-auto lg:overflow-visible pb-12 no-scrollbar snap-x snap-mandatory">
-          {projects.map((project, i) => (
-            <motion.div
-              key={i}
-              custom={i}
-              variants={cardVariants}
-              className="flex-shrink-0 w-[320px] md:w-[500px] snap-center group relative aspect-[4/5] bg-[#FDFBF7] rounded-[3rem] shadow-2xl overflow-hidden border border-[#3D1111]/5"
-            >
-              <img
-                src={project.image}
-                alt={project.company}
-                className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000 ease-out"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#3D1111] via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
-              
-              <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-end transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                <div className="overflow-hidden">
-                  <motion.h3 className="text-2xl md:text-4xl font-display text-white font-black mb-2 opacity-0 group-hover:opacity-100 transition-opacity delay-100">
-                    {project.company}
-                  </motion.h3>
-                </div>
-                <div className="overflow-hidden">
-                  <p className="text-[#E8C170] text-xs md:text-sm font-black uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-opacity delay-200">
-                    {project.description}
-                  </p>
-                </div>
-              </div>
-              
-              {/* Corner accent */}
-              <div className="absolute top-8 right-8 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 opacity-0 group-hover:opacity-100 transition-opacity">
-                <Rocket className="text-white w-5 h-5" />
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function NewAgeAcademics() {
-  const features = [
-    { 
-      icon: GraduationCap, 
-      title: "Expert Mentorship", 
-      description: "Direct guidance from Delhi's top educators with decades of collective experience in competitive exams.",
-      accent: "from-[#E8C170] to-[#D4B15B]"
-    },
-    { 
-      icon: BookOpen, 
-      title: "Practical Learning", 
-      description: "We go beyond textbooks with applied concepts, real-world case studies, and interactive problem-solving.",
-      accent: "from-[#FDFBF7] to-[#EDE5D8]"
-    },
-    { 
-      icon: Award, 
-      title: "Proven Results", 
-      description: "A legacy of academic excellence with students consistently topping board exams and securing UG/PG seats.",
-      accent: "from-[#E8C170] to-white/20"
-    }
-  ];
-
-  return (
-    <section id="academic-excellence" className="bg-[#3D1111] py-32 px-6 relative overflow-hidden" data-testid="academics-section">
-      {/* Dynamic animated background */}
-      <div className="absolute inset-0 opacity-20">
-        <motion.div 
-          animate={{ 
-            scale: [1, 1.2, 1],
-            rotate: [0, 90, 0],
-            x: [0, 100, 0]
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute -top-40 -left-40 w-[600px] h-[600px] bg-[#E8C170] rounded-full blur-[160px]" 
-        />
-        <motion.div 
-          animate={{ 
-            scale: [1.2, 1, 1.2],
-            rotate: [0, -90, 0],
-            x: [0, -100, 0]
-          }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          className="absolute -bottom-40 -right-40 w-[600px] h-[600px] bg-white rounded-full blur-[160px]" 
-        />
-      </div>
-
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="flex flex-col lg:flex-row items-end justify-between mb-24 gap-8">
-          <div className="max-w-3xl">
-            <motion.p 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="text-[#E8C170] text-xs md:text-sm mb-6 uppercase tracking-[0.5em] font-black"
-            >
-              The IDC Methodology
-            </motion.p>
-            <motion.h2 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-5xl md:text-8xl font-display text-white mb-0 leading-[0.9] tracking-tighter"
-            >
-              Learn from <br />
-              <span className="italic font-black text-[#E8C170]">True Experts.</span>
-            </motion.h2>
-          </div>
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="hidden lg:block pb-4"
-          >
-            <div className="flex gap-4 items-center text-white/30 font-black text-[10px] uppercase tracking-[0.3em]">
-              <span>Excellence</span>
-              <div className="w-12 h-[1px] bg-white/20" />
-              <span>Innovation</span>
-              <div className="w-12 h-[1px] bg-white/20" />
-              <span>Success</span>
-            </div>
-          </motion.div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-10">
-          {features.map((feature, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.15, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className="group relative h-full"
-            >
-              <div className="relative bg-[#FDFBF7]/[0.03] backdrop-blur-xl p-10 md:p-14 rounded-[3.5rem] border border-white/10 flex flex-col h-full group-hover:bg-[#FDFBF7]/[0.07] transition-all duration-700 overflow-hidden">
-                {/* Number Background */}
-                <div className="absolute -bottom-10 -right-10 text-white/[0.02] font-display text-[12rem] font-black italic group-hover:text-[#E8C170]/[0.05] transition-colors duration-700">
-                  0{i + 1}
-                </div>
-
-                <div className="mb-12 relative inline-block">
-                  <div className={`w-20 h-20 rounded-3xl bg-gradient-to-br ${feature.accent} flex items-center justify-center shadow-[0_20px_50px_rgba(232,193,112,0.3)] group-hover:rotate-[10deg] transition-transform duration-700`}>
-                    <feature.icon className="text-[#3D1111] w-10 h-10" />
-                  </div>
-                </div>
-
-                <h3 className="text-3xl md:text-4xl font-display text-white font-black mb-6 leading-tight">
-                  {feature.title}
-                </h3>
-                
-                <p className="text-white/40 text-base md:text-lg leading-relaxed mb-12 flex-1 font-medium group-hover:text-white/60 transition-colors">
-                  {feature.description}
-                </p>
-
-                <div className="mt-auto">
-                  <motion.div 
-                    whileHover={{ x: 10 }}
-                    className="flex items-center gap-4 text-[#E8C170] text-xs font-black uppercase tracking-[0.2em] cursor-pointer"
-                  >
-                    <span>Read More</span>
-                    <ArrowRight size={16} />
-                  </motion.div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function EligibilityCriteria() {
-  const criteria = [
-    { icon: GraduationCap, title: "Classes 6th - 12th", description: "Foundation to Advanced Board preparation." },
-    { icon: Settings, title: "UG & PG Students", description: "University level exam support and professional guidance." }
-  ];
-
-  return (
-    <section id="eligibility" className="bg-[#F5F0E6] py-20 px-6" data-testid="eligibility-section">
-      <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-3xl font-display text-[#3D1111] mb-12">Who Can <span className="italic text-[#E8C170]">Join Us?</span></h2>
-        <div className="grid md:grid-cols-2 gap-8">
-          {criteria.map((item, i) => (
-            <motion.div
-              key={i}
-              whileHover={{ scale: 1.02 }}
-              className="bg-white p-8 rounded-2xl shadow-lg flex flex-col items-center"
-            >
-              <item.icon size={32} className="text-[#3D1111] mb-4" />
-              <h3 className="font-display text-xl text-[#3D1111] font-bold mb-2">{item.title}</h3>
-              <p className="text-[#3D1111]/60 text-sm">{item.description}</p>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function FoundingCohort() {
-  return null;
-}
-
-function Scholarships() {
-  return (
-    <section id="fees" className="bg-[#3D1111] py-20 px-6" data-testid="scholarships-section">
-      <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-3xl md:text-5xl font-display text-white mb-8">
-          Quality Education, <span className="italic text-[#E8C170]">Affordable Fees</span>
-        </h2>
-        <p className="text-white/60 mb-12 text-lg">
-          We offer competitive fee structures and merit-based scholarships for high-performing students.
-        </p>
-        <div className="bg-gradient-to-br from-[#E8C170] to-[#A68A3A] p-10 rounded-2xl shadow-2xl inline-block">
-          <p className="text-[#3D1111] text-2xl font-bold mb-2">Scholarships Available</p>
-          <p className="text-[#3D1111]/80">Up to 75% waiver on tuition fees for exceptional candidates.</p>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function Testimonials() {
   const testimonials = [
-    {
-      name: "Dyumna Madan",
-      school: "Woodstock School",
-      location: "Mussoorie",
-      image: studentGirl,
-      marks: "98% in Economics",
-      course: "CBSE Class XII"
-    },
-    {
-      name: "Priyanshi M",
-      school: "Delhi Public School",
-      location: "Raipur",
-      image: studentGirl,
-      marks: "96% in Accounts",
-      course: "CBSE Class XII"
-    },
-    {
-      name: "Yagya Amit Bisani",
-      school: "Fountainhead School",
-      location: "Surat",
-      image: studentBoy,
-      marks: "100/100 in Maths",
-      course: "CBSE Class X"
-    },
-    {
-      name: "Garvit Tatia",
-      school: "Bodhi International School",
-      location: "Jodhpur",
-      image: studentBoy,
-      marks: "97% in Business Studies",
-      course: "CBSE Class XII"
-    },
-    {
-      name: "A R Aayush Jishnu",
-      school: "Emerald International School",
-      location: "Bengaluru",
-      image: studentGirl,
-      marks: "99% in Statistics",
-      course: "UG - B.Com"
-    },
-    {
-      name: "Mahi Jain",
-      school: "Jayshree Periwal International School",
-      location: "Jaipur",
-      image: studentGirl,
-      marks: "95% in Economics",
-      course: "CBSE Class XII"
-    },
-    {
-      name: "Rahul Setia",
-      school: "GD Goenka Public School",
-      location: "Delhi",
-      image: studentBoy,
-      marks: "98/100 in Accounts",
-      course: "CBSE Class XII"
-    },
-    {
-      name: "Jatin Jain",
-      school: "Delhi Public School",
-      location: "Hyderabad",
-      image: studentBoy,
-      marks: "96% in Applied Maths",
-      course: "CBSE Class XII"
-    }
+    { name: "Priyanshi M", school: "Bal Bharti Public School", location: "RAIPUR", marks: "98% IN ACCOUNTS", image: studentGirl, course: "CBSE Class XII" },
+    { name: "Aryan Singh", school: "Modern School Vasant Vihar", location: "NEW DELHI", marks: "96% IN MATHS", image: studentBoy, course: "CBSE Class XII" },
+    { name: "Sneha Kapur", school: "Delhi Public School", location: "ROHINI", marks: "97% IN ECONOMICS", image: studentGirl, course: "CBSE Class XII" }
   ];
-
   return (
     <section id="testimonials" className="bg-[#3D1111] py-24 px-6 overflow-hidden relative">
       <div className="max-w-7xl mx-auto mb-16 relative z-10">
-        <motion.h2 
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          className="text-white text-4xl md:text-7xl font-display mb-6"
-        >
-          Wall of <span className="font-black italic text-[#E8C170]">Fame</span>
-        </motion.h2>
-        <motion.p 
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          className="text-white/60 text-lg max-w-2xl leading-relaxed"
-        >
-          Celebrating the academic excellence and outstanding achievements of our top performers.
-        </motion.p>
+        <motion.h2 initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="text-white text-4xl md:text-7xl font-display mb-6">Wall of <span className="font-black italic text-[#E8C170]">Fame</span></motion.h2>
+        <motion.p initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-white/60 text-lg max-w-2xl leading-relaxed">Celebrating the academic excellence and outstanding achievements of our top performers.</motion.p>
       </div>
-
       <div className="testimonials-track flex gap-6 md:gap-10 overflow-x-auto lg:overflow-visible pb-12 no-scrollbar relative z-10 pl-6 md:pl-12">
         {testimonials.map((student, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, x: 100 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "0px 100px 0px 0px" }}
-            transition={{ 
-              type: "spring",
-              stiffness: 50,
-              damping: 20,
-              delay: i * 0.1 
-            }}
-            className="flex-shrink-0 w-[280px] md:w-[450px] group relative flex flex-col bg-[#FDFBF7] rounded-[2rem] md:rounded-[2.5rem] shadow-2xl overflow-hidden border border-[#3D1111]/5 will-change-transform"
-          >
-            {/* Top decorative element matching teacher cards */}
+          <motion.div key={i} initial={{ opacity: 0, x: 200 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "0px 0px 0px 0px" }} transition={{ type: "spring", stiffness: 40, damping: 25, delay: i * 0.15 }} className="flex-shrink-0 w-[280px] md:w-[450px] group relative flex flex-col bg-[#FDFBF7] rounded-[2rem] md:rounded-[2.5rem] shadow-2xl overflow-hidden border border-[#3D1111]/5 will-change-transform">
             <div className="absolute top-0 left-0 w-full h-1.5 md:h-2 bg-gradient-to-r from-[#E8C170] to-[#3D1111]/20" />
-
-            {/* Header Info */}
             <div className="p-6 md:p-10 flex justify-between items-start">
               <div className="space-y-1">
-                <span className="block text-[#3D1111]/30 text-[8px] md:text-xs font-black uppercase tracking-[0.2em]">
-                  Student Record
-                </span>
+                <span className="block text-[#3D1111]/30 text-[8px] md:text-xs font-black uppercase tracking-[0.2em]">Student Record</span>
                 <div className="h-0.5 w-8 md:w-10 bg-[#E8C170]/30 rounded-full" />
               </div>
               <div className="w-8 h-8 md:w-16 md:h-16 rounded-full bg-[#3D1111]/5 flex items-center justify-center">
                 <GraduationCap className="w-4 h-4 md:h-8 md:w-8 text-[#3D1111]/20" />
               </div>
             </div>
-
             <div className="px-6 md:px-10 flex gap-4 md:gap-8 items-center mb-6 md:mb-8">
-              {/* Image Section */}
               <div className="relative w-20 h-20 md:w-40 md:h-40 flex-shrink-0 rounded-2xl md:rounded-3xl overflow-hidden shadow-xl md:shadow-2xl border border-[#3D1111]/5 group-hover:scale-105 transition-transform duration-700">
                 <div className="absolute inset-0 bg-gradient-to-t from-[#3D1111]/20 to-transparent z-10" />
-                <img
-                  src={student.image}
-                  alt={student.name}
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                />
+                <img src={student.image} alt={student.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
               </div>
-
-              {/* Identity Section */}
               <div className="flex-1 min-w-0">
-                <h3 className="text-base md:text-3xl font-display text-[#3D1111] font-black leading-tight mb-1 md:mb-2 truncate">
-                  {student.name}
-                </h3>
-                <p className="text-[#E8C170] text-[8px] md:text-sm font-black uppercase tracking-widest mb-2 md:mb-4 truncate">
-                  {student.marks}
-                </p>
+                <h3 className="text-base md:text-3xl font-display text-[#3D1111] font-black leading-tight mb-1 md:mb-2 truncate">{student.name}</h3>
+                <p className="text-[#E8C170] text-[8px] md:text-sm font-black uppercase tracking-widest mb-2 md:mb-4 truncate">{student.marks}</p>
                 <div className="inline-flex items-center gap-2 md:gap-3 bg-[#3D1111]/5 px-2 md:px-4 py-1 md:py-2 rounded-full">
                   <div className="w-1 md:w-2 h-1 md:h-2 rounded-full bg-[#E8C170]" />
-                  <span className="text-[7px] md:text-xs font-bold text-[#3D1111]/60 uppercase tracking-widest">
-                    {student.location}
-                  </span>
+                  <span className="text-[7px] md:text-xs font-bold text-[#3D1111]/60 uppercase tracking-widest">{student.location}</span>
                 </div>
               </div>
             </div>
-
-            {/* Content Section */}
             <div className="px-6 md:px-10 flex-1 flex flex-col pb-8 md:pb-12">
               <div className="bg-[#3D1111]/5 p-4 md:p-8 rounded-2xl md:rounded-3xl relative mb-6 md:mb-8">
                 <div className="absolute -top-3 md:-top-4 left-6 md:left-8 text-2xl md:text-4xl text-[#E8C170] font-serif opacity-50">"</div>
-                <p className="text-[#3D1111]/80 text-[10px] md:text-lg font-sans leading-relaxed italic">
-                  Proudly achieving excellence in {student.course}. A testament to hard work and quality guidance.
-                </p>
+                <p className="text-[#3D1111]/80 text-[10px] md:text-lg font-sans leading-relaxed italic">Proudly achieving excellence in {student.course}. A testament to hard work and quality guidance.</p>
               </div>
-
               <div className="mt-auto flex items-center justify-between pt-4 md:pt-6 border-t border-[#3D1111]/10">
                 <div className="flex flex-col">
                   <span className="text-[7px] md:text-[10px] font-black text-[#3D1111]/30 uppercase tracking-[0.2em] mb-0.5 md:mb-1">School</span>
@@ -1035,27 +355,11 @@ function Contact() {
   return (
     <section id="contact" className="bg-[#3D1111] py-20 px-6">
       <div className="max-w-7xl mx-auto text-center">
-        <h2 className="text-3xl md:text-5xl font-display text-white mb-8">
-          Start Your <span className="italic text-[#E8C170]">Success Journey</span>
-        </h2>
-        <p className="text-white/60 mb-12 max-w-2xl mx-auto">
-          Join Ideology Classes Delhi today and experience the difference in your academic growth.
-        </p>
+        <h2 className="text-3xl md:text-5xl font-display text-white mb-8">Start Your <span className="italic text-[#E8C170]">Success Journey</span></h2>
+        <p className="text-white/60 mb-12 max-w-2xl mx-auto">Join Ideology Classes Delhi today and experience the difference in your academic growth.</p>
         <div className="flex flex-wrap justify-center gap-6">
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            href="tel:+919876543210"
-            className="bg-[#E8C170] text-[#3D1111] px-10 py-4 rounded-full font-bold tracking-[0.1em]"
-          >
-            CALL US NOW
-          </motion.a>
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            href="mailto:info@ideologyclasses.com"
-            className="bg-white/10 text-white border border-white/20 px-10 py-4 rounded-full font-bold tracking-[0.1em]"
-          >
-            EMAIL US
-          </motion.a>
+          <motion.a whileHover={{ scale: 1.05 }} href="tel:+919876543210" className="bg-[#E8C170] text-[#3D1111] px-10 py-4 rounded-full font-bold tracking-[0.1em]">CALL US NOW</motion.a>
+          <motion.a whileHover={{ scale: 1.05 }} href="mailto:info@ideologyclasses.com" className="bg-white/10 text-white border border-white/20 px-10 py-4 rounded-full font-bold tracking-[0.1em]">EMAIL US</motion.a>
         </div>
       </div>
     </section>
@@ -1077,23 +381,15 @@ function Footer() {
                 <span className="text-[10px] block -mt-1 text-white/40 font-sans font-black tracking-[0.3em]">COACHING INSTITUTE</span>
               </div>
             </div>
-            <p className="text-white/40 text-sm max-w-sm leading-relaxed mb-8">
-              Empowering students to achieve academic excellence through personalized and result-driven education in Delhi.
-            </p>
+            <p className="text-white/40 text-sm max-w-sm leading-relaxed mb-8">Empowering students to achieve academic excellence through personalized and result-driven education in Delhi.</p>
             <div className="flex gap-4">
               {[Instagram, Youtube, Linkedin].map((Icon, i) => (
-                <motion.a 
-                  key={i}
-                  href="#" 
-                  whileHover={{ scale: 1.1, backgroundColor: "rgba(255,255,255,0.1)" }}
-                  className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/60 transition-all"
-                >
+                <motion.a key={i} href="#" whileHover={{ scale: 1.1, backgroundColor: "rgba(255,255,255,0.1)" }} className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/60 transition-all">
                   <Icon size={18} />
                 </motion.a>
               ))}
             </div>
           </div>
-          
           <div>
             <h4 className="text-white font-bold mb-6 uppercase tracking-widest text-xs">Quick Links</h4>
             <ul className="space-y-4">
@@ -1104,173 +400,57 @@ function Footer() {
               ))}
             </ul>
           </div>
-          
           <div>
-            <h4 className="text-white font-bold mb-6 uppercase tracking-widest text-xs">Contact</h4>
-            <a href="mailto:info@ideologyclasses.com" className="text-[#E8C170] font-bold text-sm block mb-4">info@ideologyclasses.com</a>
-            <p className="text-white/40 text-sm">Location: Delhi</p>
-            <p className="text-white/40 text-sm">+91 98765 43210</p>
-            <div className="space-y-4 mt-8 pt-8 border-t border-white/5">
-              <a href="#" className="text-white/20 hover:text-white transition-colors text-xs block uppercase tracking-widest font-bold">Terms of Use</a>
-              <a href="#" className="text-white/20 hover:text-white transition-colors text-xs block uppercase tracking-widest font-bold">Privacy Policy</a>
-            </div>
+            <h4 className="text-white font-bold mb-6 uppercase tracking-widest text-xs">Contact Us</h4>
+            <p className="text-white/40 text-sm leading-relaxed mb-4">Plot No. 12, Sector 5, Rohini<br />Delhi - 110085</p>
+            <p className="text-white/40 text-sm leading-relaxed">info@ideologyclasses.com<br />+91 98765 43210</p>
           </div>
+        </div>
+        <div className="mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-white/20 text-[10px] font-bold uppercase tracking-[0.2em]">
+          <p>© 2026 IDEOLOGY CLASSES. ALL RIGHTS RESERVED.</p>
+          <p>DESIGNED FOR ACADEMIC EXCELLENCE</p>
         </div>
       </div>
     </footer>
   );
 }
 
-function Preloader({ onComplete }: { onComplete: () => void }) {
-  useEffect(() => {
-    const timer = setTimeout(onComplete, 2000);
-    return () => clearTimeout(timer);
-  }, [onComplete]);
-
-  return (
-    <motion.div
-      initial={{ opacity: 1 }}
-      exit={{ 
-        opacity: 0,
-        transition: { duration: 0.5, ease: "easeInOut" }
-      }}
-      className="fixed inset-0 z-[100] bg-[#3D1111] flex flex-col items-center justify-center"
-    >
-      <div className="relative flex flex-col items-center">
-        <motion.div
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-[#E8C170]/20 shadow-2xl bg-[#3D1111] mb-8"
-        >
-          <img src={idcLogo} alt="IDC Logo" className="w-full h-full object-cover" />
-        </motion.div>
-        
-        <div className="w-48 h-1 bg-white/10 rounded-full overflow-hidden relative">
-          <motion.div
-            initial={{ width: "0%" }}
-            animate={{ width: "100%" }}
-            transition={{ duration: 1.8, ease: "easeInOut" }}
-            className="absolute inset-y-0 left-0 bg-[#E8C170] shadow-[0_0_15px_rgba(232,193,112,0.5)]"
-          />
-        </div>
-        
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.5 }}
-          className="mt-4 text-[#E8C170] font-sans font-black text-[10px] tracking-[0.4em] uppercase"
-        >
-          Loading Excellence
-        </motion.p>
-      </div>
-    </motion.div>
-  );
-}
-
 export default function Home() {
-  const [loading, setLoading] = useState(true);
-  const containerRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
-    if (loading) return;
-
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: "vertical",
-      gestureOrientation: "vertical",
-      smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 2,
-      infinite: false,
-    });
-
+    const lenis = new Lenis();
     function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
-
     requestAnimationFrame(raf);
 
-    // GSAP Scroll Animations for all sections
-    const sections = document.querySelectorAll("section");
-    sections.forEach((section) => {
-      gsap.fromTo(section, 
-        { 
-          opacity: 0, 
-          y: 60,
-          scale: 0.98,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 1.4,
-          ease: "expo.out",
-          scrollTrigger: {
-            trigger: section,
-            start: "top 85%",
-            toggleActions: "play none none reverse"
-          }
-        }
-      );
-    });
-
-    // Horizontal scroll for teachers section - only on desktop
     const teachersTrack = document.querySelector(".teachers-track");
-    if (teachersTrack && window.innerWidth > 1024) {
+    if (teachersTrack) {
+      const scrollWidth = teachersTrack.scrollWidth;
       gsap.to(teachersTrack, {
-        x: () => -(teachersTrack.scrollWidth - window.innerWidth + 48),
+        x: -scrollWidth / 2,
+        duration: 30,
         ease: "none",
+        repeat: -1,
         scrollTrigger: {
           trigger: "#faculty",
-          start: "top top",
-          end: () => `+=${teachersTrack.scrollWidth}`,
-          scrub: 1,
-          pin: true,
-          anticipatePin: 1,
+          start: "top center",
+          toggleActions: "play pause resume reset"
         }
       });
     }
 
-    // Horizontal scroll for initiatives section - only on desktop
-    const projectsTrack = document.querySelector(".projects-track");
-    if (projectsTrack && window.innerWidth > 1024) {
-      gsap.to(projectsTrack, {
-        x: () => -(projectsTrack.scrollWidth - window.innerWidth + 48),
-        ease: "none",
-        scrollTrigger: {
-          trigger: "#institute",
-          start: "top top",
-          end: () => `+=${projectsTrack.scrollWidth}`,
-          scrub: 1,
-          pin: true,
-          anticipatePin: 1,
-        }
-      });
-    }
-
-    // Horizontal auto-scroll with pause on interaction
     const testimonialsTrack = document.querySelector(".testimonials-track");
     if (testimonialsTrack) {
       const scrollWidth = testimonialsTrack.scrollWidth;
-      const duration = 30; // Smooth consistent speed
-
       const scrollTween = gsap.to(testimonialsTrack, {
         x: -scrollWidth / 2,
-        duration: duration,
+        duration: 30,
         ease: "none",
-        repeat: -1,
+        repeat: -1
       });
-
-      // Pause on interaction for finger/mouse scrolling
       const pauseScroll = () => scrollTween.pause();
-      const playScroll = () => {
-        // Only resume if user isn't interacting
-        scrollTween.play();
-      };
-
+      const playScroll = () => scrollTween.play();
       testimonialsTrack.addEventListener("mouseenter", pauseScroll);
       testimonialsTrack.addEventListener("mouseleave", playScroll);
       testimonialsTrack.addEventListener("touchstart", pauseScroll, { passive: true });
@@ -1283,34 +463,18 @@ export default function Home() {
       lenis.destroy();
       ScrollTrigger.getAll().forEach(t => t.kill());
     };
-  }, [loading]);
+  }, []);
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-[#3D1111] overflow-x-hidden selection:bg-[#E8C170] selection:text-[#3D1111] scroll-smooth">
-      <AnimatePresence>
-        {loading && <Preloader onComplete={() => setLoading(false)} />}
-      </AnimatePresence>
-      
-      {!loading && (
-        <motion.div
-          initial={{ opacity: 0, scale: 1.1 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
-        >
-          <Navbar />
-          <Hero />
-          <Courses />
-          <WhyChooseIDC />
-          <Teachers />
-          <InOfficeProjects />
-          <NewAgeAcademics />
-          <EligibilityCriteria />
-          <Scholarships />
-          <Testimonials />
-          <Contact />
-          <Footer />
-        </motion.div>
-      )}
+    <div className="min-h-screen bg-[#3D1111] selection:bg-[#E8C170] selection:text-[#3D1111]">
+      <Navbar />
+      <Hero />
+      <Courses />
+      <WhyChooseIDC />
+      <Teachers />
+      <Testimonials />
+      <Contact />
+      <Footer />
     </div>
   );
 }
