@@ -1150,11 +1150,11 @@ export default function Home() {
       });
     }
 
-    // Horizontal scroll for testimonials
+    // Horizontal auto-scroll with pause on interaction
     const testimonialsTrack = document.querySelector(".testimonials-track");
     if (testimonialsTrack) {
       const scrollWidth = testimonialsTrack.scrollWidth;
-      const duration = 20; // Faster auto-scroll
+      const duration = 30; // Smooth consistent speed
 
       const scrollTween = gsap.to(testimonialsTrack, {
         x: -scrollWidth / 2,
@@ -1163,14 +1163,19 @@ export default function Home() {
         repeat: -1,
       });
 
-      // Pause on interaction
+      // Pause on interaction for finger/mouse scrolling
       const pauseScroll = () => scrollTween.pause();
-      const playScroll = () => scrollTween.play();
+      const playScroll = () => {
+        // Only resume if user isn't interacting
+        scrollTween.play();
+      };
 
       testimonialsTrack.addEventListener("mouseenter", pauseScroll);
       testimonialsTrack.addEventListener("mouseleave", playScroll);
-      testimonialsTrack.addEventListener("touchstart", pauseScroll);
-      testimonialsTrack.addEventListener("touchend", playScroll);
+      testimonialsTrack.addEventListener("touchstart", pauseScroll, { passive: true });
+      testimonialsTrack.addEventListener("touchend", playScroll, { passive: true });
+      testimonialsTrack.addEventListener("mousedown", pauseScroll);
+      testimonialsTrack.addEventListener("mouseup", playScroll);
     }
 
     return () => {
