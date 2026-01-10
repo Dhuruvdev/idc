@@ -651,35 +651,108 @@ function InOfficeProjects() {
 
 function NewAgeAcademics() {
   const features = [
-    { icon: GraduationCap, title: "Expert Mentorship", description: "Guidance from Delhi's top educators." },
-    { icon: BookOpen, title: "Practical Learning", description: "Applied concepts for deep clarity." },
-    { icon: Award, title: "Proven Results", description: "Legacy of top academic performance." }
+    { 
+      icon: GraduationCap, 
+      title: "Expert Mentorship", 
+      description: "Direct guidance from Delhi's top educators with decades of collective experience in competitive exams.",
+      accent: "from-[#E8C170] to-[#D4B15B]"
+    },
+    { 
+      icon: BookOpen, 
+      title: "Practical Learning", 
+      description: "We go beyond textbooks with applied concepts, real-world case studies, and interactive problem-solving.",
+      accent: "from-[#FDFBF7] to-[#EDE5D8]"
+    },
+    { 
+      icon: Award, 
+      title: "Proven Results", 
+      description: "A legacy of academic excellence with students consistently topping board exams and securing UG/PG seats.",
+      accent: "from-[#E8C170] to-white/20"
+    }
   ];
 
   return (
-    <section id="academic-excellence" className="bg-[#3D1111] py-20 px-6" data-testid="academics-section">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
-        <div className="flex-1">
-          <p className="text-[#E8C170] text-xs mb-4 uppercase tracking-widest font-semibold">Academic Excellence</p>
-          <h2 className="text-3xl md:text-5xl font-display text-white mb-8 leading-tight">
-            Learn Fundamentals from <span className="font-bold">Subject Matter Experts</span>
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {features.map((feature, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+    <section id="academic-excellence" className="bg-[#3D1111] py-32 px-6 relative overflow-hidden" data-testid="academics-section">
+      {/* Background decorative elements */}
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-10">
+        <div className="absolute top-1/4 -left-20 w-96 h-96 bg-[#E8C170] rounded-full blur-[120px]" />
+        <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-white rounded-full blur-[150px]" />
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="text-center mb-20">
+          <motion.p 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-[#E8C170] text-xs md:text-sm mb-4 uppercase tracking-[0.4em] font-black"
+          >
+            Academic Foundation
+          </motion.p>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-4xl md:text-7xl font-display text-white mb-8 leading-tight tracking-tight"
+          >
+            Learn Fundamentals from <br />
+            <span className="relative inline-block">
+              <span className="relative z-10 font-black italic text-[#E8C170]">Subject Matter Experts</span>
+              <motion.span 
+                initial={{ width: 0 }}
+                whileInView={{ width: "100%" }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="bg-white/5 p-6 rounded-2xl border border-white/10"
-              >
-                <feature.icon className="text-[#E8C170] w-8 h-8 mb-4" />
-                <h3 className="text-white font-bold mb-2">{feature.title}</h3>
-                <p className="text-white/50 text-xs">{feature.description}</p>
-              </motion.div>
-            ))}
-          </div>
+                transition={{ delay: 0.5, duration: 0.8 }}
+                className="absolute bottom-2 left-0 h-3 bg-white/5 -z-10"
+              />
+            </span>
+          </motion.h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+          {features.map((feature, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.2, duration: 0.8, ease: "easeOut" }}
+              whileHover={{ y: -10 }}
+              className="group relative"
+            >
+              {/* Card Glow Effect */}
+              <div className={`absolute -inset-0.5 bg-gradient-to-br ${feature.accent} rounded-[2.5rem] opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500`} />
+              
+              <div className="relative bg-white/5 backdrop-blur-sm p-8 md:p-12 rounded-[2.5rem] border border-white/10 flex flex-col h-full hover:bg-white/[0.08] transition-colors duration-500">
+                {/* Icon Container */}
+                <div className="mb-8 relative">
+                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${feature.accent} flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-500`}>
+                    <feature.icon className="text-[#3D1111] w-8 h-8" />
+                  </div>
+                  <div className="absolute -top-4 -right-4 text-white/5 font-display text-6xl font-black select-none">
+                    0{i + 1}
+                  </div>
+                </div>
+
+                <h3 className="text-2xl md:text-3xl font-display text-white font-black mb-4 group-hover:text-[#E8C170] transition-colors">
+                  {feature.title}
+                </h3>
+                
+                <p className="text-white/50 text-sm md:text-base leading-relaxed mb-8 flex-1">
+                  {feature.description}
+                </p>
+
+                <div className="mt-auto">
+                  <div className="h-[1px] w-full bg-gradient-to-r from-white/20 to-transparent mb-6" />
+                  <div className="flex items-center justify-between text-[10px] font-black text-white/30 uppercase tracking-[0.2em]">
+                    <span>IDC Standard</span>
+                    <span className="w-2 h-2 rounded-full bg-[#E8C170] animate-pulse" />
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
