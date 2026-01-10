@@ -138,8 +138,18 @@ function Hero() {
           <p className="text-white/80 text-lg md:text-xl max-w-2xl mb-12 leading-relaxed mx-auto">Delhi's premier coaching for Classes 6th–12th, UG, and PG levels. Personalized and result-driven.</p>
         </motion.div>
         <div className="flex flex-wrap gap-4 justify-center">
-          <motion.a initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} href="#courses" className="bg-[#E8C170] text-[#3D1111] px-10 py-5 rounded-full flex items-center gap-4 font-bold hover:bg-white transition-all shadow-2xl">
-            <span className="text-sm tracking-[0.2em]">EXPLORE COURSES</span>
+          <motion.a 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ duration: 0.6, delay: 0.3 }} 
+            whileHover={{ scale: 1.05 }} 
+            whileTap={{ scale: 0.95 }} 
+            href="https://wa.me/919999999999?text=I'm%20interested%20in%20booking%20a%20call"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-[#FFF8E7] text-[#3D1111] px-10 py-5 rounded-full flex items-center gap-4 font-bold hover:bg-white transition-all shadow-2xl"
+          >
+            <span className="text-sm tracking-[0.2em]">GET IN TOUCH</span>
             <ArrowRight size={20} />
           </motion.a>
           <motion.a initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4 }} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} href="#faculty" className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-10 py-5 rounded-full flex items-center gap-4 font-bold hover:bg-white/20 transition-all shadow-2xl">
@@ -164,7 +174,7 @@ function Courses() {
     <section id="courses" className="bg-[#F5F0E6] py-24 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-6xl font-display text-[#3D1111] mb-6">Our <span className="italic text-[#E8C170]">Courses</span></h2>
+          <h2 className="text-4xl md:text-6xl font-display text-[#3D1111] mb-6">Our <span className="italic text-[#E8C170]">Programs</span></h2>
           <p className="text-[#3D1111]/60 text-xl max-w-3xl mx-auto">Comprehensive Coaching for Every Stage of Learning. We build strong foundations for success.</p>
         </div>
         <div className="flex flex-wrap justify-center gap-8">
