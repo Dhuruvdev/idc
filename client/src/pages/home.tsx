@@ -176,13 +176,13 @@ function Hero() {
             animate={{ opacity: 1, y: 0 }}
             className="text-[#E8C170] font-bold tracking-[0.3em] mb-4 text-sm"
           >
-            WELCOME TO IDEOLOGY CLASSES DELHI (IDC)
+            WELCOME TO IDC DELHI
           </motion.p>
           <h1 className="text-5xl md:text-8xl font-display text-white leading-tight mb-8">
-            Empowering Students to <span className="font-bold text-[#E8C170]">Achieve Academic Excellence</span>
+            Empowering <span className="font-bold text-[#E8C170]">Academic Excellence</span>
           </h1>
           <p className="text-white/80 text-lg md:text-xl max-w-2xl mb-12 leading-relaxed">
-            Delhi's premier coaching institute offering personalized, result-driven education for students from Classes 6th–12th, Undergraduate (UG) and Postgraduate (PG) levels.
+            Delhi's premier coaching for Classes 6th–12th, UG, and PG levels. Personalized and result-driven.
           </p>
         </motion.div>
         <div className="flex flex-wrap gap-4">
@@ -197,17 +197,6 @@ function Hero() {
           >
             <span className="text-sm tracking-[0.2em]">EXPLORE COURSES</span>
             <ArrowRight size={20} />
-          </motion.a>
-          <motion.a
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            href="#contact"
-            className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-10 py-5 rounded-full font-bold hover:bg-white/20 transition-all shadow-2xl"
-          >
-            <span className="text-sm tracking-[0.2em]">JOIN IDC FAMILY</span>
           </motion.a>
         </div>
       </div>
@@ -447,7 +436,7 @@ function Teachers() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12"
         >
           {teachers.map((teacher, i) => (
             <motion.div
@@ -459,7 +448,7 @@ function Teachers() {
             >
               {/* Paper-style card based on screenshot */}
               <div className="bg-[#FDFBF7] rounded-3xl p-8 shadow-xl relative aspect-[4/5] flex flex-col mb-6">
-                <div className="text-[#3D1111]/40 text-xs font-bold uppercase tracking-widest mb-6">
+                <div className="text-[#3D1111]/40 text-xs font-bold uppercase tracking-widest mb-6 font-sans">
                   Faculty Profile
                 </div>
                 
@@ -473,11 +462,11 @@ function Teachers() {
                   </div>
                   
                   <div className="mt-auto">
-                    <p className="text-[#3D1111] text-lg font-handwriting italic leading-relaxed">
+                    <p className="text-[#3D1111] text-lg font-sans font-medium leading-relaxed">
                       "{teacher.details}"
                     </p>
                     <div className="mt-6 pt-4 border-t border-[#3D1111]/10 flex items-center justify-between">
-                      <span className="text-[#3D1111]/30 text-[10px] font-black uppercase tracking-widest">
+                      <span className="text-[#3D1111]/30 text-[10px] font-black uppercase tracking-widest font-sans">
                         - IDC FACULTY LOG
                       </span>
                     </div>
