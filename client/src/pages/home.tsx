@@ -799,9 +799,21 @@ function Testimonials() {
       image: studentGirl,
     },
     {
+      name: "Priyanshi M",
+      school: "Delhi Public School",
+      location: "Raipur",
+      image: studentGirl,
+    },
+    {
       name: "Yagya Amit Bisani",
       school: "Fountainhead School",
       location: "Surat",
+      image: studentBoy,
+    },
+    {
+      name: "Garvit Tatia",
+      school: "Bodhi International School",
+      location: "Jodhpur",
       image: studentBoy,
     },
     {
@@ -811,91 +823,74 @@ function Testimonials() {
       image: studentGirl,
     },
     {
+      name: "Mahi Jain",
+      school: "Jayshree Periwal International School",
+      location: "Jaipur",
+      image: studentGirl,
+    },
+    {
       name: "Rahul Setia",
       school: "GD Goenka Public School",
       location: "Delhi",
       image: studentBoy,
     },
     {
-      name: "Priyanshi M",
+      name: "Jatin Jain",
       school: "Delhi Public School",
-      location: "Raipur",
-      image: studentGirl,
-    },
-    {
-      name: "Garvit Tatia",
-      school: "Bodhi International School",
-      location: "Jodhpur",
+      location: "Hyderabad",
       image: studentBoy,
     }
   ];
 
   return (
-    <section id="testimonials" className="bg-[#3D1111] py-24 px-6 overflow-hidden relative">
-      <div className="absolute top-0 right-0 w-full h-full pointer-events-none opacity-5">
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#E8C170] rounded-full blur-[150px]" />
-      </div>
+    <section id="testimonials" className="bg-[#3D1111] py-16 px-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-12">
+          <h2 className="text-4xl md:text-5xl font-sans text-white font-medium mb-4">
+            Meet the <span className="font-bold">Founding Cohort</span>
+          </h2>
+          <p className="text-white/80 text-lg max-w-2xl">
+            A peek into the 100 builders, creators, and innovators who make up Mesa's Founder's Batch
+          </p>
+        </div>
 
-      <div className="max-w-7xl mx-auto mb-16 relative z-10">
-        <motion.h2 
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          className="text-white text-4xl md:text-7xl font-display mb-6"
-        >
-          Our <span className="font-black italic text-[#E8C170]">Wall of Fame</span>
-        </motion.h2>
-        <motion.p 
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          className="text-white/60 text-lg max-w-2xl leading-relaxed"
-        >
-          Celebrating the exceptional achievements of our students who have consistently redefined excellence.
-        </motion.p>
-      </div>
-
-      <div className="testimonials-track flex gap-6 md:gap-8 overflow-x-auto lg:overflow-visible pb-12 no-scrollbar snap-x snap-mandatory relative z-10">
-        {testimonials.map((student, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1 }}
-            className="flex-shrink-0 w-[300px] md:w-[500px] snap-center bg-[#1A0505] rounded-[3rem] p-8 md:p-10 flex flex-col md:flex-row items-center gap-8 border border-white/5 relative overflow-hidden group hover:border-[#E8C170]/20 transition-all duration-500"
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
-            
-            <div className="flex-1 space-y-6 relative z-10">
-              <div>
-                <h3 className="text-2xl md:text-4xl font-display text-white font-black mb-4 leading-tight">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-6">
+          {testimonials.map((student, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: (i % 2) * 0.1 }}
+              className="bg-[#260B0B] rounded-[2rem] p-8 flex items-center justify-between border border-white/5 relative overflow-hidden group"
+            >
+              <div className="flex-1 pr-4 relative z-10">
+                <h3 className="text-2xl md:text-3xl font-sans text-white font-semibold mb-3">
                   {student.name}
                 </h3>
-                <div className="h-1 w-12 bg-[#E8C170]/30 rounded-full" />
+                <div className="h-[1px] w-16 bg-white/20 mb-6" />
+                <div className="space-y-1">
+                  <p className="text-[#E8C170] font-serif italic text-lg md:text-xl leading-tight">
+                    {student.school}
+                  </p>
+                  <p className="text-white/40 text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold">
+                    {student.location}
+                  </p>
+                </div>
               </div>
 
-              <div className="space-y-2">
-                <p className="text-[#E8C170] font-serif italic text-xl md:text-2xl">
-                  {student.school}
-                </p>
-                <p className="text-white/30 text-[10px] md:text-xs font-black uppercase tracking-[0.3em]">
-                  {student.location}
-                </p>
+              <div className="relative w-32 h-32 md:w-48 md:h-48 flex-shrink-0 z-10">
+                {/* Custom mesa-style framing/shadowing */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#260B0B] via-transparent to-transparent z-10 rounded-2xl" />
+                <img
+                  src={student.image}
+                  alt={student.name}
+                  className="w-full h-full object-cover rounded-2xl grayscale group-hover:grayscale-0 transition-all duration-700"
+                />
               </div>
-            </div>
-
-            <div className="relative w-40 h-40 md:w-64 md:h-64 flex-shrink-0 z-10">
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1A0505] via-transparent to-transparent z-10 rounded-3xl" />
-              <img
-                src={student.image}
-                alt={student.name}
-                className="w-full h-full object-cover rounded-3xl grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000"
-              />
-            </div>
-          </motion.div>
-        ))}
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
