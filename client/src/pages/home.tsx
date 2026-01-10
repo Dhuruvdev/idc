@@ -432,13 +432,13 @@ function Teachers() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-16"
+          className="mb-16 text-center"
         >
-          <h2 className="text-3xl md:text-4xl font-display text-white mb-4">
-            Our <span className="italic">Teachers</span>
+          <h2 className="text-3xl md:text-5xl font-display text-white mb-4">
+            Our <span className="italic text-[#E8C170]">Teachers</span>
           </h2>
-          <p className="text-white/60 text-lg max-w-2xl leading-relaxed">
-            Learn from Delhi's most experienced educators with proven academic excellence and a passion for teaching.
+          <p className="text-white/60 text-lg max-w-2xl mx-auto leading-relaxed">
+            Learn from Delhi's most experienced educators with proven academic excellence.
           </p>
         </motion.div>
         
@@ -447,43 +447,55 @@ function Teachers() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-3 gap-y-8 md:gap-y-16 gap-x-4 md:gap-x-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12"
         >
           {teachers.map((teacher, i) => (
             <motion.div
               key={i}
               custom={i}
               variants={cardVariants}
-              className="group flex flex-col"
+              className="flex flex-col"
               data-testid={`teacher-card-${i}`}
             >
-              <div className="relative mb-4 md:mb-6">
-                <div className="aspect-square rounded-[1.5rem] md:rounded-[2rem] overflow-hidden bg-[#F5F0E6] relative z-10">
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4/5 h-4/5 border-2 border-dashed border-[#3D1111]/10 rounded-full" />
-                  <img
-                    src={teacher.image}
-                    alt={teacher.name}
-                    className="w-full h-full object-cover relative z-20 grayscale group-hover:grayscale-0 transition-all duration-500"
-                  />
+              {/* Paper-style card based on screenshot */}
+              <div className="bg-[#FDFBF7] rounded-3xl p-8 shadow-xl relative aspect-[4/5] flex flex-col mb-6">
+                <div className="text-[#3D1111]/40 text-xs font-bold uppercase tracking-widest mb-6">
+                  Faculty Profile
                 </div>
-              </div>
-              
-              <div className="space-y-1 md:space-y-2">
-                <h3 className="text-base md:text-xl font-display text-white font-bold">
-                  {teacher.name}
-                </h3>
-                <div className="text-white/60 text-[10px] md:text-sm leading-relaxed">
-                  <p className="font-bold text-[#E8C170] uppercase tracking-wider">{teacher.subject}</p>
-                  <p className="text-white/80">{teacher.experience} Exp | {teacher.graduation}</p>
-                  <div className="opacity-70 hidden md:block mt-2">
-                    {teacher.details}
+                
+                <div className="flex-1 flex flex-col">
+                  <div className="w-full h-full rounded-2xl overflow-hidden mb-6 grayscale hover:grayscale-0 transition-all duration-500">
+                    <img
+                      src={teacher.image}
+                      alt={teacher.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  
+                  <div className="mt-auto">
+                    <p className="text-[#3D1111] text-lg font-handwriting italic leading-relaxed">
+                      "{teacher.details}"
+                    </p>
+                    <div className="mt-6 pt-4 border-t border-[#3D1111]/10 flex items-center justify-between">
+                      <span className="text-[#3D1111]/30 text-[10px] font-black uppercase tracking-widest">
+                        - IDC FACULTY LOG
+                      </span>
+                    </div>
                   </div>
                 </div>
-                <div className="pt-4 mt-4 border-t border-white/10 flex items-center justify-between">
-                  <span className="text-white font-black text-lg uppercase tracking-tighter opacity-40 group-hover:opacity-100 transition-opacity">
-                    {teacher.logo}
-                  </span>
-                </div>
+              </div>
+
+              {/* Content under the card */}
+              <div className="text-center px-4">
+                <h3 className="text-xl font-display text-white font-bold mb-1">
+                  {teacher.name}
+                </h3>
+                <p className="text-[#E8C170] text-xs font-bold uppercase tracking-wider mb-2">
+                  {teacher.subject}
+                </p>
+                <p className="text-white/60 text-sm">
+                  {teacher.experience} Experience | {teacher.graduation}
+                </p>
               </div>
             </motion.div>
           ))}
