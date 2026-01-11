@@ -527,7 +527,7 @@ function FindUs() {
           >
             <div className="flex-1 min-h-[400px] md:min-h-[500px] rounded-[3rem] overflow-hidden shadow-2xl border border-[#3D1111]/10 relative group">
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.65487661642!2d77.0674488!3d28.5493631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d195c898c6b75%3A0xe1005a761e31952a!2sIdeology%20Classes!5e0!3m2!1sen!2sin!4v1704981000000!5m2!1sen!2sin&iwloc=near" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.65487661642!2d77.2674488!3d28.5293631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce3c5898c6b75%3A0xe1005a761e31952a!2sGovindpuri%2C%20New%20Delhi!5e0!3m2!1sen!2sin!4v1704981000000!5m2!1sen!2sin&iwloc=near" 
                 width="100%" 
                 height="100%" 
                 style={{ border: 0 }} 
@@ -544,7 +544,7 @@ function FindUs() {
                   </div>
                   <div>
                     <h3 className="font-bold text-[#3D1111] mb-1">Ideology Classes</h3>
-                    <p className="text-[#3D1111]/60 text-xs leading-relaxed font-medium">RZ-26P/3, Main Sagarpur, Opp. Mother Mary School, New Delhi - 110046</p>
+                    <p className="text-[#3D1111]/60 text-xs leading-relaxed font-medium">Street No. 13, near Chandra Prakash Office & Home, Opposite Chaiwala, Govindpuri, New Delhi – 110019, Delhi, India</p>
                   </div>
                 </div>
               </div>
