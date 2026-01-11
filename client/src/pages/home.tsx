@@ -602,7 +602,7 @@ function Teachers() {
                     src={teacher.image} 
                     alt={teacher.name} 
                     loading="lazy"
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" 
+                    className="w-full h-full object-cover transition-all duration-700" 
                   />
                 </div>
                 <div className="flex-1 min-w-0">
@@ -669,7 +669,7 @@ function WallOfFameCard({ student, i }: { student: any, i: number }) {
       </div>
       <div className="relative w-24 h-24 md:w-48 md:h-48 flex-shrink-0 rounded-2xl md:rounded-[2rem] overflow-hidden shadow-2xl border border-white/10 group-hover:scale-105 transition-transform duration-700">
         <div className="absolute inset-0 bg-gradient-to-t from-[#3D1111]/40 to-transparent z-10" />
-        <img src={student.image} alt={student.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
+        <img src={student.image} alt={student.name} className="w-full h-full object-cover transition-all duration-700" />
       </div>
     </motion.div>
   );
