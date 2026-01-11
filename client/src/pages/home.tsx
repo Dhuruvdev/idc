@@ -318,22 +318,27 @@ function Institute() {
         </motion.p>
       </div>
 
-      <div className="flex gap-8 md:gap-12 overflow-x-auto pb-12 no-scrollbar snap-x snap-mandatory relative z-10 px-4">
+      <div className="flex gap-8 md:gap-12 overflow-x-auto pb-12 no-scrollbar snap-x snap-mandatory relative z-10 px-4 scroll-smooth">
         {images.map((item, i) => (
           <motion.div 
             key={i} 
             custom={i} 
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1 }}
-            className="flex-shrink-0 w-[300px] md:w-[600px] snap-center group relative flex flex-col rounded-[3rem] overflow-hidden border border-[#3D1111]/5 bg-white shadow-xl hover-elevate" 
+            viewport={{ once: true, margin: "0px 100px 0px 100px" }}
+            transition={{ delay: i * 0.05, duration: 0.4 }}
+            className="flex-shrink-0 w-[300px] md:w-[600px] snap-center group relative flex flex-col rounded-[3rem] overflow-hidden border border-[#3D1111]/5 bg-white shadow-xl hover-elevate transition-transform duration-500" 
             data-testid={`institute-card-${i}`}
           >
             <div className="p-4 md:p-8 h-[400px] md:h-[600px]">
-              <div className="relative h-full rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-2xl group-hover:scale-[1.03] transition-transform duration-1000 border border-[#3D1111]/5">
-                <img src={item.image} alt={item.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-110 group-hover:scale-100" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 flex flex-col justify-end p-10">
+              <div className="relative h-full rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-2xl transition-transform duration-700 border border-[#3D1111]/5">
+                <img 
+                  src={item.image} 
+                  alt={item.title} 
+                  loading="lazy"
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-10">
                   <h3 className="text-white text-3xl font-display italic">{item.title}</h3>
                 </div>
               </div>
@@ -584,9 +589,16 @@ function Teachers() {
           <h2 className="text-4xl md:text-7xl font-display text-white mb-6">Our <span className="italic text-[#E8C170]">Teachers</span></h2>
           <p className="text-white/60 text-lg max-w-2xl leading-relaxed">Learn from Delhi's most experienced educators with proven academic excellence.</p>
         </motion.div>
-        <div className="teachers-track flex gap-4 md:gap-10 overflow-x-auto lg:overflow-visible pb-8 no-scrollbar snap-x snap-mandatory">
+        <div className="teachers-track flex gap-4 md:gap-10 overflow-x-auto lg:overflow-visible pb-8 no-scrollbar snap-x snap-mandatory scroll-smooth">
           {teachers.map((teacher, i) => (
-            <motion.div key={i} custom={i} variants={cardVariants} className="flex-shrink-0 w-[280px] md:w-[450px] snap-center group relative flex flex-col bg-[#FDFBF7] rounded-[2rem] md:rounded-[2.5rem] shadow-2xl overflow-hidden border border-[#3D1111]/5 hover-elevate" data-testid={`teacher-card-${i}`}>
+            <motion.div 
+              key={i} 
+              custom={i} 
+              variants={cardVariants} 
+              viewport={{ once: true, margin: "0px 100px 0px 100px" }}
+              className="flex-shrink-0 w-[280px] md:w-[450px] snap-center group relative flex flex-col bg-[#FDFBF7] rounded-[2rem] md:rounded-[2.5rem] shadow-2xl overflow-hidden border border-[#3D1111]/5 hover-elevate transition-transform duration-500" 
+              data-testid={`teacher-card-${i}`}
+            >
               <div className="absolute top-0 left-0 w-full h-1.5 md:h-2 bg-gradient-to-r from-[#E8C170] to-[#3D1111]/20" />
               <div className="p-6 md:p-10 flex justify-between items-start">
                 <div className="space-y-1">
@@ -598,9 +610,14 @@ function Teachers() {
                 </div>
               </div>
               <div className="px-6 md:px-10 flex gap-4 md:gap-8 items-center mb-6 md:mb-8">
-                <div className="relative w-20 h-20 md:w-40 md:h-40 flex-shrink-0 rounded-2xl md:rounded-3xl overflow-hidden shadow-xl md:shadow-2xl border border-[#3D1111]/5 group-hover:scale-105 transition-transform duration-700">
+                <div className="relative w-20 h-20 md:w-40 md:h-40 flex-shrink-0 rounded-2xl md:rounded-3xl overflow-hidden shadow-xl md:shadow-2xl border border-[#3D1111]/5 transition-transform duration-700">
                   <div className="absolute inset-0 bg-gradient-to-t from-[#3D1111]/20 to-transparent z-10" />
-                  <img src={teacher.image} alt={teacher.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
+                  <img 
+                    src={teacher.image} 
+                    alt={teacher.name} 
+                    loading="lazy"
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" 
+                  />
                 </div>
                 <div className="flex-1 min-w-0">
                   <h3 className="text-base md:text-3xl font-display text-[#3D1111] font-black leading-tight mb-1 md:mb-2 truncate">{teacher.name}</h3>
