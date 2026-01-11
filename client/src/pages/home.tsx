@@ -271,7 +271,6 @@ function Institute() {
   ];
   return (
     <section id="institute" className="bg-[#3D1111] py-32 px-6 overflow-hidden relative">
-    <section id="institute" className="bg-[#3D1111] py-32 px-6 overflow-hidden relative">
       <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
         <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[#E8C170] blur-[150px] rounded-full -translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-white blur-[150px] rounded-full translate-x-1/2 translate-y-1/2" />
@@ -678,13 +677,13 @@ function WallOfFameCard({ student, i }: { student: any, i: number }) {
 
 function Testimonials() {
   const classX = [
-    { name: "Dyumna Madan", school: "Woodstock School", location: "Mussoorie", marks: "98% IN ACCOUNTS", image: studentGirl },
-    { name: "Priyanshi M", school: "Bal Bharti Public School", location: "RAIPUR", marks: "98% IN ACCOUNTS", image: studentGirl },
+    { name: "Dyumna Madan", school: "Woodstock School", location: "Mussoorie", marks: "98% IN ACCOUNTS", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400" },
+    { name: "Priyanshi M", school: "Bal Bharti Public School", location: "RAIPUR", marks: "98% IN ACCOUNTS", image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=400" },
   ];
   
   const classXII = [
-    { name: "Aryan Singh", school: "Modern School Vasant Vihar", location: "NEW DELHI", marks: "96% IN MATHS", image: studentBoy },
-    { name: "Sneha Kapur", school: "Delhi Public School", location: "ROHINI", marks: "97% IN ECONOMICS", image: studentGirl }
+    { name: "Aryan Singh", school: "Modern School Vasant Vihar", location: "NEW DELHI", marks: "96% IN MATHS", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400" },
+    { name: "Sneha Kapur", school: "Delhi Public School", location: "ROHINI", marks: "97% IN ECONOMICS", image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=400" }
   ];
 
   return (
