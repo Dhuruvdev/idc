@@ -24,6 +24,11 @@ import studentGirl from "@assets/generated_images/indian-teen-girl-student.png";
 import studentBoy from "@assets/generated_images/indian-teen-boy-glasses.png";
 import idcLogo from "@assets/319537515_877306970380833_8458113406465131312_n_1768036988839.jpg";
 import classImage from "@assets/2023-05-05_(1)_1768112432434.jpg";
+import instImage1 from "@assets/2025-10-12_1768114896704.jpg";
+import instImage2 from "@assets/2022-10-01_1768114974148.jpg";
+import instImage3 from "@assets/2023-05-05_1768115021388.jpg";
+import instImage4 from "@assets/download_1768115039330.jpeg";
+import instImage5 from "@assets/2023-05-05_(2)_1768115067792.jpg";
 import classImage2 from "@assets/2023-05-05_(4)_1768114220016.jpg";
 
 // Placeholder imports for generated institute images
@@ -578,7 +583,7 @@ function Teachers() {
         </motion.div>
         <div className="teachers-track flex gap-4 md:gap-10 overflow-x-auto lg:overflow-visible pb-8 no-scrollbar snap-x snap-mandatory">
           {teachers.map((teacher, i) => (
-            <motion.div key={i} custom={i} variants={cardVariants} className="flex-shrink-0 w-[280px] md:w-[450px] snap-center group relative flex flex-col bg-[#FDFBF7] rounded-[2rem] md:rounded-[2.5rem] shadow-2xl overflow-hidden border border-[#3D1111]/5" data-testid={`teacher-card-\${i}`}>
+            <motion.div key={i} custom={i} variants={cardVariants} className="flex-shrink-0 w-[280px] md:w-[450px] snap-center group relative flex flex-col bg-[#FDFBF7] rounded-[2rem] md:rounded-[2.5rem] shadow-2xl overflow-hidden border border-[#3D1111]/5" data-testid={`teacher-card-${i}`}>
               <div className="absolute top-0 left-0 w-full h-1.5 md:h-2 bg-gradient-to-r from-[#E8C170] to-[#3D1111]/20" />
               <div className="p-6 md:p-10 flex justify-between items-start">
                 <div className="space-y-1">
@@ -619,6 +624,48 @@ function Teachers() {
                     <span className="text-[9px] md:text-sm font-bold text-[#E8C170]">IDC VERIFIED</span>
                   </div>
                 </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function InstituteGallery() {
+  const images = [
+    { src: instImage1, alt: "Active Classroom Learning" },
+    { src: instImage5, alt: "Interactive Teaching Session" },
+    { src: instImage2, alt: "Focused Study Environment" },
+    { src: instImage3, alt: "Clean & Spacious Classrooms" },
+    { src: instImage4, alt: "Organized Learning Space" }
+  ];
+
+  return (
+    <section id="institute" className="py-24 px-6 bg-[#F5F0E6]">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-6xl font-display text-[#3D1111] mb-6">Inside <span className="italic text-[#E8C170]">IDC Delhi</span></h2>
+          <p className="text-[#3D1111]/60 text-xl max-w-3xl mx-auto">A glimpse into our vibrant learning environment where Delhi's future leaders are shaped.</p>
+        </div>
+        <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+          {images.map((image, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="relative rounded-[2rem] overflow-hidden group shadow-xl border border-[#3D1111]/5"
+            >
+              <img 
+                src={image.src} 
+                alt={image.alt} 
+                className="w-full object-cover group-hover:scale-105 transition-transform duration-700" 
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#3D1111]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-8">
+                <p className="text-[#E8C170] font-display text-xl italic tracking-tight">{image.alt}</p>
               </div>
             </motion.div>
           ))}
@@ -774,6 +821,7 @@ export default function Home() {
       <Courses />
       <Institute />
       <WhyChooseIDC />
+      <InstituteGallery />
       <Teachers />
       <Testimonials />
       <FAQ />
