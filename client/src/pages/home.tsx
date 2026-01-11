@@ -337,6 +337,57 @@ function Institute() {
   );
 }
 
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
+function FAQ() {
+  const faqs = [
+    {
+      question: "What are the coaching timings?",
+      answer: "We offer flexible timings from 8 AM to 8 PM. Specific batch timings depend on the grade and subject."
+    },
+    {
+      question: "Do you provide trial classes?",
+      answer: "Yes, we provide 2 complimentary trial classes for students to experience our teaching methodology."
+    },
+    {
+      question: "What is the average batch size?",
+      answer: "To ensure personalized attention, we maintain a small batch size of 10-15 students."
+    },
+    {
+      question: "Are there regular tests and assessments?",
+      answer: "Yes, we conduct weekly chapter-wise tests and monthly comprehensive assessments with detailed progress reports."
+    }
+  ];
+
+  return (
+    <section className="bg-[#FDFBF7] py-24 px-6">
+      <div className="max-w-3xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-6xl font-display text-[#3D1111] mb-6">Common <span className="italic text-[#E8C170]">Questions</span></h2>
+          <p className="text-[#3D1111]/60 text-lg">Everything you need to know about starting your journey with IDC.</p>
+        </div>
+        <Accordion type="single" collapsible className="w-full space-y-4">
+          {faqs.map((faq, i) => (
+            <AccordionItem key={i} value={`item-${i}`} className="bg-white border border-[#3D1111]/5 rounded-2xl px-6 shadow-sm">
+              <AccordionTrigger className="text-[#3D1111] font-bold text-lg hover:no-underline hover:text-[#E8C170] transition-colors py-6">
+                {faq.question}
+              </AccordionTrigger>
+              <AccordionContent className="text-[#3D1111]/70 leading-relaxed pb-6">
+                {faq.answer}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </div>
+    </section>
+  );
+}
+
 function FindUs() {
   const { toast } = useToast();
   
@@ -372,23 +423,33 @@ function FindUs() {
   };
 
   return (
-    <section id="find-us" className="bg-[#FDFBF7] py-24 px-6">
+    <section id="find-us" className="bg-[#FDFBF7] py-24 px-6 overflow-hidden relative">
+      <div className="absolute top-1/2 right-0 w-64 h-64 bg-[#E8C170]/5 blur-[100px] rounded-full" />
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-            <h2 className="text-4xl md:text-6xl font-display text-[#3D1111] mb-8">Get in <span className="italic text-[#E8C170]">Touch</span></h2>
-            <div className="bg-white p-8 rounded-[2.5rem] shadow-xl border border-[#3D1111]/5 mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          <motion.div 
+            initial={{ opacity: 0, x: -40 }} 
+            whileInView={{ opacity: 1, x: 0 }} 
+            viewport={{ once: true }}
+            className="lg:col-span-7"
+          >
+            <div className="mb-12">
+              <h2 className="text-5xl md:text-8xl font-display text-[#3D1111] mb-6 tracking-tighter">Get in <span className="italic text-[#E8C170]">Touch</span></h2>
+              <p className="text-[#3D1111]/60 text-xl font-light max-w-xl">Have questions? We're here to help you navigate your academic journey.</p>
+            </div>
+            
+            <div className="bg-white p-8 md:p-12 rounded-[3rem] shadow-2xl border border-[#3D1111]/5 relative z-10">
               <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <FormField
                       control={form.control}
                       name="name"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-[#3D1111]/60 uppercase tracking-widest text-[10px] font-black">Full Name</FormLabel>
+                          <FormLabel className="text-[#3D1111]/40 uppercase tracking-[0.3em] text-[10px] font-black">Full Name</FormLabel>
                           <FormControl>
-                            <Input placeholder="Your Name" className="rounded-xl border-[#3D1111]/10 focus:border-[#E8C170] focus:ring-[#E8C170]" {...field} />
+                            <Input placeholder="John Doe" className="bg-[#3D1111]/5 border-0 rounded-2xl p-6 h-auto focus-visible:ring-1 focus-visible:ring-[#E8C170]" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -399,37 +460,9 @@ function FindUs() {
                       name="email"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel className="text-[#3D1111]/60 uppercase tracking-widest text-[10px] font-black">Email Address</FormLabel>
+                          <FormLabel className="text-[#3D1111]/40 uppercase tracking-[0.3em] text-[10px] font-black">Email</FormLabel>
                           <FormControl>
-                            <Input placeholder="your@email.com" className="rounded-xl border-[#3D1111]/10 focus:border-[#E8C170] focus:ring-[#E8C170]" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <FormField
-                      control={form.control}
-                      name="phone"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-[#3D1111]/60 uppercase tracking-widest text-[10px] font-black">Phone Number</FormLabel>
-                          <FormControl>
-                            <Input placeholder="+91 XXXX XXX XXX" className="rounded-xl border-[#3D1111]/10 focus:border-[#E8C170] focus:ring-[#E8C170]" {...field} />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={form.control}
-                      name="subject"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-[#3D1111]/60 uppercase tracking-widest text-[10px] font-black">Subject</FormLabel>
-                          <FormControl>
-                            <Input placeholder="How can we help?" className="rounded-xl border-[#3D1111]/10 focus:border-[#E8C170] focus:ring-[#E8C170]" {...field} />
+                            <Input placeholder="john@example.com" className="bg-[#3D1111]/5 border-0 rounded-2xl p-6 h-auto focus-visible:ring-1 focus-visible:ring-[#E8C170]" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -441,36 +474,31 @@ function FindUs() {
                     name="message"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-[#3D1111]/60 uppercase tracking-widest text-[10px] font-black">Your Message</FormLabel>
+                        <FormLabel className="text-[#3D1111]/40 uppercase tracking-[0.3em] text-[10px] font-black">Message</FormLabel>
                         <FormControl>
-                          <Textarea placeholder="Tell us about your requirements..." className="min-h-[120px] rounded-2xl border-[#3D1111]/10 focus:border-[#E8C170] focus:ring-[#E8C170] resize-none" {...field} />
+                          <Textarea placeholder="How can we help?" className="bg-[#3D1111]/5 border-0 rounded-3xl p-6 min-h-[150px] focus-visible:ring-1 focus-visible:ring-[#E8C170] resize-none" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
-                  <Button type="submit" className="w-full bg-[#3D1111] hover:bg-[#4D1a1a] text-[#E8C170] py-6 rounded-2xl font-bold flex items-center gap-3 transition-all active:scale-[0.98]">
-                    <Send className="w-4 h-4" />
-                    <span className="tracking-[0.2em] text-xs uppercase">Send via WhatsApp</span>
+                  <Button type="submit" className="w-full bg-[#3D1111] hover:bg-[#2A0C0C] text-[#E8C170] py-8 rounded-full font-black flex items-center justify-center gap-4 transition-all group overflow-hidden relative">
+                    <span className="relative z-10 tracking-[0.4em] text-xs uppercase">Send WhatsApp Message</span>
+                    <Send className="w-4 h-4 relative z-10 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#E8C170]/0 via-[#E8C170]/5 to-[#E8C170]/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                   </Button>
                 </form>
               </Form>
             </div>
-            
-            <div className="space-y-8">
-              <div className="flex gap-6 items-start">
-                <div className="w-12 h-12 rounded-2xl bg-[#3D1111] text-[#E8C170] flex items-center justify-center flex-shrink-0">
-                  <Settings className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-[#3D1111] mb-2">Main Branch</h3>
-                  <p className="text-[#3D1111]/60 leading-relaxed">N-35/1, Near Kali Mandir,<br />Block N, Middle Circle, Connaught Place,<br />New Delhi, Delhi 110001</p>
-                </div>
-              </div>
-            </div>
           </motion.div>
-          <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="flex flex-col gap-8">
-            <div className="h-[400px] rounded-[2.5rem] overflow-hidden shadow-2xl border border-[#3D1111]/5 grayscale hover:grayscale-0 transition-all duration-700">
+
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }} 
+            whileInView={{ opacity: 1, scale: 1 }} 
+            viewport={{ once: true }} 
+            className="lg:col-span-5 h-full flex flex-col gap-8"
+          >
+            <div className="flex-1 min-h-[500px] rounded-[3rem] overflow-hidden shadow-2xl border border-[#3D1111]/10 relative group">
               <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.956799052029!2d77.216656315083!3d28.63045698242036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd3639999999%3A0x2f1b111111111111!2sConnaught%20Place%2C%20New%20Delhi%2C%20Delhi!5e0!3m2!1sen!2sin!4v1625654321000!5m2!1sen!2sin" 
                 width="100%" 
@@ -478,15 +506,18 @@ function FindUs() {
                 style={{ border: 0 }} 
                 allowFullScreen={true} 
                 loading="lazy"
+                className="grayscale group-hover:grayscale-0 transition-all duration-1000"
               />
-            </div>
-            <div className="flex gap-6 items-start bg-white p-8 rounded-[2rem] border border-[#3D1111]/5 shadow-lg">
-              <div className="w-12 h-12 rounded-2xl bg-[#3D1111] text-[#E8C170] flex items-center justify-center flex-shrink-0">
-                <BookOpen className="w-6 h-6" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-[#3D1111] mb-2">Connect</h3>
-                <p className="text-[#3D1111]/60 leading-relaxed">Phone: +91 99999 99999<br />Email: info@idcclasses.com</p>
+              <div className="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-md p-6 rounded-3xl border border-[#3D1111]/5 shadow-xl">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-2xl bg-[#3D1111] text-[#E8C170] flex items-center justify-center flex-shrink-0">
+                    <Settings className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-[#3D1111] mb-1">Our Location</h3>
+                    <p className="text-[#3D1111]/60 text-xs leading-relaxed">N-35/1, Connaught Place, New Delhi</p>
+                  </div>
+                </div>
               </div>
             </div>
           </motion.div>
@@ -745,6 +776,7 @@ export default function Home() {
       <WhyChooseIDC />
       <Teachers />
       <Testimonials />
+      <FAQ />
       <FindUs />
       <Footer />
     </div>
