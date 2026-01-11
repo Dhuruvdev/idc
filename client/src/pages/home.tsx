@@ -527,7 +527,7 @@ function FindUs() {
           >
             <div className="flex-1 min-h-[400px] md:min-h-[500px] rounded-[3rem] overflow-hidden shadow-2xl border border-[#3D1111]/10 relative group">
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.65487661642!2d77.2674488!3d28.5293631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce3c5898c6b75%3A0xe1005a761e31952a!2sGovindpuri%2C%20New%20Delhi!5e0!3m2!1sen!2sin!4v1704981000000!5m2!1sen!2sin&iwloc=near" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.65487661642!2d77.2674488!3d28.5293631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce3c5898c6b75%3A0xe1005a761e31952a!2sGovindpuri%2C%20New%20Delhi!5e0!3m2!1sen!2sin!4v1704981000000!5m2!1sen!2sin&iwloc=near&output=embed" 
                 width="100%" 
                 height="100%" 
                 style={{ border: 0 }} 
@@ -536,7 +536,22 @@ function FindUs() {
                 title="Ideology Classes Location"
                 className="group-hover:scale-105 transition-all duration-1000 pointer-events-none"
               />
-              <div className="absolute inset-0 z-10" />
+              <div className="absolute inset-0 z-10 bg-black/5 pointer-events-none" />
+              
+              <motion.a 
+                href="https://maps.app.goo.gl/TWP1rxCVa9Bq43gP8"
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="absolute top-6 right-6 z-30 bg-[#E8C170] text-[#3D1111] px-6 py-3 rounded-full font-black text-[10px] tracking-[0.2em] uppercase shadow-2xl flex items-center gap-2 group/btn"
+              >
+                <span>Open On Map</span>
+                <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
+              </motion.a>
+
               <div className="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-md p-6 rounded-3xl border border-[#3D1111]/5 shadow-xl z-20">
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 rounded-2xl bg-[#3D1111] text-[#E8C170] flex items-center justify-center flex-shrink-0">
@@ -544,7 +559,7 @@ function FindUs() {
                   </div>
                   <div>
                     <h3 className="font-bold text-[#3D1111] mb-1">Ideology Classes</h3>
-                    <p className="text-[#3D1111]/60 text-xs leading-relaxed font-medium">Street No. 13, near Chandra Prakash Office & Home, Opposite Chaiwala, Govindpuri, New Delhi – 110019, Delhi, India</p>
+                    <p className="text-[#3D1111]/60 text-xs leading-relaxed font-medium">Street No. 13, near Chandra Prakash Office & Home, Opposite Chaiwala, Govindpuri, New Delhi – 110019</p>
                   </div>
                 </div>
               </div>
