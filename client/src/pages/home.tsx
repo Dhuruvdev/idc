@@ -166,7 +166,19 @@ function Hero() {
             Established 2024
           </span>
           <h1 className="text-6xl md:text-9xl font-display text-white leading-[0.9] mb-8 tracking-tighter">
-            Future <span className="italic font-light text-[#E8C170]">Builders</span><br />
+            { "Future".split("").map((char, i) => (
+              <motion.span
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 + i * 0.05, duration: 0.8, ease: "easeOut" }}
+                className="inline-block"
+              >
+                {char}
+              </motion.span>
+            ))}
+            <span className="inline-block w-4 md:w-8" />
+            <span className="italic font-light text-[#E8C170]">Builders</span><br />
             of <span className="font-bold underline decoration-[#E8C170]/30 underline-offset-8">India</span>
           </h1>
           <p className="text-white/60 text-lg md:text-2xl max-w-2xl mx-auto mb-12 font-sans font-light leading-relaxed">
