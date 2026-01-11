@@ -273,12 +273,15 @@ function Courses() {
 
 function Institute() {
   const images = [
+    { title: "Classroom Session", image: instImage1 },
     { title: "Our Classroom", image: classImage },
     { title: "Modern Classrooms", image: inst1 },
+    { title: "Active Learning", image: instImage2 },
+    { title: "Institute Environment", image: instImage3 },
+    { title: "Study Space", image: instImage4 },
+    { title: "Interactive Teaching", image: instImage5 },
     { title: "Reception Area", image: inst2 },
     { title: "Computer Lab", image: inst3 },
-    { title: "Study Hall", image: inst1 },
-    { title: "Library", image: inst2 }
   ];
   return (
     <section id="institute" className="bg-[#3D1111] py-32 px-6 overflow-hidden relative">
@@ -311,7 +314,7 @@ function Institute() {
           transition={{ delay: 0.1 }} 
           className="text-white/40 text-xl max-w-2xl mx-auto leading-relaxed font-sans font-light"
         >
-          Experience our world-class facilities designed to provide the perfect environment for focused learning.
+          Experience our world-class facilities designed to provide the perfect environment for focused learning in Delhi.
         </motion.p>
       </div>
 
@@ -634,45 +637,7 @@ function Teachers() {
 }
 
 function InstituteGallery() {
-  const images = [
-    { src: instImage1, alt: "Active Classroom Learning" },
-    { src: instImage5, alt: "Interactive Teaching Session" },
-    { src: instImage2, alt: "Focused Study Environment" },
-    { src: instImage3, alt: "Clean & Spacious Classrooms" },
-    { src: instImage4, alt: "Organized Learning Space" }
-  ];
-
-  return (
-    <section id="institute" className="py-24 px-6 bg-[#F5F0E6]">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-6xl font-display text-[#3D1111] mb-6">Inside <span className="italic text-[#E8C170]">IDC Delhi</span></h2>
-          <p className="text-[#3D1111]/60 text-xl max-w-3xl mx-auto">A glimpse into our vibrant learning environment where Delhi's future leaders are shaped.</p>
-        </div>
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
-          {images.map((image, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="relative rounded-[2rem] overflow-hidden group shadow-xl border border-[#3D1111]/5 hover-elevate"
-            >
-              <img 
-                src={image.src} 
-                alt={image.alt} 
-                className="w-full object-cover group-hover:scale-105 transition-transform duration-700" 
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#3D1111]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-8">
-                <p className="text-[#E8C170] font-display text-xl italic tracking-tight">{image.alt}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+  return null;
 }
 
 function WallOfFameCard({ student, i }: { student: any, i: number }) {
@@ -821,7 +786,6 @@ export default function Home() {
       <Courses />
       <Institute />
       <WhyChooseIDC />
-      <InstituteGallery />
       <Teachers />
       <Testimonials />
       <FAQ />
