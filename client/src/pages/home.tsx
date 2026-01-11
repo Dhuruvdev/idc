@@ -16,6 +16,7 @@ import Lenis from "lenis";
 gsap.registerPlugin(ScrollTrigger);
 
 import idcLogo from "@assets/319537515_877306970380833_8458113406465131312_n_1768036988839.jpg";
+import heroBg from "@assets/2023-05-05_(1)_1768121858957.jpg";
 import classImage from "@assets/2023-05-05_(1)_1768112432434.jpg";
 import instImage1 from "@assets/2025-10-12_1768114896704.jpg";
 import instImage2 from "@assets/2022-10-01_1768114974148.jpg";
@@ -145,7 +146,7 @@ function Hero() {
         initial={{ scale: 1, opacity: 0 }} 
         animate={{ opacity: 1 }} 
         transition={{ duration: 1.5, ease: "easeOut" }} 
-        src="https://images.unsplash.com/photo-1523050338692-7b835a07973f?q=80&w=2000&auto=format&fit=crop" 
+        src={heroBg} 
         alt="IDC Students" 
         className="absolute inset-0 w-full h-full object-cover" 
       />
