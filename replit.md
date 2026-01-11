@@ -1,8 +1,8 @@
-# Mesa School of Business
+# IDC Coaching Institute
 
 ## Overview
 
-Mesa School of Business is a web application for an undergraduate business program. The platform showcases the school's offerings, featuring information about founders, programs, and student experiences. Built as a full-stack TypeScript application with a React frontend and Express backend, it serves as a marketing and informational website for the educational institution.
+IDC Coaching Institute is a web application for a premier coaching institute in Delhi. The platform showcases the institute's offerings, featuring information about faculty, programs, and student success. Built as a full-stack TypeScript application with a React frontend and Express backend, it serves as a marketing and informational website for the educational institution.
 
 ## User Preferences
 

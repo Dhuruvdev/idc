@@ -51,11 +51,11 @@
   --color-accent-border: var(--accent-border);
   --color-destructive-border: var(--destructive-border);
 
-  --color-mesa-maroon: hsl(var(--mesa-maroon));
-  --color-mesa-maroon-dark: hsl(var(--mesa-maroon-dark));
-  --color-mesa-gold: hsl(var(--mesa-gold));
-  --color-mesa-cream: hsl(var(--mesa-cream));
-  --color-mesa-cream-dark: hsl(var(--mesa-cream-dark));
+  --color-idc-maroon: hsl(var(--idc-maroon));
+  --color-idc-maroon-dark: hsl(var(--idc-maroon-dark));
+  --color-idc-gold: hsl(var(--idc-gold));
+  --color-idc-cream: hsl(var(--idc-cream));
+  --color-idc-cream-dark: hsl(var(--idc-cream-dark));
 }
 
 :root {
@@ -65,11 +65,11 @@
   --elevate-1: rgba(0,0,0, .03);
   --elevate-2: rgba(0,0,0, .08);
 
-  --mesa-maroon: 0 56% 15%;
-  --mesa-maroon-dark: 0 60% 10%;
-  --mesa-gold: 41 73% 68%;
-  --mesa-cream: 40 33% 94%;
-  --mesa-cream-dark: 40 25% 88%;
+  --idc-maroon: 0 56% 15%;
+  --idc-maroon-dark: 0 60% 10%;
+  --idc-gold: 41 73% 68%;
+  --idc-cream: 40 33% 94%;
+  --idc-cream-dark: 40 25% 88%;
 
   --background: 0 56% 15%;
   --foreground: 40 33% 94%;
