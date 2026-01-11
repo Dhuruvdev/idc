@@ -115,13 +115,34 @@ function Navbar() {
                 <motion.div animate={{ scale: [1.2, 1, 1.2], rotate: [180, 90, 0], x: [0, -100, 0] }} transition={{ duration: 20, repeat: Infinity, ease: "linear" }} className="absolute -bottom-1/4 -right-1/4 w-[800px] h-[800px] bg-white/10 rounded-full blur-[120px]" />
               </div>
               <div className="flex flex-col items-center gap-8 perspective-[1000px]">
-                {["Home", "Programs", "Faculty", "Admissions", "Contact"].map((item, i) => (
-                  <motion.a key={item} custom={i} variants={itemVariants} href={`#\${item.toLowerCase()}`} onClick={() => setIsOpen(false)} className="font-display text-5xl md:text-8xl text-white hover:text-[#E8C170] transition-all duration-500 relative group flex items-center">
-                    <span className="relative z-10 block group-hover:italic group-hover:translate-x-6 transition-transform">{item}</span>
-                    <span className="absolute -left-16 opacity-0 group-hover:opacity-100 group-hover:-left-12 transition-all text-[#E8C170] text-3xl font-serif">0{i+1}</span>
-                    <motion.span className="absolute bottom-4 left-0 w-0 h-1 bg-[#E8C170] group-hover:w-full transition-all duration-500 -z-10 shadow-[0_0_20px_rgba(232,193,112,0.3)]" />
-                  </motion.a>
-                ))}
+                {["Home", "Programs", "Faculty", "Admissions", "Contact"].map((item, i) => {
+                  const href = item === "Home" ? "#hero-section" : 
+                             item === "Programs" ? "#courses" :
+                             item === "Faculty" ? "#faculty" :
+                             item === "Admissions" ? "#testimonials" :
+                             item === "Contact" ? "#find-us" : "#";
+                  return (
+                    <motion.a 
+                      key={item} 
+                      custom={i} 
+                      variants={itemVariants} 
+                      href={href} 
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setIsOpen(false);
+                        const element = document.querySelector(href);
+                        if (element) {
+                          element.scrollIntoView({ behavior: "smooth" });
+                        }
+                      }} 
+                      className="font-display text-5xl md:text-8xl text-white hover:text-[#E8C170] transition-all duration-500 relative group flex items-center"
+                    >
+                      <span className="relative z-10 block group-hover:italic group-hover:translate-x-6 transition-transform">{item}</span>
+                      <span className="absolute -left-16 opacity-0 group-hover:opacity-100 group-hover:-left-12 transition-all text-[#E8C170] text-3xl font-serif">0{i+1}</span>
+                      <motion.span className="absolute bottom-4 left-0 w-0 h-1 bg-[#E8C170] group-hover:w-full transition-all duration-500 -z-10 shadow-[0_0_20px_rgba(232,193,112,0.3)]" />
+                    </motion.a>
+                  );
+                })}
               </div>
               <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1, duration: 0.8 }} className="mt-20 flex gap-10 text-white/30 font-sans font-black text-xs tracking-[0.5em] uppercase">
                 <a href="#" className="hover:text-white transition-colors">Instagram</a>
@@ -140,7 +161,7 @@ function Hero() {
   const whatsappUrl = "https://wa.me/917289082902?text=" + encodeURIComponent("Hello IDC, I would like to book a call for academic guidance.");
   
   return (
-    <section className="relative min-h-screen overflow-hidden flex items-center justify-center" data-testid="hero-section">
+    <section id="hero-section" className="relative min-h-screen overflow-hidden flex items-center justify-center" data-testid="hero-section">
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-[#3D1111] z-10" />
       <motion.img 
         initial={{ scale: 1, opacity: 0 }} 
