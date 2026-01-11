@@ -536,6 +536,7 @@ function FindUs() {
                 title="Ideology Classes Location"
                 className="group-hover:scale-105 transition-all duration-1000 pointer-events-none"
               />
+              <div className="absolute top-0 left-0 w-1/2 h-1/4 z-10 bg-[#FDFBF7]" />
               <div className="absolute inset-0 z-10 bg-black/5 pointer-events-none" />
               
               <motion.a 
