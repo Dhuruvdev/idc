@@ -24,6 +24,7 @@ import studentGirl from "@assets/generated_images/indian-teen-girl-student.png";
 import studentBoy from "@assets/generated_images/indian-teen-boy-glasses.png";
 import idcLogo from "@assets/319537515_877306970380833_8458113406465131312_n_1768036988839.jpg";
 import classImage from "@assets/2023-05-05_(1)_1768112432434.jpg";
+import classImage2 from "@assets/2023-05-05_(4)_1768114220016.jpg";
 
 // Placeholder imports for generated institute images
 import inst1 from "@assets/generated_images/modern_coaching_institute_classroom_interior.png";
@@ -523,7 +524,7 @@ function WhyChooseIDC() {
           </motion.div>
           <motion.div initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="relative">
             <div className="aspect-square rounded-full border-2 border-dashed border-[#E8C170]/30 animate-[spin_30s_linear_infinite] absolute inset-0 -m-8" />
-            <img src={studentsGroup} alt="IDC Students Success" className="rounded-3xl shadow-2xl relative z-10 w-full aspect-square object-cover" />
+            <img src={classImage2} alt="IDC Students Success" className="rounded-3xl shadow-2xl relative z-10 w-full aspect-square object-cover" />
           </motion.div>
         </div>
       </div>
@@ -602,26 +603,26 @@ function WallOfFameCard({ student, i }: { student: any, i: number }) {
       key={i} 
       custom={i} 
       variants={cardVariants} 
-      className="flex-shrink-0 w-[280px] md:w-[450px] snap-center group relative flex flex-row bg-white rounded-3xl md:rounded-[2.5rem] shadow-2xl overflow-hidden border border-[#3D1111]/5 p-6 md:p-8 gap-4 md:gap-6 items-center"
+      className="flex-shrink-0 w-[280px] md:w-[450px] snap-center group relative flex flex-row bg-[#3D1111] rounded-3xl md:rounded-[2.5rem] shadow-2xl overflow-hidden border border-white/5 p-6 md:p-8 gap-4 md:gap-6 items-center"
       data-testid={`testimonial-card-${i}`}
     >
       <div className="flex-1 flex flex-col justify-center min-w-0">
-        <h3 className="text-xl md:text-4xl font-display text-[#3D1111] font-black leading-tight mb-2 truncate">
+        <h3 className="text-xl md:text-4xl font-display text-white font-black leading-tight mb-2 truncate">
           {student.name}
         </h3>
-        <div className="h-[1px] w-full bg-[#3D1111]/10 mb-4 md:mb-6" />
+        <div className="h-[1px] w-full bg-white/20 mb-4 md:mb-6" />
         <p className="text-[#E8C170] italic font-serif text-sm md:text-2xl mb-1 md:mb-2 truncate">
           {student.school}
         </p>
-        <p className="text-[#3D1111]/40 text-[10px] md:text-lg font-sans uppercase tracking-widest truncate">
+        <p className="text-white/40 text-[10px] md:text-lg font-sans uppercase tracking-widest truncate">
           {student.location}
         </p>
-        <div className="mt-4 inline-flex items-center gap-2 bg-[#3D1111]/5 self-start px-3 py-1 rounded-full border border-[#3D1111]/10">
+        <div className="mt-4 inline-flex items-center gap-2 bg-white/5 self-start px-3 py-1 rounded-full border border-white/10">
           <span className="text-[8px] md:text-xs font-black text-[#E8C170] uppercase tracking-widest">{student.marks}</span>
         </div>
       </div>
-      <div className="relative w-24 h-24 md:w-48 md:h-48 flex-shrink-0 rounded-2xl md:rounded-[2rem] overflow-hidden shadow-2xl border border-[#3D1111]/10 group-hover:scale-105 transition-transform duration-700">
-        <div className="absolute inset-0 bg-gradient-to-t from-[#3D1111]/20 to-transparent z-10" />
+      <div className="relative w-24 h-24 md:w-48 md:h-48 flex-shrink-0 rounded-2xl md:rounded-[2rem] overflow-hidden shadow-2xl border border-white/10 group-hover:scale-105 transition-transform duration-700">
+        <div className="absolute inset-0 bg-gradient-to-t from-[#3D1111]/40 to-transparent z-10" />
         <img src={student.image} alt={student.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
       </div>
     </motion.div>
