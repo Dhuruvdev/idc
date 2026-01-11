@@ -526,13 +526,13 @@ function FindUs() {
           >
             <div className="flex-1 min-h-[400px] md:min-h-[500px] rounded-[3rem] overflow-hidden shadow-2xl border border-[#3D1111]/10 relative group">
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.956799052029!2d77.216656315083!3d28.63045698242036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd3639999999%3A0x2f1b111111111111!2sConnaught%20Place%2C%20New%20Delhi%2C%20Delhi!5e0!3m2!1sen!2sin!4v1625654321000!5m2!1sen!2sin" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.65487661642!2d77.06744887612716!3d28.54936307571004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d195c898c6b75%3A0xe1005a761e31952a!2sIdeology%20Classes!5e0!3m2!1sen!2sin!4v1704980000000!5m2!1sen!2sin" 
                 width="100%" 
                 height="100%" 
                 style={{ border: 0 }} 
                 allowFullScreen={true} 
                 loading="lazy"
-                className="grayscale group-hover:grayscale-0 transition-all duration-1000"
+                className="group-hover:scale-105 transition-all duration-1000"
               />
               <div className="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-md p-6 rounded-3xl border border-[#3D1111]/5 shadow-xl">
                 <div className="flex items-start gap-4">
@@ -541,7 +541,7 @@ function FindUs() {
                   </div>
                   <div>
                     <h3 className="font-bold text-[#3D1111] mb-1">Our Location</h3>
-                    <p className="text-[#3D1111]/60 text-xs leading-relaxed">N-35/1, Connaught Place, New Delhi</p>
+                    <p className="text-[#3D1111]/60 text-xs leading-relaxed">RZ - 26P/3, Main Sagarpur, Opp. Mother Mary School, New Delhi - 110046</p>
                   </div>
                 </div>
               </div>
