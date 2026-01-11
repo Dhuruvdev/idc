@@ -23,6 +23,7 @@ import studentsGroup from "@assets/generated_images/college-students-celebration
 import studentGirl from "@assets/generated_images/indian-teen-girl-student.png";
 import studentBoy from "@assets/generated_images/indian-teen-boy-glasses.png";
 import idcLogo from "@assets/319537515_877306970380833_8458113406465131312_n_1768036988839.jpg";
+import classImage from "@assets/2023-05-05_(1)_1768112432434.jpg";
 
 // Placeholder imports for generated institute images
 import inst1 from "@assets/generated_images/modern_coaching_institute_classroom_interior.png";
@@ -69,11 +70,11 @@ function Navbar() {
   const menuVariants = {
     closed: {
       clipPath: "circle(0% at calc(100% - 40px) 40px)",
-      transition: { type: "spring", stiffness: 400, damping: 40, delay: 0.2 }
+      transition: { type: "spring", stiffness: 400, damping: 40, delay: 0.2 } as any
     },
     opened: {
       clipPath: "circle(150% at calc(100% - 40px) 40px)",
-      transition: { type: "spring", stiffness: 20, restDelta: 2 }
+      transition: { type: "spring", stiffness: 20, restDelta: 2 } as any
     }
   };
 
@@ -86,7 +87,7 @@ function Navbar() {
       transition: {
         delay: 0.4 + (i * 0.1),
         duration: 0.8,
-        ease: [0.215, 0.61, 0.355, 1]
+        ease: [0.215, 0.61, 0.355, 1] as any
       }
     })
   };
@@ -144,44 +145,70 @@ function Hero() {
   const whatsappUrl = "https://wa.me/919999999999?text=" + encodeURIComponent("Hello IDC, I would like to book a call for academic guidance.");
   
   return (
-    <section className="relative min-h-screen overflow-hidden" data-testid="hero-section">
-      <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/40 to-[#3D1111] z-10" />
-      <motion.img initial={{ scale: 1.1 }} animate={{ scale: 1 }} transition={{ duration: 1.5, ease: "easeOut" }} src={heroImage} alt="IDC Students" className="absolute inset-0 w-full h-full object-cover" />
-      <div className="relative z-20 min-h-screen flex flex-col justify-end pb-20 px-6 md:px-12">
-        <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }} className="max-w-4xl mx-auto text-center">
-          <h1 className="text-5xl md:text-8xl font-display text-white leading-tight mb-8">Empowering <span className="font-bold text-[#E8C170]">Academic Excellence</span></h1>
-          <p className="text-white/80 text-lg md:text-xl max-w-2xl mb-12 leading-relaxed mx-auto">Delhi's premier coaching for Classes 6th–12th, UG, and PG levels. Personalized and result-driven.</p>
+    <section className="relative min-h-screen overflow-hidden flex items-center justify-center" data-testid="hero-section">
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-[#3D1111] z-10" />
+      <motion.img 
+        initial={{ scale: 1.2, opacity: 0 }} 
+        animate={{ scale: 1, opacity: 1 }} 
+        transition={{ duration: 2, ease: "circOut" }} 
+        src={heroImage} 
+        alt="IDC Students" 
+        className="absolute inset-0 w-full h-full object-cover" 
+      />
+      
+      <div className="relative z-20 container mx-auto px-6 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[#E8C170] text-[10px] font-black tracking-[0.4em] uppercase mb-8">
+            Established 2024
+          </span>
+          <h1 className="text-6xl md:text-9xl font-display text-white leading-[0.9] mb-8 tracking-tighter">
+            Future <span className="italic font-light text-[#E8C170]">Builders</span><br />
+            of <span className="font-bold underline decoration-[#E8C170]/30 underline-offset-8">India</span>
+          </h1>
+          <p className="text-white/60 text-lg md:text-2xl max-w-2xl mx-auto mb-12 font-sans font-light leading-relaxed">
+            Delhi's premier coaching for Classes 6th–12th, UG, and PG levels. <br className="hidden md:block" /> Personalized and result-driven education.
+          </p>
+          
+          <div className="flex flex-wrap gap-6 justify-center">
+            <motion.a 
+              whileHover={{ scale: 1.05, boxShadow: "0 20px 40px -10px rgba(232,193,112,0.3)" }}
+              whileTap={{ scale: 0.98 }}
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group bg-[#E8C170] text-[#3D1111] px-12 py-6 rounded-full flex items-center gap-4 font-black transition-all"
+              data-testid="button-get-in-touch"
+            >
+              <span className="text-xs tracking-[0.3em]">ENROLL NOW</span>
+              <div className="w-8 h-8 rounded-full bg-[#3D1111] text-[#E8C170] flex items-center justify-center group-hover:translate-x-1 transition-transform">
+                <ArrowRight size={16} />
+              </div>
+            </motion.a>
+            
+            <motion.a 
+              whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.15)" }}
+              whileTap={{ scale: 0.98 }}
+              href="#faculty" 
+              className="bg-white/5 backdrop-blur-xl text-white border border-white/10 px-12 py-6 rounded-full flex items-center gap-4 font-black transition-all"
+            >
+              <span className="text-xs tracking-[0.3em]">OUR FACULTY</span>
+              <GraduationCap size={20} className="text-[#E8C170]" />
+            </motion.a>
+          </div>
         </motion.div>
-        <div className="flex flex-wrap gap-4 justify-center">
-          <motion.a 
-            initial={{ opacity: 0, y: 20 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            transition={{ duration: 0.6, delay: 0.3 }} 
-            whileHover={{ scale: 1.05 }} 
-            whileTap={{ scale: 0.95 }} 
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-[#FFF8E7] text-[#3D1111] px-10 py-5 rounded-full flex items-center gap-4 font-bold hover:bg-white transition-all shadow-2xl"
-            data-testid="button-get-in-touch"
-          >
-            <span className="text-sm tracking-[0.2em]">GET IN TOUCH</span>
-            <ArrowRight size={20} />
-          </motion.a>
-          <motion.a 
-            initial={{ opacity: 0, y: 20 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            transition={{ duration: 0.6, delay: 0.4 }} 
-            whileHover={{ scale: 1.05 }} 
-            whileTap={{ scale: 0.95 }} 
-            href="#faculty" 
-            className="bg-white/10 backdrop-blur-md text-white border border-white/20 px-10 py-5 rounded-full flex items-center gap-4 font-bold hover:bg-white/20 transition-all shadow-2xl"
-          >
-            <span className="text-sm tracking-[0.2em]">OUR FACULTY</span>
-            <GraduationCap size={20} />
-          </motion.a>
-        </div>
       </div>
+
+      <motion.div 
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 text-white/20"
+      >
+        <div className="w-[1px] h-12 bg-gradient-to-b from-white to-transparent" />
+      </motion.div>
     </section>
   );
 }
@@ -222,6 +249,7 @@ function Courses() {
 
 function Institute() {
   const images = [
+    { title: "Our Classroom", image: classImage },
     { title: "Modern Classrooms", image: inst1 },
     { title: "Reception Area", image: inst2 },
     { title: "Computer Lab", image: inst3 },
@@ -229,18 +257,58 @@ function Institute() {
     { title: "Library", image: inst2 }
   ];
   return (
-    <section id="institute" className="bg-[#3D1111] py-24 px-6 overflow-hidden relative">
-      <div className="max-w-7xl mx-auto mb-16 relative z-10">
-        <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-white text-4xl md:text-7xl font-display mb-6">Our <span className="italic text-[#E8C170]">Institute</span></motion.h2>
-        <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="text-white/60 text-lg max-w-2xl leading-relaxed">Experience our world-class facilities designed to provide the perfect environment for focused learning.</motion.p>
+    <section id="institute" className="bg-[#3D1111] py-32 px-6 overflow-hidden relative">
+      <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[#E8C170] blur-[150px] rounded-full -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-white blur-[150px] rounded-full translate-x-1/2 translate-y-1/2" />
       </div>
-      <div className="flex gap-4 md:gap-10 overflow-x-auto lg:overflow-visible pb-8 no-scrollbar snap-x snap-mandatory relative z-10">
+      
+      <div className="max-w-7xl mx-auto mb-20 relative z-10 text-center">
+        <motion.span 
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-[#E8C170] text-[10px] font-black tracking-[0.5em] uppercase mb-4 block"
+        >
+          Gallery
+        </motion.span>
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }} 
+          whileInView={{ opacity: 1, y: 0 }} 
+          viewport={{ once: true }} 
+          className="text-white text-5xl md:text-8xl font-display mb-8 tracking-tighter"
+        >
+          Life at <span className="italic font-light text-[#E8C170]">IDC</span>
+        </motion.h2>
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }} 
+          whileInView={{ opacity: 1, y: 0 }} 
+          viewport={{ once: true }} 
+          transition={{ delay: 0.1 }} 
+          className="text-white/40 text-xl max-w-2xl mx-auto leading-relaxed font-sans font-light"
+        >
+          Experience our world-class facilities designed to provide the perfect environment for focused learning.
+        </motion.p>
+      </div>
+
+      <div className="flex gap-8 md:gap-12 overflow-x-auto pb-12 no-scrollbar snap-x snap-mandatory relative z-10 px-4">
         {images.map((item, i) => (
-          <motion.div key={i} custom={i} variants={cardVariants} className="flex-shrink-0 w-[280px] md:w-[450px] snap-center group relative flex flex-col bg-[#FDFBF7] rounded-[2rem] md:rounded-[2.5rem] shadow-2xl overflow-hidden border border-[#3D1111]/5" data-testid={`institute-card-${i}`}>
-            <div className="absolute top-0 left-0 w-full h-1.5 md:h-2 bg-gradient-to-r from-[#E8C170] to-[#3D1111]/20" />
-            <div className="p-4 md:p-6 h-full">
-              <div className="relative h-full rounded-2xl md:rounded-3xl overflow-hidden shadow-xl md:shadow-2xl border border-[#3D1111]/5 group-hover:scale-[1.02] transition-transform duration-700">
-                <img src={item.image} alt={item.title} className="w-full h-full object-cover transition-all duration-700" />
+          <motion.div 
+            key={i} 
+            custom={i} 
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.1 }}
+            className="flex-shrink-0 w-[300px] md:w-[600px] snap-center group relative flex flex-col rounded-[3rem] overflow-hidden border border-white/5 bg-white/5 backdrop-blur-sm" 
+            data-testid={`institute-card-${i}`}
+          >
+            <div className="p-4 md:p-8 h-[400px] md:h-[600px]">
+              <div className="relative h-full rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-2xl group-hover:scale-[1.03] transition-transform duration-1000">
+                <img src={item.image} alt={item.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-110 group-hover:scale-100" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 flex flex-col justify-end p-10">
+                  <h3 className="text-white text-3xl font-display italic">{item.title}</h3>
+                </div>
               </div>
             </div>
           </motion.div>
