@@ -254,7 +254,7 @@ function Courses() {
         </div>
         <div className="flex flex-wrap justify-center gap-8">
           {courses.map((course, i) => (
-            <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} whileHover={{ y: -8 }} className="bg-white p-8 rounded-3xl shadow-xl border border-[#3D1111]/5 group transition-all w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-1.5rem)] max-w-sm">
+            <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="bg-white p-8 rounded-3xl shadow-xl border border-[#3D1111]/5 group transition-all w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.33%-1.5rem)] max-w-sm hover-elevate">
               <div className="w-14 h-14 rounded-2xl bg-[#3D1111] text-[#E8C170] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">{course.icon}</div>
               <h3 className="text-2xl font-display font-bold text-[#3D1111] mb-2">{course.title}</h3>
               <p className="text-[#3D1111]/70 mb-6 leading-relaxed">{course.description}</p>
@@ -324,7 +324,7 @@ function Institute() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1 }}
-            className="flex-shrink-0 w-[300px] md:w-[600px] snap-center group relative flex flex-col rounded-[3rem] overflow-hidden border border-[#3D1111]/5 bg-white shadow-xl" 
+            className="flex-shrink-0 w-[300px] md:w-[600px] snap-center group relative flex flex-col rounded-[3rem] overflow-hidden border border-[#3D1111]/5 bg-white shadow-xl hover-elevate" 
             data-testid={`institute-card-${i}`}
           >
             <div className="p-4 md:p-8 h-[400px] md:h-[600px]">
@@ -583,7 +583,7 @@ function Teachers() {
         </motion.div>
         <div className="teachers-track flex gap-4 md:gap-10 overflow-x-auto lg:overflow-visible pb-8 no-scrollbar snap-x snap-mandatory">
           {teachers.map((teacher, i) => (
-            <motion.div key={i} custom={i} variants={cardVariants} className="flex-shrink-0 w-[280px] md:w-[450px] snap-center group relative flex flex-col bg-[#FDFBF7] rounded-[2rem] md:rounded-[2.5rem] shadow-2xl overflow-hidden border border-[#3D1111]/5" data-testid={`teacher-card-${i}`}>
+            <motion.div key={i} custom={i} variants={cardVariants} className="flex-shrink-0 w-[280px] md:w-[450px] snap-center group relative flex flex-col bg-[#FDFBF7] rounded-[2rem] md:rounded-[2.5rem] shadow-2xl overflow-hidden border border-[#3D1111]/5 hover-elevate" data-testid={`teacher-card-${i}`}>
               <div className="absolute top-0 left-0 w-full h-1.5 md:h-2 bg-gradient-to-r from-[#E8C170] to-[#3D1111]/20" />
               <div className="p-6 md:p-10 flex justify-between items-start">
                 <div className="space-y-1">
@@ -657,7 +657,7 @@ function InstituteGallery() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="relative rounded-[2rem] overflow-hidden group shadow-xl border border-[#3D1111]/5"
+              className="relative rounded-[2rem] overflow-hidden group shadow-xl border border-[#3D1111]/5 hover-elevate"
             >
               <img 
                 src={image.src} 
