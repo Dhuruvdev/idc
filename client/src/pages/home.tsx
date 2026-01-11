@@ -151,7 +151,7 @@ function Hero() {
         initial={{ scale: 1.2, opacity: 0 }} 
         animate={{ scale: 1, opacity: 1 }} 
         transition={{ duration: 2, ease: "circOut" }} 
-        src={heroImage} 
+        src={classImage} 
         alt="IDC Students" 
         className="absolute inset-0 w-full h-full object-cover" 
       />
