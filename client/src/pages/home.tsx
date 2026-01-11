@@ -318,11 +318,11 @@ function Institute() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1 }}
-            className="flex-shrink-0 w-[300px] md:w-[600px] snap-center group relative flex flex-col rounded-[3rem] overflow-hidden border border-white/5 bg-white/5 backdrop-blur-sm" 
+            className="flex-shrink-0 w-[300px] md:w-[600px] snap-center group relative flex flex-col rounded-[3rem] overflow-hidden border border-[#3D1111]/5 bg-white shadow-xl" 
             data-testid={`institute-card-${i}`}
           >
             <div className="p-4 md:p-8 h-[400px] md:h-[600px]">
-              <div className="relative h-full rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-2xl group-hover:scale-[1.03] transition-transform duration-1000">
+              <div className="relative h-full rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-2xl group-hover:scale-[1.03] transition-transform duration-1000 border border-[#3D1111]/5">
                 <img src={item.image} alt={item.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-110 group-hover:scale-100" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 flex flex-col justify-end p-10">
                   <h3 className="text-white text-3xl font-display italic">{item.title}</h3>
