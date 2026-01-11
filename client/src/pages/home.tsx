@@ -527,7 +527,7 @@ function FindUs() {
           >
             <div className="flex-1 min-h-[400px] md:min-h-[500px] rounded-[3rem] overflow-hidden shadow-2xl border border-[#3D1111]/10 relative group">
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.65487661642!2d77.06744887612716!3d28.54936307571004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d195c898c6b75%3A0xe1005a761e31952a!2sIdeology%20Classes!5e0!3m2!1sen!2sin!4v1704980000000!5m2!1sen!2sin" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.65342461642!2d77.0674488!3d28.5493631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d195c898c6b75%3A0xe1005a761e31952a!2sIdeology%20Classes!5e0!3m2!1sen!2sin!4v1704980000000!5m2!1sen!2sin" 
                 width="100%" 
                 height="100%" 
                 style={{ border: 0 }} 
