@@ -142,8 +142,8 @@ function Hero() {
     <section className="relative min-h-screen overflow-hidden flex items-center justify-center" data-testid="hero-section">
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-[#3D1111] z-10" />
       <motion.img 
-        initial={{ scale: 1.1, opacity: 0 }} 
-        animate={{ scale: 1, opacity: 1 }} 
+        initial={{ scale: 1, opacity: 0 }} 
+        animate={{ opacity: 1 }} 
         transition={{ duration: 1.5, ease: "easeOut" }} 
         src="https://images.unsplash.com/photo-1523050338692-7b835a07973f?q=80&w=2000&auto=format&fit=crop" 
         alt="IDC Students" 
@@ -322,7 +322,7 @@ function Institute() {
                   src={item.image} 
                   alt={item.title} 
                   loading="lazy"
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700" 
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-10">
                   <h3 className="text-white text-3xl font-display italic">{item.title}</h3>
