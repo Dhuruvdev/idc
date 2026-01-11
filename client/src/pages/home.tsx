@@ -164,7 +164,7 @@ function Hero() {
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
         >
           <span className="inline-block px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[#E8C170] text-[10px] font-black tracking-[0.4em] uppercase mb-8">
-            Established 2024
+            Delhi's Premier Coaching Institute
           </span>
           <h1 className="text-6xl md:text-9xl font-display text-white leading-[0.9] mb-8 tracking-tighter">
             { "Future".split("").map((char, i) => (
@@ -183,7 +183,7 @@ function Hero() {
             of <span className="font-bold underline decoration-[#E8C170]/30 underline-offset-8">India</span>
           </h1>
           <p className="text-white/60 text-lg md:text-2xl max-w-2xl mx-auto mb-12 font-sans font-light leading-relaxed">
-            Delhi's premier coaching for Classes 6th–12th, UG, and PG levels. <br className="hidden md:block" /> Personalized and result-driven education.
+            Exclusive coaching for Classes 6th–12th, UG, and PG levels in Delhi. <br className="hidden md:block" /> Result-driven education for Delhi's brightest minds.
           </p>
           
           <div className="flex flex-wrap gap-6 justify-center">
@@ -234,18 +234,18 @@ function Hero() {
 
 function Courses() {
   const courses = [
-    { title: "Classes 6th–10th", description: "Strengthen your core concepts in Maths, Science, English, and Social Studies with expert-led sessions.", tags: ["Foundation", "Maths", "Science"], icon: <BookOpen className="w-6 h-6" /> },
-    { title: "Classes 11th–12th (Commerce)", description: "Specialized coaching for core commerce subjects to build a strong professional base.", tags: ["Accounts", "Economics", "Business Studies", "Applied Maths"], icon: <GraduationCap className="w-6 h-6" /> },
-    { title: "Undergraduate (UG)", description: "Special guidance for B.Com, B.A., B.Sc., and other university-level exams.", tags: ["B.Com", "B.A", "B.Sc"], icon: <Briefcase className="w-6 h-6" /> },
-    { title: "Postgraduate (PG)", description: "Expert mentors to help you excel in M.Com, M.A., and advanced academic goals.", tags: ["M.Com", "M.A", "Advanced"], icon: <Award className="w-6 h-6" /> },
-    { title: "English & Personality", description: "Improve communication, fluency, and confidence through structured English-speaking programs.", tags: ["Fluency", "Confidence", "Soft Skills"], icon: <Settings className="w-6 h-6" /> }
+    { title: "Classes 6th–10th", description: "Strengthen your core concepts in Maths, Science, English, and Social Studies with expert-led sessions in Delhi.", tags: ["Foundation", "Maths", "Science"], icon: <BookOpen className="w-6 h-6" /> },
+    { title: "Classes 11th–12th (Commerce)", description: "Specialized coaching for core commerce subjects to build a strong professional base for Delhi's future leaders.", tags: ["Accounts", "Economics", "Business Studies", "Applied Maths"], icon: <GraduationCap className="w-6 h-6" /> },
+    { title: "Undergraduate (UG)", description: "Special guidance for B.Com, B.A., B.Sc., and other university-level exams in Delhi's top colleges.", tags: ["B.Com", "B.A", "B.Sc"], icon: <Briefcase className="w-6 h-6" /> },
+    { title: "Postgraduate (PG)", description: "Expert mentors in Delhi to help you excel in M.Com, M.A., and advanced academic goals.", tags: ["M.Com", "M.A", "Advanced"], icon: <Award className="w-6 h-6" /> },
+    { title: "English & Personality", description: "Improve communication, fluency, and confidence through structured programs in Delhi.", tags: ["Fluency", "Confidence", "Soft Skills"], icon: <Settings className="w-6 h-6" /> }
   ];
   return (
     <section id="courses" className="bg-[#F5F0E6] py-24 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-6xl font-display text-[#3D1111] mb-6">Our <span className="italic text-[#E8C170]">Programs</span></h2>
-          <p className="text-[#3D1111]/60 text-xl max-w-3xl mx-auto">Comprehensive Coaching for Every Stage of Learning. We build strong foundations for success.</p>
+          <h2 className="text-4xl md:text-6xl font-display text-[#3D1111] mb-6">Our <span className="italic text-[#E8C170]">Programs in Delhi</span></h2>
+          <p className="text-[#3D1111]/60 text-xl max-w-3xl mx-auto">Comprehensive Coaching for Every Stage of Learning. We build strong foundations for success only in Delhi.</p>
         </div>
         <div className="flex flex-wrap justify-center gap-8">
           {courses.map((course, i) => (
@@ -718,11 +718,11 @@ function Footer() {
             </div>
             <div>
               <h2 className="font-sans text-3xl font-black text-white tracking-tighter leading-none">IDC</h2>
-              <p className="text-[#E8C170] text-[8px] font-black tracking-[0.4em] uppercase mt-1">Coaching Institute</p>
+              <p className="text-[#E8C170] text-[8px] font-black tracking-[0.4em] uppercase mt-1">Delhi's Premier Coaching</p>
             </div>
           </div>
           <p className="text-white/40 text-xs font-medium max-w-xs text-center md:text-left leading-relaxed">
-            Empowering Academic Excellence through personalized, result-driven education for a brighter future.
+            Empowering Academic Excellence only in Delhi. Result-driven education for a brighter future.
           </p>
         </div>
         
