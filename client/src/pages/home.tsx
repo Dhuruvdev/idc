@@ -534,9 +534,10 @@ function FindUs() {
                 allowFullScreen={true} 
                 loading="lazy"
                 title="Ideology Classes Location"
-                className="group-hover:scale-105 transition-all duration-1000"
+                className="group-hover:scale-105 transition-all duration-1000 pointer-events-none"
               />
-              <div className="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-md p-6 rounded-3xl border border-[#3D1111]/5 shadow-xl">
+              <div className="absolute inset-0 z-10" />
+              <div className="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-md p-6 rounded-3xl border border-[#3D1111]/5 shadow-xl z-20">
                 <div className="flex items-start gap-4">
                   <div className="w-10 h-10 rounded-2xl bg-[#3D1111] text-[#E8C170] flex items-center justify-center flex-shrink-0">
                     <Settings className="w-5 h-5" />
