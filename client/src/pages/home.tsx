@@ -136,16 +136,16 @@ function Navbar() {
 }
 
 function Hero() {
-  const whatsappUrl = "https://wa.me/919999999999?text=" + encodeURIComponent("Hello IDC, I would like to book a call for academic guidance.");
+  const whatsappUrl = "https://wa.me/917289082902?text=" + encodeURIComponent("Hello IDC, I would like to book a call for academic guidance.");
   
   return (
     <section className="relative min-h-screen overflow-hidden flex items-center justify-center" data-testid="hero-section">
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-[#3D1111] z-10" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-[#3D1111] z-10" />
       <motion.img 
-        initial={{ scale: 1.2, opacity: 0 }} 
+        initial={{ scale: 1.1, opacity: 0 }} 
         animate={{ scale: 1, opacity: 1 }} 
-        transition={{ duration: 2, ease: "circOut" }} 
-        src={classImage} 
+        transition={{ duration: 1.5, ease: "easeOut" }} 
+        src="https://images.unsplash.com/photo-1523050338692-7b835a07973f?q=80&w=2000&auto=format&fit=crop" 
         alt="IDC Students" 
         className="absolute inset-0 w-full h-full object-cover" 
       />
@@ -410,7 +410,7 @@ function FindUs() {
   });
 
   const onSubmit = (data: z.infer<typeof contactFormSchema>) => {
-    const whatsappNumber = "919999999999";
+    const whatsappNumber = "917289082902";
     const text = `*New Contact Request from IDC Website*\n\n*Name:* ${data.name}\n*Email:* ${data.email}\n*Phone:* ${data.phone}\n*Subject:* ${data.subject}\n*Message:* ${data.message}`;
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
     window.open(whatsappUrl, "_blank");
@@ -422,7 +422,7 @@ function FindUs() {
   };
 
   return (
-    <section id="find-us" className="bg-[#FDFBF7] py-24 px-6 overflow-hidden relative">
+    <section id="find-us" className="bg-[#FDFBF7] py-24 px-4 md:px-6 overflow-hidden relative">
       <div className="absolute top-1/2 right-0 w-64 h-64 bg-[#E8C170]/5 blur-[100px] rounded-full" />
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
@@ -433,14 +433,14 @@ function FindUs() {
             className="lg:col-span-7"
           >
             <div className="mb-12">
-              <h2 className="text-5xl md:text-8xl font-display text-[#3D1111] mb-6 tracking-tighter">Get in <span className="italic text-[#E8C170]">Touch</span></h2>
-              <p className="text-[#3D1111]/60 text-xl font-light max-w-xl">Have questions? We're here to help you navigate your academic journey.</p>
+              <h2 className="text-4xl md:text-8xl font-display text-[#3D1111] mb-6 tracking-tighter">Get in <span className="italic text-[#E8C170]">Touch</span></h2>
+              <p className="text-[#3D1111]/60 text-lg md:text-xl font-light max-w-xl">Have questions? We're here to help you navigate your academic journey.</p>
             </div>
             
-            <div className="bg-white p-8 md:p-12 rounded-[3rem] shadow-2xl border border-[#3D1111]/5 relative z-10">
+            <div className="bg-white p-6 md:p-12 rounded-[2.5rem] shadow-2xl border border-[#3D1111]/5 relative z-10">
               <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 md:space-y-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
                     <FormField
                       control={form.control}
                       name="name"
@@ -448,9 +448,9 @@ function FindUs() {
                         <FormItem>
                           <FormLabel className="text-[#3D1111]/40 uppercase tracking-[0.3em] text-[10px] font-black">Full Name</FormLabel>
                           <FormControl>
-                            <Input placeholder="John Doe" className="bg-[#3D1111]/5 border-0 rounded-2xl p-6 h-auto focus-visible:ring-1 focus-visible:ring-[#E8C170]" {...field} />
+                            <Input placeholder="John Doe" className="bg-[#3D1111]/5 border-0 rounded-2xl px-6 h-12 md:h-16 focus-visible:ring-1 focus-visible:ring-[#E8C170]" {...field} />
                           </FormControl>
-                          <FormMessage />
+                          <FormMessage className="text-xs" />
                         </FormItem>
                       )}
                     />
@@ -461,9 +461,37 @@ function FindUs() {
                         <FormItem>
                           <FormLabel className="text-[#3D1111]/40 uppercase tracking-[0.3em] text-[10px] font-black">Email</FormLabel>
                           <FormControl>
-                            <Input placeholder="john@example.com" className="bg-[#3D1111]/5 border-0 rounded-2xl p-6 h-auto focus-visible:ring-1 focus-visible:ring-[#E8C170]" {...field} />
+                            <Input placeholder="john@example.com" className="bg-[#3D1111]/5 border-0 rounded-2xl px-6 h-12 md:h-16 focus-visible:ring-1 focus-visible:ring-[#E8C170]" {...field} />
                           </FormControl>
-                          <FormMessage />
+                          <FormMessage className="text-xs" />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
+                    <FormField
+                      control={form.control}
+                      name="phone"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-[#3D1111]/40 uppercase tracking-[0.3em] text-[10px] font-black">Phone Number</FormLabel>
+                          <FormControl>
+                            <Input placeholder="9999999999" className="bg-[#3D1111]/5 border-0 rounded-2xl px-6 h-12 md:h-16 focus-visible:ring-1 focus-visible:ring-[#E8C170]" {...field} />
+                          </FormControl>
+                          <FormMessage className="text-xs" />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="subject"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-[#3D1111]/40 uppercase tracking-[0.3em] text-[10px] font-black">Subject</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Academic Query" className="bg-[#3D1111]/5 border-0 rounded-2xl px-6 h-12 md:h-16 focus-visible:ring-1 focus-visible:ring-[#E8C170]" {...field} />
+                          </FormControl>
+                          <FormMessage className="text-xs" />
                         </FormItem>
                       )}
                     />
@@ -475,16 +503,15 @@ function FindUs() {
                       <FormItem>
                         <FormLabel className="text-[#3D1111]/40 uppercase tracking-[0.3em] text-[10px] font-black">Message</FormLabel>
                         <FormControl>
-                          <Textarea placeholder="How can we help?" className="bg-[#3D1111]/5 border-0 rounded-3xl p-6 min-h-[150px] focus-visible:ring-1 focus-visible:ring-[#E8C170] resize-none" {...field} />
+                          <Textarea placeholder="How can we help?" className="bg-[#3D1111]/5 border-0 rounded-3xl p-6 min-h-[120px] md:min-h-[150px] focus-visible:ring-1 focus-visible:ring-[#E8C170] resize-none" {...field} />
                         </FormControl>
-                        <FormMessage />
+                        <FormMessage className="text-xs" />
                       </FormItem>
                     )}
                   />
-                  <Button type="submit" className="w-full bg-[#3D1111] hover:bg-[#2A0C0C] text-[#E8C170] py-8 rounded-full font-black flex items-center justify-center gap-4 transition-all group overflow-hidden relative">
-                    <span className="relative z-10 tracking-[0.4em] text-xs uppercase">Send WhatsApp Message</span>
+                  <Button type="submit" className="w-full bg-[#3D1111] hover:bg-[#2A0C0C] text-[#E8C170] h-14 md:h-20 rounded-full font-black flex items-center justify-center gap-4 transition-all group overflow-hidden relative shadow-2xl">
+                    <span className="relative z-10 tracking-[0.4em] text-[10px] md:text-xs uppercase">Send WhatsApp Message</span>
                     <Send className="w-4 h-4 relative z-10 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#E8C170]/0 via-[#E8C170]/5 to-[#E8C170]/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                   </Button>
                 </form>
               </Form>
@@ -497,7 +524,7 @@ function FindUs() {
             viewport={{ once: true }} 
             className="lg:col-span-5 h-full flex flex-col gap-8"
           >
-            <div className="flex-1 min-h-[500px] rounded-[3rem] overflow-hidden shadow-2xl border border-[#3D1111]/10 relative group">
+            <div className="flex-1 min-h-[400px] md:min-h-[500px] rounded-[3rem] overflow-hidden shadow-2xl border border-[#3D1111]/10 relative group">
               <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.956799052029!2d77.216656315083!3d28.63045698242036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd3639999999%3A0x2f1b111111111111!2sConnaught%20Place%2C%20New%20Delhi%2C%20Delhi!5e0!3m2!1sen!2sin!4v1625654321000!5m2!1sen!2sin" 
                 width="100%" 
