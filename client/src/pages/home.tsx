@@ -187,7 +187,14 @@ function Hero() {
           
           <div className="flex flex-wrap gap-6 justify-center">
             <motion.a 
-              whileHover={{ scale: 1.05, boxShadow: "0 20px 40px -10px rgba(232,193,112,0.3)" }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.8, type: "spring", stiffness: 200 }}
+              whileHover={{ 
+                scale: 1.05, 
+                boxShadow: "0 20px 40px -10px rgba(232,193,112,0.3)",
+                rotate: 2
+              }}
               whileTap={{ scale: 0.98 }}
               href={whatsappUrl}
               target="_blank"
@@ -202,7 +209,14 @@ function Hero() {
             </motion.a>
             
             <motion.a 
-              whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.15)" }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.9, type: "spring", stiffness: 200 }}
+              whileHover={{ 
+                scale: 1.05, 
+                backgroundColor: "rgba(255,255,255,0.15)",
+                rotate: -2
+              }}
               whileTap={{ scale: 0.98 }}
               href="#faculty" 
               className="bg-white/5 backdrop-blur-xl text-white border border-white/10 px-12 py-6 rounded-full flex items-center gap-4 font-black transition-all"
@@ -213,14 +227,6 @@ function Hero() {
           </div>
         </motion.div>
       </div>
-
-      <motion.div 
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 text-white/20"
-      >
-        <div className="w-[1px] h-12 bg-gradient-to-b from-white to-transparent" />
-      </motion.div>
     </section>
   );
 }
