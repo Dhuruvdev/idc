@@ -602,26 +602,26 @@ function WallOfFameCard({ student, i }: { student: any, i: number }) {
       key={i} 
       custom={i} 
       variants={cardVariants} 
-      className="flex-shrink-0 w-[280px] md:w-[450px] snap-center group relative flex flex-row bg-[#3D1111] rounded-3xl md:rounded-[2.5rem] shadow-2xl overflow-hidden border border-white/5 p-6 md:p-8 gap-4 md:gap-6 items-center"
-      data-testid={`testimonial-card-\${i}`}
+      className="flex-shrink-0 w-[280px] md:w-[450px] snap-center group relative flex flex-row bg-white rounded-3xl md:rounded-[2.5rem] shadow-2xl overflow-hidden border border-[#3D1111]/5 p-6 md:p-8 gap-4 md:gap-6 items-center"
+      data-testid={`testimonial-card-${i}`}
     >
       <div className="flex-1 flex flex-col justify-center min-w-0">
-        <h3 className="text-xl md:text-4xl font-display text-white font-black leading-tight mb-2 truncate">
+        <h3 className="text-xl md:text-4xl font-display text-[#3D1111] font-black leading-tight mb-2 truncate">
           {student.name}
         </h3>
-        <div className="h-[1px] w-full bg-white/20 mb-4 md:mb-6" />
+        <div className="h-[1px] w-full bg-[#3D1111]/10 mb-4 md:mb-6" />
         <p className="text-[#E8C170] italic font-serif text-sm md:text-2xl mb-1 md:mb-2 truncate">
           {student.school}
         </p>
-        <p className="text-white/40 text-[10px] md:text-lg font-sans uppercase tracking-widest truncate">
+        <p className="text-[#3D1111]/40 text-[10px] md:text-lg font-sans uppercase tracking-widest truncate">
           {student.location}
         </p>
-        <div className="mt-4 inline-flex items-center gap-2 bg-white/5 self-start px-3 py-1 rounded-full border border-white/10">
+        <div className="mt-4 inline-flex items-center gap-2 bg-[#3D1111]/5 self-start px-3 py-1 rounded-full border border-[#3D1111]/10">
           <span className="text-[8px] md:text-xs font-black text-[#E8C170] uppercase tracking-widest">{student.marks}</span>
         </div>
       </div>
-      <div className="relative w-24 h-24 md:w-48 md:h-48 flex-shrink-0 rounded-2xl md:rounded-[2rem] overflow-hidden shadow-2xl border border-white/10 group-hover:scale-105 transition-transform duration-700">
-        <div className="absolute inset-0 bg-gradient-to-t from-[#3D1111]/40 to-transparent z-10" />
+      <div className="relative w-24 h-24 md:w-48 md:h-48 flex-shrink-0 rounded-2xl md:rounded-[2rem] overflow-hidden shadow-2xl border border-[#3D1111]/10 group-hover:scale-105 transition-transform duration-700">
+        <div className="absolute inset-0 bg-gradient-to-t from-[#3D1111]/20 to-transparent z-10" />
         <img src={student.image} alt={student.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
       </div>
     </motion.div>
@@ -674,51 +674,51 @@ function Testimonials() {
 }
 
 function Footer() {
+  const currentYear = new Date().getFullYear();
   return (
-    <footer className="bg-[#3D1111] py-20 px-6 border-t border-white/5">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
-        <div className="space-y-6">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full overflow-hidden border border-white/10">
+    <footer className="bg-[#3D1111] py-16 px-6 border-t border-white/10 relative overflow-hidden">
+      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#E8C170]/30 to-transparent" />
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10 relative z-10">
+        <div className="flex flex-col items-center md:items-start gap-4">
+          <div className="flex items-center gap-4 group">
+            <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white/10 group-hover:border-[#E8C170] transition-all duration-500 shadow-xl">
               <img src={idcLogo} alt="IDC Logo" className="w-full h-full object-cover" />
             </div>
-            <h2 className="font-display font-black text-2xl text-white">IDC</h2>
+            <div>
+              <h2 className="font-sans text-3xl font-black text-white tracking-tighter leading-none">IDC</h2>
+              <p className="text-[#E8C170] text-[8px] font-black tracking-[0.4em] uppercase mt-1">Coaching Institute</p>
+            </div>
           </div>
-          <p className="text-white/60 text-sm leading-relaxed">Delhi's premier coaching institute dedicated to academic excellence and student success across all levels.</p>
+          <p className="text-white/40 text-xs font-medium max-w-xs text-center md:text-left leading-relaxed">
+            Empowering Academic Excellence through personalized, result-driven education for a brighter future.
+          </p>
         </div>
-        <div>
-          <h3 className="font-bold text-white mb-6 uppercase tracking-widest text-xs">Programs</h3>
-          <ul className="space-y-4 text-white/60 text-sm">
-            <li><a href="#" className="hover:text-[#E8C170] transition-colors">Foundation (6th-10th)</a></li>
-            <li><a href="#" className="hover:text-[#E8C170] transition-colors">Senior Secondary (11th-12th)</a></li>
-            <li><a href="#" className="hover:text-[#E8C170] transition-colors">Undergraduate (UG)</a></li>
-            <li><a href="#" className="hover:text-[#E8C170] transition-colors">Postgraduate (PG)</a></li>
-          </ul>
+        
+        <div className="flex gap-10">
+          {[
+            { Icon: Instagram, label: "Instagram" },
+            { Icon: Youtube, label: "YouTube" },
+            { Icon: Linkedin, label: "LinkedIn" }
+          ].map(({ Icon, label }) => (
+            <motion.a 
+              key={label}
+              whileHover={{ y: -5, color: "#E8C170" }}
+              href="#" 
+              className="text-white/30 transition-colors flex flex-col items-center gap-2"
+            >
+              <Icon size={20} />
+              <span className="text-[8px] font-black uppercase tracking-widest">{label}</span>
+            </motion.a>
+          ))}
         </div>
-        <div>
-          <h3 className="font-bold text-white mb-6 uppercase tracking-widest text-xs">Contact</h3>
-          <ul className="space-y-4 text-white/60 text-sm">
-            <li>N-35/1, Near Kali Mandir, New Delhi</li>
-            <li>+91 99999 99999</li>
-            <li>info@idcclasses.com</li>
-          </ul>
-        </div>
-        <div className="space-y-6">
-          <h3 className="font-bold text-white mb-6 uppercase tracking-widest text-xs">Follow Us</h3>
-          <div className="flex gap-4">
-            {[Instagram, Youtube, Linkedin].map((Icon, i) => (
-              <a key={i} href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-[#E8C170] hover:border-[#E8C170] transition-all">
-                <Icon size={18} />
-              </a>
-            ))}
+
+        <div className="text-center md:text-right space-y-2">
+          <div className="text-white/30 text-[10px] font-black tracking-[0.2em] uppercase">
+            &copy; {currentYear} IDC Coaching Institute
           </div>
-        </div>
-      </div>
-      <div className="max-w-7xl mx-auto pt-20 mt-20 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-        <p className="text-white/30 text-xs font-bold tracking-widest uppercase">© 2024 IDEOLOGY CLASSES. ALL RIGHTS RESERVED.</p>
-        <div className="flex gap-8 text-white/30 text-[10px] font-bold tracking-widest uppercase">
-          <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-          <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+          <p className="text-white/20 text-[9px] font-medium uppercase tracking-[0.1em]">
+            Developed with excellence for Future Builders of India
+          </p>
         </div>
       </div>
     </footer>
