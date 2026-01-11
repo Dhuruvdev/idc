@@ -15,13 +15,6 @@ import Lenis from "lenis";
 
 gsap.registerPlugin(ScrollTrigger);
 
-import heroImage from "@assets/generated_images/students-casual-gathering-selfie.png";
-import founder1 from "@assets/generated_images/indian-businessman-founder-portrait.png";
-import founder2 from "@assets/generated_images/young-indian-founder-portrait.png";
-import founder3 from "@assets/generated_images/indian-fintech-founder-portrait.png";
-import studentsGroup from "@assets/generated_images/college-students-celebration.png";
-import studentGirl from "@assets/generated_images/indian-teen-girl-student.png";
-import studentBoy from "@assets/generated_images/indian-teen-boy-glasses.png";
 import idcLogo from "@assets/319537515_877306970380833_8458113406465131312_n_1768036988839.jpg";
 import classImage from "@assets/2023-05-05_(1)_1768112432434.jpg";
 import instImage1 from "@assets/2025-10-12_1768114896704.jpg";
@@ -30,11 +23,6 @@ import instImage3 from "@assets/2023-05-05_1768115021388.jpg";
 import instImage4 from "@assets/download_1768115039330.jpeg";
 import instImage5 from "@assets/2023-05-05_(2)_1768115067792.jpg";
 import classImage2 from "@assets/2023-05-05_(4)_1768114220016.jpg";
-
-// Placeholder imports for generated institute images
-import inst1 from "@assets/generated_images/modern_coaching_institute_classroom_interior.png";
-import inst2 from "@assets/generated_images/institute_reception_and_lounge_area.png";
-import inst3 from "@assets/generated_images/institute_computer_lab_facility.png";
 
 const cardVariants = {
   hidden: { opacity: 0, y: 30, scale: 0.95 },
@@ -275,15 +263,14 @@ function Institute() {
   const images = [
     { title: "Classroom Session", image: instImage1 },
     { title: "Our Classroom", image: classImage },
-    { title: "Modern Classrooms", image: inst1 },
     { title: "Active Learning", image: instImage2 },
     { title: "Institute Environment", image: instImage3 },
     { title: "Study Space", image: instImage4 },
     { title: "Interactive Teaching", image: instImage5 },
-    { title: "Reception Area", image: inst2 },
-    { title: "Computer Lab", image: inst3 },
+    { title: "Delhi Campus Success", image: classImage2 },
   ];
   return (
+    <section id="institute" className="bg-[#3D1111] py-32 px-6 overflow-hidden relative">
     <section id="institute" className="bg-[#3D1111] py-32 px-6 overflow-hidden relative">
       <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
         <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[#E8C170] blur-[150px] rounded-full -translate-x-1/2 -translate-y-1/2" />
@@ -578,9 +565,9 @@ function WhyChooseIDC() {
 
 function Teachers() {
   const teachers = [
-    { name: "Prof. Kunal Shah", subject: "Economics & Strategy", experience: "15+ Years", graduation: "IIM Ahmedabad", details: "Expert in market dynamics and strategic planning for competitive advantage.", image: founder1 },
-    { name: "Prof. Vidit Aatrey", subject: "Maths & Analytics", experience: "12+ Years", graduation: "IIT Delhi", details: "Specializes in advanced calculus and data-driven decision modeling.", image: founder2 },
-    { name: "Prof. Vijay Shekhar", subject: "Business Studies", experience: "20+ Years", graduation: "Delhi College of Engineering", details: "Veteran educator focused on entrepreneurship and business fundamentals.", image: founder3 }
+    { name: "Prof. Kunal Shah", subject: "Economics & Strategy", experience: "15+ Years", graduation: "IIM Ahmedabad", details: "Expert in market dynamics and strategic planning for competitive advantage.", image: "https://images.unsplash.com/photo-1544717297-fa154daaf544?q=80&w=400" },
+    { name: "Prof. Vidit Aatrey", subject: "Maths & Analytics", experience: "12+ Years", graduation: "IIT Delhi", details: "Specializes in advanced calculus and data-driven decision modeling.", image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400" },
+    { name: "Prof. Vijay Shekhar", subject: "Business Studies", experience: "20+ Years", graduation: "Delhi College of Engineering", details: "Veteran educator focused on entrepreneurship and business fundamentals.", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400" }
   ];
   return (
     <section id="faculty" className="bg-[#3D1111] py-24 px-6 min-h-screen flex items-center overflow-hidden" data-testid="teachers-section">
